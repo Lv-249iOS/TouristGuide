@@ -1,0 +1,79 @@
+//
+//  MapViewController.swift
+//  iTourist
+//
+//  Created by Zhanna Moskaliuk on 8/1/17.
+//  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+class MapViewController: UIViewController {
+    @IBOutlet weak var map: MKMapView!
+    var manager = CLLocationManager()
+    
+    var annotationsOfPlaces: [EquitableAnnotation] = []
+    var imageLoader = ImageDownloader()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        if let location = CLLocationManager().location {
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
+            map.setRegion(region, animated: true)
+        }
+        
+        manager.delegate = self
+        map.delegate = self
+        
+        configureLocationServices()
+        
+        PlacesManager.shared.getPlaces() {
+            for place in PlacesManager.shared.listOfPlaces {
+                let annotation = EquitableAnnotation()
+                if let coordinates = place.coordinates {
+                    annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                }
+                annotation.title = place.name
+                annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                annotation.photoRef = place.photosRef?.first
+                annotation.type = place.typeOfPlace?.first
+                self.annotationsOfPlaces.append(annotation)
+            }
+            self.map.addAnnotations(self.annotationsOfPlaces)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func configureLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            let status = CLLocationManager.authorizationStatus()
+            
+            if status == .notDetermined {
+                manager.requestWhenInUseAuthorization()
+            } else {
+                
+                switch status {
+                case .authorizedAlways: fallthrough
+                case .authorizedWhenInUse:
+                    manager.delegate = self
+                    manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                    manager.distanceFilter = 100.0
+                    manager.startUpdatingLocation()
+                    
+                default:
+                    print("Appears that there are some problems with getting location")
+                    
+                }
+            }
+        } else {
+            print("Location servises is not avalible")
+        }
+    }
+}
