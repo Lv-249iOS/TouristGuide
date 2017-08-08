@@ -13,7 +13,7 @@
 		0E4003F31F309DF4003671F1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F11F309DF4003671F1 /* Review.swift */; };
 		0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F41F30B0D3003671F1 /* PlaceCell.swift */; };
 		0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F61F30B394003671F1 /* PlaceViewController.swift */; };
-		0E5DE1E41F3217780045305D /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE1E31F3217780045305D /* ImageCacheLoader.swift */; };
+		0E5DE1E41F3217780045305D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE1E31F3217780045305D /* ImageDownloader.swift */; };
 		0E7BB5321F3334BE00B8DC82 /* ResizerOfUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BB5311F3334BE00B8DC82 /* ResizerOfUIImage.swift */; };
 		0E7BB5341F333B3500B8DC82 /* UrlsForDataLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BB5331F333B3500B8DC82 /* UrlsForDataLoading.swift */; };
 		0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B3BBF1F2F2CA3001FFC73 /* AppDelegate.swift */; };
@@ -57,7 +57,7 @@
 		0E4003F11F309DF4003671F1 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		0E4003F41F30B0D3003671F1 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		0E4003F61F30B394003671F1 /* PlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
-		0E5DE1E31F3217780045305D /* ImageCacheLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
+		0E5DE1E31F3217780045305D /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		0E7BB5311F3334BE00B8DC82 /* ResizerOfUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizerOfUIImage.swift; sourceTree = "<group>"; };
 		0E7BB5331F333B3500B8DC82 /* UrlsForDataLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlsForDataLoading.swift; sourceTree = "<group>"; };
 		0E8B3BBC1F2F2CA3001FFC73 /* iTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				0E8D627A1F348BE70035A74C /* URLCacher.swift */,
-				0E5DE1E31F3217780045305D /* ImageCacheLoader.swift */,
+				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 			);
 			name = cache;
 			sourceTree = "<group>";
@@ -330,7 +330,7 @@
 				0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */,
 				0E8B3BC81F2F2CA3001FFC73 /* iTourist.xcdatamodeld in Sources */,
 				0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */,
-				0E5DE1E41F3217780045305D /* ImageCacheLoader.swift in Sources */,
+				0E5DE1E41F3217780045305D /* ImageDownloader.swift in Sources */,
 				0E7BB5321F3334BE00B8DC82 /* ResizerOfUIImage.swift in Sources */,
 				20A5BBAD1F307DF1006E43B9 /* PlacesTypeTableViewController.swift in Sources */,
 				20751DE11F38FE9F00E4A25A /* ImageViewController.swift in Sources */,

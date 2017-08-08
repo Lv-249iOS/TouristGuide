@@ -9,17 +9,14 @@
 import Foundation
 import UIKit
 
-class ImageCacheLoader {
-    
-    var task: URLSessionDownloadTask
+class ImageDownloader {
     var session: URLSession
     var cache: NSCache<NSString, UIImage>
     
     init() {
         session = URLSession.shared
-        task = URLSessionDownloadTask()
         cache = NSCache()
-        cache.countLimit = 10
+        cache.countLimit = 20
     }
     
     func obtainImageWithPath(imagePath: String, completion: @escaping ((UIImage)->())) {
@@ -33,19 +30,18 @@ class ImageCacheLoader {
             }
             
             guard let url = URL(string: imagePath) else { return }
-            task = session.downloadTask(with: url) { location, response, error in
+            session.downloadTask(with: url) { location, response, error in
                 if let data = try? Data(contentsOf: url) {
                     guard var img = UIImage(data: data) else { return }
                     
-                    img = img.resizeImage(sizeChange: CGSize(width: 200, height: 200))
+                    img = img.resizeImage(sizeChange: CGSize(width: 50, height: 50))
                     self.cache.setObject(img, forKey: imagePath as NSString)
                     
                     DispatchQueue.main.async {
                         completion(img)
                     }
                 }
-            }
-            task.resume()
+            }.resume()
         }
     }
 }

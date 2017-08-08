@@ -28,7 +28,7 @@ class PlacesTypeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // types.count from db
-        return 26
+        return 17
     }
     
     
@@ -42,26 +42,17 @@ class PlacesTypeTableViewController: UITableViewController {
         case 3: cell.textLabel?.text = "parking"
         case 4: cell.textLabel?.text = "church"
         case 5: cell.textLabel?.text = "airport"
-        case 6: cell.textLabel?.text = "amusement_park"
-        case 7: cell.textLabel?.text = "art_gallery"
         case 8: cell.textLabel?.text = "bakery"
-        case 9: cell.textLabel?.text = "bank"
+        case 9: cell.textLabel?.text = "food"
         case 10: cell.textLabel?.text = "bar"
-        case 11: cell.textLabel?.text = "bowling_alley"
-        case 12: cell.textLabel?.text = "car_rental"
-        case 13: cell.textLabel?.text = "car_repair"
-        case 14: cell.textLabel?.text = "car_wash"
-        case 15: cell.textLabel?.text = "casino"
-        case 17: cell.textLabel?.text = "jewelry_store"
-        case 19: cell.textLabel?.text = "movie_theater"
-        case 20: cell.textLabel?.text = "museum"
-        case 21: cell.textLabel?.text = "night_club"
-        case 22: cell.textLabel?.text = "park"
-        case 23: cell.textLabel?.text = "police"
-        case 24: cell.textLabel?.text = "zoo"
-        case 25: cell.textLabel?.text = "store"
-        default: cell.textLabel?.text = "points of interes"
+        case 11: cell.textLabel?.text = "movie_theater"
+        case 12: cell.textLabel?.text = "museum"
+        case 13: cell.textLabel?.text = "night_club"
+        case 14: cell.textLabel?.text = "park"
+        case 15: cell.textLabel?.text = "store"
+        default: cell.textLabel?.text = "point_of_interest"
         }
+        
         return cell
     }
     

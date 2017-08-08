@@ -11,7 +11,7 @@ import UIKit
 class PlaceViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var imageLoader = ImageCacheLoader()
+    var imageLoader = ImageDownloader()
     var searchActive: Bool = false
     var filteredPlaces: [Place] = []
     var places: [Place] = []

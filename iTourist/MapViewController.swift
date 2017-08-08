@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
     var manager = CLLocationManager()
     
     var annotationsOfPlaces: [EquitableAnnotation] = []
-    var imageLoader = ImageCacheLoader()
+    var imageLoader = ImageDownloader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
