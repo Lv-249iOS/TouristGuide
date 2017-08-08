@@ -38,14 +38,27 @@
 		20A5BBAD1F307DF1006E43B9 /* PlacesTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5BBAC1F307DF1006E43B9 /* PlacesTypeTableViewController.swift */; };
 		20A5BBB01F307E3D006E43B9 /* PlacesType.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A5BBAE1F307E3D006E43B9 /* PlacesType.storyboard */; };
 		20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5BBB11F307F95006E43B9 /* MapViewController.swift */; };
-		B23FA2D91F3889390046DED1 /* EquitableAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23FA2D81F3889390046DED1 /* EquitableAnnotation.swift */; };
+		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
+		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
+		B204E4961F3A14A300454978 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4861F3A14A300454978 /* cemetery.png */; };
+		B204E4971F3A14A300454978 /* church.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4871F3A14A300454978 /* church.png */; };
+		B204E4981F3A14A300454978 /* electronics_store.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4881F3A14A300454978 /* electronics_store.png */; };
+		B204E4991F3A14A300454978 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4891F3A14A300454978 /* food.png */; };
+		B204E49A1F3A14A300454978 /* grocery_or_supermarket.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E48A1F3A14A300454978 /* grocery_or_supermarket.png */; };
+		B204E49B1F3A14A300454978 /* lodging.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E48B1F3A14A300454978 /* lodging.png */; };
+		B204E49C1F3A14A300454978 /* night_club.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E48C1F3A14A300454978 /* night_club.png */; };
+		B204E49D1F3A14A300454978 /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E48D1F3A14A300454978 /* park.png */; };
+		B204E49E1F3A14A300454978 /* pharmacy.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E48E1F3A14A300454978 /* pharmacy.png */; };
+		B204E49F1F3A14A300454978 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E48F1F3A14A300454978 /* restaurant.png */; };
+		B204E4A01F3A14A300454978 /* school.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4901F3A14A300454978 /* school.png */; };
+		B204E4A11F3A14A300454978 /* shopping_mall.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4911F3A14A300454978 /* shopping_mall.png */; };
+		B204E4A21F3A14A300454978 /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4921F3A14A300454978 /* store.png */; };
+		B204E4A31F3A14A300454978 /* university.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4931F3A14A300454978 /* university.png */; };
+		B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A51F3A14DB00454978 /* RouteCalculatingMethods.swift */; };
+		B204E4A81F3A150600454978 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A71F3A150600454978 /* PlaceAnnotation.swift */; };
+		B204E4AA1F3A152500454978 /* MVDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A91F3A152500454978 /* MVDelegateMethods.swift */; };
+		B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */; };
 		B23FA2DD1F38B48F0046DED1 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2DC1F38B48F0046DED1 /* pin.png */; };
-		B23FA2DF1F38B89B0046DED1 /* lodging.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2DE1F38B89B0046DED1 /* lodging.png */; };
-		B23FA2E11F38BD430046DED1 /* church.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2E01F38BD430046DED1 /* church.png */; };
-		B23FA2E31F38BE0A0046DED1 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2E21F38BE0A0046DED1 /* cafe.png */; };
-		B23FA2E71F38C0150046DED1 /* electronics_store.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2E61F38C0150046DED1 /* electronics_store.png */; };
-		B24A38521F31E9D1005AB0AE /* CLDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A38511F31E9D1005AB0AE /* CLDelegateMethods.swift */; };
-		B24A38541F31EC01005AB0AE /* MVDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A38531F31EC01005AB0AE /* MVDelegateMethods.swift */; };
 		E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB11F34A107003D7357 /* Forecast.swift */; };
 		E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */; };
 /* End PBXBuildFile section */
@@ -84,14 +97,27 @@
 		20A5BBAC1F307DF1006E43B9 /* PlacesTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesTypeTableViewController.swift; sourceTree = "<group>"; };
 		20A5BBAF1F307E3D006E43B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PlacesType.storyboard; sourceTree = "<group>"; };
 		20A5BBB11F307F95006E43B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		B23FA2D81F3889390046DED1 /* EquitableAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquitableAnnotation.swift; sourceTree = "<group>"; };
+		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
+		B204E4861F3A14A300454978 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
+		B204E4871F3A14A300454978 /* church.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = church.png; sourceTree = "<group>"; };
+		B204E4881F3A14A300454978 /* electronics_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electronics_store.png; sourceTree = "<group>"; };
+		B204E4891F3A14A300454978 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
+		B204E48A1F3A14A300454978 /* grocery_or_supermarket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grocery_or_supermarket.png; sourceTree = "<group>"; };
+		B204E48B1F3A14A300454978 /* lodging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lodging.png; sourceTree = "<group>"; };
+		B204E48C1F3A14A300454978 /* night_club.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = night_club.png; sourceTree = "<group>"; };
+		B204E48D1F3A14A300454978 /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park.png; sourceTree = "<group>"; };
+		B204E48E1F3A14A300454978 /* pharmacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pharmacy.png; sourceTree = "<group>"; };
+		B204E48F1F3A14A300454978 /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
+		B204E4901F3A14A300454978 /* school.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = school.png; sourceTree = "<group>"; };
+		B204E4911F3A14A300454978 /* shopping_mall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping_mall.png; sourceTree = "<group>"; };
+		B204E4921F3A14A300454978 /* store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store.png; sourceTree = "<group>"; };
+		B204E4931F3A14A300454978 /* university.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = university.png; sourceTree = "<group>"; };
+		B204E4A51F3A14DB00454978 /* RouteCalculatingMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCalculatingMethods.swift; sourceTree = "<group>"; };
+		B204E4A71F3A150600454978 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		B204E4A91F3A152500454978 /* MVDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVDelegateMethods.swift; sourceTree = "<group>"; };
+		B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDelegateMethods.swift; sourceTree = "<group>"; };
 		B23FA2DC1F38B48F0046DED1 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
-		B23FA2DE1F38B89B0046DED1 /* lodging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lodging.png; sourceTree = "<group>"; };
-		B23FA2E01F38BD430046DED1 /* church.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = church.png; sourceTree = "<group>"; };
-		B23FA2E21F38BE0A0046DED1 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
-		B23FA2E61F38C0150046DED1 /* electronics_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electronics_store.png; sourceTree = "<group>"; };
-		B24A38511F31E9D1005AB0AE /* CLDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDelegateMethods.swift; sourceTree = "<group>"; };
-		B24A38531F31EC01005AB0AE /* MVDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVDelegateMethods.swift; sourceTree = "<group>"; };
 		E72EBBB11F34A107003D7357 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherParse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,14 +215,11 @@
 		0E8B3BD81F2F2D0E001FFC73 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				B24A38511F31E9D1005AB0AE /* CLDelegateMethods.swift */,
-				B24A38531F31EC01005AB0AE /* MVDelegateMethods.swift */,
-				B23FA2D81F3889390046DED1 /* EquitableAnnotation.swift */,
-				B23FA2DC1F38B48F0046DED1 /* pin.png */,
-				B23FA2DE1F38B89B0046DED1 /* lodging.png */,
-				B23FA2E21F38BE0A0046DED1 /* cafe.png */,
-				B23FA2E01F38BD430046DED1 /* church.png */,
-				B23FA2E61F38C0150046DED1 /* electronics_store.png */,
+				B204E4A91F3A152500454978 /* MVDelegateMethods.swift */,
+				B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */,
+				B204E4A51F3A14DB00454978 /* RouteCalculatingMethods.swift */,
+				B204E4A71F3A150600454978 /* PlaceAnnotation.swift */,
+				B204E4A41F3A14C000454978 /* icons */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -242,6 +265,30 @@
 				202898E21F333FBB00F136BB /* WeatherViewController.swift */,
 			);
 			name = Weather;
+			sourceTree = "<group>";
+		};
+		B204E4A41F3A14C000454978 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				B23FA2DC1F38B48F0046DED1 /* pin.png */,
+				B204E4841F3A14A300454978 /* bar.png */,
+				B204E4851F3A14A300454978 /* cafe.png */,
+				B204E4861F3A14A300454978 /* cemetery.png */,
+				B204E4871F3A14A300454978 /* church.png */,
+				B204E4881F3A14A300454978 /* electronics_store.png */,
+				B204E4891F3A14A300454978 /* food.png */,
+				B204E48A1F3A14A300454978 /* grocery_or_supermarket.png */,
+				B204E48B1F3A14A300454978 /* lodging.png */,
+				B204E48C1F3A14A300454978 /* night_club.png */,
+				B204E48D1F3A14A300454978 /* park.png */,
+				B204E48E1F3A14A300454978 /* pharmacy.png */,
+				B204E48F1F3A14A300454978 /* restaurant.png */,
+				B204E4901F3A14A300454978 /* school.png */,
+				B204E4911F3A14A300454978 /* shopping_mall.png */,
+				B204E4921F3A14A300454978 /* store.png */,
+				B204E4931F3A14A300454978 /* university.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,18 +351,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				202898E11F333EE700F136BB /* Weather.storyboard in Resources */,
+				B204E4A21F3A14A300454978 /* store.png in Resources */,
+				B204E4981F3A14A300454978 /* electronics_store.png in Resources */,
+				B204E4961F3A14A300454978 /* cemetery.png in Resources */,
+				B204E4A11F3A14A300454978 /* shopping_mall.png in Resources */,
+				B204E4941F3A14A300454978 /* bar.png in Resources */,
+				B204E49C1F3A14A300454978 /* night_club.png in Resources */,
+				B204E4A31F3A14A300454978 /* university.png in Resources */,
+				B204E4951F3A14A300454978 /* cafe.png in Resources */,
 				202898B31F331FBA00F136BB /* Profile.storyboard in Resources */,
-				B23FA2E31F38BE0A0046DED1 /* cafe.png in Resources */,
 				0E8B3BCD1F2F2CA3001FFC73 /* LaunchScreen.storyboard in Resources */,
+				B204E49B1F3A14A300454978 /* lodging.png in Resources */,
 				202898E61F3341EF00F136BB /* Settings.storyboard in Resources */,
 				20A5BBB01F307E3D006E43B9 /* PlacesType.storyboard in Resources */,
 				0E8B3BCA1F2F2CA3001FFC73 /* Assets.xcassets in Resources */,
-				B23FA2DF1F38B89B0046DED1 /* lodging.png in Resources */,
-				B23FA2E11F38BD430046DED1 /* church.png in Resources */,
-				B23FA2E71F38C0150046DED1 /* electronics_store.png in Resources */,
+				B204E49E1F3A14A300454978 /* pharmacy.png in Resources */,
+				B204E49D1F3A14A300454978 /* park.png in Resources */,
+				B204E49A1F3A14A300454978 /* grocery_or_supermarket.png in Resources */,
+				B204E4971F3A14A300454978 /* church.png in Resources */,
+				B204E49F1F3A14A300454978 /* restaurant.png in Resources */,
+				B204E4991F3A14A300454978 /* food.png in Resources */,
 				B23FA2DD1F38B48F0046DED1 /* pin.png in Resources */,
 				0E8B3BC51F2F2CA3001FFC73 /* Main.storyboard in Resources */,
 				20A21D8B1F2F876C000AC57A /* Map.storyboard in Resources */,
+				B204E4A01F3A14A300454978 /* school.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,11 +395,11 @@
 				20751DE11F38FE9F00E4A25A /* ImageViewController.swift in Sources */,
 				202898E31F333FBB00F136BB /* WeatherViewController.swift in Sources */,
 				0EE83E371F39CBDB00C5662A /* PlacesManager.swift in Sources */,
-				B24A38521F31E9D1005AB0AE /* CLDelegateMethods.swift in Sources */,
+				B204E4A81F3A150600454978 /* PlaceAnnotation.swift in Sources */,
 				0E4003F31F309DF4003671F1 /* Review.swift in Sources */,
+				B204E4AA1F3A152500454978 /* MVDelegateMethods.swift in Sources */,
 				0E7BB5341F333B3500B8DC82 /* UrlsForDataLoading.swift in Sources */,
 				0E4003EE1F309DE9003671F1 /* JsonPlacesParser.swift in Sources */,
-				B23FA2D91F3889390046DED1 /* EquitableAnnotation.swift in Sources */,
 				202898EA1F3371BF00F136BB /* PlacePrifileController.swift in Sources */,
 				0E4003F21F309DF4003671F1 /* Place.swift in Sources */,
 				0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */,
@@ -351,7 +410,8 @@
 				0E8D627B1F348BE70035A74C /* URLCacher.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
-				B24A38541F31EC01005AB0AE /* MVDelegateMethods.swift in Sources */,
+				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
+				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
 				0E4003EF1F309DE9003671F1 /* Parser.swift in Sources */,
 			);

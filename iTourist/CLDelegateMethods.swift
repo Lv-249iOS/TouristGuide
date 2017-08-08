@@ -23,6 +23,8 @@ extension MapViewController: CLLocationManagerDelegate {
         map.setRegion(region, animated: true)
         map.showsUserLocation = true
         
+        recalculatingToTheFirstPoint()
+        
         print("there was update")
     }
     
@@ -30,5 +32,29 @@ extension MapViewController: CLLocationManagerDelegate {
         map.showsUserLocation = (status == .authorizedWhenInUse || status == .authorizedAlways)
     }
     
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+        manager.stopMonitoring(for: region)
+        
+        let annotation = selectedAnnotations[0]
+        selectedAnnotations.remove(at: 0)
+        
+        map.removeAnnotation(annotation)
+        map.addAnnotation(annotation)
+        
+        if let firstLine = lineOverlays.first, let circle = circleOverlay {
+            map.remove(firstLine)
+            
+            lineOverlays.remove(at: 0)
+            
+            recalculatingToTheFirstPoint()
+            
+            map.remove(circle)
+            addCircleOnFirstPoint()
+        }
+        
+        
+    }
+
     
 }
