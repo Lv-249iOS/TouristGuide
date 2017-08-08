@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7gs-3u-LhD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7gs-3u-LhD">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -167,6 +167,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HOME" id="FNg-G8-CMM"/>
+                    <connections>
+                        <outlet property="mapButton" destination="OnR-BK-5iY" id="xNJ-rn-oFQ"/>
+                        <outlet property="placesButton" destination="Vkb-B8-vnY" id="nT7-x5-ha7"/>
+                        <outlet property="profileButton" destination="wG4-Vi-fZu" id="MhW-eT-XPu"/>
+                        <outlet property="settingsButton" destination="zQJ-5t-by0" id="8yX-GK-i6t"/>
+                        <outlet property="weatherButton" destination="knz-5w-w7Y" id="UPA-8x-3Rq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
