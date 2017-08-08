@@ -9,7 +9,6 @@
 import Foundation
 
 class URLCacher {
-    
     static var shared = URLCacher()
     var cacher = URLCache.shared
     
@@ -43,6 +42,6 @@ class URLCacher {
     }
     
     func releaseAllDataResponse() {
-    
+        cacher.removeAllCachedResponses()
     }
 }

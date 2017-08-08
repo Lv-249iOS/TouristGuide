@@ -133,7 +133,6 @@
 				0E8B3BD71F2F2CE9001FFC73 /* DataServices */,
 				0E8B3BD41F2F2CB1001FFC73 /* Classes */,
 				0E8B3BD61F2F2CD4001FFC73 /* Database */,
-				0EE83E361F39CBDB00C5662A /* PlacesManager.swift */,
 			);
 			path = iTourist;
 			sourceTree = "<group>";
@@ -178,13 +177,11 @@
 		0E8B3BD71F2F2CE9001FFC73 /* DataServices */ = {
 			isa = PBXGroup;
 			children = (
-				0E8D627A1F348BE70035A74C /* URLCacher.swift */,
-				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
-				0E4003ED1F309DE9003671F1 /* Parser.swift */,
-				0E5DE1E31F3217780045305D /* ImageCacheLoader.swift */,
-				0E7BB5311F3334BE00B8DC82 /* ResizerOfUIImage.swift */,
 				0E7BB5331F333B3500B8DC82 /* UrlsForDataLoading.swift */,
-				E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */,
+				0E7BB5311F3334BE00B8DC82 /* ResizerOfUIImage.swift */,
+				0EE83E361F39CBDB00C5662A /* PlacesManager.swift */,
+				0EE83E381F39F38A00C5662A /* cache */,
+				0EE83E391F39F39800C5662A /* parse */,
 			);
 			name = DataServices;
 			sourceTree = "<group>";
@@ -202,6 +199,25 @@
 				B23FA2E61F38C0150046DED1 /* electronics_store.png */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		0EE83E381F39F38A00C5662A /* cache */ = {
+			isa = PBXGroup;
+			children = (
+				0E8D627A1F348BE70035A74C /* URLCacher.swift */,
+				0E5DE1E31F3217780045305D /* ImageCacheLoader.swift */,
+			);
+			name = cache;
+			sourceTree = "<group>";
+		};
+		0EE83E391F39F39800C5662A /* parse */ = {
+			isa = PBXGroup;
+			children = (
+				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
+				0E4003ED1F309DE9003671F1 /* Parser.swift */,
+				E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */,
+			);
+			name = parse;
 			sourceTree = "<group>";
 		};
 		20DB16E21F3859DF00E4B695 /* Places */ = {
