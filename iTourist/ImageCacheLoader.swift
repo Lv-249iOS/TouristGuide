@@ -38,7 +38,6 @@ class ImageCacheLoader {
                     guard var img = UIImage(data: data) else { return }
                     
                     img = img.resizeImage(sizeChange: CGSize(width: 200, height: 200))
-                        
                     self.cache.setObject(img, forKey: imagePath as NSString)
                     
                     DispatchQueue.main.async {

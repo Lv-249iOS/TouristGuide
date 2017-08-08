@@ -14,6 +14,7 @@ class PlaceViewController: UITableViewController {
     var imageLoader = ImageCacheLoader()
     var searchActive: Bool = false
     var filteredPlaces: [Place] = []
+    var places: [Place] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +23,21 @@ class PlaceViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 145
-        
-        PlacesManager.shared.getPlaces() {
-            self.tableView.reloadData()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchActive ? filteredPlaces.count : PlacesManager.shared.listOfPlaces.count
+        return searchActive ? filteredPlaces.count : places.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
         
-        let place = searchActive ? filteredPlaces[indexPath.row] : PlacesManager.shared.listOfPlaces[indexPath.row]
+        let place = searchActive ? filteredPlaces[indexPath.row] : places[indexPath.row]
         
         if let urls = place.photosRef {
             imageLoader.obtainImageWithPath(imagePath: urls[0]) { image in
@@ -64,7 +61,7 @@ class PlaceViewController: UITableViewController {
     // Navigation to first place tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? PlacePrifileController {
-            viewController.place = PlacesManager.shared.listOfPlaces.first
+            viewController.place = places.first
         }
     }
 }
@@ -89,7 +86,7 @@ extension PlaceViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredPlaces = PlacesManager.shared.listOfPlaces.filter {$0.name?.lowercased().contains(searchText.lowercased()) == true}
+        filteredPlaces = places.filter {$0.name?.lowercased().contains(searchText.lowercased()) == true}
         filteredPlaces.count == 0 ? (searchActive = false) :  (searchActive = true)
         
         self.tableView.reloadData()

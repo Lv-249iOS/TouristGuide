@@ -69,7 +69,7 @@ class Place {
         }
     }
     
-     func getReviews(with jsonReviews: [[String: Any]]) -> [Review] {
+     private func getReviews(with jsonReviews: [[String: Any]]) -> [Review] {
          var placeReviews: [Review] = []
          
          for review in jsonReviews {
@@ -80,7 +80,7 @@ class Place {
          return placeReviews
      }
      
-     func getCoordinates(with jsonCoordinates: [String: Double]) -> [Double] {
+     private func getCoordinates(with jsonCoordinates: [String: Double]) -> [Double] {
          if let lat = jsonCoordinates["lat"], let lng = jsonCoordinates["lng"] {
             return [lat, lng]
          }
@@ -88,7 +88,7 @@ class Place {
          return [0.0, 0.0]
      }
      
-     func getPhotoReferances(with jsonRefs: [String]) -> [String] {
+     private func getPhotoReferances(with jsonRefs: [String]) -> [String] {
          var photoUrls: [String] = []
          
          for ref in jsonRefs {
@@ -98,21 +98,4 @@ class Place {
          
          return photoUrls
     }
-    
-    /*init(name: String) {
-        formattedAddress = "ElmStreet"
-        internationalPhoneNumber = "+3809798765677"
-        self.name = name
-     
-     }
-     
-     static func genaratePlaces() -> [Place] {
-        let names = ["Cat", "Kitty", "Catto", "Doggo", "Kitten", "Superman", "Batman", "WonderWomen"]
-        var places: [Place] = []
-        for name in names {
-            places.append(Place(name: name))
-        }
-     
-        return places
-     }*/
 }
