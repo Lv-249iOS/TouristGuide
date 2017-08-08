@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class EquitableAnnotation : NSObject, MKAnnotation {
+class PlaceAnnotation : NSObject, MKAnnotation {
 //    let identifier = UUID().uuidString
     
     var coordinate = kCLLocationCoordinate2DInvalid

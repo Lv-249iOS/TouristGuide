@@ -13,11 +13,20 @@ class MapViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     var manager = CLLocationManager()
     
-    var annotationsOfPlaces: [EquitableAnnotation] = []
+    var annotationsOfPlaces: [PlaceAnnotation] = []
+    var selectedAnnotations :[PlaceAnnotation] = []
+    
+    var lineOverlays: [MKOverlay] = []
+    var circleOverlay: MKOverlay?
+    
     var imageLoader = ImageDownloader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(gestureRecognizer:)))
+        longPress.minimumPressDuration = 1.0
+        map.addGestureRecognizer(longPress)
         
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         if let location = CLLocationManager().location {
@@ -32,7 +41,7 @@ class MapViewController: UIViewController {
         
         PlacesManager.shared.getPlaces() {
             for place in PlacesManager.shared.listOfPlaces {
-                let annotation = EquitableAnnotation()
+                let annotation = PlaceAnnotation()
                 if let coordinates = place.coordinates {
                     annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
                 }
@@ -46,10 +55,52 @@ class MapViewController: UIViewController {
         }
     }
     
+    @IBAction func calculateRoutes(_ sender: UIButton) {
+        if !selectedAnnotations.isEmpty {
+            
+            if let circle = circleOverlay {
+                map.remove(circle)
+                map.removeOverlays(lineOverlays)
+            }
+            
+            presentRoute(sourse: (manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
+            
+            addCircleOnFirstPoint()
+            
+            presentRoutes()
+        }
+    }
+    
+    @IBAction func clearRoutes(_ sender: UIButton) {
+        if let circle = circleOverlay {
+            map.remove(circle)
+            map.removeOverlays(lineOverlays)
+        }
+
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
+    
+    func handler(_action: UIAlertAction) {
+        print("HANDLER")
+    }
+    
+    func addAnnotation (gestureRecognizer:UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            var hand: ((UIAlertAction)->Void)?
+            hand = handler(_action: )
+            
+            let alert = UIAlertController(title:"Do you want to create a new place?", message:"you would have to add some information", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title:"OK",style: UIAlertActionStyle.default, handler:hand))
+            alert.addAction(UIAlertAction(title:"Cancel",style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated:true, completion:nil)
+        }
+    }
+
     
     func configureLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
