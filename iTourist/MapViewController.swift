@@ -13,7 +13,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     var manager = CLLocationManager()
     
-    var places: [Place] = []
     var annotationsOfPlaces: [EquitableAnnotation] = []
     var imageLoader = ImageCacheLoader()
 
@@ -21,44 +20,30 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake((CLLocationManager().location?.coordinate)!, span)
-        
-        map.setRegion(region, animated: true)
+        if let location = CLLocationManager().location {
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
+            map.setRegion(region, animated: true)
+        }
         
         manager.delegate = self
         map.delegate = self
         
         configureLocationServices()
         
-        let parser = JsonPlacesParser()
-        guard let url = URL(string: loadIdOfPlaces) else { return }
-        
-        parser.parse(with: url) { places, err in
-            if let plc = places as? [Place] {
-                DispatchQueue.main.async {
-                    self.places = plc
-                    
-                    for place in self.places {
-                        let annotation = EquitableAnnotation()
-                        annotation.coordinate = CLLocationCoordinate2DMake((place.coordinates?[0])!, (place.coordinates?[1])!)
-                        annotation.title = place.name
-                        annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                        annotation.photoRef = place.photosRef?.first
-                        annotation.type = place.typeOfPlace?.first
-                        self.annotationsOfPlaces.append(annotation)
-                    }
-                    self.map.addAnnotations(self.annotationsOfPlaces)
+        PlacesManager.shared.getPlaces() {
+            for place in PlacesManager.shared.listOfPlaces {
+                let annotation = EquitableAnnotation()
+                if let coordinates = place.coordinates {
+                    annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
                 }
+                annotation.title = place.name
+                annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                annotation.photoRef = place.photosRef?.first
+                annotation.type = place.typeOfPlace?.first
+                self.annotationsOfPlaces.append(annotation)
             }
+            self.map.addAnnotations(self.annotationsOfPlaces)
         }
-        
-//        for place in places {
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = CLLocationCoordinate2DMake((place.coordinates?[0])!, (place.coordinates?[1])!)
-//            annotation.title = "MY STAFF"
-//            map.addAnnotation(annotation)
-//        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
