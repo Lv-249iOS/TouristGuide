@@ -23,6 +23,7 @@
 		0E8B3BCA1F2F2CA3001FFC73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8B3BC91F2F2CA3001FFC73 /* Assets.xcassets */; };
 		0E8B3BCD1F2F2CA3001FFC73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8B3BCB1F2F2CA3001FFC73 /* LaunchScreen.storyboard */; };
 		0E8D627B1F348BE70035A74C /* URLCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D627A1F348BE70035A74C /* URLCacher.swift */; };
+		0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE83E341F39C3D300C5662A /* RoundButton.swift */; };
 		202898B31F331FBA00F136BB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202898B11F331FBA00F136BB /* Profile.storyboard */; };
 		202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202898DD1F333BB400F136BB /* ProfileViewController.swift */; };
 		202898E11F333EE700F136BB /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202898DF1F333EE700F136BB /* Weather.storyboard */; };
@@ -67,6 +68,7 @@
 		0E8B3BCC1F2F2CA3001FFC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E8B3BCE1F2F2CA3001FFC73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E8D627A1F348BE70035A74C /* URLCacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLCacher.swift; sourceTree = "<group>"; };
+		0EE83E341F39C3D300C5662A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		202898B21F331FBA00F136BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		202898DD1F333BB400F136BB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		202898E01F333EE700F136BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Weather.storyboard; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0EE83E341F39C3D300C5662A /* RoundButton.swift */,
 				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
 				20A5BBB11F307F95006E43B9 /* MapViewController.swift */,
 				20DB16E21F3859DF00E4B695 /* Places */,
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */,
 				0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */,
 				0E8B3BC81F2F2CA3001FFC73 /* iTourist.xcdatamodeld in Sources */,
 				0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */,
