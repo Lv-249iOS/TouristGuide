@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7gs-3u-LhD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7gs-3u-LhD">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,93 +23,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hJ-0r-OVi">
-                                <rect key="frame" x="0.0" y="384.5" width="320" height="183.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="183.5"/>
-                                        <color key="backgroundColor" red="0.029237898066118425" green="0.81055678934010156" blue="0.061585955583450813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Weather"/>
-                                        <connections>
-                                            <segue destination="CsF-ZU-bhe" kind="show" identifier="WeatherViewControllerSeque" id="G2b-nS-Kdz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-5t-by0">
-                                        <rect key="frame" x="160" y="0.0" width="160" height="183.5"/>
-                                        <color key="backgroundColor" red="0.81055678934010156" green="0.76839060212550769" blue="0.72886779544308766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="settings-icon"/>
-                                        <connections>
-                                            <segue destination="dnc-B0-Ap9" kind="show" identifier="SettingsViewControllerSeque" id="oTf-6m-vr0"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.55385003151130963" green="0.47102754999931729" blue="0.81055678934010156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="zQJ-5t-by0" firstAttribute="top" secondItem="0hJ-0r-OVi" secondAttribute="top" id="8ma-Pq-ktI"/>
-                                    <constraint firstItem="knz-5w-w7Y" firstAttribute="leading" secondItem="0hJ-0r-OVi" secondAttribute="leading" id="96K-gz-Ld2"/>
-                                    <constraint firstAttribute="trailing" secondItem="zQJ-5t-by0" secondAttribute="trailing" id="Dln-tg-aJS"/>
-                                    <constraint firstAttribute="bottom" secondItem="knz-5w-w7Y" secondAttribute="bottom" id="Nxf-KH-pp1"/>
-                                    <constraint firstItem="zQJ-5t-by0" firstAttribute="leading" secondItem="knz-5w-w7Y" secondAttribute="trailing" id="W1q-7n-Ag9"/>
-                                    <constraint firstItem="knz-5w-w7Y" firstAttribute="top" secondItem="0hJ-0r-OVi" secondAttribute="top" id="WkI-AQ-QmD"/>
-                                    <constraint firstAttribute="bottom" secondItem="zQJ-5t-by0" secondAttribute="bottom" id="gdo-Ni-k7r"/>
-                                    <constraint firstItem="zQJ-5t-by0" firstAttribute="width" secondItem="knz-5w-w7Y" secondAttribute="width" id="hYK-tj-FxK"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7e-5z-k6g">
-                                <rect key="frame" x="0.0" y="201" width="320" height="183.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY">
-                                        <rect key="frame" x="160" y="0.0" width="160" height="183.5"/>
-                                        <color key="backgroundColor" red="0.7386219781396357" green="0.52197550422453576" blue="0.81055678934010156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Map"/>
-                                        <connections>
-                                            <segue destination="icv-1t-ogh" kind="show" identifier="MapViewControllerSeque" id="Uoq-pS-ER0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="183.5"/>
-                                        <color key="backgroundColor" red="1" green="0.93972905994995759" blue="0.62653372809738761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Places"/>
-                                        <connections>
-                                            <segue destination="g7U-66-UV4" kind="show" identifier="PlacesTypeControllerSeque" id="qNr-wa-tfw"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.81055678934010156" green="0.37659343888864549" blue="0.29790999175584876" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="Vkb-B8-vnY" firstAttribute="leading" secondItem="h7e-5z-k6g" secondAttribute="leading" id="3GP-51-oSg"/>
-                                    <constraint firstItem="OnR-BK-5iY" firstAttribute="width" secondItem="Vkb-B8-vnY" secondAttribute="width" id="BPJ-96-odu"/>
-                                    <constraint firstAttribute="trailing" secondItem="OnR-BK-5iY" secondAttribute="trailing" id="K8I-2X-77Q"/>
-                                    <constraint firstItem="OnR-BK-5iY" firstAttribute="leading" secondItem="Vkb-B8-vnY" secondAttribute="trailing" id="PDI-4k-F7K"/>
-                                    <constraint firstItem="OnR-BK-5iY" firstAttribute="top" secondItem="h7e-5z-k6g" secondAttribute="top" id="k5o-KA-zzz"/>
-                                    <constraint firstAttribute="bottom" secondItem="OnR-BK-5iY" secondAttribute="bottom" id="siF-J0-iDa"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vkb-B8-vnY" secondAttribute="bottom" id="yHD-e0-EKy"/>
-                                    <constraint firstItem="Vkb-B8-vnY" firstAttribute="top" secondItem="h7e-5z-k6g" secondAttribute="top" id="z2O-xy-yJg"/>
-                                </constraints>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-eC-c2T">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-Vi-fZu">
-                                <rect key="frame" x="0.0" y="64" width="320" height="137.5"/>
-                                <color key="backgroundColor" red="0.46414996221249377" green="0.81055678934010156" blue="0.6983865470542665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Profile"/>
+                                <rect key="frame" x="16" y="72" width="288" height="142"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal" title="Profile">
+                                    <color key="titleColor" red="0.48754758879999999" green="0.093852714259999998" blue="0.28449685949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="oiX-Qp-wNA" kind="show" identifier="ProfileViewControllerSeque" id="jq0-0V-Ywp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places">
+                                <rect key="frame" x="16" y="222" width="140" height="165"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal" title="Places">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="g7U-66-UV4" kind="show" identifier="PlacesTypeControllerSeque" id="qNr-wa-tfw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY">
+                                <rect key="frame" x="164" y="222" width="140" height="165"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal" title="Map">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="icv-1t-ogh" kind="show" identifier="MapViewControllerSeque" id="Uoq-pS-ER0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y">
+                                <rect key="frame" x="16" y="395" width="140" height="165"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal" title="Weather">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CsF-ZU-bhe" kind="show" identifier="WeatherViewControllerSeque" id="G2b-nS-Kdz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-5t-by0" userLabel="Settings">
+                                <rect key="frame" x="164" y="395" width="140" height="165"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dnc-B0-Ap9" kind="show" identifier="SettingsViewControllerSeque" id="oTf-6m-vr0"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0hJ-0r-OVi" secondAttribute="bottom" id="EnZ-ma-Eel"/>
-                            <constraint firstItem="0hJ-0r-OVi" firstAttribute="top" secondItem="h7e-5z-k6g" secondAttribute="bottom" id="K1c-tZ-gQI"/>
-                            <constraint firstItem="wG4-Vi-fZu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="L6L-7y-Rwq"/>
-                            <constraint firstAttribute="trailing" secondItem="h7e-5z-k6g" secondAttribute="trailing" id="Lh3-nk-qsT"/>
-                            <constraint firstItem="h7e-5z-k6g" firstAttribute="top" secondItem="wG4-Vi-fZu" secondAttribute="bottom" id="R5Y-2a-4la"/>
-                            <constraint firstAttribute="trailing" secondItem="wG4-Vi-fZu" secondAttribute="trailing" id="X5h-BS-JZw"/>
-                            <constraint firstItem="0hJ-0r-OVi" firstAttribute="height" secondItem="h7e-5z-k6g" secondAttribute="height" id="XFf-jU-OUY"/>
-                            <constraint firstItem="wG4-Vi-fZu" firstAttribute="height" secondItem="h7e-5z-k6g" secondAttribute="height" multiplier="0.75" id="YdG-hu-jxV"/>
-                            <constraint firstItem="h7e-5z-k6g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bZa-P9-3I9"/>
-                            <constraint firstItem="wG4-Vi-fZu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jbm-WL-mKA"/>
-                            <constraint firstItem="0hJ-0r-OVi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pTL-Pd-yfQ"/>
-                            <constraint firstAttribute="trailing" secondItem="0hJ-0r-OVi" secondAttribute="trailing" id="zWb-Rr-J2R"/>
+                            <constraint firstItem="OnR-BK-5iY" firstAttribute="width" secondItem="Vkb-B8-vnY" secondAttribute="width" id="1cD-q4-hAd"/>
+                            <constraint firstItem="OnR-BK-5iY" firstAttribute="leading" secondItem="Vkb-B8-vnY" secondAttribute="trailing" constant="8" symbolic="YES" id="4G0-9C-cS7"/>
+                            <constraint firstItem="wG4-Vi-fZu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6qG-Tv-zh9"/>
+                            <constraint firstItem="knz-5w-w7Y" firstAttribute="height" secondItem="Vkb-B8-vnY" secondAttribute="height" id="7FK-4W-9yU"/>
+                            <constraint firstItem="zQJ-5t-by0" firstAttribute="width" secondItem="Vkb-B8-vnY" secondAttribute="width" id="ASw-B6-VBf"/>
+                            <constraint firstItem="zQJ-5t-by0" firstAttribute="height" secondItem="Vkb-B8-vnY" secondAttribute="height" id="B9d-iM-rR3"/>
+                            <constraint firstItem="wG4-Vi-fZu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="BSE-fi-2Tz"/>
+                            <constraint firstItem="knz-5w-w7Y" firstAttribute="top" secondItem="Vkb-B8-vnY" secondAttribute="bottom" constant="8" symbolic="YES" id="EUg-Gw-uTR"/>
+                            <constraint firstItem="Vkb-B8-vnY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="F6K-cf-GZh"/>
+                            <constraint firstItem="wG4-Vi-fZu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="J86-VB-xkr"/>
+                            <constraint firstItem="Vkb-B8-vnY" firstAttribute="top" secondItem="wG4-Vi-fZu" secondAttribute="bottom" constant="8" symbolic="YES" id="Kco-Sg-7Ae"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OnR-BK-5iY" secondAttribute="trailing" id="LyC-bN-irM"/>
+                            <constraint firstItem="knz-5w-w7Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="PIq-lm-Siz"/>
+                            <constraint firstItem="mEn-eC-c2T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Pye-Po-S7C"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="knz-5w-w7Y" secondAttribute="bottom" constant="8" symbolic="YES" id="ddO-xC-Qqm"/>
+                            <constraint firstItem="OnR-BK-5iY" firstAttribute="height" secondItem="Vkb-B8-vnY" secondAttribute="height" id="get-35-cns"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mEn-eC-c2T" secondAttribute="bottom" id="h0O-rL-8kR"/>
+                            <constraint firstItem="OnR-BK-5iY" firstAttribute="top" secondItem="wG4-Vi-fZu" secondAttribute="bottom" constant="8" symbolic="YES" id="hxE-aS-mzu"/>
+                            <constraint firstAttribute="trailing" secondItem="mEn-eC-c2T" secondAttribute="trailing" id="iJr-eV-lTv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zQJ-5t-by0" secondAttribute="bottom" constant="8" symbolic="YES" id="jiJ-5C-UXW"/>
+                            <constraint firstItem="zQJ-5t-by0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="p55-NO-YGa"/>
+                            <constraint firstItem="zQJ-5t-by0" firstAttribute="leading" secondItem="knz-5w-w7Y" secondAttribute="trailing" constant="8" symbolic="YES" id="sIh-FW-7b4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wG4-Vi-fZu" secondAttribute="trailing" id="vDv-hP-OaN"/>
+                            <constraint firstItem="zQJ-5t-by0" firstAttribute="top" secondItem="OnR-BK-5iY" secondAttribute="bottom" constant="8" symbolic="YES" id="vaZ-Q5-gHF"/>
+                            <constraint firstItem="mEn-eC-c2T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vj3-An-Jfr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HOME" id="FNg-G8-CMM"/>
@@ -181,6 +181,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="settings-icon" width="125" height="125"/>
+        <image name="back" width="4244" height="2468"/>
     </resources>
 </document>
