@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "-monuments-around-the-world-monuments-around-the-world.jpgbackground1.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "settings-icon.png",
       "scale" : "2x"
     },
     {
