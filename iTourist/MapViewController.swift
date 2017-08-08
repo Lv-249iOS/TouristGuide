@@ -61,6 +61,10 @@ class MapViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     func configureLocationServices() {
         if CLLocationManager.locationServicesEnabled() {

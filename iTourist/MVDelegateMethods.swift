@@ -70,7 +70,7 @@ extension MapViewController: MKMapViewDelegate {
                 }
             }
  
-            let im = #imageLiteral(resourceName: "settings-icon")
+            let im = #imageLiteral(resourceName: "noImage")
             let rightAccessory = UIButton(type: .custom)
             rightAccessory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             rightAccessory.setImage(im, for: .normal)
