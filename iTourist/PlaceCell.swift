@@ -13,4 +13,6 @@ class PlaceCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var adress: UILabel!
     @IBOutlet weak var phoneNum: UILabel!
+    @IBOutlet weak var infoButton: UIButton!
+    
 }

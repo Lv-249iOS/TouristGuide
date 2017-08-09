@@ -17,7 +17,7 @@ class PlaceViewController: UITableViewController {
     }
     var filteredPlaces: [Place] = []
     var places: [Place] = []
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,7 +52,7 @@ class PlaceViewController: UITableViewController {
         cell.name.text = place.name
         cell.adress.text = place.formattedAddress
         cell.phoneNum.text = place.internationalPhoneNumber
-        
+        cell.infoButton.tag = indexPath.row
         return cell
     }
     
@@ -63,13 +63,14 @@ class PlaceViewController: UITableViewController {
     // Navigation to first place tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "PlaceProfileSeque" {
+            let button = sender as! UIButton
             if let viewController = segue.destination as? PlacePrifileController {
-                viewController.place = places.first
-                viewController.navigationItem.title = places.first?.name
-                
+                let place = searchActive ? filteredPlaces[button.tag] : places[button.tag]
+                viewController.place = place
             }
         }
     }
+    
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
     }
