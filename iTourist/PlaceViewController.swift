@@ -12,7 +12,9 @@ class PlaceViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var imageLoader = ImageDownloader()
-    var searchActive: Bool = false
+    var searchActive: Bool = false {
+        didSet{self.tableView.reloadData()}
+    }
     var filteredPlaces: [Place] = []
     var places: [Place] = []
     
@@ -20,16 +22,17 @@ class PlaceViewController: UITableViewController {
         super.viewDidLoad()
         
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 145
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchActive ? filteredPlaces.count : places.count
     }
@@ -64,6 +67,9 @@ class PlaceViewController: UITableViewController {
             viewController.place = places.first
         }
     }
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
 }
 
 // extension for searchBar, we're checking what user doing
@@ -71,24 +77,28 @@ extension PlaceViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true
+        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
+        searchBar.endEditing(true)
+        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
+        searchBar.endEditing(true)
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredPlaces = places.filter {$0.name?.lowercased().contains(searchText.lowercased()) == true}
-        filteredPlaces.count == 0 ? (searchActive = false) :  (searchActive = true)
-        
-        self.tableView.reloadData()
+        searchActive = filteredPlaces.count > 0
     }
 }
