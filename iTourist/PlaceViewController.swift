@@ -40,7 +40,7 @@ class PlaceViewController: UITableViewController {
         let place = searchActive ? filteredPlaces[indexPath.row] : places[indexPath.row]
         
         if let urls = place.photosRef {
-            imageLoader.obtainImageWithPath(imagePath: urls[0]) { image in
+            imageLoader.obtainImage(with: urls[0]) { image in
                 if let _ = tableView.cellForRow(at: indexPath) {
                     cell.placeImage.image = image
                 }

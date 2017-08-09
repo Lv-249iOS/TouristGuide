@@ -62,7 +62,7 @@ extension MapViewController: MKMapViewDelegate {
                 if let index = annotationsOfPlaces.index(of: annotation) {
                     if let url = annotationsOfPlaces[index].photoRef
                     {
-                        imageLoader.obtainImageWithPath(imagePath: url) { image in
+                        imageLoader.obtainImage(with: url) { image in
                             leftAccessory.setImage(image, for: .normal)
                             view.leftCalloutAccessoryView = leftAccessory
                         }

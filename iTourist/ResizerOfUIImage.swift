@@ -17,7 +17,7 @@ extension UIImage {
         UIGraphicsBeginImageContextWithOptions(sizeChange, ignoreAlpha, scale)
         self.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
         
-        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage() }
+        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { return self }
         
         return scaledImage
     }

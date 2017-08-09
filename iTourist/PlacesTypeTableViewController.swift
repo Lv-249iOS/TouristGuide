@@ -28,7 +28,7 @@ class PlacesTypeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // types.count from db
-        return 17
+        return 12
     }
     
     
@@ -39,17 +39,14 @@ class PlacesTypeTableViewController: UITableViewController {
         case 0: cell.textLabel?.text = "restaurant"
         case 1: cell.textLabel?.text = "cafe"
         case 2: cell.textLabel?.text = "lodging"
-        case 3: cell.textLabel?.text = "parking"
-        case 4: cell.textLabel?.text = "church"
-        case 5: cell.textLabel?.text = "airport"
-        case 8: cell.textLabel?.text = "bakery"
-        case 9: cell.textLabel?.text = "food"
-        case 10: cell.textLabel?.text = "bar"
-        case 11: cell.textLabel?.text = "movie_theater"
-        case 12: cell.textLabel?.text = "museum"
-        case 13: cell.textLabel?.text = "night_club"
-        case 14: cell.textLabel?.text = "park"
-        case 15: cell.textLabel?.text = "store"
+        case 3: cell.textLabel?.text = "church"
+        case 4: cell.textLabel?.text = "airport"
+        case 5: cell.textLabel?.text = "food"
+        case 6: cell.textLabel?.text = "bar"
+        case 7: cell.textLabel?.text = "museum"
+        case 8: cell.textLabel?.text = "night_club"
+        case 9: cell.textLabel?.text = "park"
+        case 10: cell.textLabel?.text = "store"
         default: cell.textLabel?.text = "point_of_interest"
         }
         

@@ -19,8 +19,8 @@ class ImageDownloader {
         cache.countLimit = 20
     }
     
-    func obtainImageWithPath(imagePath: String, completion: @escaping ((UIImage)->())) {
-        if let image = cache.object(forKey: imagePath as NSString) {
+    func obtainImage(with path: String, completion: @escaping ((UIImage)->())) {
+        if let image = cache.object(forKey: path as NSString) {
             DispatchQueue.main.async {
                 completion(image)
             }
@@ -29,13 +29,13 @@ class ImageDownloader {
                 completion(#imageLiteral(resourceName: "noImage"))
             }
             
-            guard let url = URL(string: imagePath) else { return }
+            guard let url = URL(string: path) else { return }
             session.downloadTask(with: url) { location, response, error in
                 if let data = try? Data(contentsOf: url) {
                     guard var img = UIImage(data: data) else { return }
                     
                     img = img.resizeImage(sizeChange: CGSize(width: 50, height: 50))
-                    self.cache.setObject(img, forKey: imagePath as NSString)
+                    self.cache.setObject(img, forKey: path as NSString)
                     
                     DispatchQueue.main.async {
                         completion(img)
