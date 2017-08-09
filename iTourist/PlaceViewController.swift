@@ -24,7 +24,6 @@ class PlaceViewController: UITableViewController {
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 145
     }
@@ -63,8 +62,12 @@ class PlaceViewController: UITableViewController {
     
     // Navigation to first place tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? PlacePrifileController {
-            viewController.place = places.first
+        if segue.identifier  == "PlaceProfileSeque" {
+            if let viewController = segue.destination as? PlacePrifileController {
+                viewController.place = places.first
+                viewController.navigationItem.title = places.first?.name
+                
+            }
         }
     }
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
