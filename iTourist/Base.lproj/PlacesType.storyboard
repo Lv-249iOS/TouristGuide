@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGC-j0-rSz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGC-j0-rSz">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -166,11 +166,11 @@
                         <viewControllerLayoutGuide type="bottom" id="LJA-Lx-dIw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OPF-Pr-0m9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoJ-px-pef">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-l6-PEZ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
@@ -264,8 +264,9 @@
                             <constraint firstItem="WoJ-px-pef" firstAttribute="top" secondItem="OPF-Pr-0m9" secondAttribute="top" id="eHs-RJ-rsK"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="900"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="adressLabel" destination="goy-YT-2Ad" id="V78-EV-YnX"/>
                         <outlet property="feedbackButton" destination="yBv-z7-gWt" id="qgz-dO-cAq"/>
@@ -286,25 +287,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlF-hf-Ka2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6294" y="-952"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="rjR-fY-ZTl">
-            <objects>
-                <viewController id="4HE-Sm-ak2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Gon-lN-H9I"/>
-                        <viewControllerLayoutGuide type="bottom" id="EGz-l6-7ns"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NRO-pK-fym">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D6i-6h-oaN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7155" y="-837"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="of0-Kk-DJe">

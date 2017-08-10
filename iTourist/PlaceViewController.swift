@@ -60,7 +60,7 @@ class PlaceViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
-    // Navigation to first place tapped
+    // Navigation to place tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "PlaceProfileSeque" {
             let button = sender as! UIButton
