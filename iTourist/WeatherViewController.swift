@@ -34,13 +34,13 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //   let itemSize = UIScreen.main.bounds.width/3 - 3
-        //  let layout = UICollectionViewFlowLayout()
+        //  let itemSize = UIScreen.main.bounds.width/2 - 3
+         // let layout = UICollectionViewFlowLayout()
         //  layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        //  layout.itemSize = CGSize(width: itemSize, height: 1.4*itemSize)
+       //   layout.itemSize = CGSize(width: itemSize, height: itemSize)
         //layout.minimumLineSpacing = 3
         //  layout.minimumInteritemSpacing = 2
-        //  myCollectionview.collectionViewLayout = layout
+       //   myCollectionview.collectionViewLayout = layout
         let parse = WeatherParser()
         
         guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=3&q=Lviv") else { return }
