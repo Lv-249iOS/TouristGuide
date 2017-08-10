@@ -14,16 +14,15 @@ class PlacesTypeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PlacesManager.shared.getPlaces() {
+        /*PlacesList.shared.getPlaces() {
             // get from DB Types
-        }
+        }*/
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        places = []
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,15 +58,17 @@ class PlacesTypeTableViewController: UITableViewController {
         if let selectedRow = tableView.indexPathsForSelectedRows {
             vc.navigationItem.title = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text
             
-            for place in PlacesManager.shared.listOfPlaces {
-                guard let type = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text else { return }
-                if place.typeOfPlace?.contains(type) == true {
-                    self.places.append(place)
+            PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+                guard let places = places else { return }
+                for place in places {
+                    guard let type = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text else { return }
+                    if place.typeOfPlace?.contains(type) == true {
+                        self.places.append(place)
+                    }
                 }
+                
+                vc.places = self.places
             }
-            
-            vc.places = places
         }
     }
-    
 }

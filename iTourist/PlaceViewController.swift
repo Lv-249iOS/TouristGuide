@@ -53,6 +53,7 @@ class PlaceViewController: UITableViewController {
         cell.adress.text = place.formattedAddress
         cell.phoneNum.text = place.internationalPhoneNumber
         cell.infoButton.tag = indexPath.row
+        
         return cell
     }
     

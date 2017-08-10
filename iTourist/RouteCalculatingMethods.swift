@@ -19,14 +19,14 @@ extension MapViewController {
         
         self.map.add(circle, level: .aboveRoads)
         self.circleOverlay = circle
-        self.manager.startMonitoring(for: region)
+        AppModel.shared.locationManager.manager.startMonitoring(for: region)
         
     }
     
     func recalculatingToTheFirstPoint() {
         if !self.lineOverlays.isEmpty && !selectedAnnotations.isEmpty {
             map.remove(lineOverlays.first!)
-            presentRoute(sourse: (manager.location?.coordinate)!, dest: selectedAnnotations[0].coordinate)
+            presentRoute(sourse: (AppModel.shared.location?.coordinate)!, dest: selectedAnnotations[0].coordinate)
         }
     }
     
