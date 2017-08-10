@@ -16,9 +16,13 @@ class DataConverter {
         return data
     }
     
-    /*func convert(from data: Data) -> Place? {
+    func convert(from data: Data) -> [String]? {
+        guard let ids = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String] else { return nil }
+        return ids
+    }
+    
+    func convert(data: Data) -> Place? {
         guard let place = NSKeyedUnarchiver.unarchiveObject(with: data) as? Place else { return nil }
-        
         return place
-    }*/
+    }
 }

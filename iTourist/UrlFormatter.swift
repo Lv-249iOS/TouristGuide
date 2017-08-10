@@ -10,7 +10,7 @@ import Foundation
 
 class UrlFormatter {
     
-    let appKey = "AIzaSyDjCOT9Fqa64IlDPH8iLzPd60wicXxV1rs"
+    let appKey = "AIzaSyD_Ap39v5zgWHcRntXj9y0uZ_9WgPWNwic"
     let loadIdOfPlaces = "https://maps.googleapis.com/maps/api/place/radarsearch/json?"
     let loadPlace = "https://maps.googleapis.com/maps/api/place/details/json?"
     let loadImgUrl = "https://maps.googleapis.com/maps/api/place/photo?"

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E4003EE1F309DE9003671F1 /* JsonPlacesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */; };
-		0E4003EF1F309DE9003671F1 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003ED1F309DE9003671F1 /* Parser.swift */; };
 		0E4003F21F309DF4003671F1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F01F309DF4003671F1 /* Place.swift */; };
 		0E4003F31F309DF4003671F1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F11F309DF4003671F1 /* Review.swift */; };
 		0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F41F30B0D3003671F1 /* PlaceCell.swift */; };
@@ -21,7 +20,6 @@
 		0E8B3BC81F2F2CA3001FFC73 /* iTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B3BC61F2F2CA3001FFC73 /* iTourist.xcdatamodeld */; };
 		0E8B3BCA1F2F2CA3001FFC73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8B3BC91F2F2CA3001FFC73 /* Assets.xcassets */; };
 		0E8B3BCD1F2F2CA3001FFC73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8B3BCB1F2F2CA3001FFC73 /* LaunchScreen.storyboard */; };
-		0E8D627B1F348BE70035A74C /* URLCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D627A1F348BE70035A74C /* URLCacher.swift */; };
 		0ED851061F3C433200A200A4 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED850FB1F3C433200A200A4 /* AppModel.swift */; };
 		0ED851071F3C433200A200A4 /* Cacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED850FC1F3C433200A200A4 /* Cacher.swift */; };
 		0ED851081F3C433200A200A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED850FD1F3C433200A200A4 /* Constants.swift */; };
@@ -76,7 +74,6 @@
 
 /* Begin PBXFileReference section */
 		0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonPlacesParser.swift; sourceTree = "<group>"; };
-		0E4003ED1F309DE9003671F1 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		0E4003F01F309DF4003671F1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		0E4003F11F309DF4003671F1 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		0E4003F41F30B0D3003671F1 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
@@ -91,7 +88,6 @@
 		0E8B3BC91F2F2CA3001FFC73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E8B3BCC1F2F2CA3001FFC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E8B3BCE1F2F2CA3001FFC73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E8D627A1F348BE70035A74C /* URLCacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLCacher.swift; sourceTree = "<group>"; };
 		0ED850FB1F3C433200A200A4 /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		0ED850FC1F3C433200A200A4 /* Cacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cacher.swift; sourceTree = "<group>"; };
 		0ED850FD1F3C433200A200A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -183,15 +179,15 @@
 				0ED850FD1F3C433200A200A4 /* Constants.swift */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
 				0ED851111F3C537000A200A4 /* UrlFormatter.swift */,
-				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
 				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 				0ED851011F3C433200A200A4 /* Loader.swift */,
+				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
 				0ED850FC1F3C433200A200A4 /* Cacher.swift */,
 				0ED851001F3C433200A200A4 /* DataProvider.swift */,
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
 				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
-				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				0E8B3BD71F2F2CE9001FFC73 /* DataServices */,
+				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				0E8B3BD41F2F2CB1001FFC73 /* Classes */,
 				0E8B3BD61F2F2CD4001FFC73 /* Database */,
 			);
@@ -261,7 +257,6 @@
 		0EE83E381F39F38A00C5662A /* cache */ = {
 			isa = PBXGroup;
 			children = (
-				0E8D627A1F348BE70035A74C /* URLCacher.swift */,
 				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 			);
 			name = cache;
@@ -270,7 +265,6 @@
 		0EE83E391F39F39800C5662A /* parse */ = {
 			isa = PBXGroup;
 			children = (
-				0E4003ED1F309DE9003671F1 /* Parser.swift */,
 				E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */,
 			);
 			name = parse;
@@ -449,13 +443,11 @@
 				0ED8510E1F3C433200A200A4 /* MapFrameProcessor.swift in Sources */,
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
-				0E8D627B1F348BE70035A74C /* URLCacher.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
 				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
-				0E4003EF1F309DE9003671F1 /* Parser.swift in Sources */,
 				0ED8510D1F3C433200A200A4 /* LocationManager.swift in Sources */,
 				0ED851101F3C433200A200A4 /* PlacesList.swift in Sources */,
 			);

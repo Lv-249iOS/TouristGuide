@@ -9,14 +9,14 @@
 import UIKit
 
 class PlacesTypeTableViewController: UITableViewController {
-    // create var with types
     var places: [Place] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         /*PlacesList.shared.getPlaces() {
-            // get from DB Types
-        }*/
+         // get from DB Types
+         }*/
         
     }
     
@@ -54,21 +54,10 @@ class PlacesTypeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+    
         self.navigationController?.pushViewController(vc, animated: true)
         if let selectedRow = tableView.indexPathsForSelectedRows {
             vc.navigationItem.title = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text
-            
-            PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
-                guard let places = places else { return }
-                for place in places {
-                    guard let type = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text else { return }
-                    if place.typeOfPlace?.contains(type) == true {
-                        self.places.append(place)
-                    }
-                }
-                
-                vc.places = self.places
-            }
         }
     }
 }

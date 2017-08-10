@@ -12,29 +12,31 @@ class Cacher {
     
     var cacher = URLCache.shared
     
-    init() {
-        let oneMB = 1024 * 1024
-        let cache = URLCache(memoryCapacity: 100 * oneMB, diskCapacity: 200 * oneMB, diskPath: "urlCache")
-        cacher = cache
-    }
-    
-    func save(data: Data, key: String) {
-        // save data in cache
-
-       // self.cacher.storeCachedResponse(chacedResponse, for: key)
-
-
+    func save(places: [Place], key: String) {
+        var placesData: [Data] = []
+        let converter = DataConverter()
+        
+        for place in places {
+            let dat = converter.convert(from: place)
+            placesData.append(dat)
+        }
+        
+        UserDefaults.standard.set(placesData, forKey: key)
     }
     
     func getFromCache(with key: String) -> [Data]? {
-        /*guard let url = UrlFormatter().createUrlForPlacesIdsReq(with: key) else { return nil }
-        let request = URLRequest(url: url)
-        
-        if let response = cacher.cachedResponse(for: request) {
-            response.data
-        }*/
+        if let placesData = UserDefaults.standard.array(forKey: key) as? [Data] {
+            return placesData
+        }
         
         return nil
     }
-
+    
+    func removeFromCache(with key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
+    
+    func updateCachedValue(with newVal: Any, key: String) {
+        UserDefaults.standard.set(newVal, forKey: key)
+    }
 }

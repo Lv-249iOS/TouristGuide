@@ -34,7 +34,6 @@ class DashboardController: UIViewController {
         
         // ask user about location
         configureLocationServices()
-        
     }
 
 

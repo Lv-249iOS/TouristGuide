@@ -14,27 +14,33 @@ class DataProvider {
     
     var cache = Cacher()
     var loader = Loader()
-    var places: [Place] = []
     
-    func getData(with placeId: String, completion: @escaping ([Place]?)->()) {
+    func getData(with key: String, completion: @escaping ([Place]?)->()) {
         print("GET DATA ------ DATA PROVIDER")
-        if let _ = cache.getFromCache(with: placeId) {
+        if let data = cache.getFromCache(with: key) {
             print("FROM CCHE")
-            // we get [data] and should convert
-        } else {
-            print("FROM LOADER")
-            if places.count != 0 {
-                completion(places)
+            let converter = DataConverter()
+            var places: [Place] = []
+            for dat in data {
+                if let place = converter.convert(data: dat) {
+                    places.append(place)
+                }
             }
             
-            loader.loadData(with: placeId) { data, err in
+            completion(places)
+            
+        } else {
+            print("FROM LOADER")
+            var places: [Place] = []
+            
+            loader.loadData(with: key) { data, err in
                 guard let data = data else { return }
                 for dat in data {
                     guard let place = JsonPlacesParser().parsePlace(with: dat) else { return }
-                    self.places.append(place)
+                    places.append(place)
                 }
-                
-                completion(self.places)
+                self.cache.save(places: places, key: key)
+                completion(places)
             }
         }
     }
