@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WeatherParser: Parser {
+class WeatherParser {
     func parse(with url: URL, completion: @escaping (Any?, Error?)->()) {
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             guard let  data = data else { return }
