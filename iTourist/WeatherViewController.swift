@@ -8,53 +8,43 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+    
     @IBAction func cityChange(_ sender: UIBarButtonItem) {
         displayCity()
     }
+    var change  = false
+    var forecast: [Forecast] = []
     
+    @IBOutlet weak var myCollectionview: UICollectionView!
     
-    @IBOutlet weak var maxtemp1: UILabel!
-
-    @IBOutlet weak var maxtemp2: UILabel!
-    
-    @IBOutlet weak var maxtemp3: UILabel!
-    
-    @IBOutlet weak var mintemp1: UILabel!
-    
- 
-    @IBOutlet weak var mintemp2: UILabel!
-    
-    
-   
-    @IBOutlet weak var mintemp3: UILabel!
-    
-   
-    @IBOutlet weak var cityName: UILabel!
-    
-
-    @IBOutlet weak var feelslike: UILabel!
-    
-
     @IBOutlet weak var currentTemp: UILabel!
-   
     
     @IBOutlet weak var today: UILabel!
     
-    @IBOutlet weak var tomorrow: UILabel!
+    @IBOutlet weak var cityName: UILabel!
     
-    @IBOutlet weak var aftertomorrow: UILabel!
+    @IBOutlet weak var maxtemp1: UILabel!
     
-
+    @IBOutlet weak var mintemp1: UILabel!
     
-    var change  = false
-    var forecast: [Forecast] = []
+    @IBOutlet weak var feelslike: UILabel!
+    
+    @IBOutlet weak var currentImg: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //   let itemSize = UIScreen.main.bounds.width/3 - 3
+        //  let layout = UICollectionViewFlowLayout()
+        //  layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        //  layout.itemSize = CGSize(width: itemSize, height: 1.4*itemSize)
+        //layout.minimumLineSpacing = 3
+        //  layout.minimumInteritemSpacing = 2
+        //  myCollectionview.collectionViewLayout = layout
         let parse = WeatherParser()
         
         guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=3&q=Lviv") else { return }
-        parse.parse(with: url) { forecast, err in
+        parse.parse(with: url) { forecast,err in
             if let forecast1 = forecast as? [Forecast] {
                 DispatchQueue.main.async {
                     
@@ -64,18 +54,33 @@ class WeatherViewController: UIViewController {
                     self.today.text = forecast1[0].date
                     self.maxtemp1.text = "\(forecast1[0].maxtemp)º"
                     self.mintemp1.text = "\(forecast1[0].mintemp)º"
-                    
-                    self.tomorrow.text = forecast1[1].date
-                    self.maxtemp2.text = "\(forecast1[1].maxtemp)º"
-                    self.mintemp2.text = "\(forecast1[1].mintemp)º"
-                    
-                    self.aftertomorrow.text = forecast1[2].date
-                    self.maxtemp3.text = "\(forecast1[2].maxtemp)º"
-                    self.mintemp3.text = "\(forecast1[2].mintemp)º"
+                    self.currentImg.image = forecast1[0].image
+                 }
+            }
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let parse = WeatherParser()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell else {
+            return UICollectionViewCell() }
+        let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=4&q=Lviv")
+        parse.parse(with: url!) { forecast,err in
+            if let forecast1 = forecast as? [Forecast] {
+                DispatchQueue.main.async {
+                    cell.date.text = String(forecast1[indexPath.row+1].date )
+                    cell.mintemp.text = String(forecast1[indexPath.row+1].mintemp) + "º"
+                    cell.maxtemp.text = String(forecast1[indexPath.row+1].maxtemp) + "º"
+                    cell.weatherImage.image =  forecast1[indexPath.row+1].image
                     
                 }
             }
         }
+        return cell
     }
     
     func displayCity() {
@@ -100,7 +105,8 @@ class WeatherViewController: UIViewController {
         cityName.text = city
         let parse = WeatherParser()
         guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=3&q="+city) else { return }
-        parse.parse(with: url) { forecast, err in
+        
+        parse.parse(with: url) { forecast,err in
             if let forecast1 = forecast as? [Forecast] {
                 DispatchQueue.main.async {
                     self.forecast = forecast1
@@ -109,39 +115,9 @@ class WeatherViewController: UIViewController {
                     self.today.text = forecast1[0].date
                     self.maxtemp1.text = "\(forecast1[0].maxtemp)º"
                     self.mintemp1.text = "\(forecast1[0].mintemp)º"
-                    
-                    self.tomorrow.text = forecast1[1].date
-                    self.maxtemp2.text = "\(forecast1[1].maxtemp)º"
-                    self.mintemp2.text = "\(forecast1[1].mintemp)º"
-                    
-                    self.aftertomorrow.text = forecast1[2].date
-                    self.maxtemp3.text = "\(forecast1[2].maxtemp)º"
-                    self.mintemp3.text = "\(forecast1[2].mintemp)º"
-                    
                 }
             }
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-    }
-    
 }
+

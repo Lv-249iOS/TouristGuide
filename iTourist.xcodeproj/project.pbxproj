@@ -61,6 +61,7 @@
 		B23FA2DD1F38B48F0046DED1 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2DC1F38B48F0046DED1 /* pin.png */; };
 		E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB11F34A107003D7357 /* Forecast.swift */; };
 		E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */; };
+		E7B763FC1F3C82E200B23AEA /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		B23FA2DC1F38B48F0046DED1 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		E72EBBB11F34A107003D7357 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherParse.swift; sourceTree = "<group>"; };
+		E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				202898DF1F333EE700F136BB /* Weather.storyboard */,
 				E72EBBB11F34A107003D7357 /* Forecast.swift */,
 				202898E21F333FBB00F136BB /* WeatherViewController.swift */,
+				E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */,
 			);
 			name = Weather;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			files = (
 				0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */,
 				0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */,
+				E7B763FC1F3C82E200B23AEA /* WeatherCell.swift in Sources */,
 				0E8B3BC81F2F2CA3001FFC73 /* iTourist.xcdatamodeld in Sources */,
 				0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */,
 				0E5DE1E41F3217780045305D /* ImageDownloader.swift in Sources */,
