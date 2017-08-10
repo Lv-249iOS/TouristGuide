@@ -10,10 +10,10 @@ import UIKit
 
 class WeatherViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
-    @IBAction func cityChange(_ sender: UIBarButtonItem) {
+    @IBAction func change(_ sender: UIButton) {
         displayCity()
     }
-    var change  = false
+       var change  = false
     var forecast: [Forecast] = []
     
     @IBOutlet weak var myCollectionview: UICollectionView!
@@ -81,6 +81,11 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
             }
         }
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func displayCity() {
