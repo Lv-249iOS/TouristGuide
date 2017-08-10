@@ -11,6 +11,10 @@ import MapKit
 
 class MapViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var routeButton: UIButton!
+    @IBOutlet weak var routeInfo: UILabel!
+    @IBOutlet weak var routeImage: UIImageView!
+    
     var manager = CLLocationManager()
     
     var annotationsOfPlaces: [PlaceAnnotation] = []
@@ -56,30 +60,31 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
-        if !selectedAnnotations.isEmpty {
-            
-            if let circle = circleOverlay {
-                map.remove(circle)
-                map.removeOverlays(lineOverlays)
-            }
-            
-            presentRoute(sourse: (manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
-            
-            addCircleOnFirstPoint()
-            
-            presentRoutes()
-        }
-    }
-    
-    @IBAction func clearRoutes(_ sender: UIButton) {
         if let circle = circleOverlay {
             map.remove(circle)
             map.removeOverlays(lineOverlays)
+            circleOverlay = nil
+            let reloadingAnnotations = selectedAnnotations
+            map.removeAnnotations(reloadingAnnotations)
+            map.addAnnotations(reloadingAnnotations)
+            selectedAnnotations = []
+            routeButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
+        } else {
+            if !selectedAnnotations.isEmpty {
+                
+                presentRoute(sourse: (manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
+                
+                addCircleOnFirstPoint()
+                
+                presentRoutes()
+                routeButton.setImage(#imageLiteral(resourceName: "clean"), for: .normal)
+            }
+            
+            
         }
-
+        
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false

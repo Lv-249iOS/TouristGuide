@@ -95,6 +95,16 @@ extension MapViewController: MKMapViewDelegate {
                 control.transform = CGAffineTransform.identity
             }, completion: nil)
             
+            let text = view.annotation?.title ?? ""
+            routeInfo.text = "Rresent route to " + (text ?? "Unknown")
+            
+            if view.image != #imageLiteral(resourceName: "selected") {
+            routeImage.image = view.image
+            } else {
+            routeImage.image = nil
+            routeInfo.text = nil
+            }
+            
             var annotationDeselected = false
             
             let annotation = view.annotation as? PlaceAnnotation
@@ -118,7 +128,6 @@ extension MapViewController: MKMapViewDelegate {
                 view.image = image
                 selectedAnnotations.append(view.annotation! as! PlaceAnnotation)
             }
-        
         }
     }
     
@@ -139,6 +148,10 @@ extension MapViewController: MKMapViewDelegate {
         }
         return MKOverlayRenderer()
     }
+    
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        map.bounds
+//    }
 
     }
 
