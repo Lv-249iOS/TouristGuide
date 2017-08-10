@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="3590.625" y="-561.97183098591552"/>
         </scene>
-        <!--Place Prifile Controller-->
+        <!--Place Profile View Controller-->
         <scene sceneID="c8t-0P-XTe">
             <objects>
-                <viewController storyboardIdentifier="PlacePrifileController" id="8Fk-bw-60D" customClass="PlacePrifileController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlacePrifileController" id="8Fk-bw-60D" customClass="PlaceProfileViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d8O-Fz-d6r"/>
                         <viewControllerLayoutGuide type="bottom" id="LJA-Lx-dIw"/>
@@ -182,7 +182,7 @@
                                                     <navigationItem title="Name" id="vvf-se-uaP">
                                                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="L1X-xF-AUN">
                                                             <connections>
-                                                                <action selector="closePlaceProfile:" destination="8Fk-bw-60D" id="Alr-lV-La3"/>
+                                                                <action selector="closePlaceProfile:" destination="8Fk-bw-60D" id="crm-bo-SOB"/>
                                                             </connections>
                                                         </barButtonItem>
                                                     </navigationItem>
@@ -273,17 +273,17 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="adressLabel" destination="goy-YT-2Ad" id="V78-EV-YnX"/>
-                        <outlet property="feedbackButton" destination="yBv-z7-gWt" id="qgz-dO-cAq"/>
+                        <outlet property="adressLabel" destination="goy-YT-2Ad" id="8bH-9q-arC"/>
+                        <outlet property="feedbackButton" destination="yBv-z7-gWt" id="LRH-VZ-b9U"/>
                         <outlet property="nameNavigationItem" destination="vvf-se-uaP" id="PhQ-Yt-SoS"/>
-                        <outlet property="phoneNumLabel" destination="qFL-fn-Sjd" id="AH5-Yv-eNB"/>
-                        <outlet property="websiteLabel" destination="baT-tF-uuo" id="MJh-Hm-9fg"/>
-                        <outlet property="workHourLabel" destination="sn7-7D-Uuc" id="c20-ex-ASY"/>
+                        <outlet property="phoneNumLabel" destination="qFL-fn-Sjd" id="U22-6Y-ge8"/>
+                        <outlet property="websiteLabel" destination="baT-tF-uuo" id="7jo-e9-nT1"/>
+                        <outlet property="workHourLabel" destination="sn7-7D-Uuc" id="JS4-OC-QUG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa7-cP-U7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4403" y="-337"/>
+            <point key="canvasLocation" x="4402.5" y="-338.02816901408448"/>
         </scene>
         <!--Places Page Controller-->
         <scene sceneID="ecH-Wq-96t">

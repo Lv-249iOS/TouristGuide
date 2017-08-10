@@ -31,13 +31,13 @@
 		202898E31F333FBB00F136BB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202898E21F333FBB00F136BB /* WeatherViewController.swift */; };
 		202898E61F3341EF00F136BB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202898E41F3341EF00F136BB /* Settings.storyboard */; };
 		202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202898E71F33428B00F136BB /* SettingsViewController.swift */; };
-		202898EA1F3371BF00F136BB /* PlacePrifileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202898E91F3371BF00F136BB /* PlacePrifileController.swift */; };
 		20751DDF1F38E60500E4A25A /* PlacesPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20751DDE1F38E60500E4A25A /* PlacesPageController.swift */; };
 		20751DE11F38FE9F00E4A25A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20751DE01F38FE9F00E4A25A /* ImageViewController.swift */; };
 		20A21D8B1F2F876C000AC57A /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A21D891F2F876C000AC57A /* Map.storyboard */; };
 		20A5BBAD1F307DF1006E43B9 /* PlacesTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5BBAC1F307DF1006E43B9 /* PlacesTypeTableViewController.swift */; };
 		20A5BBB01F307E3D006E43B9 /* PlacesType.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A5BBAE1F307E3D006E43B9 /* PlacesType.storyboard */; };
 		20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5BBB11F307F95006E43B9 /* MapViewController.swift */; };
+		20C113E31F3CA7A5009BE8AD /* PlaceProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */; };
 		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
 		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
 		B204E4961F3A14A300454978 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4861F3A14A300454978 /* cemetery.png */; };
@@ -91,13 +91,13 @@
 		202898E21F333FBB00F136BB /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		202898E51F3341EF00F136BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		202898E71F33428B00F136BB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		202898E91F3371BF00F136BB /* PlacePrifileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePrifileController.swift; sourceTree = "<group>"; };
 		20751DDE1F38E60500E4A25A /* PlacesPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesPageController.swift; sourceTree = "<group>"; };
 		20751DE01F38FE9F00E4A25A /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		20A21D8A1F2F876C000AC57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		20A5BBAC1F307DF1006E43B9 /* PlacesTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesTypeTableViewController.swift; sourceTree = "<group>"; };
 		20A5BBAF1F307E3D006E43B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PlacesType.storyboard; sourceTree = "<group>"; };
 		20A5BBB11F307F95006E43B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceProfileViewController.swift; sourceTree = "<group>"; };
 		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		B204E4861F3A14A300454978 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
@@ -252,9 +252,9 @@
 				20A5BBAC1F307DF1006E43B9 /* PlacesTypeTableViewController.swift */,
 				0E4003F61F30B394003671F1 /* PlaceViewController.swift */,
 				0E4003F41F30B0D3003671F1 /* PlaceCell.swift */,
-				202898E91F3371BF00F136BB /* PlacePrifileController.swift */,
 				20751DDE1F38E60500E4A25A /* PlacesPageController.swift */,
 				20751DE01F38FE9F00E4A25A /* ImageViewController.swift */,
+				20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -398,13 +398,13 @@
 				20A5BBAD1F307DF1006E43B9 /* PlacesTypeTableViewController.swift in Sources */,
 				20751DE11F38FE9F00E4A25A /* ImageViewController.swift in Sources */,
 				202898E31F333FBB00F136BB /* WeatherViewController.swift in Sources */,
+				20C113E31F3CA7A5009BE8AD /* PlaceProfileViewController.swift in Sources */,
 				0EE83E371F39CBDB00C5662A /* PlacesManager.swift in Sources */,
 				B204E4A81F3A150600454978 /* PlaceAnnotation.swift in Sources */,
 				0E4003F31F309DF4003671F1 /* Review.swift in Sources */,
 				B204E4AA1F3A152500454978 /* MVDelegateMethods.swift in Sources */,
 				0E7BB5341F333B3500B8DC82 /* UrlsForDataLoading.swift in Sources */,
 				0E4003EE1F309DE9003671F1 /* JsonPlacesParser.swift in Sources */,
-				202898EA1F3371BF00F136BB /* PlacePrifileController.swift in Sources */,
 				0E4003F21F309DF4003671F1 /* Place.swift in Sources */,
 				0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */,
 				20751DDF1F38E60500E4A25A /* PlacesPageController.swift in Sources */,

@@ -64,7 +64,7 @@ class PlaceViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "PlaceProfileSeque" {
             let button = sender as! UIButton
-            if let viewController = segue.destination as? PlacePrifileController {
+            if let viewController = segue.destination as? PlaceProfileViewController {
                 let place = searchActive ? filteredPlaces[button.tag] : places[button.tag]
                 viewController.place = place
             }
