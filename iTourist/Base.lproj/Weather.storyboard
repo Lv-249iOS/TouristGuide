@@ -88,9 +88,8 @@
                                 <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-CM-Enn">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-CM-Enn">
                                 <rect key="frame" x="0.0" y="464" width="375" height="203"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vdK-xY-FlA">
                                     <size key="itemSize" width="199" height="179"/>
@@ -152,12 +151,16 @@
                         <constraints>
                             <constraint firstItem="6g3-Y4-QXZ" firstAttribute="top" secondItem="WU7-E5-LMN" secondAttribute="top" id="0Cu-nZ-ZyU"/>
                             <constraint firstItem="6g3-Y4-QXZ" firstAttribute="height" secondItem="WU7-E5-LMN" secondAttribute="height" id="AUW-tm-3Lh"/>
+                            <constraint firstItem="Wcj-CM-Enn" firstAttribute="leading" secondItem="WU7-E5-LMN" secondAttribute="leading" id="IeI-02-1qG"/>
                             <constraint firstItem="E0d-gi-kzN" firstAttribute="top" secondItem="WU7-E5-LMN" secondAttribute="top" constant="20" id="ORp-Kf-kPS"/>
+                            <constraint firstAttribute="trailing" secondItem="Wcj-CM-Enn" secondAttribute="trailing" id="Oge-EQ-IyS"/>
                             <constraint firstItem="E0d-gi-kzN" firstAttribute="leading" secondItem="WU7-E5-LMN" secondAttribute="leading" id="dgc-Lb-34Z"/>
                             <constraint firstItem="E0d-gi-kzN" firstAttribute="width" secondItem="WU7-E5-LMN" secondAttribute="width" id="glw-6g-nxt"/>
                             <constraint firstAttribute="trailing" secondItem="E0d-gi-kzN" secondAttribute="trailing" id="k1A-pM-Ydp"/>
                             <constraint firstAttribute="trailing" secondItem="6g3-Y4-QXZ" secondAttribute="trailing" id="tzx-mM-aSj"/>
+                            <constraint firstItem="pig-UH-HGE" firstAttribute="top" secondItem="Wcj-CM-Enn" secondAttribute="bottom" id="uJH-bI-60m"/>
                             <constraint firstItem="6g3-Y4-QXZ" firstAttribute="leading" secondItem="WU7-E5-LMN" secondAttribute="leading" id="wfW-Ui-OqW"/>
+                            <constraint firstItem="Wcj-CM-Enn" firstAttribute="top" secondItem="6g3-Y4-QXZ" secondAttribute="bottom" constant="-203" id="xAD-eP-dMc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weather" id="f7q-Ep-ygi"/>
