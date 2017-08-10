@@ -8,53 +8,51 @@
 
 import Foundation
 
-class JsonPlacesParser: Parser {
+enum PlaceKeyPath: String {
     
-    func parseIdPlaces(with url: URL, completion: @escaping ([String]?, Error?)->()) {
-        URLCacher.shared.getDataResponse(with: URLRequest(url: url)) { data, err in
-            guard let  data = data else { return }
-            if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject {
-                var placesId: [String] = []
-                
-                guard let places = json.value(forKey: "results") as? [AnyObject] else { return }
-                for place in places {
-                    if let id = place.value(forKeyPath: "place_id") as? String {
-                        placesId.append(id)
-                    }
-                }
-                completion(placesId, err)
-            }
-        }
-    }
+    case location = "result.geometry.location"
+    case adress = "result.formatted_address"
+    case phoneNum = "result.international_phone_number"
+    case name = "result.name"
+    case imagesRef = "result.photos.photo_reference"
+    case workHours = "result.opening_hours.weekday_text"
+    case placeReviews = "result.reviews"
+    case website = "result.website"
+    case typesOfPlace = "result.types"
+}
 
-    func parse(with url: URL, completion: @escaping (Any?, Error?)->()) {
-        parseIdPlaces(with: url) { placeIds, err in
-            guard let idOfPlaces = placeIds else { return }
-            var parsedPlaces: [Place] = []
-
-            for placeId in idOfPlaces {
-                self.parsePlace(with: placeId) { place in
-                    if let parsedPlace = place {
-                        parsedPlaces.append(parsedPlace)
-                        
-                        if placeId == idOfPlaces.last {
-                            completion(parsedPlaces, err)
-                        }
-                    }
-                }
-            }
-        }
-    }
+class JsonPlacesParser {
     
-    func parsePlace(with placeId: String, completion: @escaping (Place?)->()) {
-        guard let url = URL(string: loadPlace + placeId + "&key=" + key) else { return }
+    func parseIds(with data: Data) -> [String]? {
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else { return nil }
+        guard let places = json.value(forKey: "results") as? [AnyObject] else { return nil }
+        var placesId: [String] = []
         
-        URLCacher.shared.getDataResponse(with: URLRequest(url: url)) { data, err in
-            guard let  data = data else { return }
-            if let json  = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject {
-                let place = Place(with: json)
-                completion(place)
+        for place in places {
+            if let id = place.value(forKeyPath: "place_id") as? String {
+                placesId.append(id)
             }
         }
+        
+        return placesId
+    }
+    
+    func parsePlace(with data: Data) -> Place? {
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else { return nil }
+        var placeData: [PlaceAttributes: Any] = [:]
+        
+        placeData[.location] = json.value(forKeyPath: PlaceKeyPath.location.rawValue) as? [String: Double]
+        placeData[.reviews] = json.value(forKeyPath: PlaceKeyPath.placeReviews.rawValue) as? [[String: Any]]
+        placeData[.imgRef] = json.value(forKeyPath: PlaceKeyPath.imagesRef.rawValue) as? [String]
+        placeData[.adress] = json.value(forKeyPath: PlaceKeyPath.adress.rawValue) as? String
+        placeData[.phoneNum] = json.value(forKeyPath: PlaceKeyPath.phoneNum.rawValue) as? String
+        placeData[.name] = json.value(forKeyPath: PlaceKeyPath.name.rawValue) as? String
+        placeData[.workHours] = json.value(forKeyPath: PlaceKeyPath.workHours.rawValue) as? [String]
+        placeData[.website] = json.value(forKeyPath: PlaceKeyPath.website.rawValue) as? String
+        placeData[.types] = json.value(forKeyPath: PlaceKeyPath.typesOfPlace.rawValue) as? [String]
+
+        let place = Place(with: placeData)
+        
+        return place
     }
 }

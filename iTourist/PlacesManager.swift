@@ -13,7 +13,7 @@ class PlacesManager {
     var listOfPlaces: [Place] = []
     
     func getPlaces(completion: @escaping ()->()) {
-        if listOfPlaces.count != 0 {
+        /*if listOfPlaces.count != 0 {
             completion()
         } else if 1 == 2 /*we have something in db*/ {
             // get from db
@@ -29,7 +29,7 @@ class PlacesManager {
                 
                 completion()
             }
-        }
+        }*/
     }
     
     func add(place: Place) {

@@ -18,13 +18,13 @@ class MapViewController: UIViewController {
     var manager = CLLocationManager()
     
     var annotationsOfPlaces: [PlaceAnnotation] = []
-    var selectedAnnotations :[PlaceAnnotation] = []
+    var selectedAnnotations: [PlaceAnnotation] = []
     
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
     var imageLoader = ImageDownloader()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,20 +33,19 @@ class MapViewController: UIViewController {
         map.addGestureRecognizer(longPress)
         
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        if let location = CLLocationManager().location {
+        if let location = AppModel.shared.location {
             let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
             map.setRegion(region, animated: true)
         }
         
-        manager.delegate = self
         map.delegate = self
+        addUserLocationOnMap()
         
-        configureLocationServices()
-        
-        PlacesManager.shared.getPlaces() {
-            for place in PlacesManager.shared.listOfPlaces {
+        PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+            guard let places = places else { return }
+            for place in places {
                 let annotation = PlaceAnnotation()
-                if let coordinates = place.coordinates {
+                if let coordinates = place.coordinate {
                     annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
                 }
                 annotation.title = place.name
@@ -60,6 +59,18 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
+            }
+            
+            if let loc = AppModel.shared.location?.coordinate {
+                presentRoute(sourse: loc, dest: (selectedAnnotations[0].coordinate))
+            }
+            
+            addCircleOnFirstPoint()
+            presentRoutes()
+        }
+    }
+    
+    @IBAction func clearRoutes(_ sender: UIButton) {
         if let circle = circleOverlay {
             map.remove(circle)
             map.removeOverlays(lineOverlays)
@@ -78,13 +89,8 @@ class MapViewController: UIViewController {
                 
                 presentRoutes()
                 routeButton.setImage(#imageLiteral(resourceName: "clean"), for: .normal)
-            }
-            
-            
-        }
         
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -94,7 +100,7 @@ class MapViewController: UIViewController {
         print("HANDLER")
     }
     
-    func addAnnotation (gestureRecognizer:UILongPressGestureRecognizer) {
+    func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             var hand: ((UIAlertAction)->Void)?
             hand = handler(_action: )
@@ -105,31 +111,18 @@ class MapViewController: UIViewController {
             self.present(alert, animated:true, completion:nil)
         }
     }
-
     
-    func configureLocationServices() {
+    func addUserLocationOnMap() {
         if CLLocationManager.locationServicesEnabled() {
             let status = CLLocationManager.authorizationStatus()
             
-            if status == .notDetermined {
-                manager.requestWhenInUseAuthorization()
-            } else {
+            if status == .authorizedAlways || status == .authorizedWhenInUse {
+                AppModel.shared.locationManager.manager.delegate = self
+                AppModel.shared.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                AppModel.shared.locationManager.manager.distanceFilter = 100.0
+                AppModel.shared.locationManager.manager.startUpdatingLocation()
                 
-                switch status {
-                case .authorizedAlways: fallthrough
-                case .authorizedWhenInUse:
-                    manager.delegate = self
-                    manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                    manager.distanceFilter = 100.0
-                    manager.startUpdatingLocation()
-                    
-                default:
-                    print("Appears that there are some problems with getting location")
-                    
-                }
             }
-        } else {
-            print("Location servises is not avalible")
         }
     }
 }

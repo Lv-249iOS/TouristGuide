@@ -17,16 +17,35 @@ class PlaceViewController: UITableViewController {
     }
     var filteredPlaces: [Place] = []
     var places: [Place] = []
+    
+    func initPlaces() {
+        PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+            DispatchQueue.main.async {
+                guard let places = places, let type = self.navigationItem.title else { return }
+                for place in places {
+                    if place.typeOfPlace?.contains(type) == true {
+                        self.places.append(place)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initPlaces()
         
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 145
+        
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -53,6 +72,7 @@ class PlaceViewController: UITableViewController {
         cell.adress.text = place.formattedAddress
         cell.phoneNum.text = place.internationalPhoneNumber
         cell.infoButton.tag = indexPath.row
+        
         return cell
     }
     
