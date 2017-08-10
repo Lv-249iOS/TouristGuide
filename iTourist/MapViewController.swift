@@ -15,8 +15,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak var routeInfo: UILabel!
     @IBOutlet weak var routeImage: UIImageView!
     
-    var manager = CLLocationManager()
-    
     var annotationsOfPlaces: [PlaceAnnotation] = []
     var selectedAnnotations: [PlaceAnnotation] = []
     
@@ -59,18 +57,6 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
-            }
-            
-            if let loc = AppModel.shared.location?.coordinate {
-                presentRoute(sourse: loc, dest: (selectedAnnotations[0].coordinate))
-            }
-            
-            addCircleOnFirstPoint()
-            presentRoutes()
-        }
-    }
-    
-    @IBAction func clearRoutes(_ sender: UIButton) {
         if let circle = circleOverlay {
             map.remove(circle)
             map.removeOverlays(lineOverlays)
@@ -82,15 +68,14 @@ class MapViewController: UIViewController {
             routeButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
         } else {
             if !selectedAnnotations.isEmpty {
-                
-                presentRoute(sourse: (manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
-                
+                presentRoute(sourse: (AppModel.shared.locationManager.manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
                 addCircleOnFirstPoint()
-                
                 presentRoutes()
                 routeButton.setImage(#imageLiteral(resourceName: "clean"), for: .normal)
-        
+            }
+        }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -121,7 +106,6 @@ class MapViewController: UIViewController {
                 AppModel.shared.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                 AppModel.shared.locationManager.manager.distanceFilter = 100.0
                 AppModel.shared.locationManager.manager.startUpdatingLocation()
-                
             }
         }
     }
