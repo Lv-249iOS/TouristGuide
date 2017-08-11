@@ -9,27 +9,10 @@
 import UIKit
 
 class ImageViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     public var image: UIImage?
+    var imageLoader = ImageDownloader.shared
+    var place: Place?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        imageView.image = image
-    }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
