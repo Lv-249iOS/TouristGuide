@@ -6,15 +6,11 @@
 //  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
 //
 
-import UIKit
+import MapKit
 
 class WeatherViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     var change  = false
     var forecast: [Forecast]?
-    
-    @IBAction func change(_ sender: UIButton) {
-        displayCity()
-    }
     
     @IBOutlet weak var myCollectionview: UICollectionView!
     @IBOutlet weak var currentTemp: UILabel!
@@ -25,25 +21,23 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     @IBOutlet weak var feelslike: UILabel!
     @IBOutlet weak var currentImg: UIImageView!
     
+    @IBAction func change(_ sender: UIButton) {
+        displayCity()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=7&q=Lviv") else { return }
-        
-        Loader().load(with: URLRequest(url: url)) { data in
-            guard let data = data else { return }
-            DispatchQueue.main.async {
-                self.forecast = WeatherParser().parse(with: data)
-                if let todayForecast = self.forecast?[0] {
-                    self.currentTemp.text = "\(todayForecast.currentTemp)º"
-                    self.feelslike.text = "\(todayForecast.feelsTemp)º"
-                    self.today.text = todayForecast.date
-                    self.maxtemp1.text = "\(todayForecast.maxtemp)º"
-                    self.mintemp1.text = "\(todayForecast.mintemp)º"
-                    self.currentImg.image = todayForecast.image
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(AppModel.shared.getCurrentLocation()) { [weak self] placemarks, err in
+            if let city = placemarks?[0].addressDictionary?["City"] as? String {
+                DispatchQueue.main.async {
+                    self?.getWeatherforCity(city: city)
                 }
-                
-                self.myCollectionview.reloadData()
             }
         }
     }
@@ -71,51 +65,50 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
         return UICollectionViewCell()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-    }
-    
     func displayCity() {
-        let alert = UIAlertController(title: "City", message: "Enter city name", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Change city", message: "Please, enter city name", preferredStyle: UIAlertControllerStyle.alert)
         let cancel = UIAlertAction(title: "Cancel",style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(cancel)
         
-        let ok = UIAlertAction(title: "OK",style: UIAlertActionStyle.default){
-            (action) -> Void in
+        let ok = UIAlertAction(title: "OK",style: UIAlertActionStyle.default) { (action) -> Void in
             if let name = alert.textFields?.first {
                 self.getWeatherforCity(city: name.text!)
             }
         }
+        
         alert.addAction(ok)
-        alert.addTextField(configurationHandler: {(name) -> Void in
+        alert.addTextField(configurationHandler: { (name) -> Void in
             name.placeholder = "City name"
         })
+        
         self.present(alert, animated: true, completion: nil)
     }
     
     func getWeatherforCity(city: String) {
+        guard let request = RequestFormatter().createWeatherRequest(with: city) else { return }
         cityName.text = city
-        guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=7&q=" + city) else { return }
-         
-        Loader().load(with: URLRequest(url: url)) { data in
+        
+        Loader().load(with: request) { [weak self] data in
             guard let data = data else { return }
             DispatchQueue.main.async {
-                self.forecast = WeatherParser().parse(with: data)
-                if let todayForecast = self.forecast?[0] {
-                    self.currentTemp.text = "\(todayForecast.currentTemp)º"
-                    self.feelslike.text = "\(todayForecast.feelsTemp)º"
-                    self.today.text = todayForecast.date
-                    self.maxtemp1.text = "\(todayForecast.maxtemp)º"
-                    self.mintemp1.text = "\(todayForecast.mintemp)º"
-                    self.currentImg.image = todayForecast.image
-                }
-                
-                self.myCollectionview.reloadData()
+                self?.forecast = WeatherParser().parse(with: data)
+                guard let todayForecast = self?.forecast?[0] else { return }
+                self?.setCurrentWeather(with: todayForecast)
+                self?.myCollectionview.reloadData()
             }
         }
     }
-}
     
+    func setCurrentWeather(with forecast: Forecast) {
+        currentTemp.text = "\(forecast.currentTemp)º"
+        feelslike.text = "\(forecast.feelsTemp)º"
+        today.text = forecast.date
+        maxtemp1.text = "\(forecast.maxtemp)º"
+        mintemp1.text = "\(forecast.mintemp)º"
+        currentImg.image = forecast.image
+    }
+    
+}
+
 
 

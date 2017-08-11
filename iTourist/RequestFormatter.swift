@@ -19,4 +19,9 @@ class RequestFormatter {
         guard let url = UrlFormatter().createUrlForPlaceDetailReq(with: id) else { return nil }
         return URLRequest(url: url)
     }
+    
+    func createWeatherRequest(with city: String, countOfDays: Int = 7) -> URLRequest? {
+        guard let url = UrlFormatter().createUrlForWeather(with: city, daysCount: countOfDays) else { return nil }
+        return URLRequest(url: url)
+    }
 }

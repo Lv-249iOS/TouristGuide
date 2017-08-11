@@ -10,24 +10,31 @@ import Foundation
 
 class UrlFormatter {
     
-    let appKey = "AIzaSyD_Ap39v5zgWHcRntXj9y0uZ_9WgPWNwic"
-    let loadIdOfPlaces = "https://maps.googleapis.com/maps/api/place/radarsearch/json?"
-    let loadPlace = "https://maps.googleapis.com/maps/api/place/details/json?"
-    let loadImgUrl = "https://maps.googleapis.com/maps/api/place/photo?"
+    enum PlaceUrl: String {
+        case appKey = "AIzaSyCx84NaZ5oK490ZqxqApNRJlaIFENJePN8"
+        case loadIdOfPlaces = "https://maps.googleapis.com/maps/api/place/radarsearch/json?"
+        case loadPlace = "https://maps.googleapis.com/maps/api/place/details/json?"
+        case loadImgUrl = "https://maps.googleapis.com/maps/api/place/photo?"
+    }
+    
+    enum WeatherUrl: String {
+        case loadWeatheer = "http://api.apixu.com/v1/forecast.json?"
+        case key = "c51487b2c3714e86be6142344173107"
+    }
     
     func createUrlForPlacesIdsReq(with locationKey: String, radius: Int = 10000, type: String = "point_of_interest") -> URL? {
         let location = "location=" + locationKey
         let rad = "radius=" + "\(radius)"
         let placeType = "type=" + type
         
-        let urlString = loadIdOfPlaces + location + "&" + rad + "&" + placeType + "&key=" + appKey
+        let urlString = PlaceUrl.loadIdOfPlaces.rawValue + location + "&" + rad + "&" + placeType + "&key=" + PlaceUrl.appKey.rawValue
         guard let url = URL(string: urlString) else { return nil }
         
         return url
     }
     
     func createUrlForPlaceDetailReq(with placeId: String) -> URL? {
-        let urlString = loadPlace + "placeid=" + placeId + "&key=" + appKey
+        let urlString = PlaceUrl.loadPlace.rawValue + "placeid=" + placeId + "&key=" + PlaceUrl.appKey.rawValue
         guard let url = URL(string: urlString) else { return nil }
         
         return url
@@ -37,9 +44,20 @@ class UrlFormatter {
         let maxWidth = "maxwidth=" + "\(maxwidth)"
         let reff = "photoreference=" + imgReference
         
-        let urlString = loadImgUrl + maxWidth + "&" + reff + "&key=" + appKey
+        let urlString = PlaceUrl.loadImgUrl.rawValue + maxWidth + "&" + reff + "&key=" + PlaceUrl.appKey.rawValue
         guard let url = URL(string: urlString) else { return nil }
     
+        return url
+    }
+    
+    func createUrlForWeather(with city: String, daysCount: Int) -> URL? {
+        let key = "key=" + WeatherUrl.key.rawValue
+        let days = "&days=" + "\(daysCount)"
+        let town = "&q=" + city
+        
+        let urlString = WeatherUrl.loadWeatheer.rawValue + key + days + town
+        guard let url = URL(string: urlString) else { return nil }
+        
         return url
     }
 }
