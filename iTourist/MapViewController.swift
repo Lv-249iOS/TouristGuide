@@ -53,9 +53,8 @@ class MapViewController: UIViewController {
                 annotation.photoRef = place.photosRef?.first
                 annotation.type = place.typeOfPlace?.first
                 self.annotationsOfPlaces.append(annotation)
+                self.map.addAnnotation(annotation)
             }
-            
-            self.map.addAnnotations(self.annotationsOfPlaces)
         }
     }
     
@@ -65,12 +64,16 @@ class MapViewController: UIViewController {
             map.removeOverlays(lineOverlays)
             circleOverlay = nil
             let reloadingAnnotations = selectedAnnotations
-            map.removeAnnotations(reloadingAnnotations)
-            map.addAnnotations(reloadingAnnotations)
+            for annot in reloadingAnnotations {
+                map.removeAnnotation(annot)
+                map.addAnnotation(annot)
+            }
+            
             selectedAnnotations = []
             routeButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
         } else {
             if !selectedAnnotations.isEmpty {
+                // remove !!!!
                 presentRoute(sourse: (AppModel.shared.locationManager.manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
                 addCircleOnFirstPoint()
                 presentRoutes()
