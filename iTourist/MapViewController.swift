@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
-    var imageLoader = ImageDownloader()
+    var imageLoader = ImageDownloader.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,9 @@ class MapViewController: UIViewController {
         map.delegate = self
         addUserLocationOnMap()
         
+        print("PREVIEW")
         PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+            print("MAP START GET PLACES")
             guard let places = places else { return }
             for place in places {
                 let annotation = PlaceAnnotation()
@@ -52,6 +54,7 @@ class MapViewController: UIViewController {
                 annotation.type = place.typeOfPlace?.first
                 self.annotationsOfPlaces.append(annotation)
             }
+            
             self.map.addAnnotations(self.annotationsOfPlaces)
         }
     }
@@ -87,13 +90,14 @@ class MapViewController: UIViewController {
     
     func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
+
             var hand: ((UIAlertAction)->Void)?
-            hand = handler(_action: )
+            hand = handler(_action:)
             
-            let alert = UIAlertController(title:"Do you want to create a new place?", message:"you would have to add some information", preferredStyle:UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title:"OK",style: UIAlertActionStyle.default, handler:hand))
-            alert.addAction(UIAlertAction(title:"Cancel",style: UIAlertActionStyle.default, handler:nil))
-            self.present(alert, animated:true, completion:nil)
+            let alert = UIAlertController(title: "Do you want to create a new place?", message: "you would have to add some information", preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default, handler: hand))
+            alert.addAction(UIAlertAction(title: "Cancel",style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

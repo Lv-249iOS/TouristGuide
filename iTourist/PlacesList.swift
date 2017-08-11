@@ -14,11 +14,15 @@ class PlacesList {
     var places: [Place]?
     
     func getPlaces(with startingPoint: CLLocation, completion: @escaping ([Place]?)->()) {
-        print("INIT LIST")
-        let id = CoordinateConverter().converteToKey(with: startingPoint)
-        DataProvider.shared.getData(with: id) { result in
-            self.places = result
-            completion(self.places)
+        print("PLACE LIST")
+        let converter = CoordinateConverter()
+        let id = converter.converteToKey(with: startingPoint)
+        
+        print("PREVIEW USEGE OF DATA PROVIDER")
+        DataProvider.shared.getData(with: id) { [weak self] result in
+            print("GOT FROM  DATA PROVIDER")
+            self?.places = result
+            completion(self?.places)
         } 
     }
     

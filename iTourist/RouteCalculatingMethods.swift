@@ -34,7 +34,6 @@ extension MapViewController {
         for i in 0..<selectedAnnotations.count-1 {
             presentRoute(sourse: selectedAnnotations[i].coordinate, dest: selectedAnnotations[i+1].coordinate)
         }
-        
     }
     
     func presentRoute(sourse: CLLocationCoordinate2D, dest: CLLocationCoordinate2D) {

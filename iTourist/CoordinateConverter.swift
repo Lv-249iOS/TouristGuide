@@ -12,13 +12,11 @@ class CoordinateConverter {
     
     func converteToKey(with location: CLLocation) -> String {
         let key = "\(location.coordinate.latitude)" + "," + "\(location.coordinate.longitude)"
-        print("CONVERT TO KEY")
         
         return key
     }
     
     func converteToLocation(with key: String) -> CLLocation? {
-        print("CONVERT TO LOCATION")
         let coordinate: [String] = key.characters.split{ $0 == "," }.map(String.init)
         
         guard let lat = Double(coordinate[0]), let long = Double(coordinate[1]) else { return nil }
