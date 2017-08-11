@@ -11,7 +11,7 @@ import UIKit
 class PlaceViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var imageLoader = ImageDownloader()
+    var imageLoader = ImageDownloader.shared
     var searchActive: Bool = false {
         didSet{self.tableView.reloadData()}
     }
@@ -27,6 +27,7 @@ class PlaceViewController: UITableViewController {
                         self.places.append(place)
                     }
                 }
+                
                 self.tableView.reloadData()
             }
         }
