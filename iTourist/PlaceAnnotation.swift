@@ -13,13 +13,9 @@ class PlaceAnnotation : NSObject, MKAnnotation {
 //    let identifier = UUID().uuidString
     
     var coordinate = kCLLocationCoordinate2DInvalid
-    
     var title: String?
-    
     var subtitle: String?
-    
     var type: String?
-    
     var photoRef: String?
     
 //    override var hashValue: Int {
@@ -29,5 +25,4 @@ class PlaceAnnotation : NSObject, MKAnnotation {
 //    public static func ==(lhs: EquatableAnnotation, rhs: EquatableAnnotation) -> Bool {
 //        return lhs.identifier == rhs.identifier
 //    }
-    
 }

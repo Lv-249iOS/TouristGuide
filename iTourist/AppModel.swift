@@ -19,16 +19,12 @@ class AppModel {
     var constants: Constants?
     
     init() {
-        print("Step in APP MODEL")
-        constants = Constants()
-        print("get frame")
-        
         if let loc = locationManager.getLocation() {
             location = loc 
         }
         
+        constants = Constants()
         bound = constants?.bounds
-        print("STEP OUT MODEL")
     }
     
     func updateCoordinate(with coordinate: CLLocation) {
@@ -40,7 +36,7 @@ class AppModel {
     }
     
     func getCurrentLocation() -> CLLocation {
-        print("FUNC GET CURRENT LOCATION")
+        print("GET CURR LOCATION")
         if let loc = location {
             return loc
         } else {
@@ -49,7 +45,6 @@ class AppModel {
     }
     
     func getVisibleRect() -> CGRect? {
-        print("FUNC GET CURRENT getVisibleRect")
         return bound
     }
 }
