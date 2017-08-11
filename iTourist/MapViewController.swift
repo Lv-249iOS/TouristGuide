@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
-    var imageLoader = ImageDownloader()
+    var imageLoader = ImageDownloader.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +87,8 @@ class MapViewController: UIViewController {
     
     func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
+            
+            // LEAK
             var hand: ((UIAlertAction)->Void)?
             hand = handler(_action: )
             

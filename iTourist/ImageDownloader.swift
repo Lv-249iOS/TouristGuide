@@ -10,37 +10,30 @@ import Foundation
 import UIKit
 
 class ImageDownloader {
-    var session: URLSession
+    static var shared = ImageDownloader()
+    
+    var urlSession: URLSession
     var cache: NSCache<NSString, UIImage>
     
     init() {
-        session = URLSession.shared
+        urlSession = URLSession.shared
         cache = NSCache()
         cache.countLimit = 20
     }
     
     func obtainImage(with path: String, completion: @escaping ((UIImage)->())) {
         if let image = cache.object(forKey: path as NSString) {
-            DispatchQueue.main.async {
-                completion(image)
-            }
+            DispatchQueue.main.async { completion(image) }
         } else {
-             
-            DispatchQueue.main.async {
-                completion(#imageLiteral(resourceName: "noImage"))
-            }
-            
+            DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
+
             guard let url = URL(string: path) else { return }
-            session.downloadTask(with: url) { location, response, error in
+            urlSession.downloadTask(with: url) { location, response, error in
                 if let data = try? Data(contentsOf: url) {
                     guard let img = UIImage(data: data) else { return }
-                    
-                    //img = img.resizeImage(sizeChange: CGSize(width: 50, height: 50))
                     self.cache.setObject(img, forKey: path as NSString)
                     
-                    DispatchQueue.main.async {
-                        completion(img)
-                    }
+                    DispatchQueue.main.async { completion(img) }
                 }
             }.resume()
         }
