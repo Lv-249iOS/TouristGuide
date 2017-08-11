@@ -12,6 +12,7 @@ class PlacesPageController: UIPageViewController {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [
+            
             self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
             self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
             self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
