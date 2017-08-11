@@ -9,39 +9,41 @@
 import UIKit
 
 class PlacesPageController: UIPageViewController {
+    var imagesStringUrl: [String]?
+    var images: [UIImage] = []
+    var imageLoader = ImageDownloader.shared
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [
-            
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background"))
-        ]
+        return self.newColoredViewController(imagess: self.images)
     }()
     
-    private func newColoredViewController(image: UIImage?) -> UIViewController {
-        let viewController = UIStoryboard(name: "PlacesType", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
-        viewController.image = image
-        return viewController
+    private func newColoredViewController(imagess: [UIImage]) -> [UIViewController] {
+        var viewControllers: [UIViewController] = []
+        
+        for img in imagess {
+            let viewController = UIStoryboard(name: "PlacesType", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
+            viewController.image = img
+            viewControllers.append(viewController)
+        }
+        return viewControllers
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dataSource = self        
-        
-        if let firstViewController = orderedViewControllers.first {
+        guard let paths = imagesStringUrl else { return }
+        for path in paths {
+            imageLoader.obtainImage(with: path) { image in
+                self.images.append(image)
+            }
+        }
+        /*if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
                                animated: true,
                                completion: nil)
-        }
+        }*/
     }
 }
 

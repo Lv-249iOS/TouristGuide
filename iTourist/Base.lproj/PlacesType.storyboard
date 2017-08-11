@@ -160,7 +160,6 @@
         <!--Place Profile View Controller-->
         <scene sceneID="c8t-0P-XTe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fa7-cP-U7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PlacePrifileController" id="8Fk-bw-60D" customClass="PlaceProfileViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d8O-Fz-d6r"/>
@@ -200,7 +199,7 @@
                                             <constraint firstAttribute="height" constant="250" id="Og8-z9-IFD"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="ewn-5v-nR0" kind="embed" id="Am4-T3-IiA"/>
+                                            <segue destination="ewn-5v-nR0" kind="embed" identifier="PlacesPageControllerSegue" id="Am4-T3-IiA"/>
                                         </connections>
                                     </containerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Long adress" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goy-YT-2Ad">
@@ -285,6 +284,7 @@
                         <outlet property="workHourLabel" destination="sn7-7D-Uuc" id="JS4-OC-QUG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fa7-cP-U7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4402.5" y="-338.02816901408448"/>
         </scene>
