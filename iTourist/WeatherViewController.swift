@@ -34,16 +34,16 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //  let itemSize = UIScreen.main.bounds.width/2 - 3
-         // let layout = UICollectionViewFlowLayout()
+        //   let itemSize = UIScreen.main.bounds.width/3 - 3
+        //  let layout = UICollectionViewFlowLayout()
         //  layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-       //   layout.itemSize = CGSize(width: itemSize, height: itemSize)
+        //  layout.itemSize = CGSize(width: itemSize, height: 1.4*itemSize)
         //layout.minimumLineSpacing = 3
         //  layout.minimumInteritemSpacing = 2
-       //   myCollectionview.collectionViewLayout = layout
+        //  myCollectionview.collectionViewLayout = layout
         let parse = WeatherParser()
         
-        guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=3&q=Lviv") else { return }
+        guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=1&q=Lviv") else { return }
         parse.parse(with: url) { forecast,err in
             if let forecast1 = forecast as? [Forecast] {
                 DispatchQueue.main.async {
@@ -62,13 +62,13 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 6
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let parse = WeatherParser()
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell else {
             return UICollectionViewCell() }
-        let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=4&q=Lviv")
+        let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=7&q=Lviv")
         parse.parse(with: url!) { forecast,err in
             if let forecast1 = forecast as? [Forecast] {
                 DispatchQueue.main.async {
@@ -109,7 +109,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     func getWeatherforCity(city: String){
         cityName.text = city
         let parse = WeatherParser()
-        guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=3&q="+city) else { return }
+        guard let url = URL(string: "http://api.apixu.com/v1/forecast.json?key=c51487b2c3714e86be6142344173107&days=1&q="+city) else { return }
         
         parse.parse(with: url) { forecast,err in
             if let forecast1 = forecast as? [Forecast] {

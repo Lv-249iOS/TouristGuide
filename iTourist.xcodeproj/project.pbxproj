@@ -217,7 +217,6 @@
 		0E8B3BD51F2F2CBF001FFC73 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0E8B3BBF1F2F2CA3001FFC73 /* AppDelegate.swift */,
 				0E8B3BC91F2F2CA3001FFC73 /* Assets.xcassets */,
 				0E8B3BCB1F2F2CA3001FFC73 /* LaunchScreen.storyboard */,
 				0E8B3BCE1F2F2CA3001FFC73 /* Info.plist */,
@@ -238,6 +237,7 @@
 			children = (
 				0E7BB5311F3334BE00B8DC82 /* ResizerOfUIImage.swift */,
 				0EE83E361F39CBDB00C5662A /* PlacesManager.swift */,
+				0E8B3BBF1F2F2CA3001FFC73 /* AppDelegate.swift */,
 				0EE83E381F39F38A00C5662A /* cache */,
 				0EE83E391F39F39800C5662A /* parse */,
 			);
