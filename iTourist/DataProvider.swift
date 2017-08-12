@@ -15,8 +15,6 @@ class DataProvider {
     var loader = Loader()
     
     func getData(with key: String, completion: @escaping ([Place]?)->()) {
-        print(" DATA PROVIDER")
-        
         if let data = cache.getFromCache(with: key) {
             print("CACHE")
             let converter = DataConverter()
@@ -39,6 +37,7 @@ class DataProvider {
                     guard let place = JsonPlacesParser().parsePlace(with: dat) else { return }
                     places.append(place)
                 }
+                
                 self?.cache.save(places: places, key: key)
                 completion(places)
             }

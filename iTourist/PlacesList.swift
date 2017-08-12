@@ -11,26 +11,20 @@ import CoreLocation
 class PlacesList {
     
     static var shared = PlacesList()
-    var places: [Place]?
     
     func getPlaces(with startingPoint: CLLocation, completion: @escaping ([Place]?)->()) {
-        print("PLACE LIST")
-        let converter = CoordinateConverter()
-        let id = converter.converteToKey(with: startingPoint)
-        
-        print("PREVIEW USEGE OF DATA PROVIDER")
-        DataProvider.shared.getData(with: id) { [weak self] result in
+        let key = CoordinateConverter().converteToKey(with: startingPoint)
+        DataProvider.shared.getData(with: key) { result in
             print("GOT FROM  DATA PROVIDER")
-            self?.places = result
-            completion(self?.places)
-        } 
+            completion(result)
+        }
     }
     
     func add(place: Place) {
-        places?.append(place)
+        // places?.append(place)
     }
     
     func remove(at index: Int) {
-        places?.remove(at: index)
+        // places?.remove(at: index)
     }
 }
