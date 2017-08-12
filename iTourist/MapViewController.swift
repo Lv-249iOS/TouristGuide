@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     var circleOverlay: MKOverlay?
     
     var imageLoader = ImageDownloader.shared
+    var appModel = AppModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,10 +110,10 @@ class MapViewController: UIViewController {
             let status = CLLocationManager.authorizationStatus()
             
             if status == .authorizedAlways || status == .authorizedWhenInUse {
-                AppModel.shared.locationManager.manager.delegate = self
-                AppModel.shared.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                AppModel.shared.locationManager.manager.distanceFilter = 100.0
-                AppModel.shared.locationManager.manager.startUpdatingLocation()
+                appModel.locationManager.manager.delegate = self
+                appModel.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                appModel.locationManager.manager.distanceFilter = 100.0
+                appModel.locationManager.manager.startUpdatingLocation()
             }
         }
     }
