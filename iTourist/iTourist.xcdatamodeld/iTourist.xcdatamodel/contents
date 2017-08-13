@@ -1,43 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ImageStore" representedClassName="ImageStore" syncable="YES" codeGenerationType="class">
-        <attribute name="imgData" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="imgId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceDetail" inverseName="photoRefs" inverseEntity="PlaceDetail" syncable="YES"/>
-    </entity>
-    <entity name="PlaceDetail" representedClassName="PlaceDetail" syncable="YES" codeGenerationType="class">
-        <attribute name="coordinates" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="formattedAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="internationalPhoneNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="openingHours" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="phoneNum" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="website" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="idPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlacesId" inverseName="place" inverseEntity="PlacesId" syncable="YES"/>
-        <relationship name="photoRefs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageStore" inverseName="imgId" inverseEntity="ImageStore" syncable="YES"/>
-        <relationship name="placeReviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ReviewOfPlace" inverseName="reviewId" inverseEntity="ReviewOfPlace" syncable="YES"/>
-        <relationship name="typesId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="idType" inverseEntity="Type" syncable="YES"/>
-    </entity>
-    <entity name="PlacesId" representedClassName="PlacesId" syncable="YES" codeGenerationType="class">
-        <attribute name="placeId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceDetail" inverseName="idPlace" inverseEntity="PlaceDetail" syncable="YES"/>
-    </entity>
-    <entity name="ReviewOfPlace" representedClassName="ReviewOfPlace" syncable="YES" codeGenerationType="class">
-        <attribute name="authorName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="profilePhotoUrl" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeOfPosting" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="reviewId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceDetail" inverseName="placeReviews" inverseEntity="PlaceDetail" syncable="YES"/>
-    </entity>
-    <entity name="Type" representedClassName="Type" syncable="YES" codeGenerationType="class">
-        <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="idType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceDetail" inverseName="typesId" inverseEntity="PlaceDetail" syncable="YES"/>
+    <entity name="PlaceEntity" representedClassName="PlaceEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ImageStore" positionX="187" positionY="-156" width="128" height="58"/>
-        <element name="PlaceDetail" positionX="-324" positionY="-126" width="128" height="208"/>
-        <element name="PlacesId" positionX="117" positionY="-243" width="128" height="75"/>
-        <element name="ReviewOfPlace" positionX="189" positionY="9" width="128" height="133"/>
-        <element name="Type" positionX="-38" positionY="177" width="128" height="28"/>
+        <element name="PlaceEntity" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>
