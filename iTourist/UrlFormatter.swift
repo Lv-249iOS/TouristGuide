@@ -11,7 +11,7 @@ import Foundation
 class UrlFormatter {
     
     enum PlaceUrl: String {
-        case appKey = "AIzaSyD_Ap39v5zgWHcRntXj9y0uZ_9WgPWNwic"
+        case appKey = "AIzaSyAlH8z_mc56ciyAKVIWySkbpkMxq9FNfU8"
         case loadIdOfPlaces = "https://maps.googleapis.com/maps/api/place/radarsearch/json?"
         case loadPlace = "https://maps.googleapis.com/maps/api/place/details/json?"
         case loadImgUrl = "https://maps.googleapis.com/maps/api/place/photo?"
@@ -40,7 +40,7 @@ class UrlFormatter {
         return url
     }
     
-    func createUrlForImageDownloading(with imgReference: String, maxwidth: Int = 1500) -> URL? {
+    func createUrlForImageDownloading(with imgReference: String, maxwidth: Int = 500) -> URL? {
         let maxWidth = "maxwidth=" + "\(maxwidth)"
         let reff = "photoreference=" + imgReference
         
