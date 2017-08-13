@@ -13,14 +13,17 @@ import UIKit
 class PlaceCoreData {
     
     private var places = [NSManagedObject]()
+    private let entity = NSEntityDescription.entity(forEntityName: "PlaceEntity", in: PlaceCoreData.context)
+    
     private static var persistentContainer: NSPersistentContainer {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
+    
     private static var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    private let entity = NSEntityDescription.entity(forEntityName: "PlaceEntity", in: PlaceCoreData.context)
-    func add(data: String, key: String) {
+    
+    func add(data: [NSData], key: String) {
         
         let place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
         place.setValue(data, forKey: "data")
@@ -33,15 +36,16 @@ class PlaceCoreData {
             print("Error in saving data")
         }
     }
-    func get(by key: String)->[NSData] {
+    
+    func get(by key: String) -> [NSData] {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
-            let result =
-                try PlaceCoreData.context.fetch(placeFetch)
+            let result = try PlaceCoreData.context.fetch(placeFetch)
             if result.count > 0 {
                 var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
+                
                 return place.value(forKey: "data") as! [NSData]
             } else {
                 print("Eror: Place by key not found")
@@ -51,9 +55,11 @@ class PlaceCoreData {
             print("Error: \(error) " +
                 "description \(error.localizedDescription)")
         }
+        
         return []
     }
-    func delete(for key: String)->Bool {
+    
+    func delete(for key: String) -> Bool {
         let predicate = NSPredicate(format: "key == %@", key)
         let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         fetchToDelete.predicate = predicate
@@ -65,9 +71,9 @@ class PlaceCoreData {
                 return true
             }
         } catch let error as NSError {
-            print("Error: \(error) " +
-                "description \(error.localizedDescription)")
+            print("Error: \(error) " + "description \(error.localizedDescription)")
         }
+        
         return false
     }
 }
