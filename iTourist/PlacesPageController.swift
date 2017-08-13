@@ -9,20 +9,18 @@
 import UIKit
 
 class PlacesPageController: UIPageViewController {
-    var imagesStringUrl: [String]?
-    var images: [UIImage] = []
-    var imageLoader = ImageDownloader.shared
+    var imagesStringUrl: [String] = []
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return self.newColoredViewController(imagess: self.images)
+        return self.newColoredViewController(imagesStringUrl: self.imagesStringUrl)
     }()
     
-    private func newColoredViewController(imagess: [UIImage]) -> [UIViewController] {
+    private func newColoredViewController(imagesStringUrl: [String]) -> [UIViewController] {
         var viewControllers: [UIViewController] = []
         
-        for img in imagess {
+        for url in imagesStringUrl {
             let viewController = UIStoryboard(name: "PlacesType", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
-            viewController.image = img
+            viewController.imageUrlString = url
             viewControllers.append(viewController)
         }
         return viewControllers
@@ -32,18 +30,13 @@ class PlacesPageController: UIPageViewController {
         super.viewDidLoad()
         
         dataSource = self        
-        guard let paths = imagesStringUrl else { return }
-        for path in paths {
-            imageLoader.obtainImage(with: path) { image in
-                self.images.append(image)
-            }
-        }
-        /*if let firstViewController = orderedViewControllers.first {
+
+        if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
                                animated: true,
                                completion: nil)
-        }*/
+        }
     }
 }
 
