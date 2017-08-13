@@ -29,8 +29,8 @@ class PlacesPageController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataSource = self        
-
+        dataSource = self
+        
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
@@ -80,7 +80,7 @@ extension PlacesPageController: UIPageViewControllerDataSource {
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-         return orderedViewControllers.count
+        return orderedViewControllers.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
