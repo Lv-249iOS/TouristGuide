@@ -28,14 +28,45 @@ class ImageDownloader {
             DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
 
             guard let url = URL(string: path) else { return }
-            urlSession.downloadTask(with: url) { location, response, error in
+            DispatchQueue.global(qos: .utility).async {
                 if let data = try? Data(contentsOf: url) {
                     guard let img = UIImage(data: data) else { return }
                     self.cache.setObject(img, forKey: path as NSString)
                     
                     DispatchQueue.main.async { completion(img) }
                 }
-            }.resume()
+            }
+        }
+    }
+    
+    // I need this method to handle errors and show activity indicator
+    func downloadImage(with path: String, completion: @escaping ((UIImage)->())) {
+        if let image = cache.object(forKey: path as NSString) {
+            completion(image)
+        } else {
+            guard let url = URL(string: path) else {
+                completion(#imageLiteral(resourceName: "noImage"))
+                return
+            }
+            
+            urlSession.dataTask(with: url, completionHandler: { (data, response, error) in
+                guard error == nil else {
+                    completion(#imageLiteral(resourceName: "noImage"))
+                    return
+                }
+                guard let data = data else {
+                    completion(#imageLiteral(resourceName: "noImage"))
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {
+                    completion(#imageLiteral(resourceName: "noImage"))
+                    return
+                }
+                
+                self.cache.setObject(image, forKey: path as NSString)
+                completion(image)
+            }).resume()
         }
     }
 }

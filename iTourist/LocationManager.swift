@@ -9,15 +9,11 @@
 import CoreLocation
 
 class LocationManager {
-    
-    var location: CLLocation?
     var manager = CLLocationManager()
-    
-    init() {
-        location = manager.location
-    }
-    
-    func getLocation() -> CLLocation? {
-        return location
+
+    var location: CLLocation? {
+        get {
+            return manager.location
+        }
     }
 }

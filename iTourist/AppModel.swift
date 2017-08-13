@@ -19,12 +19,8 @@ class AppModel {
     var constants: Constants?
     
     init() {
-        if let loc = locationManager.getLocation() {
-            location = loc 
-        }
-        
-        constants = Constants()
-        bound = constants?.bounds
+        location = locationManager.location
+        bound = Constants().bounds
     }
     
     func updateCoordinate(with coordinate: CLLocation) {

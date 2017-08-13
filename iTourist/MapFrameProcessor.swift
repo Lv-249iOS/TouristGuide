@@ -13,5 +13,4 @@ class MapFrameProcessor {
     func getFrame() {
         // split to many bounds that are smaller
     }
-
 }

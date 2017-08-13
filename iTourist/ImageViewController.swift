@@ -11,8 +11,22 @@ import UIKit
 class ImageViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
-    public var image: UIImage?
-    var imageLoader = ImageDownloader.shared
+    public var imageUrlString: String?
     var place: Place?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .clear
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let url = imageUrlString {
+            ImageDownloader.shared.downloadImage(with: url) { image in
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+        }
+    }
 }
