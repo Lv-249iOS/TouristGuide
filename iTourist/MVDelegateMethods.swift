@@ -16,12 +16,17 @@ extension MapViewController: MKMapViewDelegate {
             let identifier = "Reuse"
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             
+            //will have to change it when conwerter is going to be ok
+            
+            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+            
             if annotationView == nil {
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView?.canShowCallout = true
                 
                 guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
-                if let index = annotationsOfPlaces.index(of: annotation) {
+                
+                if let index = visibleIds[id]?.index(of: annotation) {
                     if let image = UIImage(named: annotationsOfPlaces[index].type!) {
                         annotationView?.image = image
                     } else {
@@ -32,8 +37,8 @@ extension MapViewController: MKMapViewDelegate {
             } else {
                 annotationView?.annotation = annotation
                 guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
-                if let index = annotationsOfPlaces.index(of: annotation) {
-                    if let image = UIImage(named: annotationsOfPlaces[index].type!) {
+                if let index = visibleIds[id]?.index(of: annotation) {
+                    if let image = UIImage(named: annotationsOfPlaces[index].type ?? "pin") {
                         annotationView?.image = image
                     } else {
                         annotationView?.image = UIImage(named: "pin")
@@ -44,7 +49,7 @@ extension MapViewController: MKMapViewDelegate {
             return annotationView
         }
     }
-
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if !(view.annotation is MKUserLocation) {
             let leftAccessory = UIButton(type: .custom)
@@ -73,6 +78,11 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.leftCalloutAccessoryView {
             print("LEFT")
+            
+            
+            
+            
+            
         } else {
             control.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {
@@ -119,7 +129,7 @@ extension MapViewController: MKMapViewDelegate {
             let render = MKPolylineRenderer(overlay: overlay)
             render.strokeColor = UIColor.blue
             render.lineWidth = 5.0
-        
+            
             return render
             
         } else if overlay is MKCircle {
@@ -133,9 +143,69 @@ extension MapViewController: MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
-    //    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-    //        map.bounds
-    //    }
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        var currentIds: [String] = []
+        
+        let leftUpperCorner = CGPoint(x: map.bounds.minX, y: map.bounds.minY)
+        let leftUpperCornerCoordinates = mapView.convert(leftUpperCorner, toCoordinateFrom: mapView)
+        
+        let rightUpperCorner = CGPoint(x: map.bounds.maxX, y: map.bounds.minY)
+        let rightUpperCornerCoordinates = mapView.convert(rightUpperCorner, toCoordinateFrom: mapView)
+        
+        let rightBottomCorner = CGPoint(x: map.bounds.maxX, y: map.bounds.maxY)
+        let rightBottomCornerCoordinates = mapView.convert(rightBottomCorner, toCoordinateFrom: mapView)
+        
+        for i in stride(from: leftUpperCornerCoordinates.longitude, through: rightUpperCornerCoordinates.longitude, by: 0.2) {
+            print("LOOP First \(i)")
+            for j in stride(from: rightBottomCornerCoordinates.latitude, through: rightUpperCornerCoordinates.latitude, by: 0.2) {
+                print("LOOP Second \(j)")
+                
+                let location = CLLocation(latitude: i, longitude: j)
+                let id = converter.converteToKey(with: location)
+                currentIds.append(id)
+            }
+        }
+        
+        for id in currentIds {
+            if visibleIds[id] == nil {
+                
+                self.annotationsOfPlaces = []
+                
+                DataProvider.shared.getData(with: id) { result in
+                    
+                    for place in result ?? [] {
+                        let annotation = PlaceAnnotation()
+                        if let coordinates = place.coordinate {
+                            annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                        }
+                        annotation.title = place.name
+                        annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                        annotation.photoRef = place.photosRef?.first
+                        annotation.type = place.typeOfPlace?.first
+                        self.annotationsOfPlaces.append(annotation)
+                        self.map.addAnnotation(annotation)
+                    }
+                    self.visibleIds[id] = self.annotationsOfPlaces
+                }
+                
+            }
+        }
+        //        for visibleId in visibleIds.keys {
+        //            if !(currentIds.contains(visibleId)) {
+        //
+        //                if let invisibleAnnotations = visibleIds[visibleId] {
+        //                    for annotation in invisibleAnnotations {
+        //                        map.removeAnnotation(annotation)
+        //                    }
+        //                }
+        //
+        //                visibleIds.removeValue(forKey: visibleId)
+        //                
+        //            }
+        //        }
+        
+    }
 }
 
 

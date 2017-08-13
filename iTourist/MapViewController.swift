@@ -17,12 +17,15 @@ class MapViewController: UIViewController {
     
     var annotationsOfPlaces: [PlaceAnnotation] = []
     var selectedAnnotations: [PlaceAnnotation] = []
+    var visibleIds: [String: [PlaceAnnotation]] = [:]
+    var places: [Place]?
     
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
     var imageLoader = ImageDownloader.shared
-    var appModel = AppModel.shared
+    
+    let converter = CoordinateConverter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +60,8 @@ class MapViewController: UIViewController {
                 self.map.addAnnotation(annotation)
             }
         }
+        let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+        visibleIds[id] = annotationsOfPlaces
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
@@ -88,18 +93,15 @@ class MapViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    func handler(_action: UIAlertAction) {
+    func longPressHandler(_action: UIAlertAction) {
         print("HANDLER")
     }
     
     func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-
-            var hand: ((UIAlertAction)->Void)?
-            hand = handler(_action:)
             
             let alert = UIAlertController(title: "Do you want to create a new place?", message: "you would have to add some information", preferredStyle:UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default, handler: hand))
+            alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default, handler: longPressHandler(_action: )))
             alert.addAction(UIAlertAction(title: "Cancel",style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -110,10 +112,10 @@ class MapViewController: UIViewController {
             let status = CLLocationManager.authorizationStatus()
             
             if status == .authorizedAlways || status == .authorizedWhenInUse {
-                appModel.locationManager.manager.delegate = self
-                appModel.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                appModel.locationManager.manager.distanceFilter = 100.0
-                appModel.locationManager.manager.startUpdatingLocation()
+                AppModel.shared.locationManager.manager.delegate = self
+                AppModel.shared.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                AppModel.shared.locationManager.manager.distanceFilter = 100.0
+                AppModel.shared.locationManager.manager.startUpdatingLocation()
             }
         }
     }
