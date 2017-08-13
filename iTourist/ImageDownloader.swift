@@ -64,6 +64,7 @@ class ImageDownloader {
                     return
                 }
                 
+                self.cache.setObject(image, forKey: path as NSString)
                 completion(image)
             }).resume()
         }
