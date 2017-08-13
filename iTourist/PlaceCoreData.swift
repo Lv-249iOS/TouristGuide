@@ -14,7 +14,7 @@ class PlaceCoreData {
     
     private var places = [NSManagedObject]()
     private static var persistentContainer: NSPersistentContainer {
-         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
     private static var context: NSManagedObjectContext {
         return persistentContainer.viewContext
@@ -33,16 +33,16 @@ class PlaceCoreData {
             print("Error in saving data")
         }
     }
-    func get(by key: String)->String { //Data
+    func get(by key: String)->[NSData] {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
             let result =
-            try PlaceCoreData.context.fetch(placeFetch)
+                try PlaceCoreData.context.fetch(placeFetch)
             if result.count > 0 {
-            var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
+                var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
-                return place.value(forKey: "data") as! String //Data
+                return place.value(forKey: "data") as! [NSData]
             } else {
                 print("Eror: Place by key not found")
                 try PlaceCoreData.context.save()
@@ -51,7 +51,7 @@ class PlaceCoreData {
             print("Error: \(error) " +
                 "description \(error.localizedDescription)")
         }
-        return "" //[]
+        return []
     }
     func delete(for key: String)->Bool {
         let predicate = NSPredicate(format: "key == %@", key)
@@ -60,20 +60,16 @@ class PlaceCoreData {
         do {
             let fetchedEntities = try PlaceCoreData.context.fetch(fetchToDelete) as! [NSManagedObject]
             if let entityToDelete = fetchedEntities.first {
-            PlaceCoreData.context.delete(entityToDelete)
-            try PlaceCoreData.context.save()
-            return true
+                PlaceCoreData.context.delete(entityToDelete)
+                try PlaceCoreData.context.save()
+                return true
             }
         } catch let error as NSError {
             print("Error: \(error) " +
                 "description \(error.localizedDescription)")
         }
         return false
-}
-    
-    
-    
-//End of class
+    }
 }
 
 

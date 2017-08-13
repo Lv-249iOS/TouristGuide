@@ -10,7 +10,7 @@ import XCTest
 @testable import iTourist
 
 class PlaceCoreDataTest: XCTestCase {
-    
+    //Class tested on String parameters, after test parameters were changed to String and [Data]
     let placeDataController = PlaceCoreData()
     
     func testAdding() {
