@@ -10,7 +10,7 @@ import Foundation
 
 class Cacher {
     
-    var cacher = URLCache.shared
+    var database = PlaceCoreData()
     
     func save(places: [Place], key: String) {
         var placesData: [Data] = []
@@ -20,7 +20,7 @@ class Cacher {
             let dat = converter.convert(from: place)
             placesData.append(dat)
         }
-        
+        //database.add(data: placesData as [NSData], key: key)
         UserDefaults.standard.set(placesData, forKey: key)
     }
     
@@ -28,6 +28,9 @@ class Cacher {
         if let placesData = UserDefaults.standard.array(forKey: key) as? [Data] {
             return placesData
         }
+        /*if let placesData = database.get(by: key) as [Data]? {
+            return placesData
+        }*/
         
         return nil
     }

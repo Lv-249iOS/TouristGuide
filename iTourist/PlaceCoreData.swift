@@ -37,7 +37,7 @@ class PlaceCoreData {
         }
     }
     
-    func get(by key: String) -> [NSData] {
+    func get(by key: String) -> [NSData]? {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
@@ -46,7 +46,7 @@ class PlaceCoreData {
                 var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
                 
-                return place.value(forKey: "data") as! [NSData]
+                return place.value(forKey: "data") as? [NSData]
             } else {
                 print("Eror: Place by key not found")
                 try PlaceCoreData.context.save()
@@ -56,10 +56,10 @@ class PlaceCoreData {
                 "description \(error.localizedDescription)")
         }
         
-        return []
+        return nil
     }
     
-    func delete(for key: String) -> Bool {
+    func delete(for key: String) {
         let predicate = NSPredicate(format: "key == %@", key)
         let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         fetchToDelete.predicate = predicate
@@ -68,13 +68,10 @@ class PlaceCoreData {
             if let entityToDelete = fetchedEntities.first {
                 PlaceCoreData.context.delete(entityToDelete)
                 try PlaceCoreData.context.save()
-                return true
             }
         } catch let error as NSError {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }
-        
-        return false
     }
 }
 
