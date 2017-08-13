@@ -38,4 +38,34 @@ class ImageDownloader {
             }.resume()
         }
     }
+    
+    // I need this method to handle errors and show activity indicator
+    func downloadImage(with path: String, completion: @escaping ((UIImage)->())) {
+        if let image = cache.object(forKey: path as NSString) {
+            completion(image)
+        } else {
+            guard let url = URL(string: path) else {
+                completion(#imageLiteral(resourceName: "noImage"))
+                return
+            }
+            
+            urlSession.dataTask(with: url, completionHandler: { (data, response, error) in
+                guard error == nil else {
+                    completion(#imageLiteral(resourceName: "noImage"))
+                    return
+                }
+                guard let data = data else {
+                    completion(#imageLiteral(resourceName: "noImage"))
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {
+                    completion(#imageLiteral(resourceName: "noImage"))
+                    return
+                }
+                
+                completion(image)
+            }).resume()
+        }
+    }
 }

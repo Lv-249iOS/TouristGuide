@@ -50,7 +50,9 @@ class PlaceProfileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlacesPageControllerSegue" , let controller = segue.destination as? PlacesPageController {
             placesPageController = controller
-            placesPageController.imagesStringUrl = place?.photosRef
+            if let imagePathes = place?.photosRef {
+                placesPageController.imagesStringUrl = imagePathes
+            }
         }
     }
 }
