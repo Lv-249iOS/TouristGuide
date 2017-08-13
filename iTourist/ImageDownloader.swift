@@ -28,14 +28,14 @@ class ImageDownloader {
             DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
 
             guard let url = URL(string: path) else { return }
-            urlSession.downloadTask(with: url) { location, response, error in
+            DispatchQueue.global(qos: .utility).async {
                 if let data = try? Data(contentsOf: url) {
                     guard let img = UIImage(data: data) else { return }
                     self.cache.setObject(img, forKey: path as NSString)
                     
                     DispatchQueue.main.async { completion(img) }
                 }
-            }.resume()
+            }
         }
     }
 }
