@@ -11,6 +11,9 @@ import CoreLocation
 class CoordinateConverter {
     
     func converteToKey(with location: CLLocation) -> String {
+        //let lat = round(location.coordinate.latitude * 100) / 100
+        //let long = round(location.coordinate.longitude * 100) / 100
+        
         let key = "\(location.coordinate.latitude)" + "," + "\(location.coordinate.longitude)"
         
         return key
