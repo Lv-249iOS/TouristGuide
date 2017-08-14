@@ -150,19 +150,19 @@ extension MapViewController: MKMapViewDelegate {
         // 1. Set Region to model
         
         
-        // 2. Convert region to array of IDs
-        let ids = MapFrameConverter.convert(region: mapView.region)
+        // 2. Convert region to array of IDs //locations centers
+        let locations = MapFrameConverter.convert(region: map.region)
         
-        // 3. Send ids to DataProvider
+        // 3. Send ids/locations to DataProvider
         
         
         // 3.1 When data come:
-        // 3.1.1 Get region from id: 
+        // 3.1.1 Get region from id:
         // - if intersects - present it
-        // - in not - skip
-        
+        // - if not - skip
         
         // 4. Check visible ids if still visible
+        
         visibleIds.forEach { (visibleRegionInfo) in
             let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
             let visibleRegion = mapView.region
