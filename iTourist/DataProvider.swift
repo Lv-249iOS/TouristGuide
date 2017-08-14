@@ -17,6 +17,7 @@ class DataProvider {
     func getData(with keys: [String], completion: @escaping ([[Place]?]?)->()) {
         var cachedPlaces: [[Place]] = []
         var loadedPlaces: [[Place]] = []
+        
         for key in keys {
             if let data = cache.getFromCache(with: key) {
                 print("CACHE")
@@ -30,7 +31,9 @@ class DataProvider {
                 }
                 
                 cachedPlaces.append(places)
-                continue
+                if key == keys.last {
+                    completion(cachedPlaces)
+                }
                 
             } else {
                 var places: [Place] = []
@@ -45,14 +48,11 @@ class DataProvider {
                     self?.cache.save(places: places, key: key)
                     
                     loadedPlaces.append(places)
-                    
                     if key == keys.last {
                         completion(loadedPlaces)
                     }
                 }
             }
         }
-        
-        completion(cachedPlaces)
     }
 }
