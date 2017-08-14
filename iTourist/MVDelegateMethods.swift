@@ -151,7 +151,7 @@ extension MapViewController: MKMapViewDelegate {
         
         
         // 2. Convert region to array of IDs
-        let ids = MapFrameConverter.convert(region: mapView.region)
+        // let ids = MapFrameConverter.convert(region: mapView.region)
         
         // 3. Send ids to DataProvider
         
@@ -205,7 +205,7 @@ extension MapViewController: MKMapViewDelegate {
                 
                 self.annotationsOfPlaces = []
                 
-                DataProvider.shared.getData(with: [id]) { result in
+                /*DataProvider.shared.getData(with: [id]) { result in
                     
                     /*for place in result ?? [:] {
                         let annotation = PlaceAnnotation()
@@ -221,7 +221,7 @@ extension MapViewController: MKMapViewDelegate {
                     }
  
                     self.visibleIds[id] = self.annotationsOfPlaces*/
-                }
+                }*/
                 
             }
         }
