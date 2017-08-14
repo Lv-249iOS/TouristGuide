@@ -29,6 +29,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>take it easy, bro, it won&apos;t hurt</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>It would be cool if i cood use your location</string>
 	<key>UIRequiredDeviceCapabilities</key>
