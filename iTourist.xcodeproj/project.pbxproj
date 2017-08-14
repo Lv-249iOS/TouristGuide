@@ -299,6 +299,7 @@
 				0ED851001F3C433200A200A4 /* DataProvider.swift */,
 				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
+				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 			);
 			name = DataProvider;
 			sourceTree = "<group>";
@@ -307,9 +308,12 @@
 			isa = PBXGroup;
 			children = (
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
-				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
+<<<<<<< HEAD
+				0ED851051F3C433200A200A4 /* PlacesList.swift */,
+				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
+=======
+>>>>>>> master
 			);
 			name = DataService;
 			sourceTree = "<group>";
