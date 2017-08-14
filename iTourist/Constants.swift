@@ -15,4 +15,6 @@ struct Constants {
     init() {
         bounds = UIScreen.main.bounds
     }
+    
+    static let defaultRegionSpan = 0.01
 }

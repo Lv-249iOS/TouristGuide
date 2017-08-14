@@ -12,9 +12,9 @@ class PlacesList {
     
     static var shared = PlacesList()
     
-    func getPlaces(with startingPoint: CLLocation, completion: @escaping ([Place]?)->()) {
+    func getPlaces(with startingPoint: CLLocation, completion: @escaping ([RegionId: [Place]?]?)->()) {
         let key = CoordinateConverter().converteToKey(with: startingPoint)
-        DataProvider.shared.getData(with: key) { result in
+        DataProvider.shared.getData(with: [key]) { result in
             print("GOT FROM  DATA PROVIDER")
             completion(result)
         }
