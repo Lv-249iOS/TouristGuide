@@ -11,7 +11,7 @@ import UIKit
 class PlaceProfileViewController: UIViewController {
     
     var place: Place?
-    
+    var placesPageController: PlacesPageController!
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var workHourLabel: UILabel!
@@ -47,4 +47,13 @@ class PlaceProfileViewController: UIViewController {
             feedbackButton.titleLabel?.text = "Feedbacks (\(String(describing: place.placeReviews?.count)))"
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PlacesPageControllerSegue" , let controller = segue.destination as? PlacesPageController {
+            placesPageController = controller
+            if let imagePathes = place?.photosRef {
+                placesPageController.imagesStringUrl = imagePathes
+            }
+        }
+    }
 }
+

@@ -9,31 +9,27 @@
 import UIKit
 
 class PlacesPageController: UIPageViewController {
+    var imagesStringUrl: [String] = []
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background")),
-            self.newColoredViewController(image: #imageLiteral(resourceName: "background"))
-        ]
+        return self.newColoredViewController(imagesStringUrl: self.imagesStringUrl)
     }()
     
-    private func newColoredViewController(image: UIImage?) -> UIViewController {
-        let viewController = UIStoryboard(name: "PlacesType", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
-        viewController.image = image
-        return viewController
+    private func newColoredViewController(imagesStringUrl: [String]) -> [UIViewController] {
+        var viewControllers: [UIViewController] = []
+        
+        for url in imagesStringUrl {
+            let viewController = UIStoryboard(name: "PlacesType", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
+            viewController.imageUrlString = url
+            viewControllers.append(viewController)
+        }
+        return viewControllers
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataSource = self        
+        dataSource = self
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
@@ -84,7 +80,7 @@ extension PlacesPageController: UIPageViewControllerDataSource {
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-         return orderedViewControllers.count
+        return orderedViewControllers.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {

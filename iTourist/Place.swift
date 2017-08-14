@@ -87,10 +87,6 @@ class Place: NSObject, NSCoding {
             if let urlString = UrlFormatter().createUrlForImageDownloading(with: ref) {
                 photoUrls.append(urlString.absoluteString)
             }
-            
-            if photoUrls.count == 5 {
-                break
-            }
         }
         
         return photoUrls

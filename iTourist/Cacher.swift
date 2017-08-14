@@ -10,7 +10,7 @@ import Foundation
 
 class Cacher {
     
-    var cacher = URLCache.shared
+    var database = PlaceCoreData()
     
     func save(places: [Place], key: String) {
         var placesData: [Data] = []
@@ -20,12 +20,11 @@ class Cacher {
             let dat = converter.convert(from: place)
             placesData.append(dat)
         }
-        
-        UserDefaults.standard.set(placesData, forKey: key)
+        database.add(data: placesData as [NSData], key: key)
     }
     
     func getFromCache(with key: String) -> [Data]? {
-        if let placesData = UserDefaults.standard.array(forKey: key) as? [Data] {
+        if let placesData = database.get(by: key) as [Data]? {
             return placesData
         }
         
@@ -33,10 +32,10 @@ class Cacher {
     }
     
     func removeFromCache(with key: String) {
-        UserDefaults.standard.removeObject(forKey: key)
+        database.delete(for: key)
     }
     
-    func updateCachedValue(with newVal: Any, key: String) {
-        UserDefaults.standard.set(newVal, forKey: key)
+    func updateCachedValue(with newVal: [Data], key: String) {
+        //UserDefaults.standard.set(newVal, forKey: key)
     }
 }

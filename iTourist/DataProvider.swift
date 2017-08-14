@@ -14,34 +14,45 @@ class DataProvider {
     var cache = Cacher()
     var loader = Loader()
     
-    func getData(with key: String, completion: @escaping ([Place]?)->()) {
-        print(" DATA PROVIDER")
-       // cache.removeFromCache(with: key)
-        if let data = cache.getFromCache(with: key) {
-            print("CACHE")
-            let converter = DataConverter()
-            var places: [Place] = []
-            
-            for dat in data {
-                if let place = converter.convert(data: dat) {
-                    places.append(place)
-                }
-            }
-            
-            completion(places)
-            
-        } else {
-            var places: [Place] = []
-            loader.loadData(with: key) { [weak self] data, err in
-                print(" LOAD ")
-                guard let data = data else { return }
+    func getData(with keys: [String], completion: @escaping ([[Place]?]?)->()) {
+        var cachedPlaces: [[Place]] = []
+        var loadedPlaces: [[Place]] = []
+        for key in keys {
+            if let data = cache.getFromCache(with: key) {
+                print("CACHE")
+                let converter = DataConverter()
+                var places: [Place] = []
+                
                 for dat in data {
-                    guard let place = JsonPlacesParser().parsePlace(with: dat) else { return }
-                    places.append(place)
+                    if let place = converter.convert(data: dat) {
+                        places.append(place)
+                    }
                 }
-                self?.cache.save(places: places, key: key)
-                completion(places)
+                
+                cachedPlaces.append(places)
+                continue
+                
+            } else {
+                var places: [Place] = []
+                loader.loadData(with: key) { [weak self] data, err in
+                    print(" LOAD ")
+                    guard let data = data else { return }
+                    for dat in data {
+                        guard let place = JsonPlacesParser().parsePlace(with: dat) else { return }
+                        places.append(place)
+                    }
+                    
+                    self?.cache.save(places: places, key: key)
+                    
+                    loadedPlaces.append(places)
+                    
+                    if key == keys.last {
+                        completion(loadedPlaces)
+                    }
+                }
             }
         }
+        
+        completion(cachedPlaces)
     }
 }
