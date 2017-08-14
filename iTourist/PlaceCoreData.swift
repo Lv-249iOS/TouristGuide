@@ -25,16 +25,19 @@ class PlaceCoreData {
     
     func add(data: [NSData], key: String) {
         
-        let place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
-        place.setValue(data, forKey: "dataArray")
-        place.setValue(key, forKey: "key")
-        do {
-            try PlaceCoreData.context.save()
-            self.places.append(place)
-        }
-        catch {
-            print("Error in saving data")
-        }
+        PlaceCoreData.persistentContainer.performBackgroundTask({ context in
+            if let place = NSEntityDescription.insertNewObject(forEntityName: "PlaceEntity", into: context) as? PlaceEntity {
+                place.key = key
+                place.data = data as NSArray
+            }
+            try? context.save()
+            DispatchQueue.main.async { [weak self] in
+                guard self != nil else {
+                    print("Self is nil ")
+                    return
+                }
+            }
+        })
     }
     
     func get(by key: String) -> [NSData]? {
