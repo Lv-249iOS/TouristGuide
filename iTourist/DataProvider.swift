@@ -14,12 +14,12 @@ class DataProvider {
     var cache = Cacher()
     var loader = Loader()
     
-    func getData(with keys: [String], completion: @escaping ([[Place]?]?)->()) {
-        var cachedPlaces: [[Place]] = []
-        var loadedPlaces: [[Place]] = []
+    func getData(with keys: [(key: String, loc: String)], completion: @escaping ([RegionId: [Place]?]?)->()) {
+        var cachedPlaces: [RegionId: [Place]] = [:]
+        var loadedPlaces: [RegionId: [Place]] = [:]
         
         for key in keys {
-            if let data = cache.getFromCache(with: key) {
+            if let data = cache.getFromCache(with: key.key) {
                 print("CACHE")
                 let converter = DataConverter()
                 var places: [Place] = []
@@ -30,14 +30,15 @@ class DataProvider {
                     }
                 }
                 
-                cachedPlaces.append(places)
-                if key == keys.last {
+                cachedPlaces[key.key] = places
+                
+                if key == keys.last! {
                     completion(cachedPlaces)
                 }
                 
             } else {
                 var places: [Place] = []
-                loader.loadData(with: key) { [weak self] data, err in
+                loader.loadData(with: key.loc) { [weak self] data, err in
                     print(" LOAD ")
                     guard let data = data else { return }
                     for dat in data {
@@ -45,10 +46,11 @@ class DataProvider {
                         places.append(place)
                     }
                     
-                    self?.cache.save(places: places, key: key)
+                    self?.cache.save(places: places, key: key.key)
                     
-                    loadedPlaces.append(places)
-                    if key == keys.last {
+                    loadedPlaces[key.key] = places
+                    
+                    if key == keys.last! {
                         completion(loadedPlaces)
                     }
                 }

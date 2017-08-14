@@ -44,25 +44,32 @@ class MapViewController: UIViewController {
         addUserLocationOnMap()
         
         print("PREVIEW")
-        PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+        PlacesList.shared.getPlaces(with: [AppModel.shared.getCurrentLocation()]) { places in
             print("MAP START GET PLACES")
             guard let placesArr = places else { return }
-            guard let places = placesArr[0] else { return }
-            for place in places {
-                let annotation = PlaceAnnotation()
-                if let coordinates = place.coordinate {
-                    annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+            for (key, places) in placesArr {
+                guard let places = places else { return }
+                for place in places {
+                    let annotation = PlaceAnnotation()
+                    
+                    if let coordinates = place.coordinate {
+                        annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                    }
+                    
+                    annotation.title = place.name
+                    annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                    annotation.photoRef = place.photosRef?.first
+                    annotation.type = place.typeOfPlace?.first
+                    self.annotationsOfPlaces.append(annotation)
+                    self.map.addAnnotation(annotation)
                 }
-                annotation.title = place.name
-                annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                annotation.photoRef = place.photosRef?.first
-                annotation.type = place.typeOfPlace?.first
-                self.annotationsOfPlaces.append(annotation)
-                self.map.addAnnotation(annotation)
+            
+                self.visibleIds[key] = self.annotationsOfPlaces
+                self.annotationsOfPlaces = []
+                
             }
+
         }
-        let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
-        visibleIds[id] = annotationsOfPlaces
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
