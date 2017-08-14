@@ -32,6 +32,13 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let itemSize = UIScreen.main.bounds.height/4
+//        let layout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+//        layout.itemSize = CGSize(width: 1.2*itemSize, height: itemSize)
+        //layout.minimumLineSpacing = 3
+        //layout.minimumInteritemSpacing = 2
+     //   myCollectionview.collectionViewLayout = layout
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(AppModel.shared.getCurrentLocation()) { [weak self] placemarks, err in
             if let city = placemarks?[0].addressDictionary?["City"] as? String {
@@ -85,20 +92,22 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func getWeatherforCity(city: String) {
-        guard let request = RequestFormatter().createWeatherRequest(with: city) else { return }
-        cityName.text = city
-        
-        Loader().load(with: request) { [weak self] data in
-            guard let data = data else { return }
-            DispatchQueue.main.async {
-                self?.forecast = WeatherParser().parse(with: data)
-                guard let todayForecast = self?.forecast?[0] else { return }
-                self?.setCurrentWeather(with: todayForecast)
-                self?.myCollectionview.reloadData()
+        if city != "" &&  city.characters.last != " "  {
+            cityName.text = city
+            let cityname  = city.replacingOccurrences(of: " ", with: "%20")
+            guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
+            
+            Loader().load(with: request) { [weak self] data in
+                guard let data = data else { return }
+                DispatchQueue.main.async {
+                    self?.forecast = WeatherParser().parse(with: data)
+                    guard let todayForecast = self?.forecast?[0] else { return }
+                    self?.setCurrentWeather(with: todayForecast)
+                    self?.myCollectionview.reloadData()
+                }
             }
         }
     }
-    
     func setCurrentWeather(with forecast: Forecast) {
         currentTemp.text = "\(forecast.currentTemp)º"
         feelslike.text = "\(forecast.feelsTemp)º"

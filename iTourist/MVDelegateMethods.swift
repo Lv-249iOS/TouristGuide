@@ -207,9 +207,9 @@ extension MapViewController: MKMapViewDelegate {
                 
                 DataProvider.shared.getData(with: [id]) { result in
                     
-                    for place in result ?? [] {
+                    /*for place in result ?? [:] {
                         let annotation = PlaceAnnotation()
-                        if let coordinates = place?[0].coordinate {
+                        if let coordinates = place[0].coordinate {
                             annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
                         }
                         annotation.title = place?[0].name
@@ -219,7 +219,8 @@ extension MapViewController: MKMapViewDelegate {
                         self.annotationsOfPlaces.append(annotation)
                         self.map.addAnnotation(annotation)
                     }
-                    self.visibleIds[id] = self.annotationsOfPlaces
+ 
+                    self.visibleIds[id] = self.annotationsOfPlaces*/
                 }
                 
             }
