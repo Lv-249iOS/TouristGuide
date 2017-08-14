@@ -30,7 +30,7 @@ class PlaceCoreData {
                 place.data = data as NSArray
             }
             try? context.save()
-        
+            
             DispatchQueue.main.async { [weak self] in
                 guard self != nil else {
                     print("Self is nil ")
@@ -44,7 +44,7 @@ class PlaceCoreData {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
-            let result = try PlaceCoreData.persistentContainer.newBackgroundContext().fetch(placeFetch)
+            let result = try PlaceCoreData.context.fetch(placeFetch)
             if result.count > 0 {
                 var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
@@ -72,7 +72,7 @@ class PlaceCoreData {
         } catch {
             print ("There was an error during deleting")
         }
-}
+    }
     
     func change(data: [NSData],by key: String) {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
