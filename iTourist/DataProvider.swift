@@ -16,7 +16,7 @@ class DataProvider {
     
     func getData(with key: String, completion: @escaping ([Place]?)->()) {
         print(" DATA PROVIDER")
-        
+       // cache.removeFromCache(with: key)
         if let data = cache.getFromCache(with: key) {
             print("CACHE")
             let converter = DataConverter()

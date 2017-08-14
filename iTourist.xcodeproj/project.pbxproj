@@ -183,6 +183,7 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				20DB16E21F3859DF00E4B695 /* Places */,
 				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E31F386EE500E4B695 /* Weather */,
 				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
@@ -305,7 +306,6 @@
 				E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */,
 				E72EBBB11F34A107003D7357 /* Forecast.swift */,
 				202898E21F333FBB00F136BB /* WeatherViewController.swift */,
-				20DB16E21F3859DF00E4B695 /* Places */,
 			);
 			name = Weather;
 			sourceTree = "<group>";
