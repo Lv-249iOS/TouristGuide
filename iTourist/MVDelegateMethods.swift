@@ -206,28 +206,28 @@ extension MapViewController: MKMapViewDelegate {
                 }
             }
         }
-        
-        
-        // 4. Check visible ids if still visible
-        
-        visibleIds.forEach { (visibleRegionInfo) in
-            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
-            let visibleRegion = mapView.region
-            
-            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
-            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
-            
-            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
-            
-            if !visible {
-                // 4.1 Remove tile visibleRegionInfo
-                for annotation in visibleRegionInfo.value {
-                    map.removeAnnotation(annotation)
-                    visibleIds.removeValue(forKey: visibleRegionInfo.key)
-                }
-
-            }
-        }
+//        
+//        
+//        // 4. Check visible ids if still visible
+//        
+//        visibleIds.forEach { (visibleRegionInfo) in
+//            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
+//            let visibleRegion = mapView.region
+//            
+//            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+//            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+//            
+//            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
+//            
+//            if !visible {
+//                // 4.1 Remove tile visibleRegionInfo
+//                for annotation in visibleRegionInfo.value {
+//                    map.removeAnnotation(annotation)
+//                    visibleIds.removeValue(forKey: visibleRegionInfo.key)
+//                }
+//
+//            }
+//        }
         
         
 //        var currentIds: [String] = []
