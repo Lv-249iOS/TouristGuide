@@ -44,7 +44,7 @@ class PlaceCoreData {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
-            let result = try PlaceCoreData.context.fetch(placeFetch)
+            let result = try PlaceCoreData.persistentContainer.newBackgroundContext().fetch(placeFetch)
             if result.count > 0 {
                 var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
