@@ -24,17 +24,20 @@ class PlaceCoreData {
     }
     
     func add(data: [NSData], key: String) {
-        
-        let place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
-        place.setValue(data, forKey: "dataArray")
-        place.setValue(key, forKey: "key")
-        do {
-            try PlaceCoreData.context.save()
-            self.places.append(place)
-        }
-        catch {
-            print("Error in saving data")
-        }
+        PlaceCoreData.persistentContainer.performBackgroundTask({ context in
+            if let place = NSEntityDescription.insertNewObject(forEntityName: "PlaceEntity", into: context) as? PlaceEntity {
+                place.key = key
+                place.data = data as NSArray
+            }
+            try? context.save()
+            
+            DispatchQueue.main.async { [weak self] in
+                guard self != nil else {
+                    print("Self is nil ")
+                    return
+                }
+            }
+        })
     }
     
     func get(by key: String) -> [NSData]? {
@@ -63,14 +66,29 @@ class PlaceCoreData {
         let predicate = NSPredicate(format: "key == %@", key)
         let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         fetchToDelete.predicate = predicate
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
         do {
-            let fetchedEntities = try PlaceCoreData.context.fetch(fetchToDelete) as! [NSManagedObject]
-            if let entityToDelete = fetchedEntities.first {
-                PlaceCoreData.context.delete(entityToDelete)
+            try PlaceCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
+        } catch {
+            print ("There was an error during deleting")
+        }
+    }
+    
+    func change(data: [NSData],by key: String) {
+        let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
+        placeFetch.predicate = NSPredicate(format: "key == %@", key)
+        do {
+            let result = try PlaceCoreData.context.fetch(placeFetch)
+            if result.count > 0 {
+                delete(for: key)
+                add(data: data, key: key)
+            } else {
+                print("Eror: Place by key not updated")
                 try PlaceCoreData.context.save()
             }
         } catch let error as NSError {
-            print("Error: \(error) " + "description \(error.localizedDescription)")
+            print("Error: \(error) " +
+                "description \(error.localizedDescription)")
         }
     }
 }

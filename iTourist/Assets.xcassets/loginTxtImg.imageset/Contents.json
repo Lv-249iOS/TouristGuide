@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "fonstola.ru-72345.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "login.png",
       "scale" : "2x"
     },
     {

@@ -215,10 +215,9 @@
 				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
+				617ED2F11F41D484001FEE6F /* Profile */,
 				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
 				0E8B3BC31F2F2CA3001FFC73 /* Main.storyboard */,
-				202898DD1F333BB400F136BB /* ProfileViewController.swift */,
-				202898B11F331FBA00F136BB /* Profile.storyboard */,
 				202898E71F33428B00F136BB /* SettingsViewController.swift */,
 				202898E41F3341EF00F136BB /* Settings.storyboard */,
 				0EE83E341F39C3D300C5662A /* RoundButton.swift */,
@@ -300,6 +299,7 @@
 				0ED851001F3C433200A200A4 /* DataProvider.swift */,
 				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
+				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 			);
 			name = DataProvider;
 			sourceTree = "<group>";
@@ -308,9 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
-				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
+				0ED851051F3C433200A200A4 /* PlacesList.swift */,
+				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -349,6 +349,15 @@
 				202898E21F333FBB00F136BB /* WeatherViewController.swift */,
 			);
 			name = Weather;
+			sourceTree = "<group>";
+		};
+		617ED2F11F41D484001FEE6F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				202898DD1F333BB400F136BB /* ProfileViewController.swift */,
+				202898B11F331FBA00F136BB /* Profile.storyboard */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		B204E4A41F3A14C000454978 /* icons */ = {
