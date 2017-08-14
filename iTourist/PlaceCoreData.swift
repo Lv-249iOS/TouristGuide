@@ -73,6 +73,24 @@ class PlaceCoreData {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }
     }
+    
+    func update(data: [NSData], key: String) {
+        let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
+        placeFetch.predicate = NSPredicate(format: "key == %@", key)
+        do {
+            let result = try PlaceCoreData.context.fetch(placeFetch)
+            if result.count > 0 {
+                delete(for: key)
+                add(data: data, key: key)
+            } else {
+                print("Eror: Place by key not updated")
+                try PlaceCoreData.context.save()
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " +
+                "description \(error.localizedDescription)")
+        }
+    }
 }
 
 
