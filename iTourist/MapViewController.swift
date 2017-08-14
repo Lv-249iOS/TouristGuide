@@ -46,7 +46,8 @@ class MapViewController: UIViewController {
         print("PREVIEW")
         PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
             print("MAP START GET PLACES")
-            guard let places = places else { return }
+            guard let placesArr = places else { return }
+            guard let places = placesArr[0] else { return }
             for place in places {
                 let annotation = PlaceAnnotation()
                 if let coordinates = place.coordinate {

@@ -10,8 +10,8 @@ import Foundation
 
 class RequestFormatter {
     
-    func createIdUrlRequest(with key: String) -> URLRequest? {
-        guard let url = UrlFormatter().createUrlForPlacesIdsReq(with: key) else { return nil }
+    func createIdUrlRequest(with key: String, radius: Int = 10000) -> URLRequest? {
+        guard let url = UrlFormatter().createUrlForPlacesIdsReq(with: key, radius: radius) else { return nil }
         return URLRequest(url: url)
     }
     

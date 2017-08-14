@@ -214,6 +214,7 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
 				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
@@ -337,7 +338,6 @@
 				20751DDE1F38E60500E4A25A /* PlacesPageController.swift */,
 				20751DE01F38FE9F00E4A25A /* ImageViewController.swift */,
 				20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */,
-				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Kristina Del Rio Albrechet";
+				ORGANIZATIONNAME = "Lv-249iOS";
 				TargetAttributes = {
 					0E8B3BBB1F2F2CA3001FFC73 = {
 						CreatedOnToolsVersion = 8.3.3;

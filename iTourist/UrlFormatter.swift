@@ -22,7 +22,7 @@ class UrlFormatter {
         case key = "c51487b2c3714e86be6142344173107"
     }
     
-    func createUrlForPlacesIdsReq(with locationKey: String, radius: Int = 10000, type: String = "point_of_interest") -> URL? {
+    func createUrlForPlacesIdsReq(with locationKey: String, radius: Int, type: String = "point_of_interest") -> URL? {
         let location = "location=" + locationKey
         let rad = "radius=" + "\(radius)"
         let placeType = "type=" + type

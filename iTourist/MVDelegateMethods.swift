@@ -205,17 +205,17 @@ extension MapViewController: MKMapViewDelegate {
                 
                 self.annotationsOfPlaces = []
                 
-                DataProvider.shared.getData(with: id) { result in
+                DataProvider.shared.getData(with: [id]) { result in
                     
                     for place in result ?? [] {
                         let annotation = PlaceAnnotation()
-                        if let coordinates = place.coordinate {
+                        if let coordinates = place?[0].coordinate {
                             annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
                         }
-                        annotation.title = place.name
-                        annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                        annotation.photoRef = place.photosRef?.first
-                        annotation.type = place.typeOfPlace?.first
+                        annotation.title = place?[0].name
+                        annotation.subtitle = "\(place?[0].typeOfPlace?.first ?? "") \(place?[0].internationalPhoneNumber ?? "")"
+                        annotation.photoRef = place?[0].photosRef?.first
+                        annotation.type = place?[0].typeOfPlace?.first
                         self.annotationsOfPlaces.append(annotation)
                         self.map.addAnnotation(annotation)
                     }
