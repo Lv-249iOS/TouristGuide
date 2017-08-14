@@ -29,7 +29,6 @@
 		0ED8510B1F3C433200A200A4 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851001F3C433200A200A4 /* DataProvider.swift */; };
 		0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851011F3C433200A200A4 /* Loader.swift */; };
 		0ED8510D1F3C433200A200A4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851021F3C433200A200A4 /* LocationManager.swift */; };
-		0ED8510E1F3C433200A200A4 /* MapFrameProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */; };
 		0ED851101F3C433200A200A4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851051F3C433200A200A4 /* PlacesList.swift */; };
 		0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851111F3C537000A200A4 /* UrlFormatter.swift */; };
 		0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851131F3C77C300A200A4 /* AttributesEnums.swift */; };
@@ -112,7 +111,6 @@
 		0ED851001F3C433200A200A4 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		0ED851011F3C433200A200A4 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		0ED851021F3C433200A200A4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFrameProcessor.swift; sourceTree = "<group>"; };
 		0ED851051F3C433200A200A4 /* PlacesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
 		0ED851111F3C537000A200A4 /* UrlFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlFormatter.swift; sourceTree = "<group>"; };
 		0ED851131F3C77C300A200A4 /* AttributesEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesEnums.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				20DB16E21F3859DF00E4B695 /* Places */,
 				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
@@ -314,7 +311,6 @@
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
 				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
-				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -533,7 +529,6 @@
 				0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */,
 				20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */,
 				0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */,
-				0ED8510E1F3C433200A200A4 /* MapFrameProcessor.swift in Sources */,
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,

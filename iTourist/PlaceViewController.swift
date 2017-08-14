@@ -22,13 +22,15 @@ class PlaceViewController: UITableViewController {
         PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
             DispatchQueue.main.async {
                 guard let placesArr = places else { return }
-                guard let places = placesArr[0], let type = self.navigationItem.title else { return }
-                for place in places {
-                    if place.typeOfPlace?.contains(type) == true {
-                        self.places.append(place)
+                for (_, places) in placesArr {
+                    guard let type = self.navigationItem.title else { return }
+                    guard let places = places else { return }
+                    for place in places {
+                        if place.typeOfPlace?.contains(type) == true {
+                            self.places.append(place)
+                        }
                     }
                 }
-                
                 self.tableView.reloadData()
             }
         }
