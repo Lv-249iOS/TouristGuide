@@ -11,9 +11,31 @@ import CoreLocation
 
 typealias RegionId = String
 
+let converter = CoordinateConverter()
+
 class MapFrameConverter {
-    static func convert(region: MKCoordinateRegion) -> [RegionId] {
-        return ["+42.01-83.65"]
+    static func convert(region: MKCoordinateRegion) -> [CLLocation] {
+        //var currentIds: [RegionId] = []
+        //cicle
+        var locationCenters: [CLLocation] = []
+        
+        let leftLo = region.center.longitude - region.span.longitudeDelta/2
+        let rightLo = region.center.longitude + region.span.longitudeDelta/2
+        let rightLa = region.center.latitude + region.span.latitudeDelta/2
+        let button = region.center.latitude - region.span.latitudeDelta/2
+        
+        for i in stride(from: leftLo, through: rightLo, by: 0.2) {
+            print("LOOP First \(i)")
+            for j in stride(from: button, through: rightLa, by: 0.2) {
+                print("LOOP Second \(j)")
+                
+                let location = CLLocation(latitude: i+0.1, longitude: j+0.1)
+                //let id = converter.converteToKey(with: location)
+                //currentIds.append(id)
+                locationCenters.append(location)
+            }
+        }
+        return locationCenters //["+42.01-83.65"]
     }
     
     static func convert(id: RegionId) -> MKCoordinateRegion {

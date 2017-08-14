@@ -27,7 +27,7 @@ extension MapViewController: MKMapViewDelegate {
                 guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
                 
                 if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: annotationsOfPlaces[index].type!) {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
                         annotationView?.image = image
                     } else {
                         annotationView?.image = UIImage(named: "pin")
@@ -38,7 +38,7 @@ extension MapViewController: MKMapViewDelegate {
                 annotationView?.annotation = annotation
                 guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
                 if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: annotationsOfPlaces[index].type ?? "pin") {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
                         annotationView?.image = image
                     } else {
                         annotationView?.image = UIImage(named: "pin")
@@ -55,9 +55,11 @@ extension MapViewController: MKMapViewDelegate {
             let leftAccessory = UIButton(type: .custom)
             leftAccessory.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             
+            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+            
             if let annotation = view.annotation as? PlaceAnnotation {
-                if let index = annotationsOfPlaces.index(of: annotation) {
-                    if let url = annotationsOfPlaces[index].photoRef {
+                if let index = visibleIds[id]?.index(of: annotation) {
+                    if let url = visibleIds[id]?[index].photoRef {
                         imageLoader.obtainImage(with: url) { image in
                             leftAccessory.setImage(image, for: .normal)
                             view.leftCalloutAccessoryView = leftAccessory
@@ -145,6 +147,37 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
+        // 1. Set Region to model
+        
+        
+        // 2. Convert region to array of IDs //locations centers
+        let locations = MapFrameConverter.convert(region: map.region)
+        
+        // 3. Send ids/locations to DataProvider
+        
+        
+        // 3.1 When data come:
+        // 3.1.1 Get region from id:
+        // - if intersects - present it
+        // - if not - skip
+        
+        // 4. Check visible ids if still visible
+        
+        visibleIds.forEach { (visibleRegionInfo) in
+            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
+            let visibleRegion = mapView.region
+            
+            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+            
+            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
+            
+            if !visible {
+                // 4.1 Remove tile visibleRegionInfo
+            }
+        }
+        
+        
         var currentIds: [String] = []
         
         let leftUpperCorner = CGPoint(x: map.bounds.minX, y: map.bounds.minY)
@@ -172,21 +205,22 @@ extension MapViewController: MKMapViewDelegate {
                 
                 self.annotationsOfPlaces = []
                 
-                DataProvider.shared.getData(with: id) { result in
+                DataProvider.shared.getData(with: [id]) { result in
                     
-                    for place in result ?? [] {
+                    /*for place in result ?? [:] {
                         let annotation = PlaceAnnotation()
-                        if let coordinates = place.coordinate {
+                        if let coordinates = place[0].coordinate {
                             annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
                         }
-                        annotation.title = place.name
-                        annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                        annotation.photoRef = place.photosRef?.first
-                        annotation.type = place.typeOfPlace?.first
+                        annotation.title = place?[0].name
+                        annotation.subtitle = "\(place?[0].typeOfPlace?.first ?? "") \(place?[0].internationalPhoneNumber ?? "")"
+                        annotation.photoRef = place?[0].photosRef?.first
+                        annotation.type = place?[0].typeOfPlace?.first
                         self.annotationsOfPlaces.append(annotation)
                         self.map.addAnnotation(annotation)
                     }
-                    self.visibleIds[id] = self.annotationsOfPlaces
+ 
+                    self.visibleIds[id] = self.annotationsOfPlaces*/
                 }
                 
             }

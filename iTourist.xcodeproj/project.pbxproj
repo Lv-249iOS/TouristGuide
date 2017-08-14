@@ -29,7 +29,6 @@
 		0ED8510B1F3C433200A200A4 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851001F3C433200A200A4 /* DataProvider.swift */; };
 		0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851011F3C433200A200A4 /* Loader.swift */; };
 		0ED8510D1F3C433200A200A4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851021F3C433200A200A4 /* LocationManager.swift */; };
-		0ED8510E1F3C433200A200A4 /* MapFrameProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */; };
 		0ED851101F3C433200A200A4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851051F3C433200A200A4 /* PlacesList.swift */; };
 		0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851111F3C537000A200A4 /* UrlFormatter.swift */; };
 		0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851131F3C77C300A200A4 /* AttributesEnums.swift */; };
@@ -70,6 +69,7 @@
 		B204E4A81F3A150600454978 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A71F3A150600454978 /* PlaceAnnotation.swift */; };
 		B204E4AA1F3A152500454978 /* MVDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A91F3A152500454978 /* MVDelegateMethods.swift */; };
 		B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */; };
+		B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B2D821F419D2300187090 /* MapFrameConverter.swift */; };
 		B23FA2DD1F38B48F0046DED1 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2DC1F38B48F0046DED1 /* pin.png */; };
 		E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB11F34A107003D7357 /* Forecast.swift */; };
 		E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */; };
@@ -111,7 +111,6 @@
 		0ED851001F3C433200A200A4 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		0ED851011F3C433200A200A4 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		0ED851021F3C433200A200A4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFrameProcessor.swift; sourceTree = "<group>"; };
 		0ED851051F3C433200A200A4 /* PlacesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
 		0ED851111F3C537000A200A4 /* UrlFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlFormatter.swift; sourceTree = "<group>"; };
 		0ED851131F3C77C300A200A4 /* AttributesEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesEnums.swift; sourceTree = "<group>"; };
@@ -154,6 +153,7 @@
 		B204E4A71F3A150600454978 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		B204E4A91F3A152500454978 /* MVDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVDelegateMethods.swift; sourceTree = "<group>"; };
 		B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDelegateMethods.swift; sourceTree = "<group>"; };
+		B23B2D821F419D2300187090 /* MapFrameConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFrameConverter.swift; sourceTree = "<group>"; };
 		B23FA2DC1F38B48F0046DED1 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		E72EBBB11F34A107003D7357 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherParse.swift; sourceTree = "<group>"; };
@@ -212,6 +212,7 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
 				617ED2F11F41D484001FEE6F /* Profile */,
@@ -249,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				B204E4A91F3A152500454978 /* MVDelegateMethods.swift */,
+				B23B2D821F419D2300187090 /* MapFrameConverter.swift */,
 				B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */,
 				B204E4A51F3A14DB00454978 /* RouteCalculatingMethods.swift */,
 				B204E4A71F3A150600454978 /* PlaceAnnotation.swift */,
@@ -308,7 +310,6 @@
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
 				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
-				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -333,7 +334,6 @@
 				20751DDE1F38E60500E4A25A /* PlacesPageController.swift */,
 				20751DE01F38FE9F00E4A25A /* ImageViewController.swift */,
 				20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */,
-				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -537,10 +537,10 @@
 				0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */,
 				20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */,
 				0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */,
-				0ED8510E1F3C433200A200A4 /* MapFrameProcessor.swift in Sources */,
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
+				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
 				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
@@ -758,7 +758,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = iTouristTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EugeneRoman.iTouristTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -772,7 +772,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = iTouristTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EugeneRoman.iTouristTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -21,13 +21,16 @@ class PlaceViewController: UITableViewController {
     func initPlaces() {
         PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
             DispatchQueue.main.async {
-                guard let places = places, let type = self.navigationItem.title else { return }
-                for place in places {
-                    if place.typeOfPlace?.contains(type) == true {
-                        self.places.append(place)
+                guard let placesArr = places else { return }
+                for (_, places) in placesArr {
+                    guard let type = self.navigationItem.title else { return }
+                    guard let places = places else { return }
+                    for place in places {
+                        if place.typeOfPlace?.contains(type) == true {
+                            self.places.append(place)
+                        }
                     }
                 }
-                
                 self.tableView.reloadData()
             }
         }
@@ -50,6 +53,12 @@ class PlaceViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        
+        let backgroundImage = UIImage(named: "background.png")
+        let imageView = UIImageView(image: backgroundImage)
+        
+        self.tableView.backgroundView = imageView
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
