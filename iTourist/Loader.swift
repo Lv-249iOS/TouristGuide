@@ -39,7 +39,12 @@ class Loader {
     
     func load(with request: URLRequest, completion: @escaping (Data?)->()) {
         URLSession.shared.dataTask(with: request) { data, response, err in
-            completion(data)
+            if let err = err {
+                print(err)
+                completion(nil)
+            } else {
+                completion(data)
+            }
         }.resume()
     }
 }
