@@ -27,7 +27,7 @@ extension MapViewController: MKMapViewDelegate {
                 guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
                 
                 if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: annotationsOfPlaces[index].type!) {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
                         annotationView?.image = image
                     } else {
                         annotationView?.image = UIImage(named: "pin")
@@ -38,7 +38,7 @@ extension MapViewController: MKMapViewDelegate {
                 annotationView?.annotation = annotation
                 guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
                 if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: annotationsOfPlaces[index].type ?? "pin") {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
                         annotationView?.image = image
                     } else {
                         annotationView?.image = UIImage(named: "pin")
@@ -55,9 +55,11 @@ extension MapViewController: MKMapViewDelegate {
             let leftAccessory = UIButton(type: .custom)
             leftAccessory.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             
+            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+            
             if let annotation = view.annotation as? PlaceAnnotation {
-                if let index = annotationsOfPlaces.index(of: annotation) {
-                    if let url = annotationsOfPlaces[index].photoRef {
+                if let index = visibleIds[id]?.index(of: annotation) {
+                    if let url = visibleIds[id]?[index].photoRef {
                         imageLoader.obtainImage(with: url) { image in
                             leftAccessory.setImage(image, for: .normal)
                             view.leftCalloutAccessoryView = leftAccessory
@@ -144,6 +146,37 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        // 1. Set Region to model
+        
+        
+        // 2. Convert region to array of IDs
+        let ids = MapFrameConverter.convert(region: mapView.region)
+        
+        // 3. Send ids to DataProvider
+        
+        
+        // 3.1 When data come:
+        // 3.1.1 Get region from id: 
+        // - if intersects - present it
+        // - in not - skip
+        
+        
+        // 4. Check visible ids if still visible
+        visibleIds.forEach { (visibleRegionInfo) in
+            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
+            let visibleRegion = mapView.region
+            
+            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+            
+            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
+            
+            if !visible {
+                // 4.1 Remove tile visibleRegionInfo
+            }
+        }
+        
         
         var currentIds: [String] = []
         

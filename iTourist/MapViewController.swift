@@ -17,7 +17,7 @@ class MapViewController: UIViewController {
     
     var annotationsOfPlaces: [PlaceAnnotation] = []
     var selectedAnnotations: [PlaceAnnotation] = []
-    var visibleIds: [String: [PlaceAnnotation]] = [:]
+    var visibleIds: [RegionId: [PlaceAnnotation]] = [:]
     var places: [Place]?
     
     var lineOverlays: [MKOverlay] = []

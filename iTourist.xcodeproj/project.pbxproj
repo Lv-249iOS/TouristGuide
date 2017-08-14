@@ -70,6 +70,7 @@
 		B204E4A81F3A150600454978 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A71F3A150600454978 /* PlaceAnnotation.swift */; };
 		B204E4AA1F3A152500454978 /* MVDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4A91F3A152500454978 /* MVDelegateMethods.swift */; };
 		B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */; };
+		B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B2D821F419D2300187090 /* MapFrameConverter.swift */; };
 		B23FA2DD1F38B48F0046DED1 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = B23FA2DC1F38B48F0046DED1 /* pin.png */; };
 		E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB11F34A107003D7357 /* Forecast.swift */; };
 		E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */; };
@@ -154,6 +155,7 @@
 		B204E4A71F3A150600454978 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		B204E4A91F3A152500454978 /* MVDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVDelegateMethods.swift; sourceTree = "<group>"; };
 		B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDelegateMethods.swift; sourceTree = "<group>"; };
+		B23B2D821F419D2300187090 /* MapFrameConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFrameConverter.swift; sourceTree = "<group>"; };
 		B23FA2DC1F38B48F0046DED1 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		E72EBBB11F34A107003D7357 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherParse.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				B204E4A91F3A152500454978 /* MVDelegateMethods.swift */,
+				B23B2D821F419D2300187090 /* MapFrameConverter.swift */,
 				B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */,
 				B204E4A51F3A14DB00454978 /* RouteCalculatingMethods.swift */,
 				B204E4A71F3A150600454978 /* PlaceAnnotation.swift */,
@@ -533,6 +536,7 @@
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
+				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
 				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
@@ -750,7 +754,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = iTouristTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EugeneRoman.iTouristTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -764,7 +768,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = iTouristTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EugeneRoman.iTouristTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
