@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         addUserLocationOnMap()
         
         print("PREVIEW")
-        PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+        PlacesList.shared.getPlaces(with: [AppModel.shared.getCurrentLocation()]) { places in
             print("MAP START GET PLACES")
             guard let placesArr = places else { return }
             for (key, places) in placesArr {

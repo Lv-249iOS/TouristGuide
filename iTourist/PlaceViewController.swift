@@ -19,7 +19,7 @@ class PlaceViewController: UITableViewController {
     var places: [Place] = []
     
     func initPlaces() {
-        PlacesList.shared.getPlaces(with: AppModel.shared.getCurrentLocation()) { places in
+        PlacesList.shared.getPlaces(with: [AppModel.shared.getCurrentLocation()]) { places in
             DispatchQueue.main.async {
                 guard let placesArr = places else { return }
                 for (_, places) in placesArr {
