@@ -19,6 +19,8 @@ class Forecast {
     var imagecode  = String()
     var image = UIImage()
     
+  
+    
     init(forecast: [String: Any]) {
         maxtemp = forecast["maxtemp_c"] as? Int ?? 0
         mintemp = forecast["mintemp_c"] as? Int ?? 0

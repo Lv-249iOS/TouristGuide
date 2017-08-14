@@ -12,9 +12,11 @@ struct Constants {
     
     var bounds: CGRect
     
+    
     init() {
         bounds = UIScreen.main.bounds
+        
     }
-    
     static let defaultRegionSpan = 0.01
+    static var exists = true
 }

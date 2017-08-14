@@ -92,22 +92,26 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func getWeatherforCity(city: String) {
-        if city != "" &&  city.characters.last != " "  {
-            cityName.text = city
-            let cityname  = city.replacingOccurrences(of: " ", with: "%20")
-            guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
-            
-            Loader().load(with: request) { [weak self] data in
-                guard let data = data else { return }
-                DispatchQueue.main.async {
-                    self?.forecast = WeatherParser().parse(with: data)
-                    guard let todayForecast = self?.forecast?[0] else { return }
-                    self?.setCurrentWeather(with: todayForecast)
-                    self?.myCollectionview.reloadData()
+                cityName.text = city
+                let cityname  = city.replacingOccurrences(of: " ", with: "%20")
+                guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
+                
+                Loader().load(with: request) { [weak self] data in
+                    guard let data = data else { return }
+                    DispatchQueue.main.async {
+                        self?.forecast = WeatherParser().parse(with: data)
+                            if Constants.exists {
+                            guard let todayForecast = self?.forecast?[0] else { return }
+                            self?.setCurrentWeather(with: todayForecast)
+                            self?.myCollectionview.reloadData()
+                    }
                 }
             }
+    
+            
         }
-    }
+    
+
     func setCurrentWeather(with forecast: Forecast) {
         currentTemp.text = "\(forecast.currentTemp)º"
         feelslike.text = "\(forecast.feelsTemp)º"
