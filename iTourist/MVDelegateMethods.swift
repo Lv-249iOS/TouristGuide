@@ -11,44 +11,44 @@ import MapKit
 
 extension MapViewController: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil } else {
-            let identifier = "Reuse"
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            
-            //will have to change it when conwerter is going to be ok
-            
-            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
-            
-            if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView?.canShowCallout = true
-                
-                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
-                
-                if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
-                        annotationView?.image = image
-                    } else {
-                        annotationView?.image = UIImage(named: "pin")
-                    }
-                }
-                
-            } else {
-                annotationView?.annotation = annotation
-                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
-                if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
-                        annotationView?.image = image
-                    } else {
-                        annotationView?.image = UIImage(named: "pin")
-                    }
-                }
-            }
-            
-            return annotationView
-        }
-    }
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        if annotation is MKUserLocation { return nil } else {
+//            let identifier = "Reuse"
+//            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//            
+//            //will have to change it when conwerter is going to be ok
+//            
+//            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+//            
+//            if annotationView == nil {
+//                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                annotationView?.canShowCallout = true
+//                
+//                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
+//                
+//                if let index = visibleIds[id]?.index(of: annotation) {
+//                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
+//                        annotationView?.image = image
+//                    } else {
+//                        annotationView?.image = UIImage(named: "pin")
+//                    }
+//                }
+//                
+//            } else {
+//                annotationView?.annotation = annotation
+//                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
+//                if let index = visibleIds[id]?.index(of: annotation) {
+//                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
+//                        annotationView?.image = image
+//                    } else {
+//                        annotationView?.image = UIImage(named: "pin")
+//                    }
+//                }
+//            }
+//            
+//            return annotationView
+//        }
+//    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if !(view.annotation is MKUserLocation) {
@@ -155,23 +155,32 @@ extension MapViewController: MKMapViewDelegate {
         
         // 3. Send ids/locations to DataProvider
         
-//        DataProvider.shared.getData(with: locations) { result in
-//            
-//            for place in result ?? [:] {
-//             let annotation = PlaceAnnotation()
-//             if let coordinates = place[0].coordinate {
-//             annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
-//             }
-//             annotation.title = place?[0].name
-//             annotation.subtitle = "\(place?[0].typeOfPlace?.first ?? "") \(place?[0].internationalPhoneNumber ?? "")"
-//             annotation.photoRef = place?[0].photosRef?.first
-//             annotation.type = place?[0].typeOfPlace?.first
-//             self.annotationsOfPlaces.append(annotation)
-//             self.map.addAnnotation(annotation)
-//             }
-//             
-//             self.visibleIds[id] = self.annotationsOfPlaces
-//        }
+        PlacesList.shared.getPlaces(with: locations) { places in
+            print("MAP START GET PLACES")
+            guard let placesArr = places else { return }
+            for (key, places) in placesArr {
+                guard let places = places else { return }
+                for place in places {
+                    let annotation = PlaceAnnotation()
+                    
+                    if let coordinates = place.coordinate {
+                        annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                    }
+                    
+                    annotation.title = place.name
+                    annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                    annotation.photoRef = place.photosRef?.first
+                    annotation.type = place.typeOfPlace?.first
+                    self.annotationsOfPlaces.append(annotation)
+                    //self.map.addAnnotation(annotation)
+                }
+                
+                self.visibleIds[key] = self.annotationsOfPlaces
+                self.annotationsOfPlaces = []
+                
+            }
+            
+        }
 
         
         
