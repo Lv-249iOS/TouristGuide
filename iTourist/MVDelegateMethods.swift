@@ -155,11 +155,49 @@ extension MapViewController: MKMapViewDelegate {
         
         // 3. Send ids/locations to DataProvider
         
+//        DataProvider.shared.getData(with: locations) { result in
+//            
+//            for place in result ?? [:] {
+//             let annotation = PlaceAnnotation()
+//             if let coordinates = place[0].coordinate {
+//             annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+//             }
+//             annotation.title = place?[0].name
+//             annotation.subtitle = "\(place?[0].typeOfPlace?.first ?? "") \(place?[0].internationalPhoneNumber ?? "")"
+//             annotation.photoRef = place?[0].photosRef?.first
+//             annotation.type = place?[0].typeOfPlace?.first
+//             self.annotationsOfPlaces.append(annotation)
+//             self.map.addAnnotation(annotation)
+//             }
+//             
+//             self.visibleIds[id] = self.annotationsOfPlaces
+//        }
+
+        
         
         // 3.1 When data come:
         // 3.1.1 Get region from id:
         // - if intersects - present it
         // - if not - skip
+        
+        visibleIds.forEach { (visibleRegionInfo) in
+            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
+            let visibleRegion = mapView.region
+            
+            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+            
+            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
+            
+            if visible {
+                // present
+                for annotation in visibleRegionInfo.value {
+                map.addAnnotation(annotation)
+                
+                }
+            }
+        }
+        
         
         // 4. Check visible ids if still visible
         
@@ -174,70 +212,75 @@ extension MapViewController: MKMapViewDelegate {
             
             if !visible {
                 // 4.1 Remove tile visibleRegionInfo
-            }
-        }
-        
-        
-        var currentIds: [String] = []
-        
-        let leftUpperCorner = CGPoint(x: map.bounds.minX, y: map.bounds.minY)
-        let leftUpperCornerCoordinates = mapView.convert(leftUpperCorner, toCoordinateFrom: mapView)
-        
-        let rightUpperCorner = CGPoint(x: map.bounds.maxX, y: map.bounds.minY)
-        let rightUpperCornerCoordinates = mapView.convert(rightUpperCorner, toCoordinateFrom: mapView)
-        
-        let rightBottomCorner = CGPoint(x: map.bounds.maxX, y: map.bounds.maxY)
-        let rightBottomCornerCoordinates = mapView.convert(rightBottomCorner, toCoordinateFrom: mapView)
-        
-        for i in stride(from: leftUpperCornerCoordinates.longitude, through: rightUpperCornerCoordinates.longitude, by: 0.2) {
-            print("LOOP First \(i)")
-            for j in stride(from: rightBottomCornerCoordinates.latitude, through: rightUpperCornerCoordinates.latitude, by: 0.2) {
-                print("LOOP Second \(j)")
-                
-                let location = CLLocation(latitude: i, longitude: j)
-                let id = converter.converteToKey(with: location)
-                currentIds.append(id)
-            }
-        }
-        
-        for id in currentIds {
-            if visibleIds[id] == nil {
-                
-                self.annotationsOfPlaces = []
-                
-                DataProvider.shared.getData(with: [id]) { result in
-                    
-                    /*for place in result ?? [:] {
-                        let annotation = PlaceAnnotation()
-                        if let coordinates = place[0].coordinate {
-                            annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
-                        }
-                        annotation.title = place?[0].name
-                        annotation.subtitle = "\(place?[0].typeOfPlace?.first ?? "") \(place?[0].internationalPhoneNumber ?? "")"
-                        annotation.photoRef = place?[0].photosRef?.first
-                        annotation.type = place?[0].typeOfPlace?.first
-                        self.annotationsOfPlaces.append(annotation)
-                        self.map.addAnnotation(annotation)
-                    }
- 
-                    self.visibleIds[id] = self.annotationsOfPlaces*/
+                for annotation in visibleRegionInfo.value {
+                    map.removeAnnotation(annotation)
+                    visibleIds.removeValue(forKey: visibleRegionInfo.key)
                 }
-                
+
             }
         }
-        //        for visibleId in visibleIds.keys {
-        //            if !(currentIds.contains(visibleId)) {
-        //
-        //                if let invisibleAnnotations = visibleIds[visibleId] {
-        //                    for annotation in invisibleAnnotations {
-        //                        map.removeAnnotation(annotation)
-        //                    }
-        //                }
-        //
-        //                visibleIds.removeValue(forKey: visibleId)
-        //                
-        //            }
-        //        }
+        
+        
+//        var currentIds: [String] = []
+//        
+//        let leftUpperCorner = CGPoint(x: map.bounds.minX, y: map.bounds.minY)
+//        let leftUpperCornerCoordinates = mapView.convert(leftUpperCorner, toCoordinateFrom: mapView)
+//        
+//        let rightUpperCorner = CGPoint(x: map.bounds.maxX, y: map.bounds.minY)
+//        let rightUpperCornerCoordinates = mapView.convert(rightUpperCorner, toCoordinateFrom: mapView)
+//        
+//        let rightBottomCorner = CGPoint(x: map.bounds.maxX, y: map.bounds.maxY)
+//        let rightBottomCornerCoordinates = mapView.convert(rightBottomCorner, toCoordinateFrom: mapView)
+//        
+//        for i in stride(from: leftUpperCornerCoordinates.longitude, through: rightUpperCornerCoordinates.longitude, by: 0.2) {
+//            print("LOOP First \(i)")
+//            for j in stride(from: rightBottomCornerCoordinates.latitude, through: rightUpperCornerCoordinates.latitude, by: 0.2) {
+//                print("LOOP Second \(j)")
+//                
+//                let location = CLLocation(latitude: i, longitude: j)
+//                let id = converter.converteToKey(with: location)
+//                currentIds.append(id)
+//            }
+//        }
+//        
+//        for id in currentIds {
+//            if visibleIds[id] == nil {
+//                
+//                self.annotationsOfPlaces = []
+//                
+//                DataProvider.shared.getData(with: [id]) { result in
+//                    
+//                    /*for place in result ?? [:] {
+//                        let annotation = PlaceAnnotation()
+//                        if let coordinates = place[0].coordinate {
+//                            annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+//                        }
+//                        annotation.title = place?[0].name
+//                        annotation.subtitle = "\(place?[0].typeOfPlace?.first ?? "") \(place?[0].internationalPhoneNumber ?? "")"
+//                        annotation.photoRef = place?[0].photosRef?.first
+//                        annotation.type = place?[0].typeOfPlace?.first
+//                        self.annotationsOfPlaces.append(annotation)
+//                        self.map.addAnnotation(annotation)
+//                    }
+// 
+//                    self.visibleIds[id] = self.annotationsOfPlaces*/
+//                }
+//                
+//            }
+//        }
+//        //        for visibleId in visibleIds.keys {
+//        //            if !(currentIds.contains(visibleId)) {
+//        //
+//        //                if let invisibleAnnotations = visibleIds[visibleId] {
+//        //                    for annotation in invisibleAnnotations {
+//        //                        map.removeAnnotation(annotation)
+//        //                    }
+//        //                }
+//        //
+//        //                visibleIds.removeValue(forKey: visibleId)
+//        //                
+//        //            }
+//        //        }
         
     }
 }
