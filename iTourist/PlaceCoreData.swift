@@ -34,7 +34,6 @@ class PlaceCoreData {
             DispatchQueue.main.async { [weak self] in
                 guard self != nil else {
                     print("Self is nil ")
-                    
                     return
                 }
             }
@@ -67,18 +66,15 @@ class PlaceCoreData {
         let predicate = NSPredicate(format: "key == %@", key)
         let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         fetchToDelete.predicate = predicate
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
         do {
-            let fetchedEntities = try PlaceCoreData.context.fetch(fetchToDelete) as! [NSManagedObject]
-            if let entityToDelete = fetchedEntities.first {
-                PlaceCoreData.context.delete(entityToDelete)
-                try PlaceCoreData.context.save()
-            }
-        } catch let error as NSError {
-            print("Error: \(error) " + "description \(error.localizedDescription)")
+            try PlaceCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
+        } catch {
+            print ("There was an error during deleting")
         }
-    }
+}
     
-    func update(data: [NSData], key: String) {
+    func change(data: [NSData],by key: String) {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
