@@ -26,7 +26,7 @@ class PlaceCoreData {
     func add(data: [NSData], key: String) {
         
         let place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
-        place.setValue(data, forKey: "data")
+        place.setValue(data, forKey: "dataArray")
         place.setValue(key, forKey: "key")
         do {
             try PlaceCoreData.context.save()
@@ -46,7 +46,7 @@ class PlaceCoreData {
                 var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
                 
-                return place.value(forKey: "data") as? [NSData]
+                return place.value(forKey: "dataArray") as? [NSData]
             } else {
                 print("Eror: Place by key not found")
                 try PlaceCoreData.context.save()

@@ -13,6 +13,7 @@
 		0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F41F30B0D3003671F1 /* PlaceCell.swift */; };
 		0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4003F61F30B394003671F1 /* PlaceViewController.swift */; };
 		0E5DE1E41F3217780045305D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DE1E31F3217780045305D /* ImageDownloader.swift */; };
+		0E7D4ADB1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D4ADA1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift */; };
 		0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B3BBF1F2F2CA3001FFC73 /* AppDelegate.swift */; };
 		0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */; };
 		0E8B3BC51F2F2CA3001FFC73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8B3BC31F2F2CA3001FFC73 /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		0E4003F41F30B0D3003671F1 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		0E4003F61F30B394003671F1 /* PlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		0E5DE1E31F3217780045305D /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		0E7D4ADA1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionForPlacesCoreData.swift; sourceTree = "<group>"; };
 		0E8B3BBC1F2F2CA3001FFC73 /* iTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8B3BBF1F2F2CA3001FFC73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				0E8B3BC61F2F2CA3001FFC73 /* iTourist.xcdatamodeld */,
 				15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */,
+				0E7D4ADA1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				0ED8510A1F3C433200A200A4 /* DataConverter.swift in Sources */,
 				0ED851071F3C433200A200A4 /* Cacher.swift in Sources */,
 				20751DE11F38FE9F00E4A25A /* ImageViewController.swift in Sources */,
+				0E7D4ADB1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift in Sources */,
 				0ED851091F3C433200A200A4 /* CoordinateConverter.swift in Sources */,
 				202898E31F333FBB00F136BB /* WeatherViewController.swift in Sources */,
 				20C113E31F3CA7A5009BE8AD /* PlaceProfileViewController.swift in Sources */,
@@ -797,6 +801,7 @@
 				15DF4CAE1F404C3B00C68EEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
