@@ -10,6 +10,7 @@ import CoreLocation
 
 class CoordinateConverter {
     
+    /// 
     func converteToKey(with location: CLLocation) -> String {
         let lat = round(location.coordinate.latitude * 100) / 100
         let long = round(location.coordinate.longitude * 100) / 100
@@ -27,8 +28,8 @@ class CoordinateConverter {
     
     func converteToLocation(with key: String) -> CLLocation? {
         let coordinate: [String] = key.characters.split{ $0 == "," }.map(String.init)
-        
         guard let lat = Double(coordinate[0]), let long = Double(coordinate[1]) else { return nil }
+        
         let location = CLLocation(latitude: lat, longitude: long)
         
         return location

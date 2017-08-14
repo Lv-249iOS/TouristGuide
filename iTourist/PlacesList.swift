@@ -24,7 +24,6 @@ class PlacesList {
         var keys: [(key: String, loc: String)] = []
 
         for loc in locations {
-
             let key = (key: converter.converteToKey(with: loc), loc: converter.converteToString(from: loc))
             keys.append(key)
         }
