@@ -21,7 +21,11 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     /*
     // MARK: - Navigation
 
