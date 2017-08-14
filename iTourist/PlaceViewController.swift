@@ -53,6 +53,12 @@ class PlaceViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        
+        let backgroundImage = UIImage(named: "background.png")
+        let imageView = UIImageView(image: backgroundImage)
+        
+        self.tableView.backgroundView = imageView
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
