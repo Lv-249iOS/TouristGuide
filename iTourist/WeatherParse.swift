@@ -12,6 +12,7 @@ import UIKit
 class WeatherParser {
     
     func parse(with data: Data) -> [Forecast]? {
+        
         if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject {
             var forecasts: [Forecast] = []
             var currentTemp = 0

@@ -32,13 +32,13 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let itemSize = UIScreen.main.bounds.height/4
-//        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-//        layout.itemSize = CGSize(width: 1.2*itemSize, height: itemSize)
+        //        let itemSize = UIScreen.main.bounds.height/4
+        //        let layout = UICollectionViewFlowLayout()
+        //        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        //        layout.itemSize = CGSize(width: 1.2*itemSize, height: itemSize)
         //layout.minimumLineSpacing = 3
         //layout.minimumInteritemSpacing = 2
-     //   myCollectionview.collectionViewLayout = layout
+        //   myCollectionview.collectionViewLayout = layout
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(AppModel.shared.getCurrentLocation()) { [weak self] placemarks, err in
             if let city = placemarks?[0].addressDictionary?["City"] as? String {
@@ -64,7 +64,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
                 cell.mintemp.text = String(weather[indexPath.row + 1].mintemp) + "º"
                 cell.maxtemp.text = String(weather[indexPath.row + 1].maxtemp) + "º"
                 cell.weatherImage.image = weather[indexPath.row + 1].image
-            
+                
                 return cell
             }
         }
@@ -92,19 +92,36 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func getWeatherforCity(city: String) {
-        if city != "" &&  city.characters.last != " "  {
-            cityName.text = city
-            let cityname  = city.replacingOccurrences(of: " ", with: "%20")
-            guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
-            
-            Loader().load(with: request) { [weak self] data in
-                guard let data = data else { return }
-                DispatchQueue.main.async {
-                    self?.forecast = WeatherParser().parse(with: data)
-                    guard let todayForecast = self?.forecast?[0] else { return }
-                    self?.setCurrentWeather(with: todayForecast)
-                    self?.myCollectionview.reloadData()
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(city) { (placemarks, error) in
+            if let err = error {
+                print(err)
+                
+            } else {
+                guard
+                    let placemarks = placemarks,
+                    let location = placemarks.first?.location
+                    else {return}
+                let lat = location.coordinate.latitude
+                let lon = location.coordinate.longitude
+                print("Lat: \(lat), Lon: \(lon)")
+                
+                if lon != 0.0 && lat != 0.0 {
+                    self.cityName.text = city
+                    let cityname  = city.replacingOccurrences(of: " ", with: "%20")
+                    guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
+                    
+                    Loader().load(with: request) { [weak self] data in
+                        guard let data = data else { return }
+                        DispatchQueue.main.async {
+                            self?.forecast = WeatherParser().parse(with: data)
+                            guard let todayForecast = self?.forecast?[0] else { return }
+                            self?.setCurrentWeather(with: todayForecast)
+                            self?.myCollectionview.reloadData()
+                        }
+                    }
                 }
+                
             }
         }
     }

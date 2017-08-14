@@ -214,7 +214,6 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				20DB16E21F3859DF00E4B695 /* Places */,
 				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
@@ -347,8 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				202898DF1F333EE700F136BB /* Weather.storyboard */,
-				E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */,
 				E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */,
+				E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */,
 				E72EBBB11F34A107003D7357 /* Forecast.swift */,
 				202898E21F333FBB00F136BB /* WeatherViewController.swift */,
 			);
