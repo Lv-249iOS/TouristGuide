@@ -39,6 +39,7 @@ class FeedbackTableViewController: UITableViewController {
         cell.feedBack.text = review.text
         cell.timeDescription.text = "\(review.timeDescription)"
         
+//        cell.feedbackImage.image = #imageLiteral(resourceName: "noImage")
         
         return cell
     }
