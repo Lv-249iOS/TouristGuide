@@ -42,7 +42,7 @@ class Cacher {
     }
     
     func updateCachedValue(with newVal: [Data], key: String) {
-        // Some method that will be update data for some key
+        database.change(data: newVal as [NSData], by: key)
         print("VALUE WAS UPDATED IN DATABASE")
     }
 }

@@ -63,14 +63,16 @@ class PlaceCoreData {
     }
     
     func delete(for key: String) {
-        let predicate = NSPredicate(format: "key == %@", key)
-        let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
-        fetchToDelete.predicate = predicate
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
-        do {
-            try PlaceCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
-        } catch {
-            print ("There was an error during deleting")
+        DispatchQueue.global(qos: .background).async {
+            let predicate = NSPredicate(format: "key == %@", key)
+            let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
+            fetchToDelete.predicate = predicate
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
+            do {
+                try PlaceCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
+            } catch {
+                print ("There was an error during deleting")
+            }
         }
     }
     
@@ -92,9 +94,6 @@ class PlaceCoreData {
         }
     }
 }
-
-
-
 
 
 
