@@ -10,31 +10,42 @@ import UIKit
 
 class ImageDownloader {
     static var shared = ImageDownloader()
-    
-    var urlSession: URLSession
-    var cache: NSCache<NSString, UIImage>
-    
-    init() {
-        urlSession = URLSession.shared
-        cache = NSCache()
-        cache.countLimit = 20
-    }
+    let imageStorage = ImageStore()
+    var imageNames: [String] = []
     
     func obtainImage(with path: String, completion: @escaping ((UIImage)->())) {
-        if let image = cache.object(forKey: path as NSString) {
-            DispatchQueue.main.async { completion(image) }
+        if let image = try? imageStorage.getImage(by: path), let img = image {
+            print("GOT from file system")
+            DispatchQueue.main.async { completion(img) }
         } else {
             DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
-
-            guard let url = URL(string: path) else { return }
+            print("LOADING from net")
+            guard let url = UrlFormatter().createUrlForImageDownloading(with: path) else { return }
             DispatchQueue.global(qos: .utility).async {
                 if let data = try? Data(contentsOf: url) {
                     guard let img = UIImage(data: data) else { return }
-                    self.cache.setObject(img, forKey: path as NSString)
-                    
+                    self.imageStorage.save(image: img, with: path)
+                    self.imageNames.append(path)
+                    self.isNeedClear()
                     DispatchQueue.main.async { completion(img) }
                 }
             }
         }
+        
+        isNeedClear()
+    }
+    
+    func isNeedClear() {
+        if imageNames.count > 6 {
+            for name in imageNames {
+                try? imageStorage.removeImage(with: name)
+            }
+            
+            imageNames = []
+            print("CLEARED")
+        }
     }
 }
+
+
+
