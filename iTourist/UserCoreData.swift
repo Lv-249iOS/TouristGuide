@@ -21,7 +21,7 @@ class UserCoreData {
         return persistentContainer.viewContext
     }
     
-    func add(user: User) {
+    func addUser(user: User) {
         if let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserEntity", into: UserCoreData.context) as? UserEntity {
             newUser.name = user.name
             newUser.surname = user.surname
@@ -30,78 +30,65 @@ class UserCoreData {
             newUser.image = user.image
         }
         try? UserCoreData.context.save()
-        
-        DispatchQueue.main.async { [weak self] in
-            guard self != nil else {
-                print("Self is nil ")
-                return
+    }
+    
+    func getUser(by email: String) -> User? {
+        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
+        userFetch.predicate = NSPredicate(format: "email == %@", email)
+        do {
+            let result = try UserCoreData.context.fetch(userFetch)
+            if result.count > 0 {
+                var currentUser = NSManagedObject(entity: entity!, insertInto: UserCoreData.context)
+                currentUser = result.first as! NSManagedObject
+                var user = User()
+                user.name = currentUser.value(forKey: "name") as? String
+                user.surname = currentUser.value(forKey: "surname") as? String
+                user.email = currentUser.value(forKey: "email") as? String
+                user.password = currentUser.value(forKey: "password") as? String
+                user.image = currentUser.value(forKey: "image") as? NSData
+                return user
+            } else {
+                print("Eror: User by email not found")
+                try UserCoreData.context.save()
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " +
+                "description \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    func deleteUser(for email: String) {
+        let predicate = NSPredicate(format: "email == %@", email)
+        let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
+        fetchToDelete.predicate = predicate
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
+        do {
+            try UserCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
+        } catch {
+            print ("There was an error during deleting")
+        }
+    }
+    
+    func changeUserData(for email: String, user: User) {
+        let asyncRequest = NSBatchUpdateRequest(entityName: "UserEntity")
+        switch user.instanceToChange {
+        case .name : asyncRequest.propertiesToUpdate = [ "name" : user.name ?? "" ]
+        case .surname: asyncRequest.propertiesToUpdate = [ "surname" : user.surname ?? "" ]
+        case .password: asyncRequest.propertiesToUpdate = [ "email" : user.password ?? "" ]
+        case .image: asyncRequest.propertiesToUpdate = [ "image" : user.image! ]
+        default: break
+        }
+        asyncRequest.resultType = .updatedObjectIDsResultType
+        asyncRequest.predicate = NSPredicate(format: "email == %@", email)
+        let batchUpdateResult = try? UserCoreData.context.execute(asyncRequest) as! NSBatchUpdateResult
+        if ((batchUpdateResult?.result) != nil) {
+            let objectID = batchUpdateResult?.result as? [NSManagedObjectID]
+            if objectID?.first != nil {
+                let managedObject = UserCoreData.context.object(with: (objectID?.first)!)
+                UserCoreData.context.refresh(managedObject, mergeChanges: false)
             }
         }
     }
-
-
-func getUser(by email: String) -> User? {
-    let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
-    userFetch.predicate = NSPredicate(format: "email == %@", email)
-    do {
-        let result = try UserCoreData.context.fetch(userFetch)
-        if result.count > 0 {
-            var currentUser = NSManagedObject(entity: entity!, insertInto: UserCoreData.context)
-            currentUser = result.first as! NSManagedObject
-            var user: User?
-            user?.name = currentUser.value(forKey: "name") as? String
-            user?.surname = currentUser.value(forKey: "surname") as? String
-            user?.email = currentUser.value(forKey: "email") as? String
-            user?.password = currentUser.value(forKey: "password") as? String
-            user?.image = currentUser.value(forKey: "image")
-             as? NSData
-            return user
-        } else {
-            print("Eror: User by login not found")
-            try UserCoreData.context.save()
-        }
-    } catch let error as NSError {
-        print("Error: \(error) " +
-            "description \(error.localizedDescription)")
-  }
-    return nil
-}
-
-    func delete(for login: String) {
-        DispatchQueue.global(qos: .background).async {
-            let predicate = NSPredicate(format: "login == %@", login)
-            let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
-            fetchToDelete.predicate = predicate
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
-            do {
-                try UserCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
-            } catch {
-                print ("There was an error during deleting")
-            }
-        }
-    }
-    func changeUsersData(for login: String,user: User) {
-//            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
-//            fetchRequest.predicate = NSPredicate(format: "login = %@", login)
-//            if let fetchResults = try? UserCoreData.context.fetch(fetchRequest) as? [NSManagedObject] {
-//                if fetchResults?.count != 0 {
-//                    var currentUser = fetchResults?[0]
-//                    if (user.name != nil) {
-//                        currentUser?.setValue(user.name, forKey: "name")
-//                    }
-//                    if (user.surname != nil) {
-//                        currentUser?.setValue(user.name, forKey: "name")
-//                    }
-//                    if (user.image != nil) {
-//                        currentUser?.setValue(user.name, forKey: "name")
-//                    }
-//                    if (user.password != nil) {
-//                        currentUser?.setValue(user.name, forKey: "name")
-//                    }
-//                    UserCoreData.context.save()
-//                    
-//                }
-//            }
-//    }
-}
+    
 }
