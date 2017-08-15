@@ -14,6 +14,12 @@ class ImageStore {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
+    var countImagesInDirectory: Int? {
+        let imgDirPath = documentsURL.appendingPathComponent("images")
+        let directoryContents = try? FileManager.default.contentsOfDirectory(atPath: imgDirPath.path)
+        return directoryContents?.count
+    }
+    
     func getImage(by filename: String) throws -> UIImage? {
         let fullPath = try self.fileInDocumentsDirectory(filename)
         let image = UIImage(contentsOfFile: fullPath)
@@ -42,6 +48,7 @@ class ImageStore {
         }
         
         fileURL = fileURL.appendingPathComponent(filename)
+        
         return fileURL.path
     }
     
@@ -49,13 +56,14 @@ class ImageStore {
         let imgDirPath = documentsURL.appendingPathComponent("images")
         let directoryContents = try? FileManager.default.contentsOfDirectory(atPath: imgDirPath.path)
         
-        if let contents = directoryContents {
-            for path in contents {
-                let fullPath = imgDirPath.appendingPathComponent(path)
-                try? FileManager.default.removeItem(atPath: fullPath.path)
-            }
-        } else {
+        guard let contents = directoryContents else {
             print("Could not retrieve directory")
+            return
+        }
+        
+        for path in contents {
+            let fullPath = imgDirPath.appendingPathComponent(path)
+            try? FileManager.default.removeItem(atPath: fullPath.path)
         }
     }
 }

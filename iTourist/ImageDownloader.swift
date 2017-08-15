@@ -9,10 +9,11 @@
 import UIKit
 
 class ImageDownloader {
-    static var shared = ImageDownloader()
-    let imageStorage = ImageStore()
-    var imageNames: [String] = []
     
+    static var shared = ImageDownloader()
+    
+    let imageStorage = ImageStore()
+
     func obtainImage(with imgRef: String, completion: @escaping ((UIImage)->())) {
         if let image = try? imageStorage.getImage(by: imgRef), let img = image {
             print("GOT from file system")
@@ -26,7 +27,6 @@ class ImageDownloader {
                 if let data = try? Data(contentsOf: url) {
                     guard let img = UIImage(data: data) else { return }
                     self.imageStorage.save(image: img, with: imgRef)
-                    self.imageNames.append(imgRef)
                     self.isNeedClear()
                     DispatchQueue.main.async { completion(img) }
                 }
@@ -35,9 +35,8 @@ class ImageDownloader {
     }
     
     func isNeedClear() {
-        if imageNames.count > 20 {
+        if let storageCapacity = imageStorage.countImagesInDirectory, storageCapacity > 20 {
             imageStorage.clearAllFilesFromDirectory()
-            imageNames = []
             print("CLEARED")
         }
     }
