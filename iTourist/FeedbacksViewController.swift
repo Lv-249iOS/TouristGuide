@@ -9,6 +9,8 @@
 import UIKit
 
 class FeedbacksViewController: UIViewController {
+    var reviews: [Review]?
+    var fedbackTableViewController: FeedbackTableViewController!
     
     @IBAction func stopFeedbacks(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -21,26 +23,14 @@ class FeedbacksViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.navigationController?.isNavigationBarHidden = false
-        let backgroundImage = UIImage(named: "background.png")
-        let imageView = UIImageView(image: backgroundImage)
-        
-//        self.tableView.backgroundView = imageView
-    }
 
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FeedbacksViewControllerSeque" , let controller = segue.destination as? FeedbackTableViewController {
+            fedbackTableViewController = controller
+            if let reviews = reviews {
+                fedbackTableViewController.reviews = reviews
+            }
+        }
+    }
     
 }
