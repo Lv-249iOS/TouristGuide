@@ -33,6 +33,8 @@
 		0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851111F3C537000A200A4 /* UrlFormatter.swift */; };
 		0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851131F3C77C300A200A4 /* AttributesEnums.swift */; };
 		0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE83E341F39C3D300C5662A /* RoundButton.swift */; };
+		15066C5A1F42BECE00899824 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15066C591F42BECE00899824 /* UserStruct.swift */; };
+		15066C5C1F42BF9200899824 /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15066C5B1F42BF9200899824 /* UserCoreData.swift */; };
 		15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */; };
 		15DF4CA81F404C3B00C68EEB /* iTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4CA71F404C3B00C68EEB /* iTouristTests.swift */; };
 		15DF4CAF1F404CBF00C68EEB /* PlaceCoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */; };
@@ -117,6 +119,8 @@
 		0ED851111F3C537000A200A4 /* UrlFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlFormatter.swift; sourceTree = "<group>"; };
 		0ED851131F3C77C300A200A4 /* AttributesEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesEnums.swift; sourceTree = "<group>"; };
 		0EE83E341F39C3D300C5662A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		15066C591F42BECE00899824 /* UserStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		15066C5B1F42BF9200899824 /* UserCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceCoreDataTest.swift; path = ../iTourist/PlaceCoreDataTest.swift; sourceTree = "<group>"; };
 		15DF4CA51F404C3B00C68EEB /* iTouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTouristTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +250,7 @@
 				0E8B3BC61F2F2CA3001FFC73 /* iTourist.xcdatamodeld */,
 				15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */,
 				0E7D4ADA1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift */,
+				15066C5B1F42BF9200899824 /* UserCoreData.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -314,7 +319,6 @@
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -362,6 +366,7 @@
 				202898DD1F333BB400F136BB /* ProfileViewController.swift */,
 				61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */,
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
+				15066C591F42BECE00899824 /* UserStruct.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -550,7 +555,9 @@
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
 				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
+				15066C5C1F42BF9200899824 /* UserCoreData.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
+				15066C5A1F42BECE00899824 /* UserStruct.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
 				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
