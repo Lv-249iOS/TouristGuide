@@ -24,6 +24,7 @@ enum PlaceKeyPath: String {
 class JsonPlacesParser {
     
     func parseIds(with data: Data) -> [String]? {
+        print("PARSING IDS.......")
         guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
             let places = json.value(forKey: "results") as? [AnyObject] else {
                 return nil
@@ -31,6 +32,7 @@ class JsonPlacesParser {
         
         var placesId: [String] = []
         
+        print("PARSING PLACES......")
         for place in places {
             if let id = place.value(forKeyPath: "place_id") as? String {
                 placesId.append(id)

@@ -21,6 +21,7 @@ class Cacher {
         }
         
         database.add(data: placesData as [NSData], key: key)
+        print("SAVED IN DATABASE")
     }
     
     func getFromCache(with key: String) -> [Place]? {
@@ -37,9 +38,11 @@ class Cacher {
     
     func removeFromCache(with key: String) {
         database.delete(for: key)
+        print("REMOVED FROM DATABASE")
     }
     
     func updateCachedValue(with newVal: [Data], key: String) {
         // Some method that will be update data for some key
+        print("VALUE WAS UPDATED IN DATABASE")
     }
 }

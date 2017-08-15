@@ -20,12 +20,7 @@ class DataProvider {
         var loadedPlaces: [RegionId: [Place]] = [:]
         
         for key in keys {
-            if let data = cacher.getFromCache(with: key.key) {
-                print("USE CACHED DATA")
-                cachedPlaces[key.key] = data
-                key == keys.last! ? completion(cachedPlaces) : (/* move on */)
-                
-            } else {
+            guard let data = cacher.getFromCache(with: key.key) else {
                 var places: [Place] = []
                 print("LOADING........")
                 loader.loadData(with: key.loc) { [weak self] data, err in
@@ -37,13 +32,15 @@ class DataProvider {
                     
                     self?.cacher.save(places: places, key: key.key)
                     loadedPlaces[key.key] = places
-                    
-                    if key == keys.last! {
-                        print("LOADED")
-                        completion(loadedPlaces)
-                    }
+                    key == keys.last! ? completion(loadedPlaces) : (/* move on */)
                 }
+                
+                return
             }
+            
+            print("USED CACHED DATA")
+            cachedPlaces[key.key] = data
+            key == keys.last! ? completion(cachedPlaces) : (/* move on */)
         }
     }
 }

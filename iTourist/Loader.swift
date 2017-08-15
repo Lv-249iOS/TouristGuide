@@ -26,11 +26,12 @@ class Loader {
             for id in placeIds {
                 guard let placeReq = RequestFormatter().createPlaceRequest(with: id) else { return }
                 self?.load(with: placeReq) { data in
-                    print("Loaded place")
+                    
                     guard let dat = data else { return }
                     dataBuffer.append(dat)
                     
                     if id == placeIds.last {
+                        print("Loaded place" + "\(placeIds.count)")
                         completion(dataBuffer, nil)
                     }
                 }

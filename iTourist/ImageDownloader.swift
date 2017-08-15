@@ -6,7 +6,6 @@
 //  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class ImageDownloader {
