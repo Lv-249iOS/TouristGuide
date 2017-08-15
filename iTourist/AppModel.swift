@@ -32,10 +32,11 @@ class AppModel {
     }
     
     func getCurrentLocation() -> CLLocation {
-        print("GET CURR LOCATION")
         if let loc = location {
+            print("GET CURR LOCATION")
             return loc
         } else {
+            print("GET default LOCATION")
             return CLLocation(latitude: 49.839975, longitude: 24.028027) // return lviv as default
         }
     }

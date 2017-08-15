@@ -11,51 +11,52 @@ import MapKit
 
 extension MapViewController: MKMapViewDelegate {
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if annotation is MKUserLocation { return nil } else {
-//            let identifier = "Reuse"
-//            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-//            
-//            //will have to change it when conwerter is going to be ok
-//            
-//            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
-//            
-//            if annotationView == nil {
-//                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//                annotationView?.canShowCallout = true
-//                
-//                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
-//                
-//                if let index = visibleIds[id]?.index(of: annotation) {
-//                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
-//                        annotationView?.image = image
-//                    } else {
-//                        annotationView?.image = UIImage(named: "pin")
-//                    }
-//                }
-//                
-//            } else {
-//                annotationView?.annotation = annotation
-//                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
-//                if let index = visibleIds[id]?.index(of: annotation) {
-//                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
-//                        annotationView?.image = image
-//                    } else {
-//                        annotationView?.image = UIImage(named: "pin")
-//                    }
-//                }
-//            }
-//            
-//            return annotationView
-//        }
-//    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil } else {
+            let identifier = "Reuse"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            //will have to change it when conwerter is going to be ok
+            let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            let id = converter.converteToKey(with: location)
+            
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+                
+                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
+                
+                if let index = visibleIds[id]?.index(of: annotation) {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
+                        annotationView?.image = image
+                    } else {
+                        annotationView?.image = UIImage(named: "pin")
+                    }
+                }
+                
+            } else {
+                annotationView?.annotation = annotation
+                guard let annotation = annotation as? PlaceAnnotation else { return annotationView }
+                if let index = visibleIds[id]?.index(of: annotation) {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
+                        annotationView?.image = image
+                    } else {
+                        annotationView?.image = UIImage(named: "pin")
+                    }
+                }
+            }
+            
+            return annotationView
+        }
+    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if !(view.annotation is MKUserLocation) {
             let leftAccessory = UIButton(type: .custom)
             leftAccessory.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             
-            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+            let location = CLLocation(latitude: view.annotation?.coordinate.latitude ?? 0.0, longitude: view.annotation?.coordinate.longitude ?? 0.0)
+            let id = converter.converteToKey(with: location)
             
             if let annotation = view.annotation as? PlaceAnnotation {
                 if let index = visibleIds[id]?.index(of: annotation) {
@@ -147,6 +148,8 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
+        print(map.region.span)
+        
         // 1. Set Region to model
         
         
@@ -206,28 +209,30 @@ extension MapViewController: MKMapViewDelegate {
                 }
             }
         }
+//        
+//        
+//        // 4. Check visible ids if still visible
+//        
+//        visibleIds.forEach { (visibleRegionInfo) in
+//            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
+//            let visibleRegion = mapView.region
+//            
+//            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+//            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+//            
+//            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
+//            
+//            if !visible {
+//                // 4.1 Remove tile visibleRegionInfo
+//                for annotation in visibleRegionInfo.value {
+//                    map.removeAnnotation(annotation)
+//                    visibleIds.removeValue(forKey: visibleRegionInfo.key)
+//                }
+//
+//            }
+//        }
         
         
-        // 4. Check visible ids if still visible
-        
-        visibleIds.forEach { (visibleRegionInfo) in
-            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
-            let visibleRegion = mapView.region
-            
-            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
-            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
-            
-            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
-            
-            if !visible {
-                // 4.1 Remove tile visibleRegionInfo
-                for annotation in visibleRegionInfo.value {
-                    map.removeAnnotation(annotation)
-                    visibleIds.removeValue(forKey: visibleRegionInfo.key)
-                }
-
-            }
-        }
         
         
 //        var currentIds: [String] = []

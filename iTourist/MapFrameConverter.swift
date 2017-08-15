@@ -24,12 +24,12 @@ class MapFrameConverter {
         let rightLa = region.center.latitude + region.span.latitudeDelta/2
         let button = region.center.latitude - region.span.latitudeDelta/2
         
-        for i in stride(from: leftLo, through: rightLo, by: 0.2) {
+        for i in stride(from: leftLo, through: rightLo, by: 0.02) {
             print("LOOP First \(i)")
-            for j in stride(from: button, through: rightLa, by: 0.2) {
+            for j in stride(from: button, through: rightLa, by: 0.02) {
                 print("LOOP Second \(j)")
                 
-                let location = CLLocation(latitude: i+0.1, longitude: j+0.1)
+                let location = CLLocation(latitude: i+0.01, longitude: j+0.01)
                 //let id = converter.converteToKey(with: location)
                 //currentIds.append(id)
                 locationCenters.append(location)
