@@ -10,6 +10,8 @@ import UIKit
 
 class ImageStore {
     
+    let storageLimit = 20
+    
     private var documentsURL: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }

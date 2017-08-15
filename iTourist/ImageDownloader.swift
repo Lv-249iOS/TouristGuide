@@ -35,7 +35,7 @@ class ImageDownloader {
     }
     
     func isNeedClear() {
-        if let storageCapacity = imageStorage.countImagesInDirectory, storageCapacity > 20 {
+        if let storageCapacity = imageStorage.countImagesInDirectory, storageCapacity > imageStorage.storageLimit {
             imageStorage.clearAllFilesFromDirectory()
             print("CLEARED")
         }
