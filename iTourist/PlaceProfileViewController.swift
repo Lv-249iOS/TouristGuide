@@ -44,7 +44,9 @@ class PlaceProfileViewController: UIViewController {
             }
             
             websiteLabel.text = place.website?.absoluteString
-            feedbackButton.titleLabel?.text = "Feedbacks (\(String(describing: place.placeReviews?.count)))"
+            if let reviews = place.placeReviews {
+                feedbackButton.setTitle("Feedbacks (" + "\(reviews.count)" + ")", for: .normal)
+            }
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

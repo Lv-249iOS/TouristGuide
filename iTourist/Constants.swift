@@ -9,12 +9,15 @@
 import UIKit
 
 struct Constants {
-    
+    // delete it
     var bounds: CGRect
     
+    // change it
     init() {
         bounds = UIScreen.main.bounds
+        
     }
     
     static let defaultRegionSpan = 0.01
+    static var exists = true
 }

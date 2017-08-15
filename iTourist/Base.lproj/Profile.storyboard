@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="kZn-B5-vvX">
             <objects>
-                <viewController id="yrc-5N-wSm" customClass="ProfileViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yrc-5N-wSm" userLabel="Sign Up View Controller" customClass="SignUpViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0x3-4p-z9U"/>
                         <viewControllerLayoutGuide type="bottom" id="ylz-RQ-551"/>
