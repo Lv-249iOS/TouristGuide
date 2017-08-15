@@ -35,11 +35,10 @@ class FeedbackTableViewController: UITableViewController {
         let review = rew[indexPath.row]
         
         cell.authorName.text = review.authorName
-        cell.rating.text = "\(review.rating)"
+        cell.rating.text = "\(review.rating ?? 4.5)"
         cell.feedBack.text = review.text
-        cell.timeDescription.text = "\(review.timeDescription)"
-        
-//        cell.feedbackImage.image = #imageLiteral(resourceName: "noImage")
+        cell.timeDescription.text = "\(review.timeDescription ?? Date())"
+        cell.feedbackImage.image = #imageLiteral(resourceName: "noImage")
         
         return cell
     }
