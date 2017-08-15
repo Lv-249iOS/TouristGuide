@@ -17,8 +17,8 @@ extension MapViewController: MKMapViewDelegate {
 //            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
 //            
 //            //will have to change it when conwerter is going to be ok
-//            
-//            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+//            let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+//            let id = converter.converteToKey(with: location)
 //            
 //            if annotationView == nil {
 //                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -55,7 +55,8 @@ extension MapViewController: MKMapViewDelegate {
             let leftAccessory = UIButton(type: .custom)
             leftAccessory.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             
-            let id = converter.converteToKey(with: AppModel.shared.getCurrentLocation())
+            let location = CLLocation(latitude: view.annotation?.coordinate.latitude ?? 0.0, longitude: view.annotation?.coordinate.longitude ?? 0.0)
+            let id = converter.converteToKey(with: location)
             
             if let annotation = view.annotation as? PlaceAnnotation {
                 if let index = visibleIds[id]?.index(of: annotation) {
@@ -147,66 +148,102 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
-        // 1. Set Region to model
+        print(map.region.span)
         
-        
-        // 2. Convert region to array of IDs //locations centers
-        let locations = MapFrameConverter.convert(region: map.region)
-        
-        // 3. Send ids/locations to DataProvider
-        
-        PlacesList.shared.getPlaces(with: locations) { places in
-            print("MAP START GET PLACES")
-            guard let placesArr = places else { return }
-            for (key, places) in placesArr {
-                guard let places = places else { return }
-                for place in places {
-                    let annotation = PlaceAnnotation()
-                    
-                    if let coordinates = place.coordinate {
-                        annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+        if map.region.span.latitudeDelta < 0.02 {
+            
+            let locations = MapFrameConverter.convert(region: map.region)
+            
+                    PlacesList.shared.getPlaces(with: locations) { places in
+                        print("MAP START GET PLACES")
+                        guard let placesArr = places else { return }
+                        for (key, places) in placesArr {
+                            guard let places = places else { return }
+                            for place in places {
+                                let annotation = PlaceAnnotation()
+            
+                                if let coordinates = place.coordinate {
+                                    annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                                }
+            
+                                annotation.title = place.name
+                                annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                                annotation.photoRef = place.photosRef?.first
+                                annotation.type = place.typeOfPlace?.first
+                                self.annotationsOfPlaces.append(annotation)
+                                self.map.addAnnotation(annotation)
+                                print("Add annotation")
+                            }
+                            
+                            self.visibleIds[key] = self.annotationsOfPlaces
+                            self.annotationsOfPlaces = []
+                            
+                        }
+                        
                     }
-                    
-                    annotation.title = place.name
-                    annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                    annotation.photoRef = place.photosRef?.first
-                    annotation.type = place.typeOfPlace?.first
-                    self.annotationsOfPlaces.append(annotation)
-                    //self.map.addAnnotation(annotation)
-                }
-                
-                self.visibleIds[key] = self.annotationsOfPlaces
-                self.annotationsOfPlaces = []
-                
-            }
-            
+        
         }
-
         
-        
-        // 3.1 When data come:
-        // 3.1.1 Get region from id:
-        // - if intersects - present it
-        // - if not - skip
-        
-        visibleIds.forEach { (visibleRegionInfo) in
-            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
-            let visibleRegion = mapView.region
-            
-            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
-            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
-            
-            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
-            
-            if visible {
-                // present
-                for annotation in visibleRegionInfo.value {
-                map.addAnnotation(annotation)
-                
-                }
-            }
-        }
+//        // 1. Set Region to model
 //        
+//        
+//        // 2. Convert region to array of IDs //locations centers
+//        let locations = MapFrameConverter.convert(region: map.region)
+//        
+//        // 3. Send ids/locations to DataProvider
+//        
+//        PlacesList.shared.getPlaces(with: locations) { places in
+//            print("MAP START GET PLACES")
+//            guard let placesArr = places else { return }
+//            for (key, places) in placesArr {
+//                guard let places = places else { return }
+//                for place in places {
+//                    let annotation = PlaceAnnotation()
+//                    
+//                    if let coordinates = place.coordinate {
+//                        annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+//                    }
+//                    
+//                    annotation.title = place.name
+//                    annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+//                    annotation.photoRef = place.photosRef?.first
+//                    annotation.type = place.typeOfPlace?.first
+//                    self.annotationsOfPlaces.append(annotation)
+//                    //self.map.addAnnotation(annotation)
+//                }
+//                
+//                self.visibleIds[key] = self.annotationsOfPlaces
+//                self.annotationsOfPlaces = []
+//                
+//            }
+//            
+//        }
+//
+//        
+//        
+//        // 3.1 When data come:
+//        // 3.1.1 Get region from id:
+//        // - if intersects - present it
+//        // - if not - skip
+//        
+//        visibleIds.forEach { (visibleRegionInfo) in
+//            let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
+//            let visibleRegion = mapView.region
+//            
+//            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+//            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+//            
+//            let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
+//            
+//            if visible {
+//                // present
+//                for annotation in visibleRegionInfo.value {
+//                map.addAnnotation(annotation)
+//                
+//                }
+//            }
+//        }
+//
 //        
 //        // 4. Check visible ids if still visible
 //        
@@ -228,6 +265,8 @@ extension MapViewController: MKMapViewDelegate {
 //
 //            }
 //        }
+        
+        
         
         
 //        var currentIds: [String] = []
