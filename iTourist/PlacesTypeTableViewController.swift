@@ -9,19 +9,10 @@
 import UIKit
 
 class PlacesTypeTableViewController: UITableViewController {
-    var places: [Place] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        /*PlacesList.shared.getPlaces() {
-         // get from DB Types
-         }*/
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.isNavigationBarHidden = false
         let backgroundImage = UIImage(named: "background.png")
         let imageView = UIImageView(image: backgroundImage)
@@ -30,10 +21,8 @@ class PlacesTypeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // types.count from db
         return 12
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "typeOfPlaceCell", for: indexPath)
@@ -57,7 +46,7 @@ class PlacesTypeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as? PlaceViewController else { return }
     
         self.navigationController?.pushViewController(vc, animated: true)
         if let selectedRow = tableView.indexPathsForSelectedRows {

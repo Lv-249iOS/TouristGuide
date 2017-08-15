@@ -84,6 +84,9 @@ class MapViewController: UIViewController {
                 map.addAnnotation(annot)
             }
             
+            routeImage.image = nil
+            routeInfo.text = nil
+            
             selectedAnnotations = []
             routeButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
         } else {
