@@ -28,24 +28,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxK-do-c8E">
-                                <rect key="frame" x="0.0" y="20" width="300" height="67.5"/>
+                                <rect key="frame" x="0.0" y="20" width="300" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2811697346" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPq-Qt-kWH">
-                                <rect key="frame" x="300" y="20" width="75" height="67.5"/>
+                                <rect key="frame" x="300" y="20" width="75" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2811697346" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="edit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="change:" destination="9rA-eM-Vvz" eventType="touchUpInside" id="wQ5-iK-wjM"/>
+                                    <action selector="changecityname:" destination="9rA-eM-Vvz" eventType="touchUpInside" id="TwO-32-Rec"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZV-Zy-mA7">
-                                <rect key="frame" x="16" y="95.5" width="343" height="36"/>
+                                <rect key="frame" x="16" y="88" width="343" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -234,9 +234,9 @@
                             <constraint firstItem="wxK-do-c8E" firstAttribute="top" secondItem="GCl-JO-iTh" secondAttribute="bottom" id="vSf-hw-GVM"/>
                             <constraint firstItem="DMv-gx-HNa" firstAttribute="leading" secondItem="WU7-E5-LMN" secondAttribute="leading" id="w57-NU-PJH"/>
                             <constraint firstAttribute="trailing" secondItem="zPq-Qt-kWH" secondAttribute="trailing" id="w7K-YO-dCO"/>
+                            <constraint firstItem="wxK-do-c8E" firstAttribute="height" secondItem="WU7-E5-LMN" secondAttribute="height" multiplier="0.09" id="wdB-b2-jjS"/>
                             <constraint firstAttribute="trailing" secondItem="6g3-Y4-QXZ" secondAttribute="trailing" id="zHA-v0-mQc"/>
                             <constraint firstItem="uZV-Zy-mA7" firstAttribute="top" secondItem="wxK-do-c8E" secondAttribute="bottom" constant="8" symbolic="YES" id="zdx-Nl-PdB"/>
-                            <constraint firstItem="wxK-do-c8E" firstAttribute="height" secondItem="6g3-Y4-QXZ" secondAttribute="height" multiplier="0.1" id="zln-05-gW6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kbv-kz-3mm"/>

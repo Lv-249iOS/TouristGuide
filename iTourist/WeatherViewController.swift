@@ -24,7 +24,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     @IBOutlet weak var mintemp1: UILabel!
     @IBOutlet weak var feelslike: UILabel!
     @IBOutlet weak var currentImg: UIImageView!
-    @IBAction func change(_ sender: UIButton) {
+    @IBAction func changecityname(_ sender: UIButton) {
         displayCity()
     }
     
@@ -42,7 +42,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
         layout.minimumLineSpacing = 3
         layout.minimumInteritemSpacing = 2
         myCollectionview.collectionViewLayout = layout
-    
+        
     }
     
     override func viewDidLoad() {
