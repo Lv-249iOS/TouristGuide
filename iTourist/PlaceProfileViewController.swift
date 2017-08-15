@@ -12,6 +12,8 @@ class PlaceProfileViewController: UIViewController {
     
     var place: Place?
     var placesPageController: PlacesPageController!
+    var feedbacksController: FeedbacksViewController!
+    
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var workHourLabel: UILabel!
@@ -53,6 +55,9 @@ class PlaceProfileViewController: UIViewController {
             if let imagePathes = place?.photosRef {
                 placesPageController.imagesStringUrl = imagePathes
             }
+        } else if segue.identifier == "FeedbacksSegue" , let controller = segue.destination as? FeedbacksViewController {
+            feedbacksController = controller
+            feedbacksController.reviews = place?.placeReviews
         }
     }
 }

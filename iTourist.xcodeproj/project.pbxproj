@@ -33,6 +33,8 @@
 		0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851111F3C537000A200A4 /* UrlFormatter.swift */; };
 		0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851131F3C77C300A200A4 /* AttributesEnums.swift */; };
 		0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE83E341F39C3D300C5662A /* RoundButton.swift */; };
+		1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1721F4305AD008A92DF /* ProfileStruct.swift */; };
+		1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1741F43063C008A92DF /* UserCoreData.swift */; };
 		15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */; };
 		15DF4CA81F404C3B00C68EEB /* iTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4CA71F404C3B00C68EEB /* iTouristTests.swift */; };
 		15DF4CAF1F404CBF00C68EEB /* PlaceCoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */; };
@@ -50,6 +52,8 @@
 		20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5BBB11F307F95006E43B9 /* MapViewController.swift */; };
 		20C113E31F3CA7A5009BE8AD /* PlaceProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */; };
 		20C5C4D91F41DAE3009556A2 /* FeedbacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C5C4D81F41DAE3009556A2 /* FeedbacksViewController.swift */; };
+		20C9FB4B1F430A8500EBE738 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */; };
+		20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
 		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
 		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
@@ -117,6 +121,8 @@
 		0ED851111F3C537000A200A4 /* UrlFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlFormatter.swift; sourceTree = "<group>"; };
 		0ED851131F3C77C300A200A4 /* AttributesEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesEnums.swift; sourceTree = "<group>"; };
 		0EE83E341F39C3D300C5662A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		1542E1721F4305AD008A92DF /* ProfileStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStruct.swift; sourceTree = "<group>"; };
+		1542E1741F43063C008A92DF /* UserCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceCoreDataTest.swift; path = ../iTourist/PlaceCoreDataTest.swift; sourceTree = "<group>"; };
 		15DF4CA51F404C3B00C68EEB /* iTouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTouristTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +142,8 @@
 		20A5BBB11F307F95006E43B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceProfileViewController.swift; sourceTree = "<group>"; };
 		20C5C4D81F41DAE3009556A2 /* FeedbacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbacksViewController.swift; sourceTree = "<group>"; };
+		20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
+		20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 		0E8B3BD61F2F2CD4001FFC73 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				1542E1741F43063C008A92DF /* UserCoreData.swift */,
 				0E8B3BC61F2F2CA3001FFC73 /* iTourist.xcdatamodeld */,
 				15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */,
 				0E7D4ADA1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift */,
@@ -338,6 +347,8 @@
 				20751DE01F38FE9F00E4A25A /* ImageViewController.swift */,
 				20C113E21F3CA7A5009BE8AD /* PlaceProfileViewController.swift */,
 				20C5C4D81F41DAE3009556A2 /* FeedbacksViewController.swift */,
+				20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */,
+				20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -357,6 +368,7 @@
 		617ED2F11F41D484001FEE6F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1542E1721F4305AD008A92DF /* ProfileStruct.swift */,
 				202898DD1F333BB400F136BB /* ProfileViewController.swift */,
 				61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */,
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
@@ -523,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */,
+				1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */,
 				0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */,
 				E7B763FC1F3C82E200B23AEA /* WeatherCell.swift in Sources */,
 				0E8B3BC81F2F2CA3001FFC73 /* iTourist.xcdatamodeld in Sources */,
@@ -542,6 +555,7 @@
 				20C113E31F3CA7A5009BE8AD /* PlaceProfileViewController.swift in Sources */,
 				B204E4A81F3A150600454978 /* PlaceAnnotation.swift in Sources */,
 				0E4003F31F309DF4003671F1 /* Review.swift in Sources */,
+				20C9FB4B1F430A8500EBE738 /* FeedbackCell.swift in Sources */,
 				B204E4AA1F3A152500454978 /* MVDelegateMethods.swift in Sources */,
 				0ED8510B1F3C433200A200A4 /* DataProvider.swift in Sources */,
 				0ED851061F3C433200A200A4 /* AppModel.swift in Sources */,
@@ -556,11 +570,13 @@
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
+				1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */,
 				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
 				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
+				20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */,
 				15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */,
 				0ED8510D1F3C433200A200A4 /* LocationManager.swift in Sources */,
 				0ED851101F3C433200A200A4 /* PlacesList.swift in Sources */,
