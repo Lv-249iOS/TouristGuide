@@ -15,9 +15,8 @@ let converter = CoordinateConverter()
 
 class MapFrameConverter {
     static func convert(region: MKCoordinateRegion) -> [CLLocation] {
-        //var currentIds: [RegionId] = []
-        //cicle
-        var locationCenters: [CLLocation] = []
+
+        var locationsCenters: [CLLocation] = []
         
         let leftLo = region.center.longitude - region.span.longitudeDelta/2
         let rightLo = region.center.longitude + region.span.longitudeDelta/2
@@ -29,17 +28,16 @@ class MapFrameConverter {
             for j in stride(from: button, through: rightLa, by: 0.02) {
                 print("LOOP Second \(j)")
                 
-                let location = CLLocation(latitude: i+0.01, longitude: j+0.01)
-                //let id = converter.converteToKey(with: location)
-                //currentIds.append(id)
-                locationCenters.append(location)
+                let location = CLLocation(latitude: j+0.01, longitude: i+0.01)
+
+                locationsCenters.append(location)
             }
         }
-        return locationCenters //["+42.01-83.65"]
+        return locationsCenters
     }
     
     static func convert(id: RegionId) -> MKCoordinateRegion {
-        return MKCoordinateRegion(center: kCLLocationCoordinate2DInvalid ,
+        return MKCoordinateRegion(center: (converter.converteToLocation(with: id)?.coordinate ?? kCLLocationCoordinate2DInvalid),
                                   span: MKCoordinateSpan(latitudeDelta: Constants.defaultRegionSpan,
                                                          longitudeDelta: Constants.defaultRegionSpan))
     }

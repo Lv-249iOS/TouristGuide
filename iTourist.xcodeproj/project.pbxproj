@@ -253,12 +253,12 @@
 		0E8B3BD81F2F2D0E001FFC73 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				20A5BBB11F307F95006E43B9 /* MapViewController.swift */,
 				B204E4A91F3A152500454978 /* MVDelegateMethods.swift */,
 				B23B2D821F419D2300187090 /* MapFrameConverter.swift */,
 				B204E4AB1F3A153400454978 /* CLDelegateMethods.swift */,
 				B204E4A51F3A14DB00454978 /* RouteCalculatingMethods.swift */,
 				B204E4A71F3A150600454978 /* PlaceAnnotation.swift */,
-				20A5BBB11F307F95006E43B9 /* MapViewController.swift */,
 				20A21D891F2F876C000AC57A /* Map.storyboard */,
 				B204E4A41F3A14C000454978 /* icons */,
 			);

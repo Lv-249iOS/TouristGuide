@@ -13,7 +13,7 @@ extension MapViewController {
 
     func addCircleOnFirstPoint() {
         
-        let region = CLCircularRegion(center: selectedAnnotations[0].coordinate, radius: 30, identifier: "First")
+        let region = CLCircularRegion(center: selectedAnnotations[0].coordinate, radius: 15, identifier: "First")
         region.notifyOnExit = false
         let circle = MKCircle(center: region.center, radius: region.radius)
         

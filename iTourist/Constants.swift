@@ -18,6 +18,6 @@ struct Constants {
         
     }
     
-    static let defaultRegionSpan = 0.01
+    static let defaultRegionSpan = 0.27
     static var exists = true
 }
