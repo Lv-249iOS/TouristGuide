@@ -26,22 +26,38 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        //super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let itemSize = UIScreen.main.bounds.height/4
-//        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-//        layout.itemSize = CGSize(width: 1.2*itemSize, height: itemSize)
-        //layout.minimumLineSpacing = 3
-        //layout.minimumInteritemSpacing = 2
-     //   myCollectionview.collectionViewLayout = layout
+        if  UIDevice.current.orientation.isPortrait {
+            let itemheight = UIScreen.main.bounds.height/4 - 3
+            let itemwidth = UIScreen.main.bounds.width/2 - 2
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            layout.itemSize = CGSize(width: itemwidth, height: itemheight)
+            layout.minimumLineSpacing = 3
+            layout.minimumInteritemSpacing = 2
+            myCollectionview.collectionViewLayout = layout
+        }
+        else if UIDevice.current.orientation.isLandscape {
+            let itemheight = UIScreen.main.bounds.height/4 - 3
+            let itemwidth = UIScreen.main.bounds.width/6 - 3
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            layout.itemSize = CGSize(width: itemwidth, height: itemheight)
+            layout.minimumLineSpacing = 3
+            layout.minimumInteritemSpacing = 2
+            myCollectionview.collectionViewLayout = layout
+        }
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(AppModel.shared.getCurrentLocation()) { [weak self] placemarks, err in
             if let city = placemarks?[0].addressDictionary?["City"] as? String {
+                
                 DispatchQueue.main.async {
                     self?.getWeatherforCity(city: city)
                 }
@@ -49,22 +65,39 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
         }
     }
     
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+            myCollectionview.collectionViewLayout.invalidateLayout()
+            DispatchQueue.main.async {
+            self.myCollectionview.reloadData()
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let forecast = forecast {
             return forecast.count - 1
         }
         
-        return 0
+        return -1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell, let weather = forecast {
             if indexPath.row < weather.count {
+                let height = UIScreen.main.bounds.height
+                if height < 670 && UIDevice.current.orientation.isLandscape {
+                    cell.date.font = cell.date.font.withSize(15)
+                    cell.mintemp.font = cell.mintemp.font.withSize(15)
+                    cell.maxtemp.font = cell.maxtemp.font.withSize(15)
+                }
+                
                 cell.date.text = String(weather[indexPath.row + 1].date)
                 cell.mintemp.text = String(weather[indexPath.row + 1].mintemp) + "º"
                 cell.maxtemp.text = String(weather[indexPath.row + 1].maxtemp) + "º"
                 cell.weatherImage.image = weather[indexPath.row + 1].image
-            
+                
                 return cell
             }
         }
@@ -92,27 +125,36 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func getWeatherforCity(city: String) {
-                cityName.text = city
-                let cityname  = city.replacingOccurrences(of: " ", with: "%20")
-                guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
-                
-                Loader().load(with: request) { [weak self] data in
-                    guard let data = data else { return }
-                    DispatchQueue.main.async {
-                        self?.forecast = WeatherParser().parse(with: data)
-                            if Constants.exists {
-                            guard let todayForecast = self?.forecast?[0] else { return }
-                            self?.setCurrentWeather(with: todayForecast)
-                            self?.myCollectionview.reloadData()
-                    }
+        cityName.text = city
+        let cityname  = city.replacingOccurrences(of: " ", with: "%20")
+        guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
+        
+        Loader().load(with: request) { [weak self] data in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self?.forecast = WeatherParser().parse(with: data)
+                if Constants.exists {
+                    guard let todayForecast = self?.forecast?[0] else { return }
+                    self?.setCurrentWeather(with: todayForecast)
                 }
+                self?.myCollectionview.reloadData()
             }
-    
-            
         }
+        
+        Constants.exists = true
+    }
     
-
+    
     func setCurrentWeather(with forecast: Forecast) {
+        let height = UIScreen.main.bounds.height
+        if height < 750{
+            currentTemp.font = currentTemp.font.withSize(25)
+            feelslike.font = feelslike.font.withSize(25)
+            today.font = today.font.withSize(20)
+            maxtemp1.font = maxtemp1.font.withSize(25)
+            mintemp1.font = mintemp1.font.withSize(25)
+            cityName.font = cityName.font.withSize(30)
+        }
         currentTemp.text = "\(forecast.currentTemp)º"
         feelslike.text = "\(forecast.feelsTemp)º"
         today.text = forecast.date
