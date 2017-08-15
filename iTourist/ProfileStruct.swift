@@ -9,13 +9,11 @@
 import Foundation
 
 struct User {
-    public var name: String? = ""
-    public var surname: String? = ""
-    public var email: String? = ""
-    public var password: String? = ""
-    public var image: NSData? = nil
-    public var instanceToChange: UserType = UserType.none
-
+    var name: String? = nil
+    var surname: String? = nil
+    var email: String? = nil
+    var password: String? = nil
+    var image: NSData? = nil
 }
 enum UserType {
     case name
@@ -23,5 +21,4 @@ enum UserType {
     case email
     case password
     case image
-    case none
 }
