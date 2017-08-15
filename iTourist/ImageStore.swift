@@ -44,4 +44,18 @@ class ImageStore {
         fileURL = fileURL.appendingPathComponent(filename)
         return fileURL.path
     }
+    
+    func clearAllFilesFromDirectory() {
+        let imgDirPath = documentsURL.appendingPathComponent("images")
+        let directoryContents = try? FileManager.default.contentsOfDirectory(atPath: imgDirPath.path)
+        
+        if let contents = directoryContents {
+            for path in contents {
+                let fullPath = imgDirPath.appendingPathComponent(path)
+                try? FileManager.default.removeItem(atPath: fullPath.path)
+            }
+        } else {
+            print("Could not retrieve directory")
+        }
+    }
 }

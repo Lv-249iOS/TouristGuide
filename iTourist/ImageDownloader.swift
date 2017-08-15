@@ -13,34 +13,30 @@ class ImageDownloader {
     let imageStorage = ImageStore()
     var imageNames: [String] = []
     
-    func obtainImage(with path: String, completion: @escaping ((UIImage)->())) {
-        if let image = try? imageStorage.getImage(by: path), let img = image {
+    func obtainImage(with imgRef: String, completion: @escaping ((UIImage)->())) {
+        if let image = try? imageStorage.getImage(by: imgRef), let img = image {
             print("GOT from file system")
+            isNeedClear()
             DispatchQueue.main.async { completion(img) }
         } else {
             DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
             print("LOADING from net")
-            guard let url = UrlFormatter().createUrlForImageDownloading(with: path) else { return }
+            guard let url = UrlFormatter().createUrlForImageDownloading(with: imgRef) else { return }
             DispatchQueue.global(qos: .utility).async {
                 if let data = try? Data(contentsOf: url) {
                     guard let img = UIImage(data: data) else { return }
-                    self.imageStorage.save(image: img, with: path)
-                    self.imageNames.append(path)
+                    self.imageStorage.save(image: img, with: imgRef)
+                    self.imageNames.append(imgRef)
                     self.isNeedClear()
                     DispatchQueue.main.async { completion(img) }
                 }
             }
         }
-        
-        isNeedClear()
     }
     
     func isNeedClear() {
-        if imageNames.count > 6 {
-            for name in imageNames {
-                try? imageStorage.removeImage(with: name)
-            }
-            
+        if imageNames.count > 20 {
+            imageStorage.clearAllFilesFromDirectory()
             imageNames = []
             print("CLEARED")
         }

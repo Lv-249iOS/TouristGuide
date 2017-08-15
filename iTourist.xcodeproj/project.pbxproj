@@ -321,10 +321,9 @@
 			isa = PBXGroup;
 			children = (
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
+				A95187E71F437E4500C6E86D /* ImageManaging */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
-				A956FA441F436ECF00062CD1 /* ImageStore.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -377,6 +376,15 @@
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		A95187E71F437E4500C6E86D /* ImageManaging */ = {
+			isa = PBXGroup;
+			children = (
+				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
+				A956FA441F436ECF00062CD1 /* ImageStore.swift */,
+			);
+			name = ImageManaging;
 			sourceTree = "<group>";
 		};
 		A956FA431F42BBEB00062CD1 /* CacheData */ = {
