@@ -23,6 +23,7 @@ class PlacesPageController: UIPageViewController {
             viewController.imageUrlString = url
             viewControllers.append(viewController)
         }
+        
         return viewControllers
     }
     

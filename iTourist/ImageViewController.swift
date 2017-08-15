@@ -12,7 +12,6 @@ class ImageViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     public var imageUrlString: String?
-    var place: Place?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,7 @@ class ImageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let url = imageUrlString {
-            ImageDownloader.shared.downloadImage(with: url) { image in
+            ImageDownloader.shared.obtainImage(with: url) { image in
                 DispatchQueue.main.async {
                     self.imageView.image = image
                 }

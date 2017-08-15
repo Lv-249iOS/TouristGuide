@@ -39,7 +39,7 @@ class ImageDownloader {
     }
     
     // I need this method to handle errors and show activity indicator
-    func downloadImage(with path: String, completion: @escaping ((UIImage)->())) {
+    /*func downloadImage(with path: String, completion: @escaping ((UIImage)->())) {
         if let image = cache.object(forKey: path as NSString) {
             completion(image)
             
@@ -60,5 +60,5 @@ class ImageDownloader {
                 
             }.resume()
         }
-    }
+    }*/
 }
