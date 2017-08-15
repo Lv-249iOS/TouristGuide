@@ -24,10 +24,15 @@ enum PlaceKeyPath: String {
 class JsonPlacesParser {
     
     func parseIds(with data: Data) -> [String]? {
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else { return nil }
-        guard let places = json.value(forKey: "results") as? [AnyObject] else { return nil }
+        print("PARSING IDS.......")
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
+            let places = json.value(forKey: "results") as? [AnyObject] else {
+                return nil
+        }
+        
         var placesId: [String] = []
         
+        print("PARSING PLACES......")
         for place in places {
             if let id = place.value(forKeyPath: "place_id") as? String {
                 placesId.append(id)
@@ -38,7 +43,10 @@ class JsonPlacesParser {
     }
     
     func parsePlace(with data: Data) -> Place? {
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else { return nil }
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else {
+            return nil
+        }
+        
         var placeData: [PlaceAttributes: Any] = [:]
         
         placeData[.location] = json.value(forKeyPath: PlaceKeyPath.location.rawValue) as? [String: Double]
@@ -50,7 +58,7 @@ class JsonPlacesParser {
         placeData[.workHours] = json.value(forKeyPath: PlaceKeyPath.workHours.rawValue) as? [String]
         placeData[.website] = json.value(forKeyPath: PlaceKeyPath.website.rawValue) as? String
         placeData[.types] = json.value(forKeyPath: PlaceKeyPath.typesOfPlace.rawValue) as? [String]
-
+        
         let place = Place(with: placeData)
         
         return place

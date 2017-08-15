@@ -290,6 +290,7 @@
 			children = (
 				0ED851111F3C537000A200A4 /* UrlFormatter.swift */,
 				0EBDA8671F3DA2EE00BA9422 /* RequestFormatter.swift */,
+				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
 				0ED851011F3C433200A200A4 /* Loader.swift */,
 			);
 			name = LoadData;
@@ -298,12 +299,9 @@
 		0EBDA86C1F3DA47800BA9422 /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				0EBDA86B1F3DA43C00BA9422 /* LoadData */,
-				0ED850FC1F3C433200A200A4 /* Cacher.swift */,
 				0ED851001F3C433200A200A4 /* DataProvider.swift */,
-				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
-				0E4003EC1F309DE9003671F1 /* JsonPlacesParser.swift */,
-				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
+				A956FA431F42BBEB00062CD1 /* CacheData */,
+				0EBDA86B1F3DA43C00BA9422 /* LoadData */,
 			);
 			name = DataProvider;
 			sourceTree = "<group>";
@@ -314,7 +312,7 @@
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0ED851031F3C433200A200A4 /* MapFrameProcessor.swift */,
+				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -364,6 +362,15 @@
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		A956FA431F42BBEB00062CD1 /* CacheData */ = {
+			isa = PBXGroup;
+			children = (
+				0ED850FC1F3C433200A200A4 /* Cacher.swift */,
+				0ED850FF1F3C433200A200A4 /* DataConverter.swift */,
+			);
+			name = CacheData;
 			sourceTree = "<group>";
 		};
 		B204E4A41F3A14C000454978 /* icons */ = {

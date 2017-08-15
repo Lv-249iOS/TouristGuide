@@ -14,7 +14,7 @@ class PlacesList {
     
     func getPlaces(with locations: [CLLocation], completion: @escaping ([RegionId: [Place]?]?)->()) {
         DataProvider.shared.getData(with: getKeys(from: locations)) { result in
-            print("GOT FROM  DATA PROVIDER")
+            print("GOT places FROM  DATA PROVIDER")
             completion(result)
         }
     }
@@ -24,7 +24,6 @@ class PlacesList {
         var keys: [(key: String, loc: String)] = []
 
         for loc in locations {
-
             let key = (key: converter.converteToKey(with: loc), loc: converter.converteToString(from: loc))
             keys.append(key)
         }
@@ -33,10 +32,10 @@ class PlacesList {
     }
     
     func add(place: Place) {
-        // places?.append(place)
+        // Method should add some place to some region with KEYlocation
     }
     
     func remove(at index: Int) {
-        // places?.remove(at: index)
+        // Method should delete some place to some region with KEYlocation
     }
 }
