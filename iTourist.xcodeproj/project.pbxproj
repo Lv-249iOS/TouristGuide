@@ -34,6 +34,7 @@
 		0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851131F3C77C300A200A4 /* AttributesEnums.swift */; };
 		0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE83E341F39C3D300C5662A /* RoundButton.swift */; };
 		1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1721F4305AD008A92DF /* ProfileStruct.swift */; };
+		1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1741F43063C008A92DF /* UserCoreData.swift */; };
 		15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */; };
 		15DF4CA81F404C3B00C68EEB /* iTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4CA71F404C3B00C68EEB /* iTouristTests.swift */; };
 		15DF4CAF1F404CBF00C68EEB /* PlaceCoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */; };
@@ -119,6 +120,7 @@
 		0ED851131F3C77C300A200A4 /* AttributesEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesEnums.swift; sourceTree = "<group>"; };
 		0EE83E341F39C3D300C5662A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		1542E1721F4305AD008A92DF /* ProfileStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStruct.swift; sourceTree = "<group>"; };
+		1542E1741F43063C008A92DF /* UserCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceCoreDataTest.swift; path = ../iTourist/PlaceCoreDataTest.swift; sourceTree = "<group>"; };
 		15DF4CA51F404C3B00C68EEB /* iTouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTouristTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +247,7 @@
 		0E8B3BD61F2F2CD4001FFC73 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				1542E1741F43063C008A92DF /* UserCoreData.swift */,
 				0E8B3BC61F2F2CA3001FFC73 /* iTourist.xcdatamodeld */,
 				15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */,
 				0E7D4ADA1F417B3A00C6E38D /* ExtensionForPlacesCoreData.swift */,
@@ -560,6 +563,7 @@
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
+				1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */,
 				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,

@@ -15,3 +15,10 @@ struct User {
     var password: String? = nil
     var image: NSData? = nil
 }
+enum UserType {
+    case name
+    case surname
+    case email
+    case password
+    case image
+}
