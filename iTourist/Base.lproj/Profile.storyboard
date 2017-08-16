@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -175,6 +176,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94T-f5-huj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-301.44927536231887" y="38.315217391304351"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="9hK-8a-CL4">
+            <objects>
+                <viewController id="t8o-r6-5gx" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zw7-c2-Rpr"/>
+                        <viewControllerLayoutGuide type="bottom" id="VwC-KQ-w4d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DYL-ep-uD3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1Ej-DH-AWf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="UKf-12-zYY">
+                                <rect key="frame" x="20" y="19.999999999999986" width="165.66666666666666" height="220.66666666666663"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlZ-GN-Dp9">
+                                <rect key="frame" x="234" y="50" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehG-gC-CbO">
+                                <rect key="frame" x="234" y="98" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tel." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h8-5S-nue">
+                                <rect key="frame" x="234" y="149" width="24" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvb-6S-nPt">
+                                <rect key="frame" x="364" y="260" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="0.42139340749999998" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="edit"/>
+                                <connections>
+                                    <action selector="editButtonTap:" destination="t8o-r6-5gx" eventType="touchUpInside" id="Eml-hO-zZu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jlZ-GN-Dp9" firstAttribute="leading" secondItem="UKf-12-zYY" secondAttribute="trailing" constant="48.329999999999998" id="1i6-gp-thN"/>
+                            <constraint firstItem="jlZ-GN-Dp9" firstAttribute="top" secondItem="Zw7-c2-Rpr" secondAttribute="bottom" constant="30" id="31H-qV-Y2r"/>
+                            <constraint firstItem="UKf-12-zYY" firstAttribute="width" secondItem="DYL-ep-uD3" secondAttribute="width" multiplier="0.4" id="85a-OF-CsB"/>
+                            <constraint firstItem="7h8-5S-nue" firstAttribute="top" secondItem="ehG-gC-CbO" secondAttribute="bottom" constant="30" id="Rt5-ee-j9B"/>
+                            <constraint firstAttribute="trailing" secondItem="kvb-6S-nPt" secondAttribute="trailing" constant="20" id="SkW-Oq-7fI"/>
+                            <constraint firstItem="kvb-6S-nPt" firstAttribute="top" secondItem="Zw7-c2-Rpr" secondAttribute="bottom" constant="240" id="kqI-Va-I0s"/>
+                            <constraint firstItem="ehG-gC-CbO" firstAttribute="leading" secondItem="UKf-12-zYY" secondAttribute="trailing" constant="48.329999999999998" id="lTT-xc-RtM"/>
+                            <constraint firstItem="7h8-5S-nue" firstAttribute="leading" secondItem="UKf-12-zYY" secondAttribute="trailing" constant="48.329999999999998" id="lyv-zL-GI3"/>
+                            <constraint firstItem="ehG-gC-CbO" firstAttribute="top" secondItem="jlZ-GN-Dp9" secondAttribute="bottom" constant="27" id="nII-5H-vey"/>
+                            <constraint firstItem="UKf-12-zYY" firstAttribute="leading" secondItem="DYL-ep-uD3" secondAttribute="leading" constant="20" id="oZE-gc-nJ9"/>
+                            <constraint firstItem="UKf-12-zYY" firstAttribute="top" secondItem="Zw7-c2-Rpr" secondAttribute="bottom" id="uMa-df-II5"/>
+                            <constraint firstItem="UKf-12-zYY" firstAttribute="height" secondItem="DYL-ep-uD3" secondAttribute="height" multiplier="0.3" id="y9u-bQ-dxb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="Mli-T6-xfj"/>
+                    <connections>
+                        <outlet property="name" destination="jlZ-GN-Dp9" id="b2a-EN-usK"/>
+                        <outlet property="surname" destination="ehG-gC-CbO" id="ZPF-bY-Zmo"/>
+                        <outlet property="tel" destination="7h8-5S-nue" id="2Ij-HL-zD7"/>
+                        <outlet property="userImage" destination="UKf-12-zYY" id="eMV-mV-B9x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-QD-BWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604.34782608695662" y="38.315217391304351"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="JLF-f5-xvD">
@@ -354,5 +429,6 @@
         <image name="login" width="256" height="256"/>
         <image name="loginBackround" width="1150" height="750"/>
         <image name="loginTxtImg" width="256" height="256"/>
+        <image name="profileBackground" width="1150" height="750"/>
     </resources>
 </document>

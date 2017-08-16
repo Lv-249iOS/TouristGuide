@@ -10,6 +10,15 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var surname: UILabel!
+    @IBOutlet weak var tel: UILabel!
+    
+    @IBAction func editButtonTap(_ sender: UIButton) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
