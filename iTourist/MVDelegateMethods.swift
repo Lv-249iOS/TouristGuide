@@ -157,20 +157,26 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
+        func visible(id: RegionId)->Bool {
+            
+            let tileRegion = MapFrameConverter.convert(id: id)
+            let visibleRegion = mapView.region
+            
+            let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
+            let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
+            
+            return MKMapRectIntersectsRect(tileRect, visibleRect)
+        }
+        
         print(map.region.span)
         
         if map.region.span.latitudeDelta < 0.02 {
             
+            if visibleIds.isEmpty { visibleIds = ["0.0,0.0":[]] }
+            
             visibleIds.forEach { (visibleRegionInfo) in
-                let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
-                let visibleRegion = mapView.region
                 
-                let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
-                let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
-                
-                let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
-                
-                if !visible {
+                if !visible(id: visibleRegionInfo.key) {
                     // present
                     
                     let locations = MapFrameConverter.convert(region: map.region)
@@ -205,37 +211,12 @@ extension MapViewController: MKMapViewDelegate {
                     }
                     
                     visibleIds.forEach { (visibleRegionInfo) in
-                        let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
-                        let visibleRegion = mapView.region
                         
-                        let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
-                        let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
-                        
-                        let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
-                        
-                        if visible {
+                        if visible(id: visibleRegionInfo.key) {
                             // present
                             for annotation in visibleRegionInfo.value {
                                 map.addAnnotation(annotation)
                                 print("Add annotation")
-                            }
-                        }
-                    }
-                    
-                    visibleIds.forEach { (visibleRegionInfo) in
-                        let tileRegion = MapFrameConverter.convert(id: visibleRegionInfo.key)
-                        let visibleRegion = mapView.region
-                        
-                        let tileRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: tileRegion)
-                        let visibleRect = MapFrameConverter.MKMapRectForCoordinateRegion(region: visibleRegion)
-                        
-                        let visible = MKMapRectIntersectsRect(tileRect, visibleRect)
-                        
-                        if !visible {
-                            // 4.1 Remove tile visibleRegionInfo
-                            for annotation in visibleRegionInfo.value {
-                                map.removeAnnotation(annotation)
-                                visibleIds.removeValue(forKey: visibleRegionInfo.key)
                             }
                         }
                     }
@@ -245,8 +226,19 @@ extension MapViewController: MKMapViewDelegate {
             }
             
         }
+        visibleIds.forEach { (visibleRegionInfo) in
+            
+            if !visible(id: visibleRegionInfo.key) {
+                // 4.1 Remove tile visibleRegionInfo
+                for annotation in visibleRegionInfo.value {
+                    map.removeAnnotation(annotation)
+                    visibleIds.removeValue(forKey: visibleRegionInfo.key)
+                }
+            }
+        }
         
     }
+    
     
 }
 
