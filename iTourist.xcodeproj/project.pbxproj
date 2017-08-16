@@ -33,6 +33,7 @@
 		0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851111F3C537000A200A4 /* UrlFormatter.swift */; };
 		0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED851131F3C77C300A200A4 /* AttributesEnums.swift */; };
 		0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE83E341F39C3D300C5662A /* RoundButton.swift */; };
+		152AFA1C1F4385B900201D5A /* UserCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152AFA1B1F4385B900201D5A /* UserCoreDataTests.swift */; };
 		1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1721F4305AD008A92DF /* ProfileStruct.swift */; };
 		1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1741F43063C008A92DF /* UserCoreData.swift */; };
 		15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */; };
@@ -55,6 +56,7 @@
 		20C9FB4B1F430A8500EBE738 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */; };
 		20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
+		A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A956FA441F436ECF00062CD1 /* ImageStore.swift */; };
 		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
 		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
 		B204E4961F3A14A300454978 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4861F3A14A300454978 /* cemetery.png */; };
@@ -121,6 +123,7 @@
 		0ED851111F3C537000A200A4 /* UrlFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlFormatter.swift; sourceTree = "<group>"; };
 		0ED851131F3C77C300A200A4 /* AttributesEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesEnums.swift; sourceTree = "<group>"; };
 		0EE83E341F39C3D300C5662A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		152AFA1B1F4385B900201D5A /* UserCoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreDataTests.swift; sourceTree = "<group>"; };
 		1542E1721F4305AD008A92DF /* ProfileStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStruct.swift; sourceTree = "<group>"; };
 		1542E1741F43063C008A92DF /* UserCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCoreData.swift; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 		20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
 		20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A956FA441F436ECF00062CD1 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		B204E4861F3A14A300454978 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
@@ -319,9 +323,9 @@
 			isa = PBXGroup;
 			children = (
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
+				A95187E71F437E4500C6E86D /* ImageManaging */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 		15DF4CA61F404C3B00C68EEB /* iTouristTests */ = {
 			isa = PBXGroup;
 			children = (
+				152AFA1B1F4385B900201D5A /* UserCoreDataTests.swift */,
 				15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */,
 				15DF4CA71F404C3B00C68EEB /* iTouristTests.swift */,
 				15DF4CA91F404C3B00C68EEB /* Info.plist */,
@@ -374,6 +379,15 @@
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		A95187E71F437E4500C6E86D /* ImageManaging */ = {
+			isa = PBXGroup;
+			children = (
+				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
+				A956FA441F436ECF00062CD1 /* ImageStore.swift */,
+			);
+			name = ImageManaging;
 			sourceTree = "<group>";
 		};
 		A956FA431F42BBEB00062CD1 /* CacheData */ = {
@@ -578,6 +592,7 @@
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
 				20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */,
 				15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */,
+				A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */,
 				0ED8510D1F3C433200A200A4 /* LocationManager.swift in Sources */,
 				0ED851101F3C433200A200A4 /* PlacesList.swift in Sources */,
 			);
@@ -589,6 +604,7 @@
 			files = (
 				15DF4CAF1F404CBF00C68EEB /* PlaceCoreDataTest.swift in Sources */,
 				15DF4CA81F404C3B00C68EEB /* iTouristTests.swift in Sources */,
+				152AFA1C1F4385B900201D5A /* UserCoreDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
