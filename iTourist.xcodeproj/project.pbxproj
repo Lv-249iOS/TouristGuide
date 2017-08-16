@@ -57,6 +57,7 @@
 		20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */; };
 		611104221F4420D500E221BC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611104211F4420D500E221BC /* LogInViewController.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
+		A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A956FA441F436ECF00062CD1 /* ImageStore.swift */; };
 		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
 		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
 		B204E4961F3A14A300454978 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4861F3A14A300454978 /* cemetery.png */; };
@@ -149,6 +150,7 @@
 		20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
 		611104211F4420D500E221BC /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A956FA441F436ECF00062CD1 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		B204E4861F3A14A300454978 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
@@ -323,9 +325,9 @@
 			isa = PBXGroup;
 			children = (
 				0EBDA86C1F3DA47800BA9422 /* DataProvider */,
+				A95187E71F437E4500C6E86D /* ImageManaging */,
 				0ED850FE1F3C433200A200A4 /* CoordinateConverter.swift */,
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
-				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -380,6 +382,15 @@
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		A95187E71F437E4500C6E86D /* ImageManaging */ = {
+			isa = PBXGroup;
+			children = (
+				0E5DE1E31F3217780045305D /* ImageDownloader.swift */,
+				A956FA441F436ECF00062CD1 /* ImageStore.swift */,
+			);
+			name = ImageManaging;
 			sourceTree = "<group>";
 		};
 		A956FA431F42BBEB00062CD1 /* CacheData */ = {
@@ -585,6 +596,7 @@
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
 				20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */,
 				15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */,
+				A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */,
 				0ED8510D1F3C433200A200A4 /* LocationManager.swift in Sources */,
 				0ED851101F3C433200A200A4 /* PlacesList.swift in Sources */,
 			);
