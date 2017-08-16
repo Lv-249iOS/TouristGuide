@@ -9,52 +9,48 @@
 import Foundation
 
 class DataProvider {
+    
     static var shared = DataProvider()
     
-    var cache = Cacher()
-    var loader = Loader()
+    private var cacher = Cacher()
+    private var loader = Loader()
+    private var requestFormatter = RequestFormatter()
+    private var parser = JsonPlacesParser()
     
     func getData(with keys: [(key: String, loc: String)], completion: @escaping ([RegionId: [Place]?]?)->()) {
         var cachedPlaces: [RegionId: [Place]] = [:]
         var loadedPlaces: [RegionId: [Place]] = [:]
         
         for key in keys {
-            if let data = cache.getFromCache(with: key.key) {
-                print("CACHE")
-                let converter = DataConverter()
+            guard let data = cacher.getFromCache(with: key.key) else {
+                print("LOADING........")
+                guard let req = requestFormatter.createIdUrlRequest(with: key.loc) else { return }
                 var places: [Place] = []
                 
-                for dat in data {
-                    if let place = converter.convert(data: dat) {
-                        places.append(place)
+                loader.load(with: req) { data in
+                    guard let data = data, let placeIds = self.parser.parseIds(with: data) else { return }
+                    
+                    for id in placeIds {
+                        guard let placeReq = self.requestFormatter.createPlaceRequest(with: id) else { return }
+                        self.loader.load(with: placeReq) { data in
+                            guard let dat = data, let place = self.parser.parsePlace(with: dat) else { return }
+                            places.append(place)
+                            
+                            if id == placeIds.last {
+                                self.cacher.save(places: places, key: key.key)
+                                loadedPlaces[key.key] = places
+                                key == keys.last! ? completion(loadedPlaces) : (/* move on */)
+                            }
+                        }
                     }
                 }
                 
-                cachedPlaces[key.key] = places
-                
-                if key == keys.last! {
-                    completion(cachedPlaces)
-                }
-                
-            } else {
-                var places: [Place] = []
-                loader.loadData(with: key.loc) { [weak self] data, err in
-                    print(" LOAD ")
-                    guard let data = data else { return }
-                    for dat in data {
-                        guard let place = JsonPlacesParser().parsePlace(with: dat) else { return }
-                        places.append(place)
-                    }
-                    
-                    self?.cache.save(places: places, key: key.key)
-                    
-                    loadedPlaces[key.key] = places
-                    
-                    if key == keys.last! {
-                        completion(loadedPlaces)
-                    }
-                }
+                return
             }
+            
+            print("USED CACHED DATA")
+            cachedPlaces[key.key] = data
+            key == keys.last! ? completion(cachedPlaces) : (/* move on */)
         }
     }
 }

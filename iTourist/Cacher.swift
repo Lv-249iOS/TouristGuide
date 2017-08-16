@@ -11,31 +11,38 @@ import Foundation
 class Cacher {
     
     var database = PlaceCoreData()
+    let converter = DataConverter()
     
     func save(places: [Place], key: String) {
         var placesData: [Data] = []
-        let converter = DataConverter()
-        
         for place in places {
             let dat = converter.convert(from: place)
             placesData.append(dat)
         }
+        
         database.add(data: placesData as [NSData], key: key)
+        print("SAVED IN DATABASE")
     }
     
-    func getFromCache(with key: String) -> [Data]? {
-        if let placesData = database.get(by: key) as [Data]? {
-            return placesData
+    func getFromCache(with key: String) -> [Place]? {
+        guard let placesData = database.get(by: key) as [Data]? else { return nil }
+        var places: [Place] = []
+        for dat in placesData {
+            if let place = converter.convert(data: dat) {
+                places.append(place)
+            }
         }
         
-        return nil
+        return places
     }
     
     func removeFromCache(with key: String) {
         database.delete(for: key)
+        print("REMOVED FROM DATABASE")
     }
     
     func updateCachedValue(with newVal: [Data], key: String) {
-        //UserDefaults.standard.set(newVal, forKey: key)
+        database.change(data: newVal as [NSData], by: key)
+        print("VALUE WAS UPDATED IN DATABASE")
     }
 }

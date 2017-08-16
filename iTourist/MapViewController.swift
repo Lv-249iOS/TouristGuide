@@ -62,6 +62,7 @@ class MapViewController: UIViewController {
                     annotation.type = place.typeOfPlace?.first
                     self.annotationsOfPlaces.append(annotation)
                     self.map.addAnnotation(annotation)
+                    print("Add annotation")
                 }
             
                 self.visibleIds[key] = self.annotationsOfPlaces
@@ -82,6 +83,9 @@ class MapViewController: UIViewController {
                 map.removeAnnotation(annot)
                 map.addAnnotation(annot)
             }
+            
+            routeImage.image = nil
+            routeInfo.text = nil
             
             selectedAnnotations = []
             routeButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)

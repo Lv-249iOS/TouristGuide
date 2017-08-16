@@ -12,30 +12,33 @@ class PlaceViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var imageLoader = ImageDownloader.shared
-    var searchActive: Bool = false {
-        didSet{self.tableView.reloadData()}
-    }
     var filteredPlaces: [Place] = []
     var places: [Place] = []
     
+    var searchActive: Bool = false {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     func initPlaces() {
         PlacesList.shared.getPlaces(with: [AppModel.shared.getCurrentLocation()]) { places in
-            DispatchQueue.main.async {
-                guard let placesArr = places else { return }
-                for (_, places) in placesArr {
-                    guard let type = self.navigationItem.title else { return }
-                    guard let places = places else { return }
-                    for place in places {
-                        if place.typeOfPlace?.contains(type) == true {
-                            self.places.append(place)
-                        }
+            guard let placesArr = places else { return }
+            for (_, places) in placesArr {
+                guard let type = self.navigationItem.title, let places = places else { return }
+                for place in places {
+                    if place.typeOfPlace?.contains(type) == true {
+                        self.places.append(place)
                     }
                 }
+            }
+            
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +61,7 @@ class PlaceViewController: UITableViewController {
         let imageView = UIImageView(image: backgroundImage)
         
         self.tableView.backgroundView = imageView
-
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,7 +96,7 @@ class PlaceViewController: UITableViewController {
     // Navigation to place tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "PlaceProfileSeque" {
-            let button = sender as! UIButton
+            guard let button = sender as? UIButton else { return }
             if let viewController = segue.destination as? PlaceProfileViewController {
                 let place = searchActive ? filteredPlaces[button.tag] : places[button.tag]
                 viewController.place = place
@@ -111,24 +114,20 @@ extension PlaceViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true
-        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
-        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         searchBar.endEditing(true)
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         searchBar.endEditing(true)
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

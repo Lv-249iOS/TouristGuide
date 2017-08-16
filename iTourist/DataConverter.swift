@@ -12,7 +12,6 @@ class DataConverter {
     
     func convert(from place: Place) -> Data {
         let data = NSKeyedArchiver.archivedData(withRootObject: place)
-        
         return data
     }
     
