@@ -27,17 +27,17 @@ class DataProvider {
                 guard let req = requestFormatter.createIdUrlRequest(with: key.loc) else { return }
                 var places: [Place] = []
                 
-                loader.load(with: req) { data in
-                    guard let data = data, let placeIds = self.parser.parseIds(with: data) else { return }
+                loader.load(with: req) { [weak self] data in
+                    guard let data = data, let placeIds = self?.parser.parseIds(with: data) else { return }
                     
                     for id in placeIds {
-                        guard let placeReq = self.requestFormatter.createPlaceRequest(with: id) else { return }
-                        self.loader.load(with: placeReq) { data in
-                            guard let dat = data, let place = self.parser.parsePlace(with: dat) else { return }
+                        guard let placeReq = self?.requestFormatter.createPlaceRequest(with: id) else { return }
+                        self?.loader.load(with: placeReq) { data in
+                            guard let dat = data, let place = self?.parser.parsePlace(with: dat) else { return }
                             places.append(place)
                             
                             if id == placeIds.last {
-                                self.cacher.save(places: places, key: key.key)
+                                self?.cacher.save(places: places, key: key.key)
                                 loadedPlaces[key.key] = places
                                 key == keys.last! ? completion(loadedPlaces) : (/* move on */)
                             }
