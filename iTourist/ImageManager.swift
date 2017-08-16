@@ -8,16 +8,17 @@
 
 import UIKit
 
-class ImageDownloader {
+class ImageManager {
     
-    static var shared = ImageDownloader()
+    static var shared = ImageManager()
     
-    let formatter = UrlFormatter()
+    let loader = Loader()
+    let formatter = RequestFormatter()
     let imageStorage = ImageStore()
     
     /// Gets image from image storage and immediately return image in callback.
     /// If it is impossible - returns default image in callback and then async loads from net,
-    /// saves in image storage and when loading was  ended return image in callback
+    /// saves in image storage and when loading was ended return image in callback
     func obtainImage(with imgRef: String, completion: @escaping ((UIImage)->())) {
         if let image = try? imageStorage.getImage(by: imgRef), let img = image {
             print("GOT from file system")
@@ -25,16 +26,13 @@ class ImageDownloader {
             DispatchQueue.main.async { completion(img) }
         } else {
             DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
-            guard let url = formatter.createUrlForImageDownloading(with: imgRef) else { return }
             print("LOADING from net")
-            
-            DispatchQueue.global(qos: .utility).async {
-                if let data = try? Data(contentsOf: url) {
-                    guard let img = UIImage(data: data) else { return }
-                    self.imageStorage.save(image: img, with: imgRef)
-                    self.checkIfStorageNeedsToBeCleaned()
-                    DispatchQueue.main.async { completion(img) }
-                }
+            guard let req = formatter.createImageRequest(with: imgRef) else { return }
+            loader.load(with: req) { data in
+                guard let data = data, let img = UIImage(data: data) else { return }
+                self.imageStorage.save(image: img, with: imgRef)
+                self.checkIfStorageNeedsToBeCleaned()
+                DispatchQueue.main.async { completion(img) }
             }
         }
     }

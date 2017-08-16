@@ -24,4 +24,9 @@ class RequestFormatter {
         guard let url = UrlFormatter().createUrlForWeather(with: city, daysCount: countOfDays) else { return nil }
         return URLRequest(url: url)
     }
+    
+    func createImageRequest(with imgRef: String) -> URLRequest? {
+        guard let url = UrlFormatter().createUrlForImageDownloading(with: imgRef) else { return nil }
+        return URLRequest(url: url)
+    }
 }
