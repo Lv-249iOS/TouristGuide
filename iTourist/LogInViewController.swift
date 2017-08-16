@@ -22,7 +22,7 @@ class LogInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
