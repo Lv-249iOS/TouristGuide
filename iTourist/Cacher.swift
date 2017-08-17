@@ -10,9 +10,10 @@ import Foundation
 
 class Cacher {
     
-    var database = PlaceCoreData()
-    let converter = DataConverter()
+    private var database = PlaceCoreData()
+    private let converter = DataConverter()
     
+    /// Saves the array of places with the key in database converting it to [Data]
     func save(places: [Place], key: String) {
         var placesData: [Data] = []
         for place in places {
@@ -24,6 +25,7 @@ class Cacher {
         print("SAVED IN DATABASE")
     }
     
+    /// If database has data with the key, returns converted data to [Place] else returns nil
     func getFromCache(with key: String) -> [Place]? {
         guard let placesData = database.get(by: key) as [Data]? else { return nil }
         var places: [Place] = []

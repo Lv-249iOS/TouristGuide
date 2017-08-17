@@ -21,7 +21,7 @@ class ImageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let url = imageUrlString {
-            ImageDownloader.shared.obtainImage(with: url) { image in
+            ImageManager.shared.obtainImage(with: url) { image in
                 DispatchQueue.main.async {
                     self.imageView.image = image
                 }
