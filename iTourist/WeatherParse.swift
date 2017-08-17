@@ -17,7 +17,6 @@ enum WeatherKeyPath: String {
     case date = "date"
     case day = "day"
     case error = "error"
-
 }
 
 class WeatherParser {
@@ -27,13 +26,15 @@ class WeatherParser {
             var forecasts: [Forecast] = []
             var currentTemp = 0
             var feelsTemp = 0
-           if json.value(forKeyPath: WeatherKeyPath.error.rawValue) != nil {
-               Constants.cityForWeatherParseExists = false
+            if json.value(forKeyPath: WeatherKeyPath.error.rawValue) != nil {
+                Constants.cityForWeatherParseExists = false
             }
+            
             if let currentweather = json.value(forKeyPath: WeatherKeyPath.current.rawValue) as? [String: Any] {
                 currentTemp = currentweather[WeatherKeyPath.currentTemp.rawValue] as? Int ?? 0
                 feelsTemp = currentweather[WeatherKeyPath.feelslikeTemp.rawValue] as? Int ?? 0
             }
+            
             if let weather = json.value(forKeyPath: WeatherKeyPath.forecastday.rawValue) as? [AnyObject] {
                 for dayWeath in weather {
                     var data: String?
@@ -46,6 +47,7 @@ class WeatherParser {
                         forecasts.append(forecast)
                     }
                 }
+                
                 forecasts[0].currentTemp = currentTemp
                 forecasts[0].feelsTemp = feelsTemp
             }

@@ -11,7 +11,7 @@ import UIKit
 class Forecast {
     
     enum ForecastWeatherKeyPath: String {
-        case condition = "codition"
+        case condition = "condition"
         case code = "code"
         case mintemp = "mintemp_c"
         case date = "date"
