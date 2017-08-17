@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -20,6 +20,14 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         self.present(image, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+}
+
+extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
@@ -30,10 +38,5 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         }
         
         self.dismiss(animated: true, completion: nil)
-    }    
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
     }
 }
