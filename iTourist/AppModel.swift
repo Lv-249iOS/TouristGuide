@@ -16,11 +16,12 @@ class AppModel {
     var span: MKCoordinateSpan?
     
     var locationManager = LocationManager()
-    var constants: Constants?
+    var constants: Constants
     
     init() {
         location = locationManager.location
-        span = MKCoordinateSpanMake(Constants.startingSpan, Constants.startingSpan)
+        constants = Constants()
+        span = MKCoordinateSpanMake(constants.startingSpan, constants.startingSpan)
     }
     
     func updateLocation(with location: CLLocation) {

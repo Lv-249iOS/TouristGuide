@@ -37,9 +37,10 @@ class MapFrameConverter {
     }
     
     static func convert(id: RegionId) -> MKCoordinateRegion {
+        
         return MKCoordinateRegion(center: (converter.converteToLocation(with: id)?.coordinate ?? kCLLocationCoordinate2DInvalid),
-                                  span: MKCoordinateSpan(latitudeDelta: Constants.defaultRegionSpan,
-                                                         longitudeDelta: Constants.defaultRegionSpan))
+                                  span: MKCoordinateSpan(latitudeDelta: AppModel.shared.constants.defaultRegionSpan,
+                                                         longitudeDelta: AppModel.shared.constants.defaultRegionSpan))
     }
     
     static func MKMapRectForCoordinateRegion(region:MKCoordinateRegion) -> MKMapRect {

@@ -9,16 +9,10 @@
 import UIKit
 
 struct Constants {
-    // delete it
-    var bounds: CGRect
     
-    // change it
-    init() {
-        bounds = UIScreen.main.bounds
-    }
+    let startingSpan = 0.01
+    let defaultRegionSpan = 0.27
     
-    static let startingSpan = 0.01
-    static let defaultRegionSpan = 0.27
     static var cityForWeatherParseExists = true
     static let deviceSceenheight = UIScreen.main.bounds.height
     static let deviceSceenwidth = UIScreen.main.bounds.width
