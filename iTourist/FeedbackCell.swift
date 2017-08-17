@@ -9,6 +9,7 @@
 import UIKit
 
 class FeedbackCell: UITableViewCell {
+    
     @IBOutlet weak var feedbackImage: UIImageView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var rating: UILabel!

@@ -15,9 +15,11 @@ struct Constants {
     // change it
     init() {
         bounds = UIScreen.main.bounds
-        
     }
+    
     static let startingSpan = 0.01
     static let defaultRegionSpan = 0.27
-    static var exists = true
+    static var cityForWeatherParseExists = true
+    static let deviceSceenheight = UIScreen.main.bounds.height
+    static let deviceSceenwidth = UIScreen.main.bounds.width
 }
