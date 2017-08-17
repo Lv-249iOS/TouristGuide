@@ -24,45 +24,42 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     var change  = false
     var forecast: [Forecast]?
-    let height = UIScreen.main.bounds.height
-    let width = UIScreen.main.bounds.width
+    let height =  Constants.deviceSceenheight
+    let width = Constants.deviceSceenwidth
     var startLandscape = false
     var isIpad = false
 
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
     func layout(width: CGFloat, heigth: CGFloat) {
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layout.itemSize = CGSize(width: width, height: heigth)
-        layout.minimumLineSpacing = 3
+        layout.minimumLineSpacing = 2
         layout.minimumInteritemSpacing = 2
         myCollectionview.collectionViewLayout = layout
         
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         if traitCollection.userInterfaceIdiom == .pad{
             isIpad = true
         }
         if UIDevice.current.orientation.isPortrait  {
             if !isIpad{
-                layout(width: UIScreen.main.bounds.width/2 - 2, heigth: UIScreen.main.bounds.height/4 - 3)
+                layout(width: UIScreen.main.bounds.width/2 - 2, heigth: UIScreen.main.bounds.height/4 - 2)
             } else {
-                layout(width: UIScreen.main.bounds.width/4 - 2, heigth: UIScreen.main.bounds.height/4 - 3)
+                layout(width: UIScreen.main.bounds.width/3 - 2, heigth: UIScreen.main.bounds.height/4 - 2)
             }
         }
         if  UIDevice.current.orientation.isLandscape  {
             startLandscape = true
-            layout(width: UIScreen.main.bounds.width/6 - 2, heigth: UIScreen.main.bounds.height/4 - 3)
+            layout(width: UIScreen.main.bounds.width/6 - 2, heigth: UIScreen.main.bounds.height/4 - 2)
         }
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(AppModel.shared.getCurrentLocation()) { [weak self] placemarks, err in
@@ -76,7 +73,6 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape  {
             if let layout =  self.myCollectionview?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -94,11 +90,11 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
                 if startLandscape && !isIpad {
                     layout.itemSize = CGSize(width: height/2 - 2, height: width/4 - 2)
                 } else if isIpad && !startLandscape {
-                    layout.itemSize = CGSize(width: width/4, height: height/4 - 2)
+                    layout.itemSize = CGSize(width: width/3 - 2, height: height/4 - 2)
                 } else if isIpad && startLandscape {
-                    layout.itemSize = CGSize(width: height/4 - 2, height: width/4 - 2)
+                    layout.itemSize = CGSize(width: height/3 - 2, height: width/4 - 2)
                 } else {
-                    layout.itemSize = CGSize(width: width/2, height: height/4 - 2)
+                    layout.itemSize = CGSize(width: width/2 - 2, height: height/4 - 2)
                 }
             }
         }
@@ -119,7 +115,6 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell, let weather = forecast {
             if indexPath.row < weather.count {
                 if height < 670 && UIDevice.current.orientation.isLandscape {
@@ -144,11 +139,9 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func displayCity() {
-        
         let alert = UIAlertController(title: "Change city", message: "Please, enter city name", preferredStyle: UIAlertControllerStyle.alert)
         let cancel = UIAlertAction(title: "Cancel",style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(cancel)
-        
         let ok = UIAlertAction(title: "OK",style: UIAlertActionStyle.default) { (action) -> Void in
             if let name = alert.textFields?.first {
                 self.getWeatherforCity(city: name.text!)
@@ -162,7 +155,6 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func getWeatherforCity(city: String) {
-        
         cityName.text = city
         let cityname  = city.replacingOccurrences(of: " ", with: "%20")
         guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
@@ -170,7 +162,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
             guard let data = data else { return }
             DispatchQueue.main.async {
                 self?.forecast = WeatherParser().parse(with: data)
-                if Constants.exists {
+                if Constants.cityForWeatherParseExists {
                     guard let todayForecast = self?.forecast?[0] else { return }
                     self?.setCurrentWeather(with: todayForecast)
                 } else {
@@ -185,11 +177,10 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
                 self?.myCollectionview.reloadData()
             }
         }
-        Constants.exists = true
+        Constants.cityForWeatherParseExists = true
     }
     
     func setCurrentWeather(with forecast: Forecast) {
-        
         if height < 670  {
             currentTemp.font = currentTemp.font.withSize(25)
             feelslike.font = feelslike.font.withSize(25)

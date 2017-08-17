@@ -10,6 +10,16 @@ import UIKit
 
 class Forecast {
     
+    enum ForecastWeatherKeyPath: String {
+        case condition = "codition"
+        case code = "code"
+        case mintemp = "mintemp_c"
+        case date = "date"
+        case day = "day"
+        case maxtemp = "maxtemp_c"
+        
+    }
+    
     var maxtemp = Int()
     var mintemp = Int()
     var date =  String()
@@ -19,11 +29,11 @@ class Forecast {
     var image = UIImage()
     
     init(forecast: [String: Any]) {
-        maxtemp = forecast["maxtemp_c"] as? Int ?? 0
-        mintemp = forecast["mintemp_c"] as? Int ?? 0
-        date  = forecast["date"] as? String ?? "Unknown"
-        if let condition = forecast["condition"] as? [String: Any] {
-            let icon  = condition["code"] as? Int ?? 0
+        maxtemp = forecast[ForecastWeatherKeyPath.maxtemp.rawValue] as? Int ?? 0
+        mintemp = forecast[ForecastWeatherKeyPath.mintemp.rawValue] as? Int ?? 0
+        date  = forecast[ForecastWeatherKeyPath.date.rawValue] as? String ?? "Unknown"
+        if let condition = forecast[ForecastWeatherKeyPath.condition.rawValue] as? [String: Any] {
+            let icon  = condition[ForecastWeatherKeyPath.code.rawValue] as? Int ?? 0
             imagecode = String(icon)
             if let img = UIImage(named: imagecode + ".png") {
                 image = img

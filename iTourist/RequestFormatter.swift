@@ -11,7 +11,6 @@ import Foundation
 class RequestFormatter {
     
     // Request formatters for Google places API
-    
     func createIdUrlRequest(with key: String, radius: Int = 10000) -> URLRequest? {
         guard let url = UrlFormatter().createUrlForPlacesIdsReq(with: key, radius: radius) else { return nil }
         return URLRequest(url: url)
@@ -28,7 +27,6 @@ class RequestFormatter {
     }
     
     // Request formatter for Weather API
-    
     func createWeatherRequest(with city: String, countOfDays: Int = 7) -> URLRequest? {
         guard let url = UrlFormatter().createUrlForWeather(with: city, daysCount: countOfDays) else { return nil }
         return URLRequest(url: url)

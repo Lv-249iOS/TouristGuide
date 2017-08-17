@@ -11,10 +11,8 @@ import MapKit
 class AppModel {
     
     static var shared = AppModel()
-    
     var location: CLLocation?
     var bound: CGRect?
-    
     var locationManager = LocationManager()
     var constants: Constants?
     
