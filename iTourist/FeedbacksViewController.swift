@@ -9,21 +9,18 @@
 import UIKit
 
 class FeedbacksViewController: UIViewController {
+    
     var reviews: [Review]?
     var fedbackTableViewController: FeedbackTableViewController!
     
     @IBAction func stopFeedbacks(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeedbacksViewControllerSeque" , let controller = segue.destination as? FeedbackTableViewController {
             fedbackTableViewController = controller
@@ -32,5 +29,4 @@ class FeedbacksViewController: UIViewController {
             }
         }
     }
-    
 }

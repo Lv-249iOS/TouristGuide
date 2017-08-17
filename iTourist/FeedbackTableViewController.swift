@@ -11,14 +11,13 @@ import UIKit
 class FeedbackTableViewController: UITableViewController {
     
     var reviews: [Review]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 145
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let rew = reviews {
@@ -28,12 +27,12 @@ class FeedbackTableViewController: UITableViewController {
         return 0
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedbackCell", for: indexPath) as? FeedbackCell else { return UITableViewCell() }
         guard let rew = reviews else { return UITableViewCell() }
         let review = rew[indexPath.row]
         
+        /// Set information for feedbacks
         cell.authorName.text = review.authorName
         cell.rating.text = "\(review.rating ?? 4.5)"
         cell.feedBack.text = review.text
@@ -43,9 +42,7 @@ class FeedbackTableViewController: UITableViewController {
         return cell
     }
     
-
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
 }
