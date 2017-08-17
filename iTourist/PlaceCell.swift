@@ -9,10 +9,10 @@
 import UIKit
 
 class PlaceCell: UITableViewCell {
+    
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var adress: UILabel!
     @IBOutlet weak var phoneNum: UILabel!
     @IBOutlet weak var infoButton: UIButton!
-    
 }
