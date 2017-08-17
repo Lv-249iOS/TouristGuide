@@ -12,12 +12,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
 
     @IBOutlet weak var imageView: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     @IBAction func importButtonTap(_ sender: UIButton) {
         let image = UIImagePickerController()
         image.delegate = self
@@ -36,13 +30,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         }
         
         self.dismiss(animated: true, completion: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    }    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
