@@ -12,13 +12,14 @@ class PlacesList {
     
     static var shared = PlacesList()
     
+    /// Asks data from DataProvider with created array of keys
     func getPlaces(with locations: [CLLocation], completion: @escaping ([RegionId: [Place]?]?)->()) {
         DataProvider.shared.getData(with: getKeys(from: locations)) { result in
-            print("GOT places FROM  DATA PROVIDER")
             completion(result)
         }
     }
     
+    /// Converts CLLocation to tuple with rounded location string and entire location string
     private func getKeys(from locations: [CLLocation]) -> [(key: String, loc: String)] {
         let converter = CoordinateConverter()
         var keys: [(key: String, loc: String)] = []
@@ -32,10 +33,10 @@ class PlacesList {
     }
     
     func add(place: Place) {
-        // Method should add some place to some region with KEYlocation
+        // --- Method should add some place to some region with KEYlocation --- \\
     }
     
     func remove(at index: Int) {
-        // Method should delete some place to some region with KEYlocation
+        // --- Method should delete some place to some region with KEYlocation --- \\
     }
 }

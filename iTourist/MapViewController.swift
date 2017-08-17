@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
-    var imageLoader = ImageDownloader.shared
+    var imageLoader = ImageManager.shared
     
     let converter = CoordinateConverter()
     

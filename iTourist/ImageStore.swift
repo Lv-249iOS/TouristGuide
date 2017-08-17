@@ -9,8 +9,8 @@
 import UIKit
 
 class ImageStore {
-    
-    var storageLimit = 20
+
+    var storageLimit = 50
     
     private var documentsURL: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -29,12 +29,14 @@ class ImageStore {
         return image
     }
     
+    /// Adds name of file to self documents area and removes file in the path
     func removeImage(with filename: String) throws {
         let fullPath = try self.fileInDocumentsDirectory(filename)
         try FileManager.default.removeItem(atPath: fullPath)
         print("REMOVED from file system")
     }
     
+    /// Creates jpeg data representation for image and save it
     func save(image: UIImage, with filename: String) {
         if let path = try? fileInDocumentsDirectory(filename) {
             guard let jpgImageData = UIImageJPEGRepresentation(image, 1.0) else { return }
@@ -43,6 +45,7 @@ class ImageStore {
         }
     }
     
+    /// Returns path to images folder in directory if the folder exists if not - creates and returns path
     private func fileInDocumentsDirectory(_ filename: String) throws -> String {
         var fileURL = self.documentsURL.appendingPathComponent("images")
         if !FileManager.default.fileExists(atPath: fileURL.path) {
@@ -54,6 +57,7 @@ class ImageStore {
         return fileURL.path
     }
     
+    /// Cleans all files in images folder in current documents area
     func clearAllFilesFromDirectory() {
         let imgDirPath = documentsURL.appendingPathComponent("images")
         let directoryContents = try? FileManager.default.contentsOfDirectory(atPath: imgDirPath.path)
