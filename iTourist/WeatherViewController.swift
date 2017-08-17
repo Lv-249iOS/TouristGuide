@@ -9,12 +9,6 @@
 import MapKit
 
 class WeatherViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
-    var change  = false
-    var forecast: [Forecast]?
-    let height = UIScreen.main.bounds.height
-    let width = UIScreen.main.bounds.width
-    var startLandscape = false
-    var isIpad = false
     
     @IBOutlet weak var myCollectionview: UICollectionView!
     @IBOutlet weak var currentTemp: UILabel!
@@ -28,13 +22,21 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
         displayCity()
     }
     
-    
+    var change  = false
+    var forecast: [Forecast]?
+    let height = UIScreen.main.bounds.height
+    let width = UIScreen.main.bounds.width
+    var startLandscape = false
+    var isIpad = false
+
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
     func layout(width: CGFloat, heigth: CGFloat) {
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -46,18 +48,15 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         if traitCollection.userInterfaceIdiom == .pad{
             isIpad = true
         }
-        
-        if  UIDevice.current.orientation.isPortrait  {
+        if UIDevice.current.orientation.isPortrait  {
             if !isIpad{
                 layout(width: UIScreen.main.bounds.width/2 - 2, heigth: UIScreen.main.bounds.height/4 - 3)
-            }
-            else {
-                
+            } else {
                 layout(width: UIScreen.main.bounds.width/4 - 2, heigth: UIScreen.main.bounds.height/4 - 3)
             }
         }
@@ -77,14 +76,14 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape  {
-            if let layout =  self.myCollectionview?.collectionViewLayout as? UICollectionViewFlowLayout{
+            if let layout =  self.myCollectionview?.collectionViewLayout as? UICollectionViewFlowLayout {
                 myCollectionview?.collectionViewLayout.invalidateLayout()
                 if startLandscape{
                     layout.itemSize = CGSize(width: width/6 - 2, height: height/4 - 2)
-                }
-                else{
+                } else {
                     layout.itemSize = CGSize(width: height/6 - 2, height: width/4 - 2)
                 }
             }
@@ -94,14 +93,11 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
                 myCollectionview?.collectionViewLayout.invalidateLayout()
                 if startLandscape && !isIpad {
                     layout.itemSize = CGSize(width: height/2 - 2, height: width/4 - 2)
-                }
-                else if isIpad && !startLandscape{
+                } else if isIpad && !startLandscape {
                     layout.itemSize = CGSize(width: width/4, height: height/4 - 2)
-                }
-                else if isIpad && startLandscape{
+                } else if isIpad && startLandscape {
                     layout.itemSize = CGSize(width: height/4 - 2, height: width/4 - 2)
-                }
-                else {
+                } else {
                     layout.itemSize = CGSize(width: width/2, height: height/4 - 2)
                 }
             }
@@ -123,14 +119,14 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell, let weather = forecast {
             if indexPath.row < weather.count {
                 if height < 670 && UIDevice.current.orientation.isLandscape {
                     cell.date.font = cell.date.font.withSize(15)
                     cell.mintemp.font = cell.mintemp.font.withSize(15)
                     cell.maxtemp.font = cell.maxtemp.font.withSize(15)
-                }
-                else{
+                } else {
                     cell.date.font = cell.date.font.withSize(25)
                     cell.mintemp.font = cell.mintemp.font.withSize(25)
                     cell.maxtemp.font = cell.maxtemp.font.withSize(25)
@@ -143,10 +139,12 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
                 return cell
             }
         }
+        
         return UICollectionViewCell()
     }
     
     func displayCity() {
+        
         let alert = UIAlertController(title: "Change city", message: "Please, enter city name", preferredStyle: UIAlertControllerStyle.alert)
         let cancel = UIAlertAction(title: "Cancel",style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(cancel)
@@ -164,10 +162,10 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func getWeatherforCity(city: String) {
+        
         cityName.text = city
         let cityname  = city.replacingOccurrences(of: " ", with: "%20")
         guard let request = RequestFormatter().createWeatherRequest(with: cityname) else { return }
-        
         Loader().load(with: request) { [weak self] data in
             guard let data = data else { return }
             DispatchQueue.main.async {
@@ -175,8 +173,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
                 if Constants.exists {
                     guard let todayForecast = self?.forecast?[0] else { return }
                     self?.setCurrentWeather(with: todayForecast)
-                }
-                else {
+                } else {
                     self?.currentTemp.text = ""
                     self?.feelslike.text = ""
                     self?.today.text = ""
@@ -192,6 +189,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     func setCurrentWeather(with forecast: Forecast) {
+        
         if height < 670  {
             currentTemp.font = currentTemp.font.withSize(25)
             feelslike.font = feelslike.font.withSize(25)

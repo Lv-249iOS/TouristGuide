@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class Forecast {
     
     var maxtemp = Int()
@@ -18,8 +17,6 @@ class Forecast {
     var feelsTemp = Int()
     var imagecode  = String()
     var image = UIImage()
-    
-  
     
     init(forecast: [String: Any]) {
         maxtemp = forecast["maxtemp_c"] as? Int ?? 0
