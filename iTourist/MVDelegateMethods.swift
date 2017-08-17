@@ -17,8 +17,18 @@ extension MapViewController: MKMapViewDelegate {
             let identifier = "Reuse"
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             
-            var id = ""
+            var id = visibleIds.keys.first ?? ""
             guard let annotation = annotation as? PlaceAnnotation else { return (annotationView as? MKPinAnnotationView) }
+            
+            func setImage() {
+                if let index = visibleIds[id]?.index(of: annotation) {
+                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
+                        annotationView?.image = image
+                    } else {
+                        annotationView?.image = UIImage(named: "pin")
+                    }
+                }
+            }
             
             for (key, value) in visibleIds {
                 if value.contains(annotation) {
@@ -26,28 +36,13 @@ extension MapViewController: MKMapViewDelegate {
                     break
                 }
             }
-            if id == "" { id = visibleIds.keys.first! }
 
             if annotationView == nil {
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView?.canShowCallout = true
-                
-                if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
-                        annotationView?.image = image
-                    } else {
-                        annotationView?.image = UIImage(named: "pin")
-                    }
-                }
-                
+                setImage()
             } else {
-                if let index = visibleIds[id]?.index(of: annotation) {
-                    if let image = UIImage(named: visibleIds[id]?[index].type ?? "pin") {
-                        annotationView?.image = image
-                    } else {
-                        annotationView?.image = UIImage(named: "pin")
-                    }
-                }
+                setImage()
             }
             
             return annotationView
@@ -56,11 +51,10 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if !(view.annotation is MKUserLocation) {
-            let leftAccessory = UIButton(type: .custom)
-            leftAccessory.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             
             if let annotation = view.annotation as? PlaceAnnotation {
-                var id = ""
+                var id = visibleIds.keys.first ?? ""
+                
                 for (key, value) in visibleIds {
                     if value.contains(annotation) {
                         id = key
@@ -71,6 +65,8 @@ extension MapViewController: MKMapViewDelegate {
                 if let index = visibleIds[id]?.index(of: annotation) {
                     if let url = visibleIds[id]?[index].photoRef {
                         imageLoader.obtainImage(with: url) { image in
+                            let leftAccessory = UIButton(type: .custom)
+                            leftAccessory.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
                             leftAccessory.setImage(image, for: .normal)
                             view.leftCalloutAccessoryView = leftAccessory
                         }
@@ -78,11 +74,9 @@ extension MapViewController: MKMapViewDelegate {
                 }
             }
             
-            let image = #imageLiteral(resourceName: "plus-minus-01-512")
             let rightAccessory = UIButton(type: .custom)
-            
             rightAccessory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            rightAccessory.setImage(image, for: .normal)
+            rightAccessory.setImage(#imageLiteral(resourceName: "plus-minus-01-512"), for: .normal)
             view.rightCalloutAccessoryView = rightAccessory
         }
     }
@@ -104,6 +98,7 @@ extension MapViewController: MKMapViewDelegate {
             let text = view.annotation?.title ?? ""
             routeInfo.text = "Rresent route to " + (text ?? "Unknown")
             
+            //changing the image when selecting-unselecting
             if view.image != #imageLiteral(resourceName: "selected") {
                 routeImage.image = view.image
             } else {
@@ -151,6 +146,7 @@ extension MapViewController: MKMapViewDelegate {
             render.alpha = 0.5
             
             return render
+            
         }
         return MKOverlayRenderer()
     }
@@ -167,6 +163,9 @@ extension MapViewController: MKMapViewDelegate {
             
             return MKMapRectIntersectsRect(tileRect, visibleRect)
         }
+        let location = CLLocation(latitude: map.region.center.latitude, longitude: map.region.center.longitude)
+        AppModel.shared.updateLocation(with: location)
+        AppModel.shared.updateSpan(with: map.region.span)
         
         print(map.region.span)
         
@@ -176,8 +175,8 @@ extension MapViewController: MKMapViewDelegate {
             
             visibleIds.forEach { (visibleRegionInfo) in
                 
+                //this condition is used to avoid needless requests (system is not perfect)
                 if !visible(id: visibleRegionInfo.key) {
-                    // present
                     
                     let locations = MapFrameConverter.convert(region: map.region)
                     
@@ -209,11 +208,9 @@ extension MapViewController: MKMapViewDelegate {
                         }
                         
                     }
-                    
                     visibleIds.forEach { (visibleRegionInfo) in
                         
                         if visible(id: visibleRegionInfo.key) {
-                            // present
                             for annotation in visibleRegionInfo.value {
                                 map.addAnnotation(annotation)
                                 print("Add annotation")
@@ -229,7 +226,6 @@ extension MapViewController: MKMapViewDelegate {
         visibleIds.forEach { (visibleRegionInfo) in
             
             if !visible(id: visibleRegionInfo.key) {
-                // 4.1 Remove tile visibleRegionInfo
                 for annotation in visibleRegionInfo.value {
                     map.removeAnnotation(annotation)
                     visibleIds.removeValue(forKey: visibleRegionInfo.key)
@@ -238,7 +234,6 @@ extension MapViewController: MKMapViewDelegate {
         }
         
     }
-    
     
 }
 

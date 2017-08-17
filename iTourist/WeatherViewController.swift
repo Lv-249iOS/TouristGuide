@@ -66,7 +66,7 @@ class WeatherViewController: UIViewController,UICollectionViewDataSource,UIColle
             layout(width: UIScreen.main.bounds.width/6 - 2, heigth: UIScreen.main.bounds.height/4 - 3)
         }
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(AppModel.shared.getCurrentLocation()) { [weak self] placemarks, err in
+        geocoder.reverseGeocodeLocation(AppModel.shared.getLocation()) { [weak self] placemarks, err in
             if let city = placemarks?[0].addressDictionary?["City"] as? String {
                 DispatchQueue.main.async {
                     self?.getWeatherforCity(city: city)

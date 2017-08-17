@@ -53,9 +53,7 @@ extension MapViewController: CLLocationManagerDelegate {
             addCircleOnFirstPoint()
         }
         
-        
     }
     
-
     
 }

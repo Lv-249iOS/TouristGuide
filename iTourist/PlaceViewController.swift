@@ -22,7 +22,7 @@ class PlaceViewController: UITableViewController {
     }
     
     func initPlaces() {
-        PlacesList.shared.getPlaces(with: [AppModel.shared.getCurrentLocation()]) { places in
+        PlacesList.shared.getPlaces(with: [AppModel.shared.getLocation()]) { places in
             guard let placesArr = places else { return }
             for (_, places) in placesArr {
                 guard let type = self.navigationItem.title, let places = places else { return }

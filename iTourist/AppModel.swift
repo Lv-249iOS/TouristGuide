@@ -13,25 +13,27 @@ class AppModel {
     static var shared = AppModel()
     
     var location: CLLocation?
-    var bound: CGRect?
+    var span: MKCoordinateSpan?
     
     var locationManager = LocationManager()
     var constants: Constants?
     
     init() {
         location = locationManager.location
-        bound = Constants().bounds
+        span = MKCoordinateSpanMake(Constants.startingSpan, Constants.startingSpan)
     }
     
-    func updateCoordinate(with coordinate: CLLocation) {
+    func updateLocation(with location: CLLocation) {
         // if center of visible map is changed
+        self.location = location
     }
     
-    func updateBound(with bound: CGRect) {
+    func updateSpan(with span: MKCoordinateSpan) {
         // if bounds is moved or scaled
+        self.span = span
     }
     
-    func getCurrentLocation() -> CLLocation {
+    func getLocation() -> CLLocation {
         print("GET CURR LOCATION")
         if let loc = location {
             return loc
@@ -40,7 +42,7 @@ class AppModel {
         }
     }
     
-    func getVisibleRect() -> CGRect? {
-        return bound
+    func getSpan() -> MKCoordinateSpan? {
+        return span
     }
 }
