@@ -21,13 +21,13 @@ enum WeatherKeyPath: String {
 
 class WeatherParser {
     
-    func parse(with data: Data) -> [Forecast]?{
+    func parse(with data: Data) -> [Forecast]? {
         if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject {
             var forecasts: [Forecast] = []
             var currentTemp = 0
             var feelsTemp = 0
             if json.value(forKeyPath: WeatherKeyPath.error.rawValue) != nil {
-                Constants.cityForWeatherParseExists = false
+                AppModel.shared.constants.cityForWeatherParseExists = false
             }
             
             if let currentweather = json.value(forKeyPath: WeatherKeyPath.current.rawValue) as? [String: Any] {
@@ -41,6 +41,7 @@ class WeatherParser {
                     if let datastring = dayWeath.value(forKeyPath: WeatherKeyPath.date.rawValue) as? String {
                         data = datastring
                     }
+                    
                     if let day = dayWeath.value(forKeyPath: WeatherKeyPath.day.rawValue) as? [String: Any] {
                         let forecast = Forecast(forecast: day)
                         forecast.date = data ?? ""

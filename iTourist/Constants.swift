@@ -10,10 +10,14 @@ import UIKit
 
 struct Constants {
     
+    // Constants for map
+    
     let startingSpan = 0.01
     let defaultRegionSpan = 0.27
     
-    static var cityForWeatherParseExists = true
-    static let deviceSceenheight = UIScreen.main.bounds.height
-    static let deviceSceenwidth = UIScreen.main.bounds.width
+    // Constants for weather
+    
+    var cityForWeatherParseExists = true
+    let deviceSceenheight = UIScreen.main.bounds.height
+    let deviceSceenwidth = UIScreen.main.bounds.width
 }
