@@ -39,7 +39,8 @@ class AppModel {
         if let loc = location {
             return loc
         } else {
-            return CLLocation(latitude: 49.839975, longitude: 24.028027) // return lviv as default
+            // return lviv as default
+            return CLLocation(latitude: 49.839975, longitude: 24.028027)
         }
     }
     

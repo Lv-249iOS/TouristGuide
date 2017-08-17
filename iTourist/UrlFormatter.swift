@@ -23,6 +23,7 @@ class UrlFormatter {
     }
     
     // Url formatters for Google places API
+    
     func createUrlForPlacesIdsReq(with locationKey: String, radius: Int, type: String = "point_of_interest") -> URL? {
         let location = "location=" + locationKey
         let rad = "radius=" + "\(radius)"
@@ -52,6 +53,7 @@ class UrlFormatter {
     }
     
     // Url formatter for weather API
+    
     func createUrlForWeather(with city: String, daysCount: Int) -> URL? {
         let key = "key=" + WeatherUrl.key.rawValue
         let days = "&days=" + "\(daysCount)"

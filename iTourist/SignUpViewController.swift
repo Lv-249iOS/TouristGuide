@@ -11,6 +11,7 @@ import UIKit
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
 
     @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +34,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
 

@@ -17,6 +17,7 @@ struct User {
     public var instanceToChange: UserType = UserType.none
 
 }
+
 enum UserType {
     case name
     case surname

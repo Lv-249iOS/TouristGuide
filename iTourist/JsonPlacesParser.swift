@@ -43,10 +43,7 @@ class JsonPlacesParser {
     }
     
     func parsePlace(with data: Data) -> Place? {
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else {
-            return nil
-        }
-        
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else { return nil }
         var placeData: [PlaceAttributes: Any] = [:]
         
         placeData[.location] = json.value(forKeyPath: PlaceKeyPath.location.rawValue) as? [String: Double]

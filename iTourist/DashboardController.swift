@@ -33,7 +33,7 @@ class DashboardController: UIViewController {
         weatherButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
         settingsButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
         
-        /// Ask user about location
+        // Ask user about location
         configureLocationServices()
     }
     

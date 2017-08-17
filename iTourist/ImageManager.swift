@@ -22,11 +22,13 @@ class ImageManager {
     func obtainImage(with imgRef: String, completion: @escaping ((UIImage)->())) {
         if let image = try? imageStorage.getImage(by: imgRef), let img = image {
             print("GOT from file system")
+            
             checkIfStorageNeedsToBeCleaned()
             DispatchQueue.main.async { completion(img) }
         } else {
             DispatchQueue.main.async { completion(#imageLiteral(resourceName: "noImage")) }
             print("LOADING from net")
+            
             guard let req = formatter.createImageRequest(with: imgRef) else { return }
             loader.load(with: req) { data in
                 guard let data = data, let img = UIImage(data: data) else { return }
