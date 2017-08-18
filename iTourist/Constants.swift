@@ -15,9 +15,7 @@ struct Constants {
     let startingSpan = 0.01
     let defaultRegionSpan = 0.27
     
-    // Constants for weather
-    
+    // Constant for weather
     var cityForWeatherParseExists = true
-    let deviceSceenheight = UIScreen.main.bounds.height
-    let deviceSceenwidth = UIScreen.main.bounds.width
+    
 }
