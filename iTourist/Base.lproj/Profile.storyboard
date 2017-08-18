@@ -438,11 +438,11 @@
                                 <exclude reference="1dD-7D-BUi"/>
                                 <exclude reference="mt2-sI-dbr"/>
                                 <exclude reference="5B2-ZH-qTF"/>
-                                <exclude reference="T7r-vf-cdo"/>
                                 <exclude reference="mkd-fv-JFZ"/>
                                 <exclude reference="CTn-8B-RRM"/>
                                 <exclude reference="bh1-lE-gx4"/>
                                 <exclude reference="GMG-Nk-rGh"/>
+                                <exclude reference="T7r-vf-cdo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
