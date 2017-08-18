@@ -595,11 +595,8 @@
 				0E4003F21F309DF4003671F1 /* Place.swift in Sources */,
 				0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */,
 				20751DDF1F38E60500E4A25A /* PlacesPageController.swift in Sources */,
-<<<<<<< .merge_file_h1f72I
 				611104221F4420D500E221BC /* LogInViewController.swift in Sources */,
-=======
 				159552B41F46EEEA00EEC19B /* DashboardSettingIcon.swift in Sources */,
->>>>>>> .merge_file_4BFOJT
 				0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */,
 				20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */,
 				0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */,
