@@ -16,6 +16,7 @@ class PlaceViewController: UITableViewController {
     var filteredPlaces: [Place] = []
     var places: [Place] = []
     var placesList = PlacesList.shared
+    
     var searchActive: Bool = false {
         didSet {
             self.tableView.reloadData()
@@ -76,7 +77,7 @@ class PlaceViewController: UITableViewController {
             }
         }
         
-        /// Set information for place and set tag for infoButton equal indexPath in this cell row
+        // Set information for place and set tag for infoButton equal indexPath in this cell row
         cell.name.text = place.name
         cell.adress.text = place.formattedAddress
         cell.phoneNum.text = place.internationalPhoneNumber
@@ -107,7 +108,7 @@ class PlaceViewController: UITableViewController {
     }
 }
 
-/// extension for searchBar, we're checking what user doing
+/// Extension for searchBar, we're checking what user doing
 extension PlaceViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -127,6 +128,7 @@ extension PlaceViewController: UISearchBarDelegate {
         searchActive = false
         searchBar.endEditing(true)
     }
+    
     /// Filter places when first letter no was insert
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredPlaces = places.filter {$0.name?.lowercased().contains(searchText.lowercased()) == true}

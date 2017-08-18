@@ -13,7 +13,7 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var imageManager = ImageManager.shared
-    public var imageUrlString: String?
+    var imageUrlString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

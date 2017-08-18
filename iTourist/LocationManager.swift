@@ -9,10 +9,10 @@
 import CoreLocation
 
 class LocationManager {
+    
     var manager = CLLocationManager()
+    
     var location: CLLocation? {
-        get {
-            return manager.location
-        }
+        return manager.location
     }
 }

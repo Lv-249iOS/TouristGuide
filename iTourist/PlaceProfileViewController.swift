@@ -32,7 +32,7 @@ class PlaceProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        /// Set information of place profile
+        // Set information of place profile
         if let place = place {
             nameNavigationItem.title = place.name
             adressLabel.text = place.formattedAddress
