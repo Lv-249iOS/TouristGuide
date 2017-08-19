@@ -11,9 +11,181 @@ import CoreGraphics
 
 class DashboardSettingIcon: RoundButton {
     
-    func getCoordinatesForGear() -> CGPoint {
+    func getCenterCoordinatesOfButton() -> CGPoint {
         return CGPoint.init(x: self.bounds.width/2, y: self.bounds.height/2)
     }
+    
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        var transform = CGAffineTransform(translationX: 0, y: 0)
+        //Center of button
+        let x = self.bounds.midX
+        let y = self.bounds.midY
+        //Our Rectangle
+        let pathRectangle = rectangleDrawing(x: x, y: y, width: CGFloat.init(35), height: CGFloat.init(25), context: context)
+        context?.addPath(pathRectangle)
+        
+        for var angle in stride(from: 0, to: 360, by: 45) {
+            angle+=45
+            transform = transform.translatedBy(x: x, y: y)
+            transform = transform.rotated(by: CGFloat.init(CGFloat.pi*CGFloat.init(angle)/180))
+            transform = transform.translatedBy(x: -x, y: -y)
+            context?.addPath(pathRectangle.copy(using: &transform)!)
+        }
+        //Drawing
+        context?.setFillColor(UIColor.black.cgColor)
+        context?.closePath()
+        context?.fillPath()
+        
+       //transparentSubview(rect: (context?.path?.boundingBox)!)
+        
+        drawCircle(center: CGPoint.init(x: x, y: y), radius: CGFloat.init(35), lineWidth: 45.0)
+        drawCircle(center: CGPoint.init(x: x, y: y), radius: CGFloat.init(5), lineWidth: 5)
+        // transparentSubview()
+        
+        
+    }
+    ///This function in using
+    func rectangleDrawing(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, context: CGContext?) -> CGPath{
+        let rect = CGRect(x: x + width, y: y-height/2, width: width , height: height)
+        let clipPath: CGPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat.init(5)).cgPath
+        context?.addPath(clipPath)
+        context?.setFillColor(UIColor.black.cgColor)
+        return clipPath
+    }
+    
+   
+    
+    func transparentSubview(rect: CGRect) {
+        
+                //
+                let background = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+                // Set a semi-transparent, black background.
+                background.backgroundColor = UIColor.clear
+                background.alignmentRect(forFrame: rect)
+                // Create the initial layer from the view bounds.
+                let maskLayer = CAShapeLayer()
+                maskLayer.frame = background.bounds
+                maskLayer.fillColor = UIColor.black.cgColor
+        
+                // Create the frame for the circle.
+        
+        
+        
+        
+//                let radius: CGFloat = 50.0
+//                let rect = CGRect(x: background.frame.midX - radius, y: background.frame.midY - radius, width: 2 * radius, height: 2 * radius)
+        
+        
+        
+        
+                // Create the path.
+                let path = UIBezierPath(rect: background.bounds)
+                maskLayer.fillRule = kCAFillRuleEvenOdd
+
+                // Append the circle to the path so that it is subtracted.
+                path.append(UIBezierPath(rect: rect))
+                maskLayer.path = path.cgPath
+        
+                // Set the mask of the view.
+                background.layer.mask = maskLayer
+        
+                // Add the view so it is visible.
+                self.addSubview(background)
+    }
+    
+    
+    func drawCircle(center: CGPoint, radius: CGFloat, lineWidth: CGFloat) {
+        let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(CGFloat.pi * 2), clockwise: true)
+        //circlePath.fill()
+        
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.cgPath
+        
+        //change the fill color
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer.lineWidth = lineWidth
+        
+        
+        self.layer.addSublayer(shapeLayer)
+        
+        
+        
+    }
+    func drawRectangle(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+        
+        let overlay = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+        overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+        // Create the frame for the circle.
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = overlay.bounds
+        maskLayer.fillColor = UIColor.black.cgColor
+        let rect = CGRect(x: getCenterCoordinatesOfButton().x, y: getCenterCoordinatesOfButton().y, width: CGFloat.init(120), height: CGFloat.init(15))
+        
+        let path = UIBezierPath(rect: overlay.bounds)
+        maskLayer.fillRule = kCAFillRuleEvenOdd
+        // Append the circle to the path so that it is subtracted.
+        path.append(UIBezierPath(rect: rect))
+        maskLayer.path = path.cgPath
+        
+        // Set the mask of the view.
+        overlay.layer.mask = maskLayer
+        
+        // Add the view so it is visible.
+        self.addSubview(overlay)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class DashboardSettingIcon_1: RoundButton {
+    
+    
+    
+    override func draw(_ rect: CGRect) {
+        
+    }
+    
+    
+    
+    
+    
+    //    func sector() {
+    //        let circleCenter = getCoordinatesForGear()
+    //        let circleRadius = CGFloat(50)
+    //        let decimalInput = 0.5
+    //        let start = CGFloat(2 * CGFloat.pi)
+    //        let end = start + CGFloat(Double.pi * decimalInput)
+    //        let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: start, endAngle: end, clockwise: true)
+    //        circlePath.stroke()
+    //    }
+    
+    
     func drawCircle(center: CGPoint, radius: CGFloat) {
         let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(CGFloat.pi * 2), clockwise: true)
         let shapeLayer = CAShapeLayer()
@@ -29,127 +201,44 @@ class DashboardSettingIcon: RoundButton {
         self.layer.addSublayer(shapeLayer)
         
     }
-    override func draw(_ rect: CGRect) {
-        //let context = UIGraphicsGetCurrentContext()
-//        drawCircle(center: getCoordinatesForGear(), radius: 70)
-//        drawCircle(center: getCoordinatesForGear(), radius: 50)
-//        drawCircle(center: getCoordinatesForGear(), radius: 30)
+    func transparentSubview(rect: CGRect) {
+        //let path: CGPath
+        //
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+        // Set a semi-transparent, black background.
+        background.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        background.alignmentRect(forFrame: rect)
         
-        let circleCenter = getCoordinatesForGear()
-        let circleRadius = CGFloat(50)
-        let decimalInput = 0.5
-        let start = CGFloat(2 * CGFloat.pi)
-        let end = start + CGFloat(Double.pi * decimalInput)
-        let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: start, endAngle: end, clockwise: true)
-        circlePath.stroke()
-    
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-class DashboardSettingIcon_1: RoundButton {
-    
-    private let tooth: Double = 36 //N
-    private let pitchSpurGear: Double = 24 //P
-    
-    override func draw(_ rect: CGRect) {
-        //The context is the object used for drawing
-        let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(3.0)
-        context?.setStrokeColor(UIColor.black.cgColor)
+        // Create the initial layer from the view bounds.
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = background.bounds
+        maskLayer.fillColor = UIColor.black.cgColor
         
-        //Create a path
-        context?.move(to: CGPoint.init(x: 50, y: 60))
-        context?.addLine(to: CGPoint.init(x: 250, y: 320))
+        // Create the frame for the circle.
         
-        //Actually draw the path
-        context?.strokePath()
-    }
-    
-    //1. Calculate and draw the PitchCircle
-    func diameterOfPitchCircle(tooth: Double, pitchSpurGear: Double) -> Double { //D
-        return tooth/pitchSpurGear
-    }
-    
-    //2. Calculate and draw the RootCircle
-    func rootCircleDiameter(tooth: Double, pitchSpurGear: Double) -> Double { //RD
-        return (tooth - 2)/pitchSpurGear
-    }
-    //3. Calculate and draw the OutsideCircle
-    func outsideCircleDiameter(tooth: Double, pitchSpurGear: Double) -> Double {//OD
-        return (tooth + 2)/pitchSpurGear
-    }
-    
-    //4. Draw a vertical center line (AB) from the center of the circles to a point outside the circles
-    func drawVerticalLine() {
         
-    }
-    //5. Calculate and layout the Circular Thickness angle to the left (CC W) of the vertical center line
-    //Calculate the angular measurement for the circular thickness
-    
-    func circleThicknessAngle(tooth: Double) -> Double {
-        //In the equation above, it is necessary to multiply by 0.5 (or divide by 2) since there are always
-        //an equal number of teeth and spaces in each gear!
-        return (Double.pi / tooth) * 0.5
-    }
-    //6. Draw the Pressure Line. The pressure line is drawn through the pitch point at an angle of 20 degrees from a line tangent to the top of the pitch circle.
-    func drawPresureline() {
         
-    }
-    //7. Create a line that bisects the circular thickness angle. This line should intersect or extend beyond the outside circle
-    func drawLineBisectsCircularThicknessAngle() {
         
-    }
-    //8. Beginning at the center of the circles, draw the Base Circle tangent to the 20 degree pressure line
-    /*  Note:
-     that in this 36 tooth, 24 pitch gear, the base circle will have
-     nearly the same diameter as the root circle. This will not be the case with spur gears having
-     different numbers of teeth, or different pitch. Therefore it is necessary to follow these
-     instructions closely in order to establish accurate gear tooth geometry.
-     */
-    func drawBaseCircle() {
+//        let radius: CGFloat = 50.0
+//        let rect = CGRect(x: background.frame.midX - radius, y: background.frame.midY - radius, width: 2 * radius, height: 2 * radius)
         
-    }
-    //9.  Locate the Tooth Form Circle by drawing circle (A) whose radius is 1/8 of the Pitch Diameter and whose center is at the PitchPoint
-    func drawToothFormCircle() {
         
+        
+        
+        // Create the path.
+        let path = UIBezierPath(rect: background.bounds)
+        maskLayer.fillRule = kCAFillRuleEvenOdd
+        
+        // Append the circle to the path so that it is subtracted.
+        path.append(UIBezierPath(ovalIn: rect))
+        maskLayer.path = path.cgPath
+        
+        // Set the mask of the view.
+        background.layer.mask = maskLayer
+        
+        // Add the view so it is visible.
+        self.addSubview(background)
     }
-    //10.  Draw another circle (B) of the same radius whose center is at the intersection of circle A and the Base Circle. This circle will form the top right curve of the gear tooth
-    //I can write universal method for drawing this circle
-    
-    //11. Erase Circle A and trim away all of circle B, except the tooth form which is arc PT beginning at the pitch point and intersecting the outside circle. Erase the Base circle.
-    
-    //12. The tooth form is generated from the PitchPoint. Continue developing the gear tooth form by tracing over the vertical centerline and trimming away the outside circle. After creating the tooth form, erase all lines EXCEPT the circular thickness bisector, the tooth from lines and the base circle
-    //13. Mirror the tooth form lines about the circular thickness bisector
-    //14. Erase the circular thickness bisector and array the completed tooth form about the base circle
-    //15. Trim the base circle line under each tooth to create a single closed form
-    //16. Extrude the gear a distance of 0.25”. This dimension is given in the specifications on the first page of this text. Note: If the gear does not extrude, zoom into the original tooth form and check for irregularities such as additional lines, broken lines or lines that have been drawn over other lines.
 }
 
 
