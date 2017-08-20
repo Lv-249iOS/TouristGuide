@@ -224,6 +224,13 @@
                     <navigationItem key="navigationItem" title="Sign Up" id="vIh-g4-a28"/>
                     <connections>
                         <outlet property="imageView" destination="YEC-70-216" id="Ly9-uK-LVs"/>
+                        <outlet property="login" destination="MpO-0z-V1e" id="a1o-lP-5is"/>
+                        <outlet property="name" destination="3bh-g4-gR0" id="nfa-PB-RCh"/>
+                        <outlet property="password" destination="waN-wc-6PD" id="3Mw-hb-hya"/>
+                        <outlet property="passwordRepeat" destination="l62-TF-W8r" id="JKZ-wz-GjD"/>
+                        <outlet property="scroll" destination="Wrt-fj-h36" id="WGU-7i-EYu"/>
+                        <outlet property="surname" destination="O8G-ma-dJT" id="zSN-AP-8AN"/>
+                        <outlet property="tel" destination="FJD-fi-quF" id="bJZ-Yn-6lI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94T-f5-huj" userLabel="First Responder" sceneMemberID="firstResponder"/>
