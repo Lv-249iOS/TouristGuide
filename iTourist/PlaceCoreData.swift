@@ -22,7 +22,12 @@ class PlaceCoreData {
     private static var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
+    /**
+     This method add an data about place by key.
+     
+     - parameter data: The data is the array of [NSData]
+     - parameter key: The key is the unique string, which belong to unique data array
+     */
     func add(data: [NSData], key: String) {
         PlaceCoreData.persistentContainer.performBackgroundTask({ context in
             if let place = NSEntityDescription.insertNewObject(forEntityName: "PlaceEntity", into: context) as? PlaceEntity {
@@ -30,16 +35,13 @@ class PlaceCoreData {
                 place.data = data as NSArray
             }
             try? context.save()
-            
-            DispatchQueue.main.async { [weak self] in
-                guard self != nil else {
-                    print("Self is nil ")
-                    return
-                }
-            }
         })
     }
-    
+    /**
+     This method return data about places by key.
+     
+     - parameter key: The key is the unique string, which belong to unique data place.
+     */
     func get(by key: String) -> [NSData]? {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
@@ -61,9 +63,12 @@ class PlaceCoreData {
         
         return nil
     }
-    
+    /**
+     This method delete data place by key.
+     
+     - parameter key: The key is the unique string, which belong to unique data place.
+     */
     func delete(for key: String) {
-        DispatchQueue.global(qos: .background).async {
             let predicate = NSPredicate(format: "key == %@", key)
             let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
             fetchToDelete.predicate = predicate
@@ -73,9 +78,13 @@ class PlaceCoreData {
             } catch {
                 print ("There was an error during deleting")
             }
-        }
     }
-    
+    /**
+     This method change the data in CoreData by key.
+     
+     - parameter data: The data is that, what will be store by key, which is exist in CoreData
+     - parameter key: The key is exist in CoreData and belong to some data in CoreData
+     */
     func change(data: [NSData],by key: String) {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
