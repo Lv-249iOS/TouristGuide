@@ -21,8 +21,8 @@ class WeatherViewController: UIViewController {
     
     var change  = false
     var forecast: [Forecast]?
-    let height = AppModel.shared.constants.deviceSceenheight
-    let width = AppModel.shared.constants.deviceSceenwidth
+    let height = UIScreen.main.bounds.height
+    let width = UIScreen.main.bounds.width
     var startLandscape = false
     var isIpad = false
     
@@ -161,7 +161,7 @@ class WeatherViewController: UIViewController {
     }
     
     func setCurrentWeather(with forecast: Forecast) {
-        if height < 670  {
+        if height < 750  {
             currentTemp.font = currentTemp.font.withSize(25)
             feelslike.font = feelslike.font.withSize(25)
             today.font = today.font.withSize(25)
@@ -196,7 +196,7 @@ extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell, let weather = forecast {
             if indexPath.row < weather.count {
-                if height < 670 && UIDevice.current.orientation.isLandscape {
+                if height < 750 && UIDevice.current.orientation.isLandscape {
                     cell.date.font = cell.date.font.withSize(15)
                     cell.mintemp.font = cell.mintemp.font.withSize(15)
                     cell.maxtemp.font = cell.maxtemp.font.withSize(15)

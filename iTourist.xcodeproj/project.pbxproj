@@ -36,6 +36,7 @@
 		152AFA1C1F4385B900201D5A /* UserCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152AFA1B1F4385B900201D5A /* UserCoreDataTests.swift */; };
 		1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1721F4305AD008A92DF /* ProfileStruct.swift */; };
 		1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1542E1741F43063C008A92DF /* UserCoreData.swift */; };
+		159552B41F46EEEA00EEC19B /* DashboardSettingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159552B31F46EEEA00EEC19B /* DashboardSettingIcon.swift */; };
 		15DF4C9E1F4046E700C68EEB /* PlaceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */; };
 		15DF4CA81F404C3B00C68EEB /* iTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4CA71F404C3B00C68EEB /* iTouristTests.swift */; };
 		15DF4CAF1F404CBF00C68EEB /* PlaceCoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */; };
@@ -128,6 +129,7 @@
 		152AFA1B1F4385B900201D5A /* UserCoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreDataTests.swift; sourceTree = "<group>"; };
 		1542E1721F4305AD008A92DF /* ProfileStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStruct.swift; sourceTree = "<group>"; };
 		1542E1741F43063C008A92DF /* UserCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
+		159552B31F46EEEA00EEC19B /* DashboardSettingIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardSettingIcon.swift; sourceTree = "<group>"; };
 		15DF4C9D1F4046E700C68EEB /* PlaceCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCoreData.swift; sourceTree = "<group>"; };
 		15DF4C9F1F404C2500C68EEB /* PlaceCoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceCoreDataTest.swift; path = ../iTourist/PlaceCoreDataTest.swift; sourceTree = "<group>"; };
 		15DF4CA51F404C3B00C68EEB /* iTouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTouristTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +234,7 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				159552B21F46EDB400EEC19B /* Dashboard */,
 				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
@@ -333,6 +336,14 @@
 				0ED851051F3C433200A200A4 /* PlacesList.swift */,
 			);
 			name = DataService;
+			sourceTree = "<group>";
+		};
+		159552B21F46EDB400EEC19B /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				159552B31F46EEEA00EEC19B /* DashboardSettingIcon.swift */,
+			);
+			name = Dashboard;
 			sourceTree = "<group>";
 		};
 		15DF4CA61F404C3B00C68EEB /* iTouristTests */ = {
@@ -585,6 +596,7 @@
 				0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */,
 				20751DDF1F38E60500E4A25A /* PlacesPageController.swift in Sources */,
 				611104221F4420D500E221BC /* LogInViewController.swift in Sources */,
+				159552B41F46EEEA00EEC19B /* DashboardSettingIcon.swift in Sources */,
 				0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */,
 				20A5BBB21F307F95006E43B9 /* MapViewController.swift in Sources */,
 				0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */,
