@@ -61,7 +61,10 @@
 		618661AA1F45FDD3000F737C /* CustomizableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618661A91F45FDD3000F737C /* CustomizableScrollView.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
 		A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A956FA441F436ECF00062CD1 /* ImageStore.swift */; };
-		A9EB4EE31F49ADA000F7ECEA /* PlaneFlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EE21F49ADA000F7ECEA /* PlaneFlyView.swift */; };
+		A9EB4EED1F4B1C8E00F7ECEA /* DegreesConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */; };
+		A9EB4EEF1F4B1CAD00F7ECEA /* PlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */; };
+		A9EB4EF11F4B1CB200F7ECEA /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */; };
+		A9EB4EF31F4B1CB700F7ECEA /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EF21F4B1CB700F7ECEA /* LaunchScreenController.swift */; };
 		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
 		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
 		B204E4961F3A14A300454978 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4861F3A14A300454978 /* cemetery.png */; };
@@ -158,7 +161,10 @@
 		618661A91F45FDD3000F737C /* CustomizableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableScrollView.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A956FA441F436ECF00062CD1 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
-		A9EB4EE21F49ADA000F7ECEA /* PlaneFlyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneFlyView.swift; sourceTree = "<group>"; };
+		A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DegreesConverter.swift; sourceTree = "<group>"; };
+		A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneView.swift; sourceTree = "<group>"; };
+		A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
+		A9EB4EF21F4B1CB700F7ECEA /* LaunchScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
 		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		B204E4861F3A14A300454978 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
@@ -243,8 +249,9 @@
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
 				617ED2F11F41D484001FEE6F /* Profile */,
-				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
+				A9EB4EF41F4B1CCE00F7ECEA /* LaunchScreen */,
 				0E8B3BC31F2F2CA3001FFC73 /* Main.storyboard */,
+				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
 				202898E71F33428B00F136BB /* SettingsViewController.swift */,
 				202898E41F3341EF00F136BB /* Settings.storyboard */,
 				0EE83E341F39C3D300C5662A /* RoundButton.swift */,
@@ -260,7 +267,6 @@
 				0E8B3BC91F2F2CA3001FFC73 /* Assets.xcassets */,
 				0E8B3BCB1F2F2CA3001FFC73 /* LaunchScreen.storyboard */,
 				0E8B3BCE1F2F2CA3001FFC73 /* Info.plist */,
-				A9EB4EE21F49ADA000F7ECEA /* PlaneFlyView.swift */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -422,6 +428,17 @@
 			name = CacheData;
 			sourceTree = "<group>";
 		};
+		A9EB4EF41F4B1CCE00F7ECEA /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A9EB4EF21F4B1CB700F7ECEA /* LaunchScreenController.swift */,
+				A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */,
+				A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */,
+				A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		B204E4A41F3A14C000454978 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */,
+				A9EB4EEF1F4B1CAD00F7ECEA /* PlaneView.swift in Sources */,
 				1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */,
 				0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */,
 				E7B763FC1F3C82E200B23AEA /* WeatherCell.swift in Sources */,
@@ -599,8 +617,10 @@
 				0EBDA8681F3DA2EE00BA9422 /* RequestFormatter.swift in Sources */,
 				0E4003EE1F309DE9003671F1 /* JsonPlacesParser.swift in Sources */,
 				0E4003F21F309DF4003671F1 /* Place.swift in Sources */,
+				A9EB4EED1F4B1C8E00F7ECEA /* DegreesConverter.swift in Sources */,
 				0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */,
 				20751DDF1F38E60500E4A25A /* PlacesPageController.swift in Sources */,
+				A9EB4EF11F4B1CB200F7ECEA /* PlanetView.swift in Sources */,
 				611104221F4420D500E221BC /* LogInViewController.swift in Sources */,
 				159552B41F46EEEA00EEC19B /* DashboardSettingIcon.swift in Sources */,
 				0ED851121F3C537000A200A4 /* UrlFormatter.swift in Sources */,
@@ -613,9 +633,9 @@
 				1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */,
 				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
 				618661AA1F45FDD3000F737C /* CustomizableScrollView.swift in Sources */,
-				A9EB4EE31F49ADA000F7ECEA /* PlaneFlyView.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,
+				A9EB4EF31F4B1CB700F7ECEA /* LaunchScreenController.swift in Sources */,
 				B204E4A61F3A14DB00454978 /* RouteCalculatingMethods.swift in Sources */,
 				E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */,
 				20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */,
