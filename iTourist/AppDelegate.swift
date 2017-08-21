@@ -16,23 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var customLaunchScreenView: PlaneFlyView?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         if let window = window {
+            let displayLink = CADisplayLink(target: self, selector: #selector(planeAnimationUpdate))
+            displayLink.add(to: RunLoop.current, forMode: .defaultRunLoopMode)
+
             customLaunchScreenView = PlaneFlyView(frame: window.bounds)
-            customLaunchScreenView?.backgroundColor = UIColor(colorLiteralRed: 0.051, green: 0.083, blue: 0.107, alpha: 1)
             
-            if let launchScreen = customLaunchScreenView {
+            if let launchScreenView = customLaunchScreenView {
+                launchScreenView.backgroundColor = UIColor.white // UIColor(colorLiteralRed: 0.051, green: 0.083, blue: 0.107, alpha: 1)
+                launchScreenView.planeStrokeColor = launchScreenView.backgroundColor ?? UIColor.white
                 window.makeKeyAndVisible()
-                window.addSubview(launchScreen)
-                window.bringSubview(toFront: launchScreen)
+                window.addSubview(customLaunchScreenView!)
+                window.bringSubview(toFront: customLaunchScreenView!)
                 
-                UIView.animate(withDuration: 3, delay: 2, options: .curveEaseOut,
-                               animations: { () -> Void in launchScreen.alpha = 0 },
-                               completion: { _ in launchScreen.removeFromSuperview() })
+                UIView.animate(withDuration: 5, delay: 0, options: .curveEaseOut,
+                               animations: { () -> Void in launchScreenView.alpha = 0 },
+                               completion: { _ in launchScreenView.removeFromSuperview() })
             }
         }
         
         return true
+    }
+    
+    func planeAnimationUpdate() {
+        customLaunchScreenView?.setNeedsDisplay()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

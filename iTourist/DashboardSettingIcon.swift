@@ -16,51 +16,26 @@ class DashboardSettingIcon: RoundButton {
     }
     
     override func draw(_ rect: CGRect) {
+        let radius: CGFloat = frame.width/3
+        let x = getCenterCoordinatesOfButton().x
+        let y = getCenterCoordinatesOfButton().y
+        let lineWidth: CGFloat = 15.0
         let context = UIGraphicsGetCurrentContext()
-        let cof1: CGFloat = 0.7
-        let cof2: CGFloat = 0.6
-        let xForBigGear = self.frame.width * cof1
-        let yForBigGear = self.frame.height * cof2
-        drawGear(x: xForBigGear, y: yForBigGear, width: 35.0 * cof1, height: 25*cof1, context: context, radiusBig: 38*cof1, radiusSmall: 5*cof1, smallLineWidth: 5*cof1)
-        
-        let cof3: CGFloat = 0.3
-        let cof4: CGFloat = 0.4
-        //let cof5: CGFloat = 0.5
-        let xForSmallGear = self.frame.width * cof3
-        let yForSmallGear = self.frame.height * cof4
-        drawGear(x: xForSmallGear, y: yForSmallGear, width: 20, height: 14, context: context, radiusBig: 20, radiusSmall: 2, smallLineWidth: 1)
-        
-    }
-    ///This function in using
-    func rectangleDrawing(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, context: CGContext?) -> CGPath{
-        let rect = CGRect(x: x + width, y: y-height/2, width: width , height: height)
-        let clipPath: CGPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat.init(1 )).cgPath
-        context?.addPath(clipPath)
-        context?.setFillColor(UIColor.black.cgColor)
-        return clipPath
-    }
-    func drawGear(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, context: CGContext?, radiusBig: CGFloat, radiusSmall: CGFloat, smallLineWidth: CGFloat) {
-         var transform = CGAffineTransform(translationX: 0, y: 0)
-        let pathRectangle = rectangleDrawing(x: x, y: y, width: width, height: height, context: context)
-        context?.addPath(pathRectangle)
-        
-        //Generating 8 teeth
-        for var angle in stride(from: 0, to: 360, by: 45) {
-            angle+=45
-            transform = transform.translatedBy(x: x, y: y)
-            transform = transform.rotated(by: CGFloat.init(CGFloat.pi*CGFloat.init(angle)/180))
-            transform = transform.translatedBy(x: -x, y: -y)
-            context?.addPath(pathRectangle.copy(using: &transform)!)
-        }
-        //Drawing teeth
-        context?.setFillColor(UIColor.black.cgColor)
+        drawGear(x: x, y: y, radius: radius, context: context, lineWidth: lineWidth)
+
         context?.closePath()
         context?.fillPath()
-        //Drawing circles
-        drawCircle(center: CGPoint.init(x: x, y: y), radius: radiusBig, lineWidth: 45.0*0.7)
-        drawCircle(center: CGPoint.init(x: x, y: y), radius: radiusSmall, lineWidth: smallLineWidth)
-        
     }
+    
+    func drawGear(x: CGFloat, y: CGFloat, radius: CGFloat, context: CGContext?, lineWidth: CGFloat) {
+        if let checkedContext = context {
+        teethDrawing(x: x, y: y, radius: radius, context: checkedContext)
+        drawCircle(center: getCenterCoordinatesOfButton(), radius: radius, lineWidth: lineWidth)
+        sectorDrawing(x: x, y: y, radius: radius)
+        }
+    }
+    
+    //Drawing circle, base
     func drawCircle(center: CGPoint, radius: CGFloat, lineWidth: CGFloat) {
         let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(CGFloat.pi * 2), clockwise: true)
         let shapeLayer = CAShapeLayer()
@@ -72,32 +47,73 @@ class DashboardSettingIcon: RoundButton {
         shapeLayer.lineWidth = lineWidth
         self.layer.addSublayer(shapeLayer)
     }
+    //One tooth
+    func drawSquare(x: CGFloat, y: CGFloat, width: CGFloat, context: CGContext?) -> CGPath?{
+        let rect = CGRect(x: x + width, y: y-width/2, width: width , height: width)
+        let clipPath: CGPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat.init(3)).cgPath
+        context?.addPath(clipPath)
+        context?.setFillColor(UIColor.black.cgColor)
+        return clipPath
+    }
+    //Calculate square side
+    func getSideSquareSize(radius: CGFloat, angle: CGFloat) -> CGFloat {
+        return radius*sqrt(2*(1 - cos(angle*CGFloat.pi/180)))
+    }
+    
+    func teethDrawing(x: CGFloat, y: CGFloat, radius: CGFloat, context: CGContext) {
+        var transform = CGAffineTransform(translationX: 0, y: 0)
+        let pathSquare = drawSquare(x: x + radius*0.6 , y: y, width: getSideSquareSize(radius: radius, angle: 20.0), context: context)
+        
+        for var angle in stride(from: 0, to: 360, by: 45) {
+            angle+=45
+            transform = transform.translatedBy(x:x, y: y)
+            transform = transform.rotated(by: CGFloat.init(CGFloat.pi*CGFloat.init(angle)/180))
+            transform = transform.translatedBy(x: -x, y: -y)
+            context.addPath((pathSquare?.copy(using: &transform))!)
+        }
+    }
+    func sectorDrawing(x: CGFloat, y: CGFloat, radius: CGFloat) {
+        let sectorPath1 = UIBezierPath()
+        //Sector 1
+        sectorPath1.move(to: CGPoint.init(x: x + 5, y: y + 5))
+        sectorPath1.addArc(withCenter: CGPoint.init(x: x + 5, y: y + 5), radius: radius , startAngle: CGFloat(CGFloat.pi/180), endAngle: CGFloat(120*CGFloat.pi/180), clockwise: true)
+        sectorPath1.addLine(to: CGPoint.init(x: x + 5 , y: y + 5))
+        sectorPath1.close()
+        //Sector 2
+        let sectorPath2 = UIBezierPath()
+        sectorPath2.move(to: CGPoint.init(x: x - 5 , y: y ))
+        sectorPath2.addArc(withCenter: CGPoint.init(x: x - 5, y: y ), radius: radius , startAngle: CGFloat(120*CGFloat.pi/180), endAngle: CGFloat(240*CGFloat.pi/180), clockwise: true)
+        sectorPath2.addLine(to: CGPoint.init(x: x - 5, y: y ))
+        sectorPath2.close()
+        //Sector 3
+        let sectorPath3 = UIBezierPath()
+        sectorPath3.move(to: CGPoint.init(x: x+5 , y: y - 5 ))
+        sectorPath3.addArc(withCenter: CGPoint.init(x: x + 5 , y: y - 5 ), radius: radius , startAngle: CGFloat(240*CGFloat.pi/180), endAngle: CGFloat(360*CGFloat.pi/180), clockwise: true)
+        sectorPath3.addLine(to: CGPoint.init(x: x+5 , y: y - 5 ))
+        sectorPath3.close()
+        
+        let shapeLayer1 = CAShapeLayer()
+        let shapeLayer2 = CAShapeLayer()
+        let shapeLayer3 = CAShapeLayer()
+        
+        shapeLayer1.path = sectorPath1.cgPath
+        shapeLayer2.path = sectorPath2.cgPath
+        shapeLayer3.path = sectorPath3.cgPath
+        //change the fill color
+        shapeLayer1.fillColor = UIColor.clear.cgColor
+        shapeLayer1.strokeColor = UIColor.black.cgColor
+        shapeLayer1.lineWidth = 5.0
+        
+        shapeLayer2.fillColor = UIColor.clear.cgColor
+        shapeLayer2.strokeColor = UIColor.black.cgColor
+        shapeLayer2.lineWidth = 5.0
+        
+        shapeLayer3.fillColor = UIColor.clear.cgColor
+        shapeLayer3.strokeColor = UIColor.black.cgColor
+        shapeLayer3.lineWidth = 5.0
+        
+        self.layer.addSublayer(shapeLayer1)
+        self.layer.addSublayer(shapeLayer2)
+        self.layer.addSublayer(shapeLayer3)
+    }
 }
-
-
-
-
-//func transparentSubview(rect: CGRect) {
-//    let background = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
-//    // Set a semi-transparent, black background.
-//    background.backgroundColor = UIColor.clear
-//    background.alignmentRect(forFrame: rect)
-//    // Create the initial layer from the view bounds.
-//    let maskLayer = CAShapeLayer()
-//    maskLayer.frame = background.bounds
-//    maskLayer.fillColor = UIColor.black.cgColor
-//    // Create the frame for the circle.
-//    let radius: CGFloat = 50.0
-//    let rect = CGRect(x: background.frame.midX - radius, y: background.frame.midY - radius, width: 2 * radius, height: 2 * radius)
-//    // Create the path.
-//    let path = UIBezierPath(rect: background.bounds)
-//    maskLayer.fillRule = kCAFillRuleEvenOdd
-//    // Append the circle to the path so that it is subtracted.
-//    path.append(UIBezierPath(rect: rect))
-//    maskLayer.path = path.cgPath
-//    // Set the mask of the view.
-//    background.layer.mask = maskLayer
-//    // Add the view so it is visible.
-//    self.addSubview(background)
-//}
-
