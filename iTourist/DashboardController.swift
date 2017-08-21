@@ -32,6 +32,11 @@ class DashboardController: UIViewController {
         configureLocationServices()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         settingsButton.setNeedsDisplay()
         profileButton.setNeedsDisplay()

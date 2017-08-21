@@ -15,7 +15,7 @@ class PlaneView: UIView {
     var circleRadius: CGFloat = 80
     var lineWidth: CGFloat = 5
     
-    var planeStrokeColor = UIColor.white // UIColor(colorLiteralRed: 0.051, green: 0.083, blue: 0.107, alpha: 1)
+    var planeStrokeColor = UIColor.white
     var fillColor = UIColor(displayP3Red: 0.435, green: 0.707, blue: 0.902, alpha: 1)
     var planeScale: CGFloat = 0.7
     
@@ -31,7 +31,6 @@ class PlaneView: UIView {
     let stepCurveWing = (x: CGFloat(0), y: CGFloat(17))
     let stepBowPart = (x: CGFloat(47), y: CGFloat(15)) // must be less than stepWidthWing.x (- 2)
     let stepHeightNose: CGFloat = 70
-    static var angle: Degrees = 115
     
     override func draw(_ rect: CGRect) {
         circleCenter = CGPoint(x: bounds.midX, y: bounds.midY)
