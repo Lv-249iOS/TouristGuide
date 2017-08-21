@@ -13,23 +13,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var customLaunchScreenView: PlaneFlyView?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         if let window = window {
-            customLaunchScreenView = PlaneFlyView(frame: window.bounds)
-            customLaunchScreenView?.backgroundColor = UIColor(colorLiteralRed: 0.051, green: 0.083, blue: 0.107, alpha: 1)
+            let customLaunchScreenView = PlaneFlyView(frame: window.bounds)
+            customLaunchScreenView.backgroundColor = UIColor.white // UIColor(colorLiteralRed: 0.051, green: 0.083, blue: 0.107, alpha: 1)
             
-            if let launchScreen = customLaunchScreenView {
-                window.makeKeyAndVisible()
-                window.addSubview(launchScreen)
-                window.bringSubview(toFront: launchScreen)
-                
-                UIView.animate(withDuration: 3, delay: 2, options: .curveEaseOut,
-                               animations: { () -> Void in launchScreen.alpha = 0 },
-                               completion: { _ in launchScreen.removeFromSuperview() })
-            }
+            customLaunchScreenView.planeStrokeColor = customLaunchScreenView.backgroundColor ?? UIColor.white
+            window.makeKeyAndVisible()
+            window.addSubview(customLaunchScreenView)
+            window.bringSubview(toFront: customLaunchScreenView)
+            
+            UIView.animate(withDuration: 1, delay: 2, options: .curveEaseOut,
+                           animations: { () -> Void in customLaunchScreenView.alpha = 0 },
+                           completion: { _ in customLaunchScreenView.removeFromSuperview() })
+            
         }
         
         return true
