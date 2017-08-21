@@ -24,6 +24,8 @@ class MapViewController: UIViewController {
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
+    var grids = [MKCircle]()
+    
     var imageLoader = ImageManager.shared
     
     let converter = CoordinateConverter()
@@ -72,6 +74,36 @@ class MapViewController: UIViewController {
             }
 
         }
+    }
+    
+    
+    @IBAction func addGread(_ sender: UIButton) {
+        // 1. Remove old circles
+        map.removeOverlays(grids)
+        grids.removeAll()
+        
+        // 2. Add new circles
+        
+        let region = map.region
+        let leftLo = region.center.longitude - region.span.longitudeDelta/2
+        let topLa = region.center.latitude - region.span.latitudeDelta/2
+        
+        let rightLo = region.center.longitude + region.span.longitudeDelta/2
+        let botLa = region.center.latitude + region.span.latitudeDelta/2
+        
+        let lat = round(topLa * 100) / 100
+        let long = round(leftLo * 100) / 100
+        
+        for latitude in stride(from: lat, to: botLa, by: 0.18) {
+            for longitude in stride(from: long, to: rightLo, by: 0.24) {
+                let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let circle = MKCircle(center: center, radius: 10000)
+                
+                grids.append(circle)
+            }
+        }
+        
+        map.addOverlays(grids)
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {

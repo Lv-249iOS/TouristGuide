@@ -50,6 +50,11 @@ class DashboardController: UIViewController {
         self.navigationController?.hidesBarsOnSwipe = false
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        settingsButton.setNeedsDisplay()
+        profileButton.setNeedsDisplay()
+    }
+    
     func configureLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             let status = CLLocationManager.authorizationStatus()

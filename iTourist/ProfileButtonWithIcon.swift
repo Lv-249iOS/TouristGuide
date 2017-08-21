@@ -17,7 +17,7 @@ import UIKit
     func printProfileImage (_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         context?.setLineWidth(6)
-        context?.setStrokeColor(UIColor.blue.cgColor)
+        context?.setStrokeColor(UIColor.init(red: 0.25, green: 0.41, blue: 0.8, alpha: 1).cgColor)
         let height = self.bounds.height
         let width = self.bounds.width
         let boundLength = min(height, width)

@@ -62,6 +62,14 @@
                                     <constraint firstAttribute="bottom" secondItem="5Fm-wG-XHB" secondAttribute="bottom" constant="3" id="utM-xR-YZ5"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-Tl-YzP">
+                                <rect key="frame" x="164" y="386" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addGread:" destination="sOE-Rk-dEu" eventType="touchUpInside" id="HKJ-Zk-5fP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
