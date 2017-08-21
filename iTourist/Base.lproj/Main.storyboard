@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gYc-wx-rT4">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,14 +20,14 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-eC-c2T">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-Vi-fZu" customClass="ProfileButtonWithIcon" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="20" y="28" width="374" height="184"/>
+                                <rect key="frame" x="16" y="28" width="343" height="167"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
                                 <state key="normal">
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places">
-                                <rect key="frame" x="20" y="220" width="183" height="250"/>
+                                <rect key="frame" x="16" y="203" width="167.5" height="224"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal" title="Places">
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY">
-                                <rect key="frame" x="211" y="220" width="183" height="250"/>
+                                <rect key="frame" x="191.5" y="203" width="167.5" height="224"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal" title="Map">
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y">
-                                <rect key="frame" x="20" y="478" width="183" height="250"/>
+                                <rect key="frame" x="16" y="435" width="167.5" height="224"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal" title="Weather">
@@ -115,7 +115,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-5t-by0" userLabel="Settings" customClass="DashboardSettingIcon" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="211" y="478" width="183" height="250"/>
+                                <rect key="frame" x="191.5" y="435" width="167.5" height="224"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal">
@@ -187,11 +187,11 @@
                         <viewControllerLayoutGuide type="bottom" id="9w5-Af-h0w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PcU-9G-asV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB7-qs-hyH" customClass="PlanetView" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="57" y="218" width="300" height="300"/>
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="wx2-K1-q2Q"/>
@@ -199,21 +199,63 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEp-sT-ABg" customClass="PlaneView" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="57" y="218" width="300" height="300"/>
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="cUR-IN-Mel"/>
                                     <constraint firstAttribute="width" constant="300" id="iIu-FK-h3g"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iTourist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjY-IE-SQJ">
+                                <rect key="frame" x="117" y="491.5" width="141.5" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
+                                <color key="textColor" red="0.43590384720000003" green="0.7066318989" blue="0.90231031179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CB7-qs-hyH" firstAttribute="centerY" secondItem="PcU-9G-asV" secondAttribute="centerY" id="2Xg-iX-n5v"/>
                             <constraint firstItem="CEp-sT-ABg" firstAttribute="centerY" secondItem="PcU-9G-asV" secondAttribute="centerY" id="8DW-qT-G2t"/>
                             <constraint firstItem="CB7-qs-hyH" firstAttribute="centerX" secondItem="PcU-9G-asV" secondAttribute="centerX" id="H98-Hy-KJu"/>
+                            <constraint firstItem="9w5-Af-h0w" firstAttribute="top" secondItem="SjY-IE-SQJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TUG-Lb-G6r"/>
+                            <constraint firstItem="SjY-IE-SQJ" firstAttribute="centerX" secondItem="PcU-9G-asV" secondAttribute="centerX" id="UwN-VI-7yQ"/>
                             <constraint firstItem="CEp-sT-ABg" firstAttribute="centerX" secondItem="PcU-9G-asV" secondAttribute="centerX" id="Vnp-S3-2iU"/>
+                            <constraint firstItem="SjY-IE-SQJ" firstAttribute="top" secondItem="CEp-sT-ABg" secondAttribute="bottom" constant="8" symbolic="YES" id="ch0-ug-3pL"/>
+                            <constraint firstItem="SjY-IE-SQJ" firstAttribute="trailing" secondItem="PcU-9G-asV" secondAttribute="trailingMargin" id="kFq-Lb-SrR"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TUG-Lb-G6r"/>
+                                <exclude reference="UwN-VI-7yQ"/>
+                                <exclude reference="ch0-ug-3pL"/>
+                                <exclude reference="kFq-Lb-SrR"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="TUG-Lb-G6r"/>
+                                <include reference="kFq-Lb-SrR"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="TUG-Lb-G6r"/>
+                                <include reference="kFq-Lb-SrR"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="UwN-VI-7yQ"/>
+                                <include reference="ch0-ug-3pL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="UwN-VI-7yQ"/>
+                                <include reference="ch0-ug-3pL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="V6C-Fz-EIi"/>
                     <connections>
@@ -223,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOe-IS-dPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="123"/>
+            <point key="canvasLocation" x="976.46176911544239" y="120.8"/>
         </scene>
         <!--Map-->
         <scene sceneID="6Cd-xL-GbW">

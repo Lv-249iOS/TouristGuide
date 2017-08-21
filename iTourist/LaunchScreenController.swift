@@ -22,6 +22,7 @@ class LaunchScreenController: UIViewController, CAAnimationDelegate {
         runSpinAnimationOn(view: planeView, duration: 3, rotation: 1, repeats: 1)
     }
     
+    
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardController") as? DashboardController {
             self.navigationController?.pushViewController(vc, animated: false)
