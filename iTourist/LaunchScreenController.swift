@@ -24,6 +24,8 @@ class LaunchScreenController: UIViewController, CAAnimationDelegate {
     
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        sleep(1)
+        
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardController") as? DashboardController {
             self.navigationController?.pushViewController(vc, animated: false)
         }
