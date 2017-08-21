@@ -34,6 +34,7 @@ class PlaneFlyView: UIView {
     let stepCurveWing = (x: CGFloat(0), y: CGFloat(17))
     let stepBowPart = (x: CGFloat(47), y: CGFloat(15)) // must be less than stepWidthWing.x (- 2)
     let stepHeightNose: CGFloat = 80
+    static var angle: Degrees = 115
     
     override func draw(_ rect: CGRect) {
         lineWidth = 7.0
@@ -61,16 +62,20 @@ class PlaneFlyView: UIView {
         fillColor.setFill()
         
         planet.stroke()
-        planeFootprint.fill()
-        planeFootprint.stroke()
         curveParalels.stroke()
         curveMeridians.stroke()
         straightMeridianAndParalel.stroke()
+        
+        // --------- Add gradient to clearing
+        planeFootprint.fill()
+        planeFootprint.stroke()
         
         // Changing stroke color
         planeStrokeColor.setStroke()
         plane.stroke()
         plane.fill()
+        
+        PlaneFlyView.angle += 5.0
     }
     
     /// Converts degrees to radians
@@ -153,6 +158,9 @@ class PlaneFlyView: UIView {
         path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y - lineWidth))
         path.addCurve(to: endPos, controlPoint1: ctrlPoint1, controlPoint2: ctrlPoint2)
         
+        // Rotate footprint with plane
+        rotate(path: path, by: circleCenter, with: PlaneFlyView.angle)
+        
         return path
     }
     
@@ -181,12 +189,21 @@ class PlaneFlyView: UIView {
         path.close()
         
         // Rotate plane to 115 degrees
-        let center = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
-        path.apply(CGAffineTransform(translationX: center.x, y: center.y).inverted())
-        path.apply(CGAffineTransform(rotationAngle: radians(from: 115)))
-        path.apply(CGAffineTransform(translationX: center.x, y: center.y))
+        let pathCenter = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
+        rotate(path: path, by: pathCenter, with: 115)
+        
+        // Rotate plane around planet
+        rotate(path: path, by: circleCenter, with: PlaneFlyView.angle)
         
         return path
+    }
+    
+    /// Rotates path by some point with angle
+    private func rotate(path: UIBezierPath, by center: CGPoint, with angle: Degrees) {
+        path.apply(CGAffineTransform(translationX: center.x, y: center.y).inverted())
+        path.apply(CGAffineTransform(rotationAngle: radians(from: angle)))
+        path.apply(CGAffineTransform(translationX: center.x, y: center.y))
+        
     }
     
     /// Creates all the points of plane
@@ -221,9 +238,7 @@ class PlaneFlyView: UIView {
         // Control points
         let controlPointForBow1 = CGPoint(x: p6.x, y: p6.y - stepHeightNose * planeScale)
         let controlPointForBow2 = CGPoint(x: p7.x, y: p7.y - stepHeightNose * planeScale)
-        
         let controlPointForLeftWing = CGPoint(x: p5.x - stepCurveWing.y * planeScale, y: p5_1.y + stepCurveWing.y * planeScale)
-        
         let controlPointForRightWing = CGPoint(x: p7_1.x + stepCurveWing.y * planeScale, y: p7_1.y + stepCurveWing.y * planeScale)
         
         // MARK: Points must be in order
