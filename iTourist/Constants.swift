@@ -9,15 +9,13 @@
 import UIKit
 
 struct Constants {
-    // delete it
-    var bounds: CGRect
     
-    // change it
-    init() {
-        bounds = UIScreen.main.bounds
-        
-    }
+    // Constants for map
     
-    static let defaultRegionSpan = 0.27
-    static var exists = true
+    let startingSpan = 0.01
+    let defaultRegionSpan = 0.27
+    
+    // Constant for weather
+    var cityForWeatherParseExists = true
+    
 }

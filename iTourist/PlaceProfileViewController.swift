@@ -10,10 +10,6 @@ import UIKit
 
 class PlaceProfileViewController: UIViewController {
     
-    var place: Place?
-    var placesPageController: PlacesPageController!
-    var feedbacksController: FeedbacksViewController!
-    
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var workHourLabel: UILabel!
@@ -21,6 +17,9 @@ class PlaceProfileViewController: UIViewController {
     @IBOutlet weak var feedbackButton: UIButton!
     @IBOutlet weak var nameNavigationItem: UINavigationItem!
     
+    var place: Place?
+    var placesPageController: PlacesPageController!
+    var feedbacksController: FeedbacksViewController!
     
     @IBAction func closePlaceProfile(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -33,6 +32,7 @@ class PlaceProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Set information of place profile
         if let place = place {
             nameNavigationItem.title = place.name
             adressLabel.text = place.formattedAddress

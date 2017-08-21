@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 
 class DashboardController: UIViewController {
+    
     @IBOutlet weak var profileButton: RoundButton!
     @IBOutlet weak var placesButton: RoundButton!
     @IBOutlet weak var mapButton: RoundButton!
@@ -17,7 +18,7 @@ class DashboardController: UIViewController {
     
     var appModel = AppModel.shared
     
-    // MARK: Animate buttons
+    /// Animate buttons
     private func transformToIdentity(button: UIButton) {
         UIView.animate(withDuration: 1.0, animations: {
             button.transform = CGAffineTransform.identity
@@ -32,11 +33,11 @@ class DashboardController: UIViewController {
         weatherButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
         settingsButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
         
-        // ask user about location
+        // Ask user about location
         configureLocationServices()
     }
-
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -45,16 +46,13 @@ class DashboardController: UIViewController {
         transformToIdentity(button: mapButton)
         transformToIdentity(button: weatherButton)
         transformToIdentity(button: settingsButton)
-        
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.hidesBarsOnSwipe = false
-       
     }
     
     func configureLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             let status = CLLocationManager.authorizationStatus()
-            
             if status == .notDetermined {
                 appModel.locationManager.manager.requestWhenInUseAuthorization()
             }

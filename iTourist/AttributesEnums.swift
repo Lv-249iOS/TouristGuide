@@ -9,7 +9,6 @@
 import Foundation
 
 enum PlaceAttributes: String {
-    
     case location = "coordinate"
     case adress   = "formattedAddress"
     case phoneNum = "internationalPhoneNumber"
@@ -22,7 +21,6 @@ enum PlaceAttributes: String {
 }
 
 enum ReviewAttributes: String {
-    
     case authorName = "author_name"
     case timeOfPosting = "time"
     case rating = "rating"

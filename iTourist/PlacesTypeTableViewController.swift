@@ -10,13 +10,13 @@ import UIKit
 
 class PlacesTypeTableViewController: UITableViewController {
     
+    /// Set background to tableview and hiding status bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
         let backgroundImage = UIImage(named: "background.png")
         let imageView = UIImageView(image: backgroundImage)
-        
         self.tableView.backgroundView = imageView
     }
     
@@ -45,9 +45,9 @@ class PlacesTypeTableViewController: UITableViewController {
         return cell
     }
     
+    /// Here we push our current viewController into navigationController hierarchy and set name of the current place as a navigationItem
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as? PlaceViewController else { return }
-    
         self.navigationController?.pushViewController(vc, animated: true)
         if let selectedRow = tableView.indexPathsForSelectedRows {
             vc.navigationItem.title = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text

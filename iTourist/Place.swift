@@ -50,7 +50,7 @@ class Place: NSObject, NSCoding {
         
         coordinate = getCoordinates(with: info[.location] as? [String: Double])
         placeReviews = getReviews(with: info[.reviews] as? [[String: Any]])
-        photosRef = getPhotoReferances(with: info[.imgRef] as? [String])
+        photosRef = info[.imgRef] as? [String]
         formattedAddress = info[.adress] as? String
         internationalPhoneNumber = info[.phoneNum] as? String
         name = info[.name] as? String
@@ -77,18 +77,5 @@ class Place: NSObject, NSCoding {
         }
         
         return [0.0, 0.0]
-    }
-    
-    private func getPhotoReferances(with jsonRefs: [String]?) -> [String]? {
-        guard let refs = jsonRefs else { return nil }
-        var photoUrls: [String] = []
-        
-        for ref in refs {
-            if let urlString = UrlFormatter().createUrlForImageDownloading(with: ref) {
-                photoUrls.append(urlString.absoluteString)
-            }
-        }
-        
-        return photoUrls
     }
 }

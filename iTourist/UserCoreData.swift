@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 
 class UserCoreData {
+    
     private var users = [NSManagedObject]()
     private let entity = NSEntityDescription.entity(forEntityName: "UserEntity", in: context)
     
@@ -20,7 +21,12 @@ class UserCoreData {
     private static var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
+    /**
+    This method add new user to User Database.
+     
+     - parameter user: User is the object of custom struct User, where defined instances name, surname, email and etc.
+     
+     */
     func addUser(user: User) {
         if let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserEntity", into: UserCoreData.context) as? UserEntity {
             newUser.name = user.name
@@ -31,7 +37,12 @@ class UserCoreData {
         }
         try? UserCoreData.context.save()
     }
-    
+    /**
+     This method allows you to get all information about user by custom struct User.
+     
+     - parameter email: The email is unique indentifier of each user
+     
+     */
     func getUser(by email: String) -> User? {
         let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
         userFetch.predicate = NSPredicate(format: "email == %@", email)
@@ -57,7 +68,12 @@ class UserCoreData {
         }
         return nil
     }
-    
+    /**
+     This method allows you to delete user from CoreData.
+     
+     - parameter email: The email is unique indentifier of each user.
+     
+     */
     func deleteUser(for email: String) {
         let predicate = NSPredicate(format: "email == %@", email)
         let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "UserEntity")
@@ -69,19 +85,25 @@ class UserCoreData {
             print ("There was an error during deleting")
         }
     }
-    
+    /**
+     This method allows you to change one instance about user, you should to determine changeable value in struct. It is value named "instanceToChange"
+     
+     - parameter email: The email is unique indentifier of each user.
+     - parameter user: User is the object of custom struct User, where defined instances name, surname, email and etc.
+     
+     */
     func changeUserData(for email: String, user: User) {
-        let asyncRequest = NSBatchUpdateRequest(entityName: "UserEntity")
+        let batchUpdateRequest = NSBatchUpdateRequest(entityName: "UserEntity")
         switch user.instanceToChange {
-        case .name : asyncRequest.propertiesToUpdate = [ "name" : user.name ?? "" ]
-        case .surname: asyncRequest.propertiesToUpdate = [ "surname" : user.surname ?? "" ]
-        case .password: asyncRequest.propertiesToUpdate = [ "email" : user.password ?? "" ]
-        case .image: asyncRequest.propertiesToUpdate = [ "image" : user.image! ]
-        default: break
+        case .name : batchUpdateRequest.propertiesToUpdate = [ "name" : user.name ?? "" ]
+        case .surname: batchUpdateRequest.propertiesToUpdate = [ "surname" : user.surname ?? "" ]
+        case .password: batchUpdateRequest.propertiesToUpdate = [ "email" : user.password ?? "" ]
+        case .image: batchUpdateRequest.propertiesToUpdate = [ "image" : user.image! ]
+        default: return
         }
-        asyncRequest.resultType = .updatedObjectIDsResultType
-        asyncRequest.predicate = NSPredicate(format: "email == %@", email)
-        let batchUpdateResult = try? UserCoreData.context.execute(asyncRequest) as! NSBatchUpdateResult
+        batchUpdateRequest.resultType = .updatedObjectIDsResultType
+        batchUpdateRequest.predicate = NSPredicate(format: "email == %@", email)
+        let batchUpdateResult = try? UserCoreData.context.execute(batchUpdateRequest) as! NSBatchUpdateResult
         if ((batchUpdateResult?.result) != nil) {
             let objectID = batchUpdateResult?.result as? [NSManagedObjectID]
             if objectID?.first != nil {
@@ -90,5 +112,4 @@ class UserCoreData {
             }
         }
     }
-    
 }

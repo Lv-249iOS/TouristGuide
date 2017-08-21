@@ -9,33 +9,40 @@
 import Foundation
 import UIKit
 
+enum WeatherKeyPath: String {
+    case current = "current"
+    case currentTemp = "temp_c"
+    case feelslikeTemp = "feelslike_c"
+    case forecastday = "forecast.forecastday"
+    case date = "date"
+    case day = "day"
+    case error = "error"
+}
+
 class WeatherParser {
     
-    func parse(with data: Data) -> [Forecast]?{
-        
+    func parse(with data: Data) -> [Forecast]? {
         if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject {
             var forecasts: [Forecast] = []
             var currentTemp = 0
             var feelsTemp = 0
-          
-            
-           if json.value(forKeyPath: "error") != nil {
-               Constants.exists = false
-            
+            if json.value(forKeyPath: WeatherKeyPath.error.rawValue) != nil {
+                AppModel.shared.constants.cityForWeatherParseExists = false
             }
             
-            if let currentweather = json.value(forKeyPath: "current") as? [String: Any] {
-                currentTemp = currentweather["temp_c"] as? Int ?? 0
-                feelsTemp = currentweather["feelslike_c"] as? Int ?? 0
+            if let currentweather = json.value(forKeyPath: WeatherKeyPath.current.rawValue) as? [String: Any] {
+                currentTemp = currentweather[WeatherKeyPath.currentTemp.rawValue] as? Int ?? 0
+                feelsTemp = currentweather[WeatherKeyPath.feelslikeTemp.rawValue] as? Int ?? 0
             }
             
-            if let weather = json.value(forKeyPath: "forecast.forecastday") as? [AnyObject] {
+            if let weather = json.value(forKeyPath: WeatherKeyPath.forecastday.rawValue) as? [AnyObject] {
                 for dayWeath in weather {
                     var data: String?
-                    if let datastring = dayWeath.value(forKeyPath: "date") as? String {
+                    if let datastring = dayWeath.value(forKeyPath: WeatherKeyPath.date.rawValue) as? String {
                         data = datastring
                     }
-                    if let day = dayWeath.value(forKeyPath: "day") as? [String: Any] {
+                    
+                    if let day = dayWeath.value(forKeyPath: WeatherKeyPath.day.rawValue) as? [String: Any] {
                         let forecast = Forecast(forecast: day)
                         forecast.date = data ?? ""
                         forecasts.append(forecast)
@@ -45,6 +52,7 @@ class WeatherParser {
                 forecasts[0].currentTemp = currentTemp
                 forecasts[0].feelsTemp = feelsTemp
             }
+            
             return forecasts
         }
         

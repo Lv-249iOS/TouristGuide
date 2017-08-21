@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
+    
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var routeButton: UIButton!
     @IBOutlet weak var routeInfo: UILabel!
@@ -23,18 +24,14 @@ class MapViewController: UIViewController {
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
-    var imageLoader = ImageDownloader.shared
+    var imageLoader = ImageManager.shared
     
     let converter = CoordinateConverter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(gestureRecognizer:)))
-        longPress.minimumPressDuration = 1.0
-        map.addGestureRecognizer(longPress)
-        
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let span: MKCoordinateSpan = AppModel.shared.getSpan() ?? MKCoordinateSpanMake(0.01, 0.01)
         if let location = AppModel.shared.location {
             let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
             map.setRegion(region, animated: true)
@@ -43,8 +40,12 @@ class MapViewController: UIViewController {
         map.delegate = self
         addUserLocationOnMap()
         
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(gestureRecognizer:)))
+        longPress.minimumPressDuration = 1.0
+        map.addGestureRecognizer(longPress)
+        
         print("PREVIEW")
-        PlacesList.shared.getPlaces(with: [AppModel.shared.getCurrentLocation()]) { places in
+        PlacesList.shared.getPlaces(with: [AppModel.shared.getLocation()]) { places in
             print("MAP START GET PLACES")
             guard let placesArr = places else { return }
             for (key, places) in placesArr {
@@ -74,25 +75,27 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
+        //it means if there is a route, alredy presented
         if let circle = circleOverlay {
+            
             map.remove(circle)
             map.removeOverlays(lineOverlays)
             circleOverlay = nil
-            let reloadingAnnotations = selectedAnnotations
-            for annot in reloadingAnnotations {
+            
+            for annot in selectedAnnotations {
                 map.removeAnnotation(annot)
                 map.addAnnotation(annot)
             }
             
             routeImage.image = nil
             routeInfo.text = nil
-            
             selectedAnnotations = []
             routeButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
+            
         } else {
             if !selectedAnnotations.isEmpty {
-                // remove !!!!
-                presentRoute(sourse: (AppModel.shared.locationManager.manager.location?.coordinate)!, dest: (selectedAnnotations[0].coordinate))
+                presentRoute(sourse: ((AppModel.shared.locationManager.manager.location?.coordinate) ?? (selectedAnnotations[0].coordinate)) , dest: (selectedAnnotations[0].coordinate))
+                
                 addCircleOnFirstPoint()
                 presentRoutes()
                 routeButton.setImage(#imageLiteral(resourceName: "clean"), for: .normal)
@@ -105,10 +108,6 @@ class MapViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    func longPressHandler(_action: UIAlertAction) {
-        print("HANDLER")
-    }
-    
     func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             
@@ -117,6 +116,10 @@ class MapViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Cancel",style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func longPressHandler(_action: UIAlertAction) {
+        print("HANDLER")
     }
     
     func addUserLocationOnMap() {

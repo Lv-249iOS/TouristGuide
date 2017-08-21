@@ -25,8 +25,8 @@ extension MapViewController {
     
     func recalculatingToTheFirstPoint() {
         if !self.lineOverlays.isEmpty && !selectedAnnotations.isEmpty {
-            map.remove(lineOverlays.first!)
-            presentRoute(sourse: (AppModel.shared.location?.coordinate)!, dest: selectedAnnotations[0].coordinate)
+            map.remove(lineOverlays[0])
+            presentRoute(sourse: ((AppModel.shared.location?.coordinate) ?? selectedAnnotations[0].coordinate), dest: selectedAnnotations[0].coordinate)
         }
     }
     
