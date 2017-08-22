@@ -16,7 +16,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="re6-QN-b5a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="JGw-gx-eSc">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="229"/>
@@ -57,7 +57,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.20946596746575341" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="9z8-dq-cmU" style="IBUITableViewCellStyleDefault" id="iyu-pg-eph">
                                         <rect key="frame" x="0.0" y="329" width="414" height="44"/>
@@ -76,7 +76,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.20946596749999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -99,7 +99,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.20946596749999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.86299999999999999" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -122,7 +122,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.20946596749999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -145,7 +145,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.20946596749999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.86273032370000002" green="0.87127220809999995" blue="0.87127220809999995" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

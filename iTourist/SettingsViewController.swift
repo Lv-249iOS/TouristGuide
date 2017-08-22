@@ -113,6 +113,8 @@ class SettingsViewController: UITableViewController {
     // Sets parameters for table view cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.backgroundColor = DefaultColor.lightGray
+        cell.textLabel?.textColor = DefaultColor.darkGray
         
         switch indexPath.section {
         case 0:
