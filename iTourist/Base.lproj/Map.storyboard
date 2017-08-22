@@ -63,7 +63,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-Tl-YzP">
-                                <rect key="frame" x="164" y="386" width="46" height="30"/>
+                                <rect key="frame" x="164" y="559" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -93,11 +93,20 @@
                         <outlet property="routeButton" destination="5Fm-wG-XHB" id="tlE-HB-3Ky"/>
                         <outlet property="routeImage" destination="zqw-U2-ufx" id="rgx-xa-Iul"/>
                         <outlet property="routeInfo" destination="CTZ-SG-abp" id="i8L-A0-YC7"/>
+                        <segue destination="FUT-PQ-nDg" kind="show" identifier="PlacesTypeSegue" id="ohW-JP-TvE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jci-J7-l44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1836" y="94.002998500749626"/>
+        </scene>
+        <!--PlacePrifileController-->
+        <scene sceneID="WQY-kj-NVR">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PlacePrifileController" storyboardName="PlacesType" referencedIdentifier="PlacePrifileController" id="FUT-PQ-nDg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AQC-be-UpF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2620" y="94"/>
         </scene>
     </scenes>
     <resources>

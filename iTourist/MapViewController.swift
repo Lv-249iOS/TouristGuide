@@ -47,11 +47,12 @@ class MapViewController: UIViewController {
         map.addGestureRecognizer(longPress)
         
         print("PREVIEW")
-        PlacesList.shared.getPlaces(with: [AppModel.shared.getLocation()]) { places in
+        PlacesList.shared.getPlaces(with: [AppModel.shared.getLocation()]) { [weak self] places in
             print("MAP START GET PLACES")
             guard let placesArr = places else { return }
             for (key, places) in placesArr {
                 guard let places = places else { return }
+                self?.places = places
                 for place in places {
                     let annotation = PlaceAnnotation()
                     
@@ -63,26 +64,44 @@ class MapViewController: UIViewController {
                     annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
                     annotation.photoRef = place.photosRef?.first
                     annotation.type = place.typeOfPlace?.first
-                    self.annotationsOfPlaces.append(annotation)
-                    self.map.addAnnotation(annotation)
+                    self?.annotationsOfPlaces.append(annotation)
+                    self?.map.addAnnotation(annotation)
                     print("Add annotation")
                 }
             
-                self.visibleIds[key] = self.annotationsOfPlaces
-                self.annotationsOfPlaces = []
+                self?.visibleIds[key] = self?.annotationsOfPlaces
+                self?.annotationsOfPlaces = []
                 
             }
 
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier  == "PlacesTypeSegue" {
+            
+            guard let annotationView = sender as? MKAnnotationView else { return }
+            if let viewController = segue.destination as? PlaceProfileViewController {
+                for place in places ?? [] {
+                    if place.name == (annotationView.annotation?.title)! {
+                        viewController.place = place
+                        viewController.title = place.name
+                    }
+                }
+            }
+        }
+    }
+    
     
     @IBAction func addGread(_ sender: UIButton) {
         // 1. Remove old circles
-        map.removeOverlays(grids)
+        for grid in grids {
+        map.remove(grid)
+        }
         grids.removeAll()
         
         // 2. Add new circles
+        if map.region.span.latitudeDelta >= 0.17 {
         
         let region = map.region
         let leftLo = region.center.longitude - region.span.longitudeDelta/2
@@ -94,16 +113,22 @@ class MapViewController: UIViewController {
         let lat = round(topLa * 100) / 100
         let long = round(leftLo * 100) / 100
         
-        for latitude in stride(from: lat, to: botLa, by: 0.18) {
-            for longitude in stride(from: long, to: rightLo, by: 0.24) {
-                let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        for latitude in stride(from: lat, through: botLa, by: 0.14) {
+            for longitude in stride(from: long, through: rightLo, by: 0.20) {
+                let center = CLLocationCoordinate2D(latitude: latitude+0.07, longitude: longitude+0.1)
                 let circle = MKCircle(center: center, radius: 10000)
                 
                 grids.append(circle)
             }
         }
+        } else {
+            let circle = MKCircle(center: map.region.center, radius: 10000)
+            grids.append(circle)
+        }
         
-        map.addOverlays(grids)
+        for grid in grids {
+            map.add(grid)
+        }
     }
     
     @IBAction func calculateRoutes(_ sender: UIButton) {
@@ -162,7 +187,7 @@ class MapViewController: UIViewController {
                 AppModel.shared.locationManager.manager.delegate = self
                 AppModel.shared.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                 AppModel.shared.locationManager.manager.distanceFilter = 100.0
-                AppModel.shared.locationManager.manager.startUpdatingLocation()
+                //AppModel.shared.locationManager.manager.startUpdatingLocation()
             }
         }
     }
