@@ -15,7 +15,7 @@ import UIKit
     
     
     // X - positions of roof and spike:
-    @IBInspectable var downSpike: CGFloat = 23
+    @IBInspectable var downSpike: CGFloat = 25
     @IBInspectable var xRoofPointOne: CGFloat = 30
     @IBInspectable var xRoofPointTwo: CGFloat = 58
     
@@ -47,7 +47,7 @@ import UIKit
     func drawMuseum(_ rect: CGRect) {
         // Draw spike
         let pathSpike = UIBezierPath()
-        pathSpike.lineWidth = 1
+        pathSpike.lineWidth = 2
         pathSpike.move(to: CGPoint(x: bounds.midX, y: bounds.minY + 20))
         let pointSpike = CGPoint(x: bounds.midX, y: bounds.minY + downSpike)
         pathSpike.addLine(to:pointSpike)
