@@ -12,7 +12,7 @@ class LaunchScreenController: UIViewController, CAAnimationDelegate {
     
     @IBOutlet weak var planetView: PlanetView!
     @IBOutlet weak var planeView: PlaneView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,13 +32,13 @@ class LaunchScreenController: UIViewController, CAAnimationDelegate {
     func runSpinAnimationOn(view: UIView, duration: Double, rotation: Double, repeats: Float) {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.delegate = self
-
-            animation.toValue = NSNumber(value: Double.pi * 2.0 * rotation)
-            animation.duration = duration
-            animation.isCumulative = true
-            animation.repeatCount = repeats
-            animation.isRemovedOnCompletion = false
-            animation.fillMode = kCAFillModeForwards
-            view.layer.add(animation, forKey: "rotationAnimation")
+        
+        animation.toValue = NSNumber(value: Double.pi * 2.0 * rotation)
+        animation.duration = duration
+        animation.isCumulative = true
+        animation.repeatCount = repeats
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+        view.layer.add(animation, forKey: "rotationAnimation")
     }
 }
