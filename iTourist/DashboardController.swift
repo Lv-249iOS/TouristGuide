@@ -39,6 +39,7 @@ class DashboardController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         settingsButton.setNeedsDisplay()
         profileButton.setNeedsDisplay()
+        weatherButton.setNeedsDisplay()
     }
     
     func configureLocationServices() {
