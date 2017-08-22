@@ -9,6 +9,7 @@
 import UIKit
 
 class WeatherbuttonWithIcon: RoundButton {
+    
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         var radius: Double = 0.0
@@ -19,7 +20,6 @@ class WeatherbuttonWithIcon: RoundButton {
             allTrianglesDrawing(x: center.x, y: center.y, radius: CGFloat(radius), lineWidth: 4, context: checkedContext )
             context?.strokePath()
         }
-        
     }
     
     func circledrawing(center: CGPoint, radius: CGFloat, lineWidth: CGFloat, context: CGContext?) {
@@ -37,9 +37,8 @@ class WeatherbuttonWithIcon: RoundButton {
         path.lineWidth = lineWidth
         UIColor.orange.setStroke()
         path.stroke()
-        
-        
     }
+    
     func drawtriangle(x: CGFloat, y: CGFloat,radius: CGFloat,lineWidth: CGFloat, context: CGContext?)-> CGPath?
     {
         let pathtriangle = UIBezierPath()
