@@ -41,6 +41,7 @@ import UIKit
     
     
     override func draw(_ rect: CGRect) {
+        scaleMuseum = rect.size.height > rect.size.width ? 2 : 0.9
         drawMuseum(rect)
     }
     
