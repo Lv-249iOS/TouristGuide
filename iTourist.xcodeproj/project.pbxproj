@@ -65,6 +65,7 @@
 		A9EB4EEF1F4B1CAD00F7ECEA /* PlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */; };
 		A9EB4EF11F4B1CB200F7ECEA /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */; };
 		A9EB4EF31F4B1CB700F7ECEA /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EF21F4B1CB700F7ECEA /* LaunchScreenController.swift */; };
+		A9EB4EF81F4C113100F7ECEA /* DefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */; };
 		B204E4941F3A14A300454978 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4841F3A14A300454978 /* bar.png */; };
 		B204E4951F3A14A300454978 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4851F3A14A300454978 /* cafe.png */; };
 		B204E4961F3A14A300454978 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = B204E4861F3A14A300454978 /* cemetery.png */; };
@@ -166,6 +167,7 @@
 		A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneView.swift; sourceTree = "<group>"; };
 		A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		A9EB4EF21F4B1CB700F7ECEA /* LaunchScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
+		A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultColors.swift; sourceTree = "<group>"; };
 		B204E4841F3A14A300454978 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		B204E4851F3A14A300454978 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		B204E4861F3A14A300454978 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */,
 				A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */,
 				A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */,
+				A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */,
 			);
 			name = LaunchScreen;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				0E4003F51F30B0D3003671F1 /* PlaceCell.swift in Sources */,
 				0E5DE1E41F3217780045305D /* ImageManager.swift in Sources */,
 				0ED851141F3C77C300A200A4 /* AttributesEnums.swift in Sources */,
+				A9EB4EF81F4C113100F7ECEA /* DefaultColors.swift in Sources */,
 				20A5BBAD1F307DF1006E43B9 /* PlacesTypeTableViewController.swift in Sources */,
 				61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */,
 				0ED851081F3C433200A200A4 /* Constants.swift in Sources */,
