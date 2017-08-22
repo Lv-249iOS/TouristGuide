@@ -10,6 +10,7 @@ import CoreLocation
 
 class DashboardController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileButton: RoundButton!
     @IBOutlet weak var placesButton: RoundButton!
     @IBOutlet weak var mapButton: RoundButton!
@@ -17,13 +18,7 @@ class DashboardController: UIViewController {
     @IBOutlet weak var settingsButton: RoundButton!
     
     var appModel = AppModel.shared
-    
-    /// Animate buttons
-    private func transformToIdentity(button: UIButton) {
-        UIView.animate(withDuration: 1.0, animations: {
-            button.transform = CGAffineTransform.identity
-        })
-    }
+    var styleManager = StyleManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +30,10 @@ class DashboardController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        
+        backgroundImageView.image = styleManager.currentBackgroundImage
+        
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -112,6 +112,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="mEn-eC-c2T" id="joq-FW-ZIJ"/>
                         <outlet property="mapButton" destination="OnR-BK-5iY" id="xNJ-rn-oFQ"/>
                         <outlet property="placesButton" destination="Vkb-B8-vnY" id="nT7-x5-ha7"/>
                         <outlet property="profileButton" destination="wG4-Vi-fZu" id="MhW-eT-XPu"/>
