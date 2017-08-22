@@ -10,11 +10,18 @@ import UIKit
 
 class FeedbacksViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     var reviews: [Review]?
     var fedbackTableViewController: FeedbackTableViewController!
     
     @IBAction func stopFeedbacks(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        backgroundImage.image = StyleManager.shared.currentBackgroundImage
+        backgroundImage.contentMode = .scaleAspectFill
     }
     
     override var prefersStatusBarHidden: Bool {

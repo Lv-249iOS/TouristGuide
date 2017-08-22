@@ -26,5 +26,15 @@ class ValidateInput {
         return nil
     }
     
-
+    func isValidPhoneNumper(testStr: String) -> Bool {
+        let phoneRegEx = "^\\d{3}-\\d{3}-\\d{4}$"
+        let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
+        return phoneTest.evaluate(with: testStr)
+    }
+    
+    func isValidPassword(testStr: String) -> Bool {
+        let passwordRegEx = ".{6,}"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+        return passwordTest.evaluate(with: testStr)
+    }
 }

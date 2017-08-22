@@ -10,6 +10,7 @@ import UIKit
 
 class PlaceProfileViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var phoneNumLabel: UILabel!
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var workHourLabel: UILabel!
@@ -31,6 +32,8 @@ class PlaceProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        backgroundImage.image = StyleManager.shared.currentBackgroundImage
         
         // Set information of place profile
         if let place = place {
