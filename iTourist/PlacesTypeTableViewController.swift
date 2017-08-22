@@ -15,9 +15,9 @@ class PlacesTypeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
-        let backgroundImage = UIImage(named: "background.png")
-        let imageView = UIImageView(image: backgroundImage)
+        let imageView = UIImageView(image: StyleManager.shared.currentBackgroundImage)
         self.tableView.backgroundView = imageView
+        self.tableView.backgroundView?.contentMode = .scaleAspectFill
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
