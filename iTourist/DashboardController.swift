@@ -27,27 +27,14 @@ class DashboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        placesButton.transform =  CGAffineTransform(scaleX: -0.95, y: 0.95)
-        mapButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        weatherButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        settingsButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        
+
         // Ask user about location
         configureLocationServices()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        transformToIdentity(button: profileButton)
-        transformToIdentity(button: placesButton)
-        transformToIdentity(button: mapButton)
-        transformToIdentity(button: weatherButton)
-        transformToIdentity(button: settingsButton)
         self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.hidesBarsOnSwipe = false
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

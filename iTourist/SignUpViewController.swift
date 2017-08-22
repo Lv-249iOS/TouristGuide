@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var surname: UITextField!
     @IBOutlet weak var tel: UITextField!
     @IBOutlet weak var scroll: CustomizableScrollView!
+    @IBOutlet weak var scrollBottomPin: NSLayoutConstraint!
     
     @IBAction func importButtonTap(_ sender: UIButton) {
         let image = UIImagePickerController()
@@ -35,11 +36,29 @@ class SignUpViewController: UIViewController {
         self.name.delegate = self
         self.surname.delegate = self
         self.tel.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: .UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func handleKeyboardShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRekt = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRekt.height
+            scrollBottomPin.constant = -keyboardHeight
+            UIView.animate(withDuration: 0, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func handleKeyboardHide(notification: NSNotification) {
+        scrollBottomPin.constant = 0
     }
 }
 
