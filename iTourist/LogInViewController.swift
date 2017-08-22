@@ -11,12 +11,21 @@ import UIKit
 class LogInViewController: UIViewController {
     
     @IBOutlet weak var scrollBottomPin: NSLayoutConstraint!
-    @IBOutlet weak var login: UITextField!
+    @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    @IBAction func loginButtonTap(_ sender: UIButton) {
+        //UserDefaults.standard.set(loginField.text, forKey: "userName")
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.login.delegate = self
+        self.loginField.delegate = self
         self.password.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
@@ -47,7 +56,7 @@ class LogInViewController: UIViewController {
 extension LogInViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        login.resignFirstResponder()
+        loginField.resignFirstResponder()
         password.resignFirstResponder()
         return true
     }
