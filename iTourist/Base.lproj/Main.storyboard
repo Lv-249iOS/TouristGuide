@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gYc-wx-rT4">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gYc-wx-rT4">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,118 +20,63 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-eC-c2T">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-Vi-fZu" customClass="ProfileButtonWithIcon" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="16" y="28" width="343" height="167"/>
+                                <rect key="frame" x="16" y="28" width="288" height="142"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.48754758879999999" green="0.093852714259999998" blue="0.28449685949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="oiX-Qp-wNA" kind="show" identifier="ProfileViewControllerSeque" id="jq0-0V-Ywp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places">
-                                <rect key="frame" x="16" y="203" width="167.5" height="224"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <state key="normal" title="Places">
-                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="g7U-66-UV4" kind="show" identifier="PlacesTypeControllerSeque" id="qNr-wa-tfw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY">
-                                <rect key="frame" x="191.5" y="203" width="167.5" height="224"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <state key="normal" title="Map">
-                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="icv-1t-ogh" kind="show" identifier="MapViewControllerSeque" id="Uoq-pS-ER0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y">
-                                <rect key="frame" x="16" y="435" width="167.5" height="224"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <state key="normal" title="Weather">
-                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="CsF-ZU-bhe" kind="show" identifier="WeatherViewControllerSeque" id="G2b-nS-Kdz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-5t-by0" userLabel="Settings" customClass="DashboardSettingIcon" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="191.5" y="435" width="167.5" height="224"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places" customClass="PlacesIcon" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="16" y="178" width="140" height="187"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="g7U-66-UV4" kind="show" identifier="PlacesTypeControllerSeque" id="qNr-wa-tfw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY" customClass="MapButton" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="164" y="178" width="140" height="187"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="icv-1t-ogh" kind="show" identifier="MapViewControllerSeque" id="Uoq-pS-ER0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y" customClass="WeatherbuttonWithIcon" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="16" y="373" width="140" height="187"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CsF-ZU-bhe" kind="show" identifier="WeatherViewControllerSeque" id="G2b-nS-Kdz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-5t-by0" userLabel="Settings" customClass="DashboardSettingIcon" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="164" y="373" width="140" height="187"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="dnc-B0-Ap9" kind="show" identifier="SettingsViewControllerSeque" id="oTf-6m-vr0"/>
                                 </connections>
@@ -167,6 +112,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="mEn-eC-c2T" id="joq-FW-ZIJ"/>
                         <outlet property="mapButton" destination="OnR-BK-5iY" id="xNJ-rn-oFQ"/>
                         <outlet property="placesButton" destination="Vkb-B8-vnY" id="nT7-x5-ha7"/>
                         <outlet property="profileButton" destination="wG4-Vi-fZu" id="MhW-eT-XPu"/>
@@ -187,11 +133,11 @@
                         <viewControllerLayoutGuide type="bottom" id="9w5-Af-h0w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PcU-9G-asV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB7-qs-hyH" customClass="PlanetView" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <rect key="frame" x="10" y="134" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="wx2-K1-q2Q"/>
@@ -213,7 +159,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEp-sT-ABg" customClass="PlaneView" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <rect key="frame" x="10" y="134" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="cUR-IN-Mel"/>
@@ -229,7 +175,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iTourist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjY-IE-SQJ">
-                                <rect key="frame" x="117" y="491.5" width="141.5" height="60"/>
+                                <rect key="frame" x="89.5" y="442" width="141.5" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
                                 <color key="textColor" red="0.43590384720000003" green="0.7066318989" blue="0.90231031179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

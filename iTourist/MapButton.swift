@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable class MapButton : RoundButton {
 
     override func draw(_ rect: CGRect) {
-        let π: CGFloat = CGFloat(M_PI)
+        let π: CGFloat = CGFloat.pi
         
         let radius: CGFloat = max(bounds.width, bounds.height)
         let startAngle: CGFloat = 0

@@ -42,6 +42,7 @@ extension MapViewController: MKMapViewDelegate {
                 annotationView?.canShowCallout = true
                 setImage()
             } else {
+                annotationView?.annotation = annotation
                 setImage()
             }
             
@@ -83,11 +84,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.leftCalloutAccessoryView {
-            print("LEFT")
-            
-            
-            
-            
+            performSegue(withIdentifier: "PlacesTypeSegue", sender: view)
             
         } else {
             control.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
@@ -176,7 +173,7 @@ extension MapViewController: MKMapViewDelegate {
             visibleIds.forEach { (visibleRegionInfo) in
                 
                 //this condition is used to avoid needless requests (system is not perfect)
-                if !visible(id: visibleRegionInfo.key) {
+                //if visible(id: visibleRegionInfo.key) {
                     
                     let locations = MapFrameConverter.convert(region: map.region)
                     
@@ -211,6 +208,7 @@ extension MapViewController: MKMapViewDelegate {
                     visibleIds.forEach { (visibleRegionInfo) in
                         
                         if visible(id: visibleRegionInfo.key) {
+                            map.removeAnnotations(map.annotations)
                             for annotation in visibleRegionInfo.value {
                                 map.addAnnotation(annotation)
                                 print("Add annotation")
@@ -218,7 +216,7 @@ extension MapViewController: MKMapViewDelegate {
                         }
                     }
                     
-                }
+                //}
                 
             }
             
