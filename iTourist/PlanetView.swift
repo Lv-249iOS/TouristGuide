@@ -12,20 +12,23 @@ import UIKit
 class PlanetView: UIView {
     
     var circleCenter: CGPoint!
-    var circleRadius: CGFloat = 80
-    var lineWidth: CGFloat = 7.0
-    var fillColor = UIColor(displayP3Red: 0.435, green: 0.707, blue: 0.902, alpha: 1)
-    let yAdditionForCurveParalel: CGFloat = 20
-    
+    @IBInspectable var circleRadius: CGFloat = 80
+    @IBInspectable var lineWidth: CGFloat = 7.0
+    @IBInspectable var fillColor: UIColor = DefaultColor.lightBlue
+    @IBInspectable var yAdditionForCurveParalel: CGFloat = 20
     
     override func draw(_ rect: CGRect) {
         circleCenter = CGPoint(x: bounds.midX, y: bounds.midY)
-
+        
         let planet = circlePath(center: circleCenter, radius: circleRadius)
         let straightMeridianAndParalel = straightMeridianAndParalelPath()
-        let curveParalelTop = paralelPath(angleOne: CGFloat(7 * Double.pi / 4), angleTwo: CGFloat(5 * Double.pi / 4), isTop: true)
-        let curveParalelBottom = paralelPath(angleOne: CGFloat(Double.pi / 4), angleTwo:  CGFloat(3 * Double.pi / 4), isTop:  false)
         let curveMeridians = curveMeridiansPath()
+        
+        let curveParalelTop = paralelPath(angleOne: CGFloat(7 * Double.pi / 4),
+                                          angleTwo: CGFloat(5 * Double.pi / 4), isTop: true)
+        
+        let curveParalelBottom = paralelPath(angleOne: CGFloat(Double.pi / 4),
+                                             angleTwo:  CGFloat(3 * Double.pi / 4), isTop:  false)
         
         // Setting lineWidth
         planet.lineWidth = lineWidth
