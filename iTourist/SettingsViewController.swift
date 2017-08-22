@@ -54,6 +54,9 @@ class SettingsViewController: UITableViewController {
             imageScroll.subviews[i].frame = rect
             imageScroll.contentSize.width = size.width * CGFloat(i + 1)
         }
+        
+        let pointOffset = CGPoint(x: size.width * CGFloat(currentPage ?? 0), y: 0)
+        imageScroll.setContentOffset(pointOffset, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
