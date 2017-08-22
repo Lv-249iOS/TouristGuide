@@ -12,7 +12,7 @@ class WeatherbuttonWithIcon: RoundButton {
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
         var radius: Double = 0.0
-        radius = Double(rect.width/3)
+        radius = min(Double(rect.height), Double(rect.width))/3
         
         //radius = Double(rect.height/2 - 10)
         
