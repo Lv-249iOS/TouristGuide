@@ -11,7 +11,7 @@ import Foundation
 class UrlFormatter {
     
     enum PlaceUrl: String {
-        case appKey = "AIzaSyBP_rAIj2u8OR3jOz8YqZlhyY5XzSsVDhY"
+        case appKey = "AIzaSyBzxuMNLAduWqUMf6BQk0txnVM2L_6vyaU"//"AIzaSyBP_rAIj2u8OR3jOz8YqZlhyY5XzSsVDhY"
         case loadIdOfPlaces = "https://maps.googleapis.com/maps/api/place/radarsearch/json?"
         case loadPlace = "https://maps.googleapis.com/maps/api/place/details/json?"
         case loadImgUrl = "https://maps.googleapis.com/maps/api/place/photo?"

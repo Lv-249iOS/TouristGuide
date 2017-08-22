@@ -166,14 +166,14 @@ extension MapViewController: MKMapViewDelegate {
         
         print(map.region.span)
         
-        if map.region.span.latitudeDelta < 0.02 {
+        if map.region.span.latitudeDelta < 0.6 {
             
             if visibleIds.isEmpty { visibleIds = ["0.0,0.0":[]] }
             
             visibleIds.forEach { (visibleRegionInfo) in
                 
                 //this condition is used to avoid needless requests (system is not perfect)
-                //if visible(id: visibleRegionInfo.key) {
+                //if !visible(id: visibleRegionInfo.key) {
                     
                     let locations = MapFrameConverter.convert(region: map.region)
                     
@@ -208,7 +208,9 @@ extension MapViewController: MKMapViewDelegate {
                     visibleIds.forEach { (visibleRegionInfo) in
                         
                         if visible(id: visibleRegionInfo.key) {
-                            map.removeAnnotations(map.annotations)
+                            for annotation in visibleRegionInfo.value {
+                            map.removeAnnotation(annotation)
+                            }
                             for annotation in visibleRegionInfo.value {
                                 map.addAnnotation(annotation)
                                 print("Add annotation")

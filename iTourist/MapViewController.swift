@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
         }
         
         map.delegate = self
+        map.showsUserLocation = true
         addUserLocationOnMap()
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(gestureRecognizer:)))
