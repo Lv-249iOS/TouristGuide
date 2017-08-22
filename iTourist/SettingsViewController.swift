@@ -26,11 +26,11 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isStartWithLandscape()
         fillImageScrollView()
     }
     
     func fillImageScrollView() {
-        isStartWithLandscape()
         for i in 0 ..< styleManager.backgroundThemeArray.count {
             let rect = CGRect(x: imageScroll.bounds.width * CGFloat(i),
                               y: 0,
@@ -46,13 +46,10 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    private func isStartWithLandscape() {
-        imageScroll.updateFocusIfNeeded()
-        imageScroll.updateConstraintsIfNeeded()
+    func isStartWithLandscape() {
         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             imageScroll.bounds = CGRect(x: 0, y: 0, width: view.bounds.width, height: imageScroll.bounds.height)
-            let pointOffset = CGPoint(x:  imageScroll.bounds.width * CGFloat(currentPage ?? 0), y: 0)
-            imageScroll.setContentOffset(pointOffset, animated: true)
+            setContentOffsetForImageScroll(with: imageScroll.bounds.width)
         }
     }
     
@@ -67,16 +64,19 @@ class SettingsViewController: UITableViewController {
             imageScroll.contentSize.width = size.width * CGFloat(i + 1)
         }
         
-        let pointOffset = CGPoint(x: size.width * CGFloat(currentPage ?? 0), y: 0)
+        setContentOffsetForImageScroll(with: size.width)
+    }
+    
+    func setContentOffsetForImageScroll(with width: CGFloat) {
+        let pointOffset = CGPoint(x: width * CGFloat(currentPage ?? styleManager.currentPage), y: 0)
         imageScroll.setContentOffset(pointOffset, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
         
-        let pointOffset = CGPoint(x: view.frame.width * CGFloat(styleManager.currentPage), y: 0)
-        imageScroll.setContentOffset(pointOffset, animated: true)
+        self.navigationController?.isNavigationBarHidden = false
+        setContentOffsetForImageScroll(with: view.frame.width)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
