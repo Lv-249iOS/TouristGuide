@@ -57,6 +57,7 @@
 		20C9FB4B1F430A8500EBE738 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */; };
 		20C9FB4D1F430CF200EBE738 /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */; };
 		611104221F4420D500E221BC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611104211F4420D500E221BC /* LogInViewController.swift */; };
+		615822FC1F4C202B00522985 /* ValidateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615822FB1F4C202B00522985 /* ValidateInput.swift */; };
 		61682CCE1F49D17E00354829 /* ProfileButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61682CCD1F49D17E00354829 /* ProfileButtonWithIcon.swift */; };
 		618661AA1F45FDD3000F737C /* CustomizableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618661A91F45FDD3000F737C /* CustomizableScrollView.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
@@ -158,6 +159,7 @@
 		20C9FB4A1F430A8500EBE738 /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
 		20C9FB4C1F430CF200EBE738 /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
 		611104211F4420D500E221BC /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		615822FB1F4C202B00522985 /* ValidateInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateInput.swift; sourceTree = "<group>"; };
 		61682CCD1F49D17E00354829 /* ProfileButtonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButtonWithIcon.swift; sourceTree = "<group>"; };
 		618661A91F45FDD3000F737C /* CustomizableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableScrollView.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 			children = (
 				1542E1721F4305AD008A92DF /* ProfileStruct.swift */,
 				611104211F4420D500E221BC /* LogInViewController.swift */,
+				615822FB1F4C202B00522985 /* ValidateInput.swift */,
 				202898DD1F333BB400F136BB /* ProfileViewController.swift */,
 				61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */,
 				202898B11F331FBA00F136BB /* Profile.storyboard */,
@@ -622,6 +625,7 @@
 				0E4003EE1F309DE9003671F1 /* JsonPlacesParser.swift in Sources */,
 				0E4003F21F309DF4003671F1 /* Place.swift in Sources */,
 				A9EB4EED1F4B1C8E00F7ECEA /* DegreesConverter.swift in Sources */,
+				615822FC1F4C202B00522985 /* ValidateInput.swift in Sources */,
 				0E8B3BC21F2F2CA3001FFC73 /* DashboardController.swift in Sources */,
 				20751DDF1F38E60500E4A25A /* PlacesPageController.swift in Sources */,
 				A9EB4EF11F4B1CB200F7ECEA /* PlanetView.swift in Sources */,

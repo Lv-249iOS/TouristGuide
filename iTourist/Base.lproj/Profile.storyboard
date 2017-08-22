@@ -241,7 +241,7 @@
         <!--Profile View Controller-->
         <scene sceneID="9hK-8a-CL4">
             <objects>
-                <viewController id="t8o-r6-5gx" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="t8o-r6-5gx" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zw7-c2-Rpr"/>
                         <viewControllerLayoutGuide type="bottom" id="VwC-KQ-w4d"/>
@@ -377,6 +377,9 @@
                                                     <constraint firstAttribute="width" constant="85" id="xrQ-p2-NLn"/>
                                                 </constraints>
                                                 <state key="normal" image="login"/>
+                                                <connections>
+                                                    <action selector="loginButtonTap:" destination="KRq-KF-t59" eventType="touchUpInside" id="rm8-pi-aSE"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Don't have an account? Just " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgz-xs-j9G">
                                                 <rect key="frame" x="65.333333333333314" y="522" width="221" height="21"/>
@@ -438,7 +441,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="tmk-4x-Pcs"/>
                     <connections>
-                        <outlet property="login" destination="ZZ4-JB-pce" id="h5A-qQ-zgY"/>
+                        <outlet property="loginField" destination="ZZ4-JB-pce" id="OG8-hV-xQ3"/>
                         <outlet property="password" destination="Fnw-Ja-Oyz" id="knb-D4-xcO"/>
                         <outlet property="scrollBottomPin" destination="oCp-N1-uBZ" id="NsH-vS-k4k"/>
                     </connections>
