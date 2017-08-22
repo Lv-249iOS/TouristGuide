@@ -19,10 +19,12 @@ class ValidateInput {
         return emailTest.evaluate(with: testStr)
     }
     
-    func emailExists(testStr: String) -> Bool {
-        if let _ = database.getUser(by: testStr) {
-            return true
+    func emailExistsInDatabase(testStr: String) -> User? {
+        if let user = database.getUser(by: testStr) {
+            return user
         }
-        return false
+        return nil
     }
+    
+
 }
