@@ -18,6 +18,10 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fillImageScrollView()
+    }
+    
+    func fillImageScrollView() {
         for i in 0 ..< styleManager.backgroundThemeArray.count {
             let imageView = UIImageView()
             imageView.image = styleManager.backgroundThemeArray[i]
@@ -30,17 +34,14 @@ class SettingsViewController: UITableViewController {
             imageScroll.contentSize.width = imageScroll.frame.width * CGFloat(i + 1)
             imageScroll.addSubview(imageView)
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
         
-        // doesn't scroll to visible
-        let currentPage = styleManager.currentPage
-        imageScroll.setContentOffset(CGPoint(x: view.frame.width * CGFloat(currentPage), y: 0), animated: true)
+        let pointOffset = CGPoint(x: view.frame.width * CGFloat(styleManager.currentPage), y: 0)
+        imageScroll.setContentOffset(pointOffset, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,6 +54,13 @@ class SettingsViewController: UITableViewController {
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
     }
 }
