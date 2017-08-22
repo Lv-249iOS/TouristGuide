@@ -13,6 +13,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var imageScroll: UIScrollView!
     
     let backgroundThemeArray = [#imageLiteral(resourceName: "background"), #imageLiteral(resourceName: "back"), #imageLiteral(resourceName: "profileBackground")]
+    var currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,13 @@ class SettingsViewController: UITableViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        scrollView.scrollRectToVisible(scrollView.subviews[2].bounds, animated: true)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
     }
 }
