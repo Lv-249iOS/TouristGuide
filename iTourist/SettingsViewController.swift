@@ -30,11 +30,12 @@ class SettingsViewController: UITableViewController {
     }
     
     func fillImageScrollView() {
+        isStartWithLandscape()
         for i in 0 ..< styleManager.backgroundThemeArray.count {
             let rect = CGRect(x: imageScroll.bounds.width * CGFloat(i),
                               y: 0,
-                              width: imageScroll.frame.width,
-                              height: imageScroll.frame.height)
+                              width: imageScroll.bounds.width,
+                              height: imageScroll.bounds.height)
             
             let imageView = UIImageView(frame: rect)
             imageView.contentMode = .scaleAspectFill
@@ -45,12 +46,23 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    private func isStartWithLandscape() {
+        imageScroll.updateFocusIfNeeded()
+        imageScroll.updateConstraintsIfNeeded()
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            imageScroll.bounds = CGRect(x: 0, y: 0, width: view.bounds.width, height: imageScroll.bounds.height)
+            let pointOffset = CGPoint(x:  imageScroll.bounds.width * CGFloat(currentPage ?? 0), y: 0)
+            imageScroll.setContentOffset(pointOffset, animated: true)
+        }
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         for i in 0 ..< imageScroll.subviews.count {
             let rect = CGRect(x: size.width * CGFloat(i),
                               y: 0,
                               width: size.width,
                               height: imageScroll.frame.height)
+            
             imageScroll.subviews[i].frame = rect
             imageScroll.contentSize.width = size.width * CGFloat(i + 1)
         }
