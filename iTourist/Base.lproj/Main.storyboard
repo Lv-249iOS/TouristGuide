@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7gs-3u-LhD">
-    <device id="retina5_5" orientation="portrait">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gYc-wx-rT4">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -11,127 +11,72 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--HOME-->
+        <!--Dashboard Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DashboardController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardController" id="BYZ-38-t0r" customClass="DashboardController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-eC-c2T">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-eC-c2T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-Vi-fZu" customClass="ProfileButtonWithIcon" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72" width="374" height="184"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="28" width="343" height="167"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.48754758879999999" green="0.093852714259999998" blue="0.28449685949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="oiX-Qp-wNA" kind="show" identifier="ProfileViewControllerSeque" id="jq0-0V-Ywp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places" customClass="RoundButton" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="20" y="264" width="183" height="228"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <state key="normal" title="Places">
-                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="g7U-66-UV4" kind="show" identifier="PlacesTypeControllerSeque" id="qNr-wa-tfw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY" customClass="MapButton" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="211" y="264" width="183" height="228"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-B8-vnY" userLabel="Places" customClass="PlacesIcon" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="16" y="203" width="167.5" height="224"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="g7U-66-UV4" kind="show" identifier="PlacesTypeControllerSeque" id="qNr-wa-tfw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-BK-5iY">
+                                <rect key="frame" x="191.5" y="203" width="167.5" height="224"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <state key="normal" title="Map">
+                                    <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="icv-1t-ogh" kind="show" identifier="MapViewControllerSeque" id="Uoq-pS-ER0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y" customClass="RoundButton" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="20" y="500" width="183" height="228"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knz-5w-w7Y" customClass="WeatherbuttonWithIcon" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="16" y="435" width="167.5" height="224"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <state key="normal" title="Weather">
+                                <state key="normal">
                                     <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="CsF-ZU-bhe" kind="show" identifier="WeatherViewControllerSeque" id="G2b-nS-Kdz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-5t-by0" userLabel="Settings" customClass="DashboardSettingIcon" customModule="iTourist" customModuleProvider="target">
-                                <rect key="frame" x="211" y="500" width="183" height="228"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="191.5" y="435" width="167.5" height="224"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="dnc-B0-Ap9" kind="show" identifier="SettingsViewControllerSeque" id="oTf-6m-vr0"/>
                                 </connections>
@@ -166,8 +111,8 @@
                             <constraint firstItem="mEn-eC-c2T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vj3-An-Jfr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="HOME" id="FNg-G8-CMM"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="mEn-eC-c2T" id="joq-FW-ZIJ"/>
                         <outlet property="mapButton" destination="OnR-BK-5iY" id="xNJ-rn-oFQ"/>
                         <outlet property="placesButton" destination="Vkb-B8-vnY" id="nT7-x5-ha7"/>
                         <outlet property="profileButton" destination="wG4-Vi-fZu" id="MhW-eT-XPu"/>
@@ -177,29 +122,118 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="898.125" y="123.59154929577466"/>
+            <point key="canvasLocation" x="1804.3478260869567" y="123.09782608695653"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yBO-fa-mS2">
+        <!--Launch Screen Controller-->
+        <scene sceneID="W2o-eu-5fc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="7gs-3u-LhD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gr0-BZ-WFW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="rPv-O2-dn2">
-                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
+                <viewController id="efA-K6-xXl" customClass="LaunchScreenController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="34d-f0-pQ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="9w5-Af-h0w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PcU-9G-asV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB7-qs-hyH" customClass="PlanetView" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="wx2-K1-q2Q"/>
+                                    <constraint firstAttribute="width" constant="300" id="xep-b2-VeA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                        <real key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="yAdditionForCurveParalel">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.43590384720000003" green="0.7066318989" blue="0.90231031179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEp-sT-ABg" customClass="PlaneView" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="cUR-IN-Mel"/>
+                                    <constraint firstAttribute="width" constant="300" id="iIu-FK-h3g"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                        <real key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iTourist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjY-IE-SQJ">
+                                <rect key="frame" x="117" y="491.5" width="141.5" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
+                                <color key="textColor" red="0.43590384720000003" green="0.7066318989" blue="0.90231031179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CB7-qs-hyH" firstAttribute="centerY" secondItem="PcU-9G-asV" secondAttribute="centerY" id="2Xg-iX-n5v"/>
+                            <constraint firstItem="CEp-sT-ABg" firstAttribute="centerY" secondItem="PcU-9G-asV" secondAttribute="centerY" id="8DW-qT-G2t"/>
+                            <constraint firstItem="CB7-qs-hyH" firstAttribute="centerX" secondItem="PcU-9G-asV" secondAttribute="centerX" id="H98-Hy-KJu"/>
+                            <constraint firstItem="9w5-Af-h0w" firstAttribute="top" secondItem="SjY-IE-SQJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TUG-Lb-G6r"/>
+                            <constraint firstItem="SjY-IE-SQJ" firstAttribute="centerX" secondItem="PcU-9G-asV" secondAttribute="centerX" id="UwN-VI-7yQ"/>
+                            <constraint firstItem="CEp-sT-ABg" firstAttribute="centerX" secondItem="PcU-9G-asV" secondAttribute="centerX" id="Vnp-S3-2iU"/>
+                            <constraint firstItem="SjY-IE-SQJ" firstAttribute="top" secondItem="CEp-sT-ABg" secondAttribute="bottom" constant="8" symbolic="YES" id="ch0-ug-3pL"/>
+                            <constraint firstItem="SjY-IE-SQJ" firstAttribute="trailing" secondItem="PcU-9G-asV" secondAttribute="trailingMargin" id="kFq-Lb-SrR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UwN-VI-7yQ"/>
+                                <exclude reference="ch0-ug-3pL"/>
+                                <exclude reference="kFq-Lb-SrR"/>
+                                <exclude reference="TUG-Lb-G6r"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="kFq-Lb-SrR"/>
+                                <include reference="TUG-Lb-G6r"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="kFq-Lb-SrR"/>
+                                <include reference="TUG-Lb-G6r"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="UwN-VI-7yQ"/>
+                                <include reference="ch0-ug-3pL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="UwN-VI-7yQ"/>
+                                <include reference="ch0-ug-3pL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="V6C-Fz-EIi"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ypd-ps-riI"/>
+                        <outlet property="planeView" destination="CEp-sT-ABg" id="VRP-Yy-Cnq"/>
+                        <outlet property="planetView" destination="CB7-qs-hyH" id="q1m-qB-jTJ"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oma-LR-828" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOe-IS-dPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99.375" y="123.59154929577466"/>
+            <point key="canvasLocation" x="976.46176911544239" y="120.8"/>
         </scene>
         <!--Map-->
         <scene sceneID="6Cd-xL-GbW">
@@ -207,7 +241,7 @@
                 <viewControllerPlaceholder storyboardName="Map" id="icv-1t-ogh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXD-uW-slq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="150"/>
+            <point key="canvasLocation" x="2613.04347826087" y="150"/>
         </scene>
         <!--Weather-->
         <scene sceneID="8u6-xC-ybS">
@@ -215,7 +249,7 @@
                 <viewControllerPlaceholder storyboardName="Weather" id="CsF-ZU-bhe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByQ-w6-wcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="201"/>
+            <point key="canvasLocation" x="2636.9565217391305" y="200.54347826086959"/>
         </scene>
         <!--Settings-->
         <scene sceneID="NoD-uX-S2y">
@@ -223,7 +257,7 @@
                 <viewControllerPlaceholder storyboardName="Settings" id="dnc-B0-Ap9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OX2-Av-ij6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="255"/>
+            <point key="canvasLocation" x="2636.9565217391305" y="254.34782608695653"/>
         </scene>
         <!--Profile-->
         <scene sceneID="gML-gw-Xkh">
@@ -231,7 +265,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="oiX-Qp-wNA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQS-B6-6Mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719" y="40"/>
+            <point key="canvasLocation" x="2626.0869565217395" y="39.945652173913047"/>
         </scene>
         <!--PlacesType-->
         <scene sceneID="hn7-1i-feS">
@@ -239,10 +273,28 @@
                 <viewControllerPlaceholder storyboardName="PlacesType" id="g7U-66-UV4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GeX-6i-dgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="95"/>
+            <point key="canvasLocation" x="2652.898550724638" y="94.565217391304358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dWK-Io-EoB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gYc-wx-rT4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u0q-1c-2CZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="efA-K6-xXl" kind="relationship" relationship="rootViewController" id="snD-PG-h3p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fc2-D4-2Wm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125" y="123"/>
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="4244" height="2468"/>
+        <image name="background" width="1024" height="683"/>
     </resources>
 </document>

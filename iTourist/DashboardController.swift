@@ -10,6 +10,7 @@ import CoreLocation
 
 class DashboardController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileButton: RoundButton!
     @IBOutlet weak var placesButton: RoundButton!
     @IBOutlet weak var mapButton: RoundButton!
@@ -17,37 +18,28 @@ class DashboardController: UIViewController {
     @IBOutlet weak var settingsButton: RoundButton!
     
     var appModel = AppModel.shared
-    
-    /// Animate buttons
-    private func transformToIdentity(button: UIButton) {
-        UIView.animate(withDuration: 1.0, animations: {
-            button.transform = CGAffineTransform.identity
-        })
-    }
+    var styleManager = StyleManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        placesButton.transform =  CGAffineTransform(scaleX: -0.95, y: 0.95)
-        mapButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        weatherButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        settingsButton.transform = CGAffineTransform(scaleX: -0.95, y: 0.95)
-        
+
         // Ask user about location
         configureLocationServices()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        transformToIdentity(button: profileButton)
-        transformToIdentity(button: placesButton)
-        transformToIdentity(button: mapButton)
-        transformToIdentity(button: weatherButton)
-        transformToIdentity(button: settingsButton)
         self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.hidesBarsOnSwipe = false
+        
+        backgroundImageView.image = styleManager.currentBackgroundImage
+        
+        
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        settingsButton.setNeedsDisplay()
+        profileButton.setNeedsDisplay()
+        weatherButton.setNeedsDisplay()
     }
     
     func configureLocationServices() {
@@ -57,9 +49,5 @@ class DashboardController: UIViewController {
                 appModel.locationManager.manager.requestWhenInUseAuthorization()
             }
         }
-    }
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        settingsButton.setNeedsDisplay()
-        profileButton.setNeedsDisplay()
     }
 }
