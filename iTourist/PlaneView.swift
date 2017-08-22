@@ -13,6 +13,7 @@ class PlaneView: UIView {
     
     var circleCenter: CGPoint!
     
+    // general parametrs
     @IBInspectable var circleRadius: CGFloat = 80
     @IBInspectable var lineWidth: CGFloat = 5
     @IBInspectable var planeStrokeColor: UIColor = UIColor.white
@@ -21,6 +22,7 @@ class PlaneView: UIView {
     @IBInspectable var planeXposition: CGFloat = 120
     @IBInspectable var planeYposition: CGFloat = -50
     
+    // Plane parametrs for x position
     @IBInspectable var xDownForTail: CGFloat = 30
     @IBInspectable var xUpForTail: CGFloat = 0
     @IBInspectable var xToBody: CGFloat = 20
@@ -29,6 +31,7 @@ class PlaneView: UIView {
     @IBInspectable var xCurveWing: CGFloat = 0
     @IBInspectable var xBowPart: CGFloat = 47 // must be less then xWidthWing
     
+    // Plane parametrs for y position
     @IBInspectable var yDownForTail: CGFloat = 10
     @IBInspectable var yUpForTail: CGFloat = 20
     @IBInspectable var yToBody: CGFloat = 10
@@ -39,11 +42,13 @@ class PlaneView: UIView {
     
     @IBInspectable var stepHeightNose: CGFloat = 70
     
+    /// Drawing inside view
     override func draw(_ rect: CGRect) {
         circleCenter = CGPoint(x: bounds.midX, y: bounds.midY)
         
         let planeFootprint = footprintPath(centerPosition: circleCenter, radius: circleRadius * 1.45)
-        let plane = planePath(startPos: CGPoint(x: planeFootprint.currentPoint.x + planeXposition, y: bounds.midY + planeYposition))
+        let plane = planePath(startPos: CGPoint(x: planeFootprint.currentPoint.x + planeXposition,
+                                                y: bounds.midY + planeYposition))
         
         layer.addSublayer(gradientLayer(with: planeFootprint))
         
@@ -54,14 +59,11 @@ class PlaneView: UIView {
         planeLayer.strokeColor = planeStrokeColor.cgColor
         
         layer.addSublayer(planeLayer)
-        plane.fill()
-        
     }
     
     /// Creates gradient layer using mask laid on layer
     func gradientLayer(with path: UIBezierPath) -> CAGradientLayer {
         let gradient = CAGradientLayer()
-        
         gradient.position = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
         gradient.bounds = path.bounds
         gradient.colors = [UIColor.cyan.cgColor, UIColor.magenta.cgColor]
@@ -74,7 +76,7 @@ class PlaneView: UIView {
     }
     
     /// Draws footpints if the plane ...
-    private func footprintPath(centerPosition: CGPoint, radius: CGFloat) -> UIBezierPath {
+    func footprintPath(centerPosition: CGPoint, radius: CGFloat) -> UIBezierPath {
         let path = UIBezierPath(arcCenter: centerPosition,
                                 radius: radius,
                                 startAngle: DegreesConverter.radians(from: 135),
@@ -127,28 +129,22 @@ class PlaneView: UIView {
     /// Creates all the points of plane
     private func generatePoints(with startPos: CGPoint) -> [CGPoint] {
         
-        // Plane tail (left part)
+        // Plane tail
         let p1 = CGPoint(x: startPos.x - xDownForTail * planeScale, y: startPos.y + yDownForTail * planeScale)
         let p2 = CGPoint(x: p1.x + xUpForTail, y: p1.y - yUpForTail * planeScale)
-        
-        // Plane tail (right part)
         let p12 = CGPoint(x: startPos.x + xDownForTail * planeScale, y: startPos.y + yDownForTail * planeScale)
         let p11 = CGPoint(x: p12.x + xUpForTail * planeScale, y: p12.y - yUpForTail * planeScale)
         
-        // Plane body (left part)
+        // Plane body
         let p3 = CGPoint(x: p2.x + xToBody * planeScale, y: p2.y - yToBody * planeScale)
         let p4 = CGPoint(x: p3.x - xToBodyTop * planeScale, y: p3.y - yToBodyTop * planeScale)
-        
-        // Plane body (right part)
         let p10 = CGPoint(x: p11.x - xToBody * planeScale, y: p11.y - yToBody * planeScale)
         let p9 = CGPoint(x: p10.x + xToBodyTop * planeScale, y: p10.y - yToBodyTop * planeScale)
         
-        // Plane wing (left)
+        // Plane wing
         let p5 = CGPoint(x: p4.x - xWidthWing * planeScale, y: p4.y + yWidthWing * planeScale)
         let p5_1 = CGPoint(x: p5.x + xCurveWing, y: p5.y - yCurveWing * planeScale)
         let p6 = CGPoint(x: p5_1.x + xBowPart * planeScale, y: p5_1.y - yBowPart * planeScale)
-        
-        // Plane wing (right)
         let p8 = CGPoint(x: p9.x + xWidthWing * planeScale, y: p9.y + yWidthWing * planeScale)
         let p7_1 = CGPoint(x: p8.x + xCurveWing * planeScale, y: p8.y - yCurveWing * planeScale)
         let p7 = CGPoint(x: p7_1.x - xBowPart * planeScale, y: p7_1.y - yBowPart * planeScale)
