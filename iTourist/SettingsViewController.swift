@@ -9,11 +9,11 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-
+    
     @IBOutlet weak var imageScroll: UIScrollView!
     
     let styleManager = StyleManager.shared
-    var currentPage = 0
+    var currentPage: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,29 +31,28 @@ class SettingsViewController: UITableViewController {
             imageScroll.addSubview(imageView)
         }
         
-        // doesn't scroll to visible
-        let currentPage = styleManager.currentPage
-        let rect = CGRect(x: view.frame.width * CGFloat(currentPage),
-                          y: 0,
-                          width: view.frame.width * CGFloat(currentPage),
-                          height: view.frame.height * CGFloat(currentPage))
         
-        imageScroll.scrollRectToVisible(rect, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-
+        
+        // doesn't scroll to visible
+        let currentPage = styleManager.currentPage
+        imageScroll.setContentOffset(CGPoint(x: view.frame.width * CGFloat(currentPage), y: 0), animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        styleManager.currentPage = currentPage
+        if let page = currentPage {
+            styleManager.currentPage = page
+        }
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        
     }
 }
