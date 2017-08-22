@@ -87,6 +87,7 @@
 		B265BF1F1F4ABDF200D845A0 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B265BF1E1F4ABDF200D845A0 /* MapButton.swift */; };
 		E72EBBB21F34A107003D7357 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB11F34A107003D7357 /* Forecast.swift */; };
 		E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */; };
+		E776CCA61F4B03A200922F0F /* WeatherbuttonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776CCA51F4B03A200922F0F /* WeatherbuttonWithIcon.swift */; };
 		E7B763FC1F3C82E200B23AEA /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +186,7 @@
 		B265BF1E1F4ABDF200D845A0 /* MapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		E72EBBB11F34A107003D7357 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		E72EBBB31F34A2DF003D7357 /* WeatherParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherParse.swift; sourceTree = "<group>"; };
+		E776CCA51F4B03A200922F0F /* WeatherbuttonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherbuttonWithIcon.swift; sourceTree = "<group>"; };
 		E7B763FB1F3C82E200B23AEA /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -351,6 +353,7 @@
 			children = (
 				159552B31F46EEEA00EEC19B /* DashboardSettingIcon.swift */,
 				61682CCD1F49D17E00354829 /* ProfileButtonWithIcon.swift */,
+				E776CCA51F4B03A200922F0F /* WeatherbuttonWithIcon.swift */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				0ED8510C1F3C433200A200A4 /* Loader.swift in Sources */,
 				202898E81F33428B00F136BB /* SettingsViewController.swift in Sources */,
 				0E8B3BC01F2F2CA3001FFC73 /* AppDelegate.swift in Sources */,
+				E776CCA61F4B03A200922F0F /* WeatherbuttonWithIcon.swift in Sources */,
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
 				1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */,
 				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
