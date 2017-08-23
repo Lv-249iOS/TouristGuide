@@ -50,7 +50,8 @@ class DashboardController: UIViewController {
         backgroundImageView.image = styleManager.currentBackgroundImage
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         settingsButton.setNeedsDisplay()
         profileButton.setNeedsDisplay()
         weatherButton.setNeedsDisplay()
