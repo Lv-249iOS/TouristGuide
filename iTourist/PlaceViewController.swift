@@ -34,10 +34,17 @@ class PlaceViewController: UITableViewController {
                     }
                 }
             }
-            
+            self.sortPlacesIfNeeded()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    func sortPlacesIfNeeded() {
+        if let value = UserDefaults.standard.value(forKey: PathForSettingsKey.sortPlaces.rawValue) as? Bool,
+            value == true {
+            self.places.sort(by: { $0.name! > $1.name! })
         }
     }
     
