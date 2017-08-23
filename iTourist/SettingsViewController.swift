@@ -106,7 +106,9 @@ class SettingsViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         styleManager.makeSoundIfNeeded()
         
-        if cell.accessoryType == .checkmark {
+        if cell.accessibilityIdentifier == "FacebookCell" {
+            print("qqqqqqqq")
+        } else if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
             notifyAboutChanges(with: CellTags(rawValue: cell.tag)!, value: false)
         } else if cell.accessoryType == UITableViewCellAccessoryType.none {
@@ -140,21 +142,21 @@ class SettingsViewController: UITableViewController {
                 cell.textLabel?.text = "Connect to Facebook"
                 cell.accessoryType = .none
                 cell.imageView?.image = #imageLiteral(resourceName: "facebookIcon")
-                cell.imageView?.contentMode = .scaleToFill
-                cell.tag = CellTags.connectToFacebook.rawValue
+                cell.imageView?.contentMode = .scaleAspectFill
+                cell.accessibilityIdentifier = "FacebookCell"
             }
         case 2:
             cell.textLabel?.text = "Sort places by name"
             cell.accessoryType = getAccessoryType(with: .sortPlaces)
             cell.imageView?.image = #imageLiteral(resourceName: "sortIcon")
-            cell.imageView?.contentMode = .scaleToFill
+            cell.imageView?.contentMode = .scaleAspectFill
             cell.tag = CellTags.sortPlacesByName.rawValue
             
         case 3:
             cell.textLabel?.text = "Use celcier"
             cell.accessoryType = getAccessoryType(with: .celcius)
             cell.imageView?.image = #imageLiteral(resourceName: "weatherIcon")
-            cell.imageView?.contentMode = .scaleToFill
+            cell.imageView?.contentMode = .scaleAspectFill
             cell.tag = CellTags.useCelsius.rawValue
             
         default:
