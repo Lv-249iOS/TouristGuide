@@ -62,7 +62,7 @@ class PlaceViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
-        let imageView = UIImageView(image: StyleManager.shared.currentBackgroundImage)
+        let imageView = UIImageView(image: SettingsManager.shared.currentBackgroundImage)
         
         self.tableView.backgroundView = imageView
         self.tableView.backgroundView?.contentMode = .scaleAspectFill

@@ -33,7 +33,7 @@ class PlaceProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        backgroundImage.image = StyleManager.shared.currentBackgroundImage
+        backgroundImage.image = SettingsManager.shared.currentBackgroundImage
         
         // Set information of place profile
         if let place = place {

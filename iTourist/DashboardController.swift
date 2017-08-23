@@ -18,7 +18,7 @@ class DashboardController: UIViewController {
     @IBOutlet weak var settingsButton: RoundButton!
     
     var appModel = AppModel.shared
-    var styleManager = StyleManager.shared
+    var styleManager = SettingsManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

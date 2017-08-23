@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
-class StyleManager {
+class SettingsManager {
     
-    static var shared = StyleManager()
+    static var shared = SettingsManager()
     
     enum PathForKey: String {
         case currentPageOfImage = "currentPageOfImage"
@@ -41,5 +42,12 @@ class StyleManager {
     
     var currentBackgroundImage: UIImage {
         return backgroundThemeArray[currentPage]
+    }
+    
+    func makeSoundIfNeeded() {
+        if let val = UserDefaults.standard.value(forKey: PathForSettingsKey.sound.rawValue) as? Bool,
+            val == true {
+            AudioServicesPlaySystemSound(1105)
+        }
     }
 }

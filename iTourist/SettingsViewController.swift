@@ -8,19 +8,19 @@
 
 import UIKit
 
-enum CellTags: Int {
-    case sound = 1
-    case allowUseLocation = 2
-    case changePassword = 3
-    case sortPlacesByName = 4
-    case useCelsius = 5
-}
-
 class SettingsViewController: UITableViewController {
+    
+    enum CellTags: Int {
+        case sound = 1
+        case allowUseLocation = 2
+        case changePassword = 3
+        case sortPlacesByName = 4
+        case useCelsius = 5
+    }
     
     @IBOutlet weak var imageScroll: UIScrollView!
     
-    let styleManager = StyleManager.shared
+    let styleManager = SettingsManager.shared
     var currentPage: Int?
     
     override func viewDidLoad() {
@@ -53,7 +53,6 @@ class SettingsViewController: UITableViewController {
         setContentOffsetForImageScroll(with: size.width)
     }
     
-    
     /// Sets current background for styleManager
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -65,6 +64,7 @@ class SettingsViewController: UITableViewController {
     
     /// Determines current page of scroll view
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        styleManager.makeSoundIfNeeded()
         currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
     }
     
@@ -105,6 +105,7 @@ class SettingsViewController: UITableViewController {
     /// Set/Unset checkmarks
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        styleManager.makeSoundIfNeeded()
         
         if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
@@ -118,6 +119,7 @@ class SettingsViewController: UITableViewController {
     // Sets parameters for table view cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        
         cell.backgroundColor = DefaultColor.lightGray
         cell.textLabel?.textColor = DefaultColor.darkGray
         
