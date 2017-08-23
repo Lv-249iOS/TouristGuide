@@ -63,6 +63,7 @@
 		618661AA1F45FDD3000F737C /* CustomizableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618661A91F45FDD3000F737C /* CustomizableScrollView.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
 		A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A956FA441F436ECF00062CD1 /* ImageStore.swift */; };
+		A9A8C6F91F4D878B0003C5BF /* EnumForKeyPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A8C6F81F4D878B0003C5BF /* EnumForKeyPaths.swift */; };
 		A9EB4EED1F4B1C8E00F7ECEA /* DegreesConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */; };
 		A9EB4EEF1F4B1CAD00F7ECEA /* PlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */; };
 		A9EB4EF11F4B1CB200F7ECEA /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */; };
@@ -169,6 +170,7 @@
 		618661A91F45FDD3000F737C /* CustomizableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableScrollView.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A956FA441F436ECF00062CD1 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		A9A8C6F81F4D878B0003C5BF /* EnumForKeyPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumForKeyPaths.swift; sourceTree = "<group>"; };
 		A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DegreesConverter.swift; sourceTree = "<group>"; };
 		A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneView.swift; sourceTree = "<group>"; };
 		A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
@@ -256,18 +258,16 @@
 		0E8B3BD41F2F2CB1001FFC73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A9EB4EF41F4B1CCE00F7ECEA /* LaunchScreen */,
 				159552B21F46EDB400EEC19B /* Dashboard */,
 				0E8B3BD81F2F2D0E001FFC73 /* Map */,
 				20DB16E21F3859DF00E4B695 /* Places */,
 				20DB16E31F386EE500E4B695 /* Weather */,
 				617ED2F11F41D484001FEE6F /* Profile */,
-				A9EB4EF41F4B1CCE00F7ECEA /* LaunchScreen */,
-				0E8B3BC31F2F2CA3001FFC73 /* Main.storyboard */,
-				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
-				202898E71F33428B00F136BB /* SettingsViewController.swift */,
-				202898E41F3341EF00F136BB /* Settings.storyboard */,
+				A9A8C6F71F4D83330003C5BF /* Settings */,
 				0EE83E341F39C3D300C5662A /* RoundButton.swift */,
 				618661A91F45FDD3000F737C /* CustomizableScrollView.swift */,
+				A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */,
 				A9EB4EF91F4C485400F7ECEA /* StyleManager.swift */,
 			);
 			name = Classes;
@@ -366,6 +366,8 @@
 		159552B21F46EDB400EEC19B /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				0E8B3BC11F2F2CA3001FFC73 /* DashboardController.swift */,
+				0E8B3BC31F2F2CA3001FFC73 /* Main.storyboard */,
 				159552B31F46EEEA00EEC19B /* DashboardSettingIcon.swift */,
 				61682CCD1F49D17E00354829 /* ProfileButtonWithIcon.swift */,
 				E776CCA51F4B03A200922F0F /* WeatherbuttonWithIcon.swift */,
@@ -445,6 +447,16 @@
 			name = CacheData;
 			sourceTree = "<group>";
 		};
+		A9A8C6F71F4D83330003C5BF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				202898E71F33428B00F136BB /* SettingsViewController.swift */,
+				202898E41F3341EF00F136BB /* Settings.storyboard */,
+				A9A8C6F81F4D878B0003C5BF /* EnumForKeyPaths.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		A9EB4EF41F4B1CCE00F7ECEA /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,7 +464,6 @@
 				A9EB4EF01F4B1CB200F7ECEA /* PlanetView.swift */,
 				A9EB4EEE1F4B1CAD00F7ECEA /* PlaneView.swift */,
 				A9EB4EEC1F4B1C8E00F7ECEA /* DegreesConverter.swift */,
-				A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */,
 			);
 			name = LaunchScreen;
 			sourceTree = "<group>";
@@ -655,6 +666,7 @@
 				202898DE1F333BB400F136BB /* ProfileViewController.swift in Sources */,
 				1542E1751F43063C008A92DF /* UserCoreData.swift in Sources */,
 				B23B2D831F419D2300187090 /* MapFrameConverter.swift in Sources */,
+				A9A8C6F91F4D878B0003C5BF /* EnumForKeyPaths.swift in Sources */,
 				618661AA1F45FDD3000F737C /* CustomizableScrollView.swift in Sources */,
 				E72EBBB41F34A2DF003D7357 /* WeatherParse.swift in Sources */,
 				B204E4AC1F3A153400454978 /* CLDelegateMethods.swift in Sources */,

@@ -40,7 +40,7 @@ class SettingsViewController: UITableViewController {
     
     /// Changes size of scroll view
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        for i in 0 ..< imageScroll.subviews.count {
+        for i in 0 ..< styleManager.backgroundThemeArray.count {
             let rect = CGRect(x: size.width * CGFloat(i),
                               y: 0,
                               width: size.width,
@@ -69,6 +69,7 @@ class SettingsViewController: UITableViewController {
     }
     
     func fillImageScrollView() {
+        print(imageScroll.subviews.count)
         for i in 0 ..< styleManager.backgroundThemeArray.count {
             let rect = CGRect(x: view.bounds.width * CGFloat(i),
                               y: 0,
@@ -85,6 +86,7 @@ class SettingsViewController: UITableViewController {
             imageScroll.addSubview(imageView)
             
         }
+        print(imageScroll.subviews.count)
     }
     
     // Changes width of scroll visible rect if we start with landscape

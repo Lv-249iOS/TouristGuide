@@ -12,6 +12,7 @@ import UIKit
 class PlanetView: UIView {
     
     var circleCenter: CGPoint!
+    
     @IBInspectable var circleRadius: CGFloat = 80
     @IBInspectable var lineWidth: CGFloat = 7.0
     @IBInspectable var fillColor: UIColor = DefaultColor.lightBlue

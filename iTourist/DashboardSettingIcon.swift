@@ -19,13 +19,13 @@ class DashboardSettingIcon: RoundButton {
         let radius: CGFloat = min(frame.width, frame.height)/3
         let x = getCenterCoordinatesOfButton().x
         let y = getCenterCoordinatesOfButton().y
-        let lineWidth: CGFloat = 17.0
-        let sectorLineWidth: CGFloat = 3.0
+        let circleLineWidth: CGFloat = radius/3.3
+        let sectorLineWidth: CGFloat = radius/18.3
         let context = UIGraphicsGetCurrentContext()
         if let checkedContext = context {
             teethDrawing(x: x, y: y, radius: radius, context: checkedContext)
             sectorDrawing(x: x, y: y, radius: radius - (2*sectorLineWidth), context: checkedContext, lineWidth: sectorLineWidth)
-            drawCircle(center: getCenterCoordinatesOfButton(), radius: radius, lineWidth: lineWidth, context: checkedContext)
+            drawCircle(center: getCenterCoordinatesOfButton(), radius: radius, lineWidth: circleLineWidth, context: checkedContext)
             context?.strokePath()
         }
     }
@@ -36,12 +36,11 @@ class DashboardSettingIcon: RoundButton {
         context?.addPath(circlePath.cgPath)
         context?.setLineWidth(lineWidth)
         context?.strokePath()
-        //self.layer.addSublayer(shapeLayer)
     }
     
     //One tooth
     func drawSquare(x: CGFloat, y: CGFloat, width: CGFloat, context: CGContext?) -> CGPath?{
-        let rect = CGRect(x: x + width, y: y-width/2, width: width , height: width)
+        let rect = CGRect(x: x + width + width/3, y: y-width/2, width: width , height: width)
         let bezierPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat.init(3))
         let clipPath: CGPath = bezierPath.cgPath
         context?.addPath(clipPath)
@@ -70,7 +69,6 @@ class DashboardSettingIcon: RoundButton {
         let sectorPath3 = UIBezierPath()
         //Sector 1
         sectorPath1.move(to: CGPoint.init(x: x + 5, y: y + 5))
-        
         sectorPath1.addArc(withCenter: CGPoint.init(x: x + 5, y: y + 5), radius: radius , startAngle: CGFloat(CGFloat.pi/180), endAngle: CGFloat(120*CGFloat.pi/180), clockwise: true)
         sectorPath1.addLine(to: CGPoint.init(x: x + 5 , y: y + 5))
         sectorPath1.stroke()
