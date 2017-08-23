@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class CustomizableScrollView: UIScrollView {
 
-    @IBInspectable var contentsSize: CGSize = CGSize.init(width: 0, height: 0) {
+    @IBInspectable var contentsSize: CGSize = CGSize(width: 0, height: 0) {
         didSet {
             layer.contentsRect.size = contentsSize
         }
