@@ -72,7 +72,7 @@ class SettingsViewController: UITableViewController {
         for i in 0 ..< styleManager.backgroundThemeArray.count {
             let rect = CGRect(x: imageScroll.bounds.width * CGFloat(i),
                               y: 0,
-                              width: imageScroll.bounds.width,
+                              width: view.bounds.width,
                               height: imageScroll.bounds.height)
             
             let imageView = UIImageView(frame: rect)
