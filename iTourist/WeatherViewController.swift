@@ -29,12 +29,12 @@ class WeatherViewController: UIViewController {
     let value =  UserDefaults.standard.value(forKey: PathForSettingsKey.celcius.rawValue) as? Bool
     
     @IBAction func changecityname(_ sender: UIButton) {
+        SettingsManager.shared.makeSoundIfNeeded()
         displayCity()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -74,7 +74,6 @@ class WeatherViewController: UIViewController {
                 layout(width: UIScreen.main.bounds.width / 3 - 2, heigth: UIScreen.main.bounds.height / 4 - 2)
             }
         }
-        
         if UIDevice.current.orientation.isLandscape {
             startLandscape = true
             layout(width: UIScreen.main.bounds.width / 6 - 2, heigth: UIScreen.main.bounds.height / 4 - 2)
@@ -108,21 +107,18 @@ class WeatherViewController: UIViewController {
                 }
             }
         }
-        
         myCollectionview.reloadData()
     }
     
     func displayCity() {
         let alert = UIAlertController(title: "Change city", message: "Please, enter city name", preferredStyle: UIAlertControllerStyle.alert)
         let cancel = UIAlertAction(title: "Cancel",style: UIAlertActionStyle.cancel, handler: nil)
-        
         alert.addAction(cancel)
         let ok = UIAlertAction(title: "OK",style: UIAlertActionStyle.default) { (action) -> Void in
             if let name = alert.textFields?.first {
                 self.getWeather(for: name.text!)
             }
         }
-        
         alert.addAction(ok)
         alert.addTextField(configurationHandler: { (name) -> Void in
             name.placeholder = "City name"
@@ -157,8 +153,17 @@ class WeatherViewController: UIViewController {
                 self?.myCollectionview.reloadData()
             }
         }
-        
         AppModel.shared.constants.cityForWeatherParseExists = true
+    }
+    
+    func addattributedtext(with degreesname: String){
+        let myString:NSString = degreesname as NSString
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: myString as String,
+                                                    attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 23.0) ?? UIFont() ])
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location:0,length:8))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSRange(location:9,length:2))
+        degrees.attributedText = myMutableString
     }
     
     func setCurrentWeather(with forecast: Forecast) {
@@ -174,29 +179,14 @@ class WeatherViewController: UIViewController {
         today.text = forecast.date
         
         if value == true {
-            let myString:NSString = "Degrees: Cº"
-            var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: myString as String,
-                                                        attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 23.0) ?? UIFont() ])
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location:0,length:8))
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSRange(location:9,length:2))
-            degrees.attributedText = myMutableString
-            //degrees.attributedText = myMutableString
-            
+            addattributedtext(with: "Degrees: Cº")
             currentTemp.text = "\(forecast.currentTemp ?? 0)º"
             feelslike.text = "\(forecast.feelsTemp ?? 0)º"
             maxtemp1.text = "\(forecast.maxtemp)º"
             mintemp1.text = "\(forecast.mintemp)º"
         }
         else {
-            let myString:NSString = "Degrees: Fº"
-            var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: myString as String,attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 23.0) ?? UIFont() ])
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location:0,length:8))
-            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSRange(location:9,length:2))
-            degrees.attributedText = myMutableString
-            
-            
+            addattributedtext(with: "Degrees: Fº")
             currentTemp.text = "\(convertdegrees(with:forecast.currentTemp ?? 0))º"
             feelslike.text = "\(convertdegrees(with:forecast.feelsTemp ?? 0))º"
             maxtemp1.text = "\(convertdegrees(with:forecast.maxtemp))º"
@@ -245,16 +235,12 @@ extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDel
                 if value == true {
                     cell.mintemp.text = String(weather[indexPath.row + 1].mintemp) + "º"
                     cell.maxtemp.text = String(weather[indexPath.row + 1].maxtemp) + "º"
-                    
-                    
                 }
                 else {
                     cell.mintemp.text = String(convertdegrees(with: weather[indexPath.row + 1].mintemp)) + "º"
                     cell.maxtemp.text = String(convertdegrees(with: weather[indexPath.row + 1].maxtemp)) + "º"
                     
                 }
-                
-                
                 
                 return cell
             }
