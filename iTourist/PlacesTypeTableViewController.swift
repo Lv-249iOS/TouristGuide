@@ -15,7 +15,7 @@ class PlacesTypeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
-        let imageView = UIImageView(image: StyleManager.shared.currentBackgroundImage)
+        let imageView = UIImageView(image: SettingsManager.shared.currentBackgroundImage)
         self.tableView.backgroundView = imageView
         self.tableView.backgroundView?.contentMode = .scaleAspectFill
     }
@@ -48,8 +48,11 @@ class PlacesTypeTableViewController: UITableViewController {
     /// Here we push our current viewController into navigationController hierarchy and set name of the current place as a navigationItem
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as? PlaceViewController else { return }
+        
+        
         self.navigationController?.pushViewController(vc, animated: true)
         if let selectedRow = tableView.indexPathsForSelectedRows {
+            SettingsManager.shared.makeSoundIfNeeded()
             vc.navigationItem.title = self.tableView.cellForRow(at: selectedRow[0])?.textLabel?.text
         }
     }

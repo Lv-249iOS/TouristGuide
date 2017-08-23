@@ -22,6 +22,7 @@ class PlaceCoreData {
     private static var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    
     /**
      This method add an data about place by key.
      
@@ -34,9 +35,11 @@ class PlaceCoreData {
                 place.key = key
                 place.data = data as NSArray
             }
+            
             try? context.save()
         })
     }
+    
     /**
      This method return data about places by key.
      
@@ -47,11 +50,13 @@ class PlaceCoreData {
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
         do {
             let result = try PlaceCoreData.context.fetch(placeFetch)
+            
             if result.count > 0 {
                 var place = NSManagedObject(entity: entity!, insertInto: PlaceCoreData.context)
                 place = result.first as! NSManagedObject
                 
                 return place.value(forKey: "dataArray") as? [NSData]
+                
             } else {
                 print("Eror: Place by key not found")
                 try PlaceCoreData.context.save()
@@ -63,6 +68,7 @@ class PlaceCoreData {
         
         return nil
     }
+    
     /**
      This method delete data place by key.
      
@@ -71,14 +77,17 @@ class PlaceCoreData {
     func delete(for key: String) {
             let predicate = NSPredicate(format: "key == %@", key)
             let fetchToDelete = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
+        
             fetchToDelete.predicate = predicate
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchToDelete)
+        
             do {
                 try PlaceCoreData.persistentContainer.newBackgroundContext().execute(deleteRequest)
             } catch {
                 print ("There was an error during deleting")
             }
     }
+    
     /**
      This method change the data in CoreData by key.
      
@@ -88,8 +97,10 @@ class PlaceCoreData {
     func change(data: [NSData],by key: String) {
         let placeFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PlaceEntity")
         placeFetch.predicate = NSPredicate(format: "key == %@", key)
+        
         do {
             let result = try PlaceCoreData.context.fetch(placeFetch)
+            
             if result.count > 0 {
                 delete(for: key)
                 add(data: data, key: key)

@@ -18,7 +18,11 @@ class DashboardController: UIViewController {
     @IBOutlet weak var settingsButton: RoundButton!
     
     var appModel = AppModel.shared
-    var styleManager = StyleManager.shared
+    var settingsManager = SettingsManager.shared
+    
+    @IBAction func pressedButton(_ sender: UIButton) {
+        settingsManager.makeSoundIfNeeded()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +35,12 @@ class DashboardController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         
-        backgroundImageView.image = styleManager.currentBackgroundImage
-        
-        
+        backgroundImageView.image = settingsManager.currentBackgroundImage
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         settingsButton.setNeedsDisplay()
         profileButton.setNeedsDisplay()
         weatherButton.setNeedsDisplay()

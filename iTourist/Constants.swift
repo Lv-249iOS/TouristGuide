@@ -16,13 +16,11 @@ struct Constants {
     let defaultRegionSpan = 0.27
     
     // Constant for weather
+    
     var cityForWeatherParseExists = true
+    
+    // Constants for Notification Center
+    
     static let isMakeSound = NSNotification.Name(rawValue: "MakeSoundChanged")
     
-}
-enum PathForSettingsKey: String {
-       case sound = "isMakeSound"
-       case userLocation = "isUseUserLocation"
-       case sortPlaces = "isSortPlaces"
-       case celcius = "isUseCelcius"
 }
