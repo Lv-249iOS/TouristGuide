@@ -70,17 +70,20 @@ class SettingsViewController: UITableViewController {
     
     func fillImageScrollView() {
         for i in 0 ..< styleManager.backgroundThemeArray.count {
-            let rect = CGRect(x: imageScroll.bounds.width * CGFloat(i),
+            let rect = CGRect(x: view.bounds.width * CGFloat(i),
                               y: 0,
                               width: view.bounds.width,
-                              height: imageScroll.bounds.height)
+                              height: imageScroll.frame.height)
             
             let imageView = UIImageView(frame: rect)
             imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            
             imageView.image = styleManager.backgroundThemeArray[i]
             
-            imageScroll.contentSize.width = imageScroll.bounds.width * CGFloat(i + 1)
+            imageScroll.contentSize.width = view.bounds.width * CGFloat(i + 1)
             imageScroll.addSubview(imageView)
+            
         }
     }
     
