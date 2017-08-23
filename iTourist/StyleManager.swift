@@ -22,7 +22,6 @@ class StyleManager {
         #imageLiteral(resourceName: "city2"),
         #imageLiteral(resourceName: "city3"),
         #imageLiteral(resourceName: "city4"),
-        #imageLiteral(resourceName: "city5"),
         #imageLiteral(resourceName: "background"),
         #imageLiteral(resourceName: "profileBackground")
     ]
