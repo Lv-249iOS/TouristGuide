@@ -11,7 +11,7 @@ import Foundation
 // Enum for path to state of settings item in user defaults
 enum PathForSettingsKey: String {
     case sound = "isMakeSound"
-    case userLocation = "isUseUserLocation"
+    case connectToFacebook = "isConnectToFacebook"
     case sortPlaces = "isSortPlaces"
     case celcius = "isUseCelcius"
 }
