@@ -9,11 +9,9 @@
 import UIKit
 
 @IBDesignable class PlacesIcon: UIButton {
-    
 
     @IBInspectable var scaleMuseum: CGFloat = 2
-    
-    
+
     // X - positions of roof and spike:
     @IBInspectable var downSpike: CGFloat = 25
     @IBInspectable var xRoofPointOne: CGFloat = 30
@@ -38,8 +36,6 @@ import UIKit
     @IBInspectable var smallSpace: CGFloat = 4
     @IBInspectable var largeSpace: CGFloat = 8
     
-    
-    
     override func draw(_ rect: CGRect) {
         scaleMuseum = rect.size.height > rect.size.width ? 2 : 0.9
         drawMuseum(rect)
@@ -48,7 +44,7 @@ import UIKit
     func drawMuseum(_ rect: CGRect) {
         // Draw spike
         let pathSpike = UIBezierPath()
-        pathSpike.lineWidth = 2
+        pathSpike.lineWidth = 3
         pathSpike.move(to: CGPoint(x: bounds.midX, y: bounds.minY + 20))
         let pointSpike = CGPoint(x: bounds.midX, y: bounds.minY + downSpike)
         pathSpike.addLine(to:pointSpike)
@@ -57,6 +53,7 @@ import UIKit
         
         // Draw roof
         let pathRoof = UIBezierPath()
+        pathRoof.lineWidth = 3
         pathRoof.move(to: pointSpike)
         let pointOne = CGPoint(x: pointSpike.x - xRoofPointOne * scaleMuseum, y: pointSpike.y + yRoofPointOne * scaleMuseum)
         pathRoof.addLine(to: pointOne)
@@ -68,11 +65,13 @@ import UIKit
         
         // Draw square under the roof
         let pathSquare = UIBezierPath(rect: CGRect(x: pointOne.x, y: pointOne.y, width: squareFirstWidth * scaleMuseum, height: squaresHeight * scaleMuseum))
+        pathSquare.lineWidth = 5
         pathSquare.stroke()
         
         
         // Draw colomns
         let pathWalls = UIBezierPath()
+        pathWalls.lineWidth = 5
         
         let pointThree = CGPoint(x: pointOne.x + xStartUpPoint * scaleMuseum, y: pointOne.y + yStartUpPoint * scaleMuseum)
         pathWalls.move(to: pointThree)
@@ -110,8 +109,10 @@ import UIKit
         
         // Draw foundation
         let pathSquareTwo = UIBezierPath(rect: CGRect(x: pointFour.x - 1 * scaleMuseum, y: pointFour.y, width: squareTwoWidth * scaleMuseum, height: squaresHeight * scaleMuseum))
+        pathSquareTwo.lineWidth = 5
         pathSquareTwo.stroke()
         let pathSquareThree = UIBezierPath(rect: CGRect(x: pointFour.x - 4 * scaleMuseum, y: pointFour.y + 5 * scaleMuseum, width: squareThreeWidth * scaleMuseum, height: squaresHeight * scaleMuseum))
+        pathSquareThree.lineWidth = 5
         pathSquareThree.stroke()
     }
 }
