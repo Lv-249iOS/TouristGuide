@@ -27,20 +27,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffX-9g-2yA" userLabel="RouteView">
-                                <rect key="frame" x="0.0" y="633" width="375" height="33.5"/>
+                                <rect key="frame" x="0.0" y="633" width="375" height="34"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqw-U2-ufx">
-                                        <rect key="frame" x="3" y="3" width="33.5" height="27.5"/>
+                                        <rect key="frame" x="3" y="3" width="34" height="28"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fm-wG-XHB">
-                                        <rect key="frame" x="338.5" y="3" width="33.5" height="27.5"/>
+                                        <rect key="frame" x="339" y="3" width="33" height="28"/>
                                         <state key="normal" image="start"/>
                                         <connections>
                                             <action selector="calculateRoutes:" destination="sOE-Rk-dEu" eventType="touchUpInside" id="O7P-Ay-ysy"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-SG-abp">
-                                        <rect key="frame" x="44.5" y="3" width="286" height="27.5"/>
+                                        <rect key="frame" x="45" y="3" width="286" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

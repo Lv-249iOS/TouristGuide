@@ -18,24 +18,32 @@ class MapFrameConverter {
 
         var locationsCenters: [CLLocation] = []
         
-        let leftLo = region.center.longitude - region.span.longitudeDelta/2
-        let rightLo = region.center.longitude + region.span.longitudeDelta/2
-        let rightLa = region.center.latitude + region.span.latitudeDelta/2
-        let button = region.center.latitude - region.span.latitudeDelta/2
-        
-        for i in stride(from: leftLo, through: rightLo, by: 0.27) {
-            print("LOOP First \(i)")
-            for j in stride(from: button, through: rightLa, by: 0.27) {
-                print("LOOP Second \(j)")
-                
-                let location = CLLocation(latitude: j+0.01, longitude: i+0.01)
-
-                locationsCenters.append(location)
+        if region.span.latitudeDelta >= 0.17 {
+            
+            let region = region
+            let leftLo = region.center.longitude - region.span.longitudeDelta/2
+            let topLa = region.center.latitude - region.span.latitudeDelta/2
+            
+            let rightLo = region.center.longitude + region.span.longitudeDelta/2
+            let botLa = region.center.latitude + region.span.latitudeDelta/2
+            
+            let lat = round(topLa * 100) / 100
+            let long = round(leftLo * 100) / 100
+            
+            for latitude in stride(from: lat, through: botLa, by: 0.14) {
+                for longitude in stride(from: long, through: rightLo, by: 0.20) {
+                    
+                    let center = CLLocationCoordinate2D(latitude: latitude+0.07, longitude: longitude+0.1)
+                    let location = CLLocation(latitude: center.latitude, longitude: center.longitude)
+                    
+                    locationsCenters.append(location)
+                }
             }
+        } else {
+            let location = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
+            locationsCenters.append(location)
         }
-        if locationsCenters.isEmpty {
-            locationsCenters.append(CLLocation(latitude: region.center.latitude, longitude: region.center.longitude))
-        }
+        
         return locationsCenters
     }
     
