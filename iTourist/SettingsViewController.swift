@@ -86,7 +86,6 @@ class SettingsViewController: UITableViewController {
             imageScroll.addSubview(imageView)
             
         }
-        print(imageScroll.subviews.count)
     }
     
     // Changes width of scroll visible rect if we start with landscape
