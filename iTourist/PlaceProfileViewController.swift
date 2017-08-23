@@ -60,6 +60,7 @@ class PlaceProfileViewController: UIViewController {
             }
         } else if segue.identifier == "FeedbacksSegue" , let controller = segue.destination as? FeedbacksViewController {
             feedbacksController = controller
+            SettingsManager.shared.makeSoundIfNeeded()
             feedbacksController.reviews = place?.placeReviews
         }
     }

@@ -76,6 +76,7 @@ class PlaceViewController: UITableViewController {
     /// Set first image of place or filtered place for every cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
+        
         let place = searchActive ? filteredPlaces[indexPath.row] : places[indexPath.row]
         if let urls = place.photosRef {
             imageLoader.obtainImage(with: urls[0]) { image in
@@ -104,6 +105,7 @@ class PlaceViewController: UITableViewController {
         if segue.identifier  == "PlaceProfileSeque" {
             guard let button = sender as? UIButton else { return }
             if let viewController = segue.destination as? PlaceProfileViewController {
+                SettingsManager.shared.makeSoundIfNeeded()
                 let place = searchActive ? filteredPlaces[button.tag] : places[button.tag]
                 viewController.place = place
             }

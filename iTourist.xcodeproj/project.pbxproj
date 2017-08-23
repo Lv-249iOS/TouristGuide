@@ -268,7 +268,6 @@
 				0EE83E341F39C3D300C5662A /* RoundButton.swift */,
 				618661A91F45FDD3000F737C /* CustomizableScrollView.swift */,
 				A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */,
-				A9EB4EF91F4C485400F7ECEA /* SettingsManager.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -453,6 +452,7 @@
 				202898E71F33428B00F136BB /* SettingsViewController.swift */,
 				202898E41F3341EF00F136BB /* Settings.storyboard */,
 				A9A8C6F81F4D878B0003C5BF /* EnumForKeyPaths.swift */,
+				A9EB4EF91F4C485400F7ECEA /* SettingsManager.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
