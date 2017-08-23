@@ -14,13 +14,23 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    let validateInput = ValidateInput.shared
+    
     @IBAction func loginButtonTap(_ sender: UIButton) {
         //UserDefaults.standard.set(loginField.text, forKey: "userName")
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-            self.navigationController?.pushViewController(vc, animated: true)
+        if let loginStr = loginField.text {
+            if let user = validateInput.emailExistsInDatabase(testStr: loginStr) {
+                if let passwordStr = password.text {
+                    if passwordStr == user.password {
+                        //UserDefaults.standard.set(user, forKey: "user")
+                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    }
+                }
+            }
         }
-
-        
+        throwAlert(title: "Error", message: "Wrong login or password")
     }
     
     override func viewDidLoad() {
@@ -35,6 +45,12 @@ class LogInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func throwAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func handleKeyboardShow(notification: NSNotification) {
