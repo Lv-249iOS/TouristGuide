@@ -16,7 +16,16 @@ class StyleManager {
         case currentPageOfImage = "currentPageOfImage"
     }
     
-    var backgroundThemeArray = [#imageLiteral(resourceName: "background"), #imageLiteral(resourceName: "back"), #imageLiteral(resourceName: "profileBackground")]
+    var backgroundThemeArray = [
+        #imageLiteral(resourceName: "city"),
+        #imageLiteral(resourceName: "city1"),
+        #imageLiteral(resourceName: "city2"),
+        #imageLiteral(resourceName: "city3"),
+        #imageLiteral(resourceName: "city4"),
+        #imageLiteral(resourceName: "city5"),
+        #imageLiteral(resourceName: "background"),
+        #imageLiteral(resourceName: "profileBackground")
+    ]
     
     var currentPage: Int {
         get {
