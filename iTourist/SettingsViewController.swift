@@ -8,19 +8,19 @@
 
 import UIKit
 
-enum CellTags: Int {
-    case sound = 1
-    case allowUseLocation = 2
-    case changePassword = 3
-    case sortPlacesByName = 4
-    case useCelsius = 5
-}
-
 class SettingsViewController: UITableViewController {
+    
+    enum CellTags: Int {
+        case sound = 1
+        case connectToFacebook = 2
+        case changePassword = 3
+        case sortPlacesByName = 4
+        case useCelsius = 5
+    }
     
     @IBOutlet weak var imageScroll: UIScrollView!
     
-    let styleManager = StyleManager.shared
+    let styleManager = SettingsManager.shared
     var currentPage: Int?
     
     override func viewDidLoad() {
@@ -53,7 +53,6 @@ class SettingsViewController: UITableViewController {
         setContentOffsetForImageScroll(with: size.width)
     }
     
-    
     /// Sets current background for styleManager
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -65,6 +64,7 @@ class SettingsViewController: UITableViewController {
     
     /// Determines current page of scroll view
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        styleManager.makeSoundIfNeeded()
         currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
     }
     
@@ -86,7 +86,6 @@ class SettingsViewController: UITableViewController {
             imageScroll.addSubview(imageView)
             
         }
-        print(imageScroll.subviews.count)
     }
     
     // Changes width of scroll visible rect if we start with landscape
@@ -105,8 +104,11 @@ class SettingsViewController: UITableViewController {
     /// Set/Unset checkmarks
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        styleManager.makeSoundIfNeeded()
         
-        if cell.accessoryType == .checkmark {
+        if cell.accessibilityIdentifier == "FacebookCell" {
+            print("qqqqqqqq")
+        } else if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
             notifyAboutChanges(with: CellTags(rawValue: cell.tag)!, value: false)
         } else if cell.accessoryType == UITableViewCellAccessoryType.none {
@@ -118,34 +120,43 @@ class SettingsViewController: UITableViewController {
     // Sets parameters for table view cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        
         cell.backgroundColor = DefaultColor.lightGray
         cell.textLabel?.textColor = DefaultColor.darkGray
         
         switch indexPath.section {
         case 0:
-            if indexPath.row == 0 {
                 cell.textLabel?.text = "Sound"
                 cell.accessoryType = getAccessoryType(with: .sound)
+                cell.imageView?.image = #imageLiteral(resourceName: "soundIcon")
+                cell.imageView?.contentMode = .scaleAspectFit
                 cell.tag = CellTags.sound.rawValue
-            } else {
-                cell.textLabel?.text = "Allow use current location"
-                cell.accessoryType = getAccessoryType(with: .userLocation)
-                cell.tag = CellTags.allowUseLocation.rawValue
-            }
-            
         case 1:
-            cell.textLabel?.text = "Change password"
-            cell.accessoryType = .disclosureIndicator
-            cell.tag = CellTags.changePassword.rawValue
-            
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "Change password"
+                cell.accessoryType = .disclosureIndicator
+                cell.imageView?.image = #imageLiteral(resourceName: "passwordIcon")
+                cell.imageView?.contentMode = .scaleAspectFill
+                cell.tag = CellTags.changePassword.rawValue
+            } else {
+                cell.textLabel?.text = "Connect to Facebook"
+                cell.accessoryType = .none
+                cell.imageView?.image = #imageLiteral(resourceName: "facebookIcon")
+                cell.imageView?.contentMode = .scaleAspectFill
+                cell.accessibilityIdentifier = "FacebookCell"
+            }
         case 2:
             cell.textLabel?.text = "Sort places by name"
             cell.accessoryType = getAccessoryType(with: .sortPlaces)
+            cell.imageView?.image = #imageLiteral(resourceName: "sortIcon")
+            cell.imageView?.contentMode = .scaleAspectFill
             cell.tag = CellTags.sortPlacesByName.rawValue
             
         case 3:
             cell.textLabel?.text = "Use celcier"
             cell.accessoryType = getAccessoryType(with: .celcius)
+            cell.imageView?.image = #imageLiteral(resourceName: "weatherIcon")
+            cell.imageView?.contentMode = .scaleAspectFill
             cell.tag = CellTags.useCelsius.rawValue
             
         default:
@@ -170,10 +181,7 @@ class SettingsViewController: UITableViewController {
         case CellTags.sound:
             UserDefaults.standard.set(value, forKey: PathForSettingsKey.sound.rawValue)
             NotificationCenter.default.post(name: Constants.isMakeSound, object: nil)
-            
-        case CellTags.allowUseLocation:
-            UserDefaults.standard.set(value, forKey: PathForSettingsKey.userLocation.rawValue)
-            
+
         case CellTags.sortPlacesByName:
             UserDefaults.standard.set(value, forKey: PathForSettingsKey.sortPlaces.rawValue)
             

@@ -41,6 +41,7 @@ class PlacesPageController: UIPageViewController {
 extension PlacesPageController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        SettingsManager.shared.makeSoundIfNeeded()
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
@@ -50,6 +51,7 @@ extension PlacesPageController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        SettingsManager.shared.makeSoundIfNeeded()
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else { return nil }
         
         let nextIndex = viewControllerIndex + 1

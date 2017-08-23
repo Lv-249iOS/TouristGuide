@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var mintemp1: UILabel!
     @IBOutlet weak var feelslike: UILabel!
     @IBOutlet weak var currentImg: UIImageView!
+    @IBOutlet weak var degrees: UILabel!
     
     var change  = false
     var forecast: [Forecast]?
@@ -25,7 +26,7 @@ class WeatherViewController: UIViewController {
     let width = UIScreen.main.bounds.width
     var startLandscape = false
     var isIpad = false
-    
+    let value =  UserDefaults.standard.value(forKey: PathForSettingsKey.celcius.rawValue) as? Bool
     
     @IBAction func changecityname(_ sender: UIButton) {
         displayCity()
@@ -164,18 +165,50 @@ class WeatherViewController: UIViewController {
         if height < 750  {
             currentTemp.font = currentTemp.font.withSize(25)
             feelslike.font = feelslike.font.withSize(25)
-            today.font = today.font.withSize(25)
+            today.font = today.font.withSize(23)
             maxtemp1.font = maxtemp1.font.withSize(25)
             mintemp1.font = mintemp1.font.withSize(25)
             cityName.font = cityName.font.withSize(30)
         }
         
-        currentTemp.text = "\(forecast.currentTemp ?? 0)º"
-        feelslike.text = "\(forecast.feelsTemp ?? 0)º"
         today.text = forecast.date
-        maxtemp1.text = "\(forecast.maxtemp)º"
-        mintemp1.text = "\(forecast.mintemp)º"
+        
+        if value == true {
+            let myString:NSString = "Degrees: Cº"
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: myString as String,
+                                                        attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 23.0) ?? UIFont() ])
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location:0,length:8))
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSRange(location:9,length:2))
+            degrees.attributedText = myMutableString
+            //degrees.attributedText = myMutableString
+            
+            currentTemp.text = "\(forecast.currentTemp ?? 0)º"
+            feelslike.text = "\(forecast.feelsTemp ?? 0)º"
+            maxtemp1.text = "\(forecast.maxtemp)º"
+            mintemp1.text = "\(forecast.mintemp)º"
+        }
+        else {
+            let myString:NSString = "Degrees: Fº"
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: myString as String,attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 23.0) ?? UIFont() ])
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location:0,length:8))
+            myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSRange(location:9,length:2))
+            degrees.attributedText = myMutableString
+            
+            
+            currentTemp.text = "\(convertdegrees(with:forecast.currentTemp ?? 0))º"
+            feelslike.text = "\(convertdegrees(with:forecast.feelsTemp ?? 0))º"
+            maxtemp1.text = "\(convertdegrees(with:forecast.maxtemp))º"
+            mintemp1.text = "\(convertdegrees(with:forecast.mintemp))º"
+        }
         currentImg.image = forecast.image
+    }
+    
+    func convertdegrees (with celcius: Int)-> Int{
+        var farenheit = Double(celcius)
+        farenheit = farenheit * 1.8 + 32
+        return Int(farenheit)
     }
 }
 
@@ -197,19 +230,31 @@ extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDel
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WeatherCell, let weather = forecast {
             if indexPath.row < weather.count {
                 if height < 750 && UIDevice.current.orientation.isLandscape {
-                    cell.date.font = cell.date.font.withSize(15)
-                    cell.mintemp.font = cell.mintemp.font.withSize(15)
-                    cell.maxtemp.font = cell.maxtemp.font.withSize(15)
+                    cell.date.font = cell.date.font.withSize(13)
+                    cell.mintemp.font = cell.mintemp.font.withSize(13)
+                    cell.maxtemp.font = cell.maxtemp.font.withSize(13)
                 } else {
-                    cell.date.font = cell.date.font.withSize(25)
-                    cell.mintemp.font = cell.mintemp.font.withSize(25)
-                    cell.maxtemp.font = cell.maxtemp.font.withSize(25)
+                    cell.date.font = cell.date.font.withSize(23)
+                    cell.mintemp.font = cell.mintemp.font.withSize(22)
+                    cell.maxtemp.font = cell.maxtemp.font.withSize(22)
                 }
                 
                 cell.date.text = String(weather[indexPath.row + 1].date)
-                cell.mintemp.text = String(weather[indexPath.row + 1].mintemp) + "º"
-                cell.maxtemp.text = String(weather[indexPath.row + 1].maxtemp) + "º"
                 cell.weatherImage.image = weather[indexPath.row + 1].image
+                
+                if value == true {
+                    cell.mintemp.text = String(weather[indexPath.row + 1].mintemp) + "º"
+                    cell.maxtemp.text = String(weather[indexPath.row + 1].maxtemp) + "º"
+                    
+                    
+                }
+                else {
+                    cell.mintemp.text = String(convertdegrees(with: weather[indexPath.row + 1].mintemp)) + "º"
+                    cell.maxtemp.text = String(convertdegrees(with: weather[indexPath.row + 1].maxtemp)) + "º"
+                    
+                }
+                
+                
                 
                 return cell
             }
