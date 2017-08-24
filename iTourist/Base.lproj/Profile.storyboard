@@ -142,24 +142,39 @@
                                                     <constraint firstAttribute="width" constant="22" id="uzg-9U-5gB"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="hideLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchUpOutside" id="89i-sG-WDB"/>
+                                                    <action selector="hideLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchUpInside" id="ob8-Zo-dhj"/>
+                                                    <action selector="showLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchDown" id="cD5-gw-DKb"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2M-ZA-Ei9">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2M-ZA-Ei9">
                                                 <rect key="frame" x="313" y="191" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="22" id="JXZ-iI-ey8"/>
                                                     <constraint firstAttribute="height" constant="22" id="S9O-Vd-L2H"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="hideLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchUpOutside" id="Il8-fD-9Aq"/>
+                                                    <action selector="hideLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchUpInside" id="zK1-jl-s6S"/>
+                                                    <action selector="showLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchDown" id="F7E-Cy-ySa"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDP-Wp-Zs9">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDP-Wp-Zs9">
                                                 <rect key="frame" x="313" y="677" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="Dgr-In-pba"/>
                                                     <constraint firstAttribute="width" constant="22" id="kwZ-PO-XQd"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="hideLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchUpInside" id="6SL-nQ-v5m"/>
+                                                    <action selector="hideLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchUpOutside" id="kQD-Sz-dkB"/>
+                                                    <action selector="showLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchDown" id="QKC-9D-CX7"/>
+                                                </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-W6-EIX" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-W6-EIX" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="118" y="123" width="178" height="24"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -174,7 +189,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-NI-A8E" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-NI-A8E" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="92.666666666666686" y="179" width="217" height="46"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -189,7 +204,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gew-pl-aln" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gew-pl-aln" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="105.66666666666669" y="665" width="203" height="46"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -314,9 +329,12 @@
                     <connections>
                         <outlet property="imageView" destination="YEC-70-216" id="Ly9-uK-LVs"/>
                         <outlet property="login" destination="MpO-0z-V1e" id="a1o-lP-5is"/>
+                        <outlet property="loginInfo" destination="gEG-W6-EIX" id="vcO-zE-GAn"/>
                         <outlet property="name" destination="3bh-g4-gR0" id="nfa-PB-RCh"/>
                         <outlet property="password" destination="waN-wc-6PD" id="3Mw-hb-hya"/>
+                        <outlet property="passwordInfo" destination="fiq-NI-A8E" id="3N5-L7-myl"/>
                         <outlet property="passwordRepeat" destination="l62-TF-W8r" id="JKZ-wz-GjD"/>
+                        <outlet property="phoneInfo" destination="gew-pl-aln" id="Fh1-Yx-MpU"/>
                         <outlet property="scroll" destination="Wrt-fj-h36" id="WGU-7i-EYu"/>
                         <outlet property="scrollBottomPin" destination="ABc-8G-Sw8" id="ehY-Vu-vM5"/>
                         <outlet property="surname" destination="O8G-ma-dJT" id="zSN-AP-8AN"/>
