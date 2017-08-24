@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -37,46 +37,49 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func showLabelWithInfo(_ sender: UIButton) {
-        let label = getLabelByTag(tag: sender.tag)
+        let label = getLabelByTag(sender.tag)
         label.isHidden = false
     }
     
     @IBAction func hideLabelWithInfo(_ sender: UIButton) {
-        let label = getLabelByTag(tag: sender.tag)
+        let label = getLabelByTag(sender.tag)
         label.isHidden = true
     }
     
     @IBAction func singupButtonTap(_ sender: Any) {
+        var canSignUp = true
         if let loginStr = login.text, let passwordStr = password.text, let passwordRepeatStr = passwordRepeat.text, let nameStr = name.text, let surnameStr = surname.text, let telStr = tel.text, let image = imageView.image {
             if passwordRepeatStr != passwordStr {
-                throwAlert(title: "Error", message: "Password mismatch")
-                return
+                //throwAlert(title: "Error", message: "Password mismatch")
+                canSignUp = false
             }
             if let _ = validateInput.emailExistsInDatabase(testStr: loginStr) {
                 //throwAlert(title: "Error", message: "User with such login already exists")
-                return
+                canSignUp = false
             }
             if validateInput.isValidEmail(testStr: loginStr) == false {
                 //throwAlert(title: "Error", message: "Login must be email address")
-                return
+                canSignUp = false
             }
             if validateInput.isValidPassword(testStr: passwordStr) == false {
                 //throwAlert(title: "Error", message: "Password must be longer than 6 symbols")
-                return
-            }
+                canSignUp = false            }
             if validateInput.isValidPhoneNumper(testStr: telStr) == false {
                 //throwAlert(title: "Error", message: "Phone number must be in format: XXX-XXX-XXXX")
-                return
+                canSignUp = false
             }
             guard let imageData = UIImageJPEGRepresentation(image, 1) else {
                 print("JPEG error")
+                canSignUp = false
                 return
             }
-            let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
-            database.addUser(user: user)
-            //UserDefaults.standard.set(user, forKey: "user")
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                self.navigationController?.pushViewController(vc, animated: true)
+            if canSignUp {
+                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
+                database.addUser(user: user)
+                //UserDefaults.standard.set(user, forKey: "user")
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }
@@ -120,7 +123,7 @@ class SignUpViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func getLabelByTag(tag: Int) -> UILabel {
+    func getLabelByTag(_ tag: Int) -> UILabel {
         switch tag {
         case 0: return loginInfo
         case 1: return passwordInfo
