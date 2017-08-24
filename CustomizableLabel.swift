@@ -10,9 +10,9 @@ import UIKit
 
 @IBDesignable class CustomizableLabel: UILabel {
 
-    @IBInspectable var cornerRadious: CGFloat = 0 {
+    @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = cornerRadious
+            self.layer.cornerRadius = cornerRadius
             self.layer.masksToBounds = true
         }
     }

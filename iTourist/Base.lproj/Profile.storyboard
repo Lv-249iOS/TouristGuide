@@ -159,45 +159,48 @@
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-W6-EIX" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="123" width="215" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-W6-EIX" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                                <rect key="frame" x="118" y="123" width="178" height="24"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="178" id="Z6Y-zp-oEF"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-NI-A8E" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="176" width="217" height="53"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-NI-A8E" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                                <rect key="frame" x="92.666666666666686" y="179" width="217" height="46"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="217" id="luM-Za-WYt"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gew-pl-aln" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
-                                                <rect key="frame" x="102" y="660" width="203" height="54"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gew-pl-aln" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                                <rect key="frame" x="105.66666666666669" y="665" width="203" height="46"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="203" id="FxX-P9-Uk9"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
@@ -207,21 +210,26 @@
                                             <constraint firstItem="14S-Cn-7uK" firstAttribute="top" secondItem="YEC-70-216" secondAttribute="bottom" constant="21" id="05A-xe-Eno"/>
                                             <constraint firstItem="MpO-0z-V1e" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="0O1-yS-CcT"/>
                                             <constraint firstItem="l62-TF-W8r" firstAttribute="width" secondItem="waN-wc-6PD" secondAttribute="width" id="0fZ-A3-aC0"/>
+                                            <constraint firstItem="iDP-Wp-Zs9" firstAttribute="top" secondItem="gew-pl-aln" secondAttribute="top" constant="12" id="4eL-ZU-81b"/>
                                             <constraint firstItem="s41-Vf-kxv" firstAttribute="top" secondItem="FJD-fi-quF" secondAttribute="bottom" constant="36" id="731-tI-zZp"/>
                                             <constraint firstItem="5fX-g6-OkL" firstAttribute="top" secondItem="MpO-0z-V1e" secondAttribute="top" constant="5" id="75F-MF-hcc"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="leading" secondItem="ysw-bM-fwO" secondAttribute="leading" id="7aZ-F2-l0w"/>
                                             <constraint firstItem="14S-Cn-7uK" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="7cd-91-S79"/>
                                             <constraint firstItem="3bh-g4-gR0" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="ANF-e8-jpe"/>
                                             <constraint firstItem="YEC-70-216" firstAttribute="top" secondItem="l62-TF-W8r" secondAttribute="bottom" constant="36" id="Acy-em-lRz"/>
+                                            <constraint firstItem="fiq-NI-A8E" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" constant="-6" id="Bfx-KN-Z1Z"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="top" secondItem="ysw-bM-fwO" secondAttribute="top" id="Bkr-YE-BOU"/>
+                                            <constraint firstItem="iDP-Wp-Zs9" firstAttribute="bottom" secondItem="gew-pl-aln" secondAttribute="bottom" constant="-12" id="Cje-5z-XQo"/>
                                             <constraint firstItem="l62-TF-W8r" firstAttribute="top" secondItem="waN-wc-6PD" secondAttribute="bottom" constant="36" id="Cn0-Oc-p0c"/>
                                             <constraint firstItem="5fX-g6-OkL" firstAttribute="leading" secondItem="MpO-0z-V1e" secondAttribute="trailing" constant="6" id="D0l-Rr-OJ6"/>
                                             <constraint firstItem="G2M-ZA-Ei9" firstAttribute="top" secondItem="waN-wc-6PD" secondAttribute="top" constant="5" id="D5O-bk-j6b"/>
                                             <constraint firstItem="mig-PE-A8M" firstAttribute="top" secondItem="ysw-bM-fwO" secondAttribute="top" constant="30" id="FO8-c1-kPB"/>
+                                            <constraint firstItem="gEG-W6-EIX" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="H6D-EP-pvX"/>
                                             <constraint firstItem="FJD-fi-quF" firstAttribute="top" secondItem="O8G-ma-dJT" secondAttribute="bottom" constant="36" id="Iws-Pu-RXk"/>
                                             <constraint firstItem="O8G-ma-dJT" firstAttribute="centerX" secondItem="3bh-g4-gR0" secondAttribute="centerX" id="JbY-tS-ZX7"/>
                                             <constraint firstItem="G2M-ZA-Ei9" firstAttribute="leading" secondItem="waN-wc-6PD" secondAttribute="trailing" constant="6" id="L0y-qS-hUS"/>
                                             <constraint firstItem="s41-Vf-kxv" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="QPn-bm-6oD"/>
+                                            <constraint firstItem="G2M-ZA-Ei9" firstAttribute="top" secondItem="fiq-NI-A8E" secondAttribute="top" constant="12" id="XYP-86-BGo"/>
                                             <constraint firstItem="FJD-fi-quF" firstAttribute="centerX" secondItem="O8G-ma-dJT" secondAttribute="centerX" id="XYu-Fp-Ps4"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="leading" secondItem="ysw-bM-fwO" secondAttribute="leading" id="Yjl-1m-ja1"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="height" secondItem="ysw-bM-fwO" secondAttribute="height" id="ZWh-Sq-5jZ"/>
@@ -232,12 +240,16 @@
                                             <constraint firstItem="YEC-70-216" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="cFU-gs-VTS"/>
                                             <constraint firstItem="waN-wc-6PD" firstAttribute="width" secondItem="MpO-0z-V1e" secondAttribute="width" id="cZ0-l5-ppJ"/>
                                             <constraint firstItem="O8G-ma-dJT" firstAttribute="top" secondItem="3bh-g4-gR0" secondAttribute="bottom" constant="36" id="d0U-sp-ej2"/>
+                                            <constraint firstItem="G2M-ZA-Ei9" firstAttribute="bottom" secondItem="fiq-NI-A8E" secondAttribute="bottom" constant="-12" id="flc-gt-OSG"/>
+                                            <constraint firstItem="5fX-g6-OkL" firstAttribute="top" secondItem="gEG-W6-EIX" secondAttribute="top" constant="2" id="hWm-vz-Vwj"/>
                                             <constraint firstItem="FJD-fi-quF" firstAttribute="width" secondItem="O8G-ma-dJT" secondAttribute="width" id="jcE-Tw-prW"/>
+                                            <constraint firstItem="5fX-g6-OkL" firstAttribute="bottom" secondItem="gEG-W6-EIX" secondAttribute="bottom" id="kh6-jg-cmC"/>
                                             <constraint firstItem="waN-wc-6PD" firstAttribute="centerX" secondItem="MpO-0z-V1e" secondAttribute="centerX" id="kxb-Td-wb7"/>
                                             <constraint firstItem="iDP-Wp-Zs9" firstAttribute="top" secondItem="FJD-fi-quF" secondAttribute="top" constant="5" id="l6g-jg-1Ng"/>
                                             <constraint firstItem="waN-wc-6PD" firstAttribute="top" secondItem="MpO-0z-V1e" secondAttribute="bottom" constant="36" id="lQj-ea-I9A"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="top" secondItem="ysw-bM-fwO" secondAttribute="top" id="mNg-jM-w9U"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="width" secondItem="ysw-bM-fwO" secondAttribute="width" id="ohF-uf-raw"/>
+                                            <constraint firstItem="gew-pl-aln" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="s46-mc-cSh"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="height" secondItem="ysw-bM-fwO" secondAttribute="height" id="tc8-xR-FkJ"/>
                                             <constraint firstItem="806-0s-BIc" firstAttribute="width" secondItem="ysw-bM-fwO" secondAttribute="width" id="vt1-FQ-g4k"/>
                                             <constraint firstItem="mig-PE-A8M" firstAttribute="centerX" secondItem="ysw-bM-fwO" secondAttribute="centerX" id="z1K-dH-YFC"/>
