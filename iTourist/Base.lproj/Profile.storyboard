@@ -249,9 +249,10 @@
                         <constraints>
                             <constraint firstItem="ysw-bM-fwO" firstAttribute="width" secondItem="QyC-qc-t0e" secondAttribute="width" id="14U-Rj-Xti"/>
                             <constraint firstItem="Wrt-fj-h36" firstAttribute="bottom" secondItem="ylz-RQ-551" secondAttribute="top" id="ABc-8G-Sw8"/>
-                            <constraint firstItem="ylz-RQ-551" firstAttribute="top" relation="lessThanOrEqual" secondItem="ysw-bM-fwO" secondAttribute="bottom" id="AgH-1k-mAg"/>
                             <constraint firstItem="Wrt-fj-h36" firstAttribute="top" secondItem="QyC-qc-t0e" secondAttribute="top" id="Fu3-aR-sw4"/>
                             <constraint firstAttribute="trailing" secondItem="Wrt-fj-h36" secondAttribute="trailing" id="PRW-Zd-PPW"/>
+                            <constraint firstItem="ysw-bM-fwO" firstAttribute="height" secondItem="QyC-qc-t0e" secondAttribute="height" priority="999" id="gz6-tC-h8E"/>
+                            <constraint firstItem="ylz-RQ-551" firstAttribute="top" secondItem="ysw-bM-fwO" secondAttribute="bottom" priority="999" id="k9G-e0-c6i"/>
                             <constraint firstItem="Wrt-fj-h36" firstAttribute="leading" secondItem="QyC-qc-t0e" secondAttribute="leading" id="pAd-Jq-xUT"/>
                         </constraints>
                     </view>
@@ -379,7 +380,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Uu-Yo-JDM">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackround" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-hR-dno">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="loginBackround" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-hR-dno">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fnw-Ja-Oyz">
@@ -470,6 +471,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ymt-Cq-YKr" firstAttribute="top" secondItem="3Uu-Yo-JDM" secondAttribute="bottom" priority="999" id="61n-yN-7Sa"/>
                             <constraint firstItem="qXg-tT-SBn" firstAttribute="top" secondItem="BXu-fq-7FX" secondAttribute="top" id="Gm9-Wa-4jK"/>
                             <constraint firstAttribute="trailing" secondItem="qXg-tT-SBn" secondAttribute="trailing" id="id9-9x-AfK"/>
                             <constraint firstItem="3Uu-Yo-JDM" firstAttribute="width" secondItem="BXu-fq-7FX" secondAttribute="width" id="ltO-jR-3E2"/>
