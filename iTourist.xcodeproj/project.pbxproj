@@ -60,7 +60,7 @@
 		611104221F4420D500E221BC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611104211F4420D500E221BC /* LogInViewController.swift */; };
 		615822FC1F4C202B00522985 /* ValidateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615822FB1F4C202B00522985 /* ValidateInput.swift */; };
 		61682CCE1F49D17E00354829 /* ProfileButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61682CCD1F49D17E00354829 /* ProfileButtonWithIcon.swift */; };
-		616C30C21F4F028B0002BED3 /* CustomizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C30C11F4F028B0002BED3 /* CustomizableLabel.swift */; };
+		616E603C1F50439D000B4A01 /* CustomizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616E603B1F50439D000B4A01 /* CustomizableLabel.swift */; };
 		618661AA1F45FDD3000F737C /* CustomizableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618661A91F45FDD3000F737C /* CustomizableScrollView.swift */; };
 		61F7E7431F41DDF100B088B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */; };
 		A956FA451F436ECF00062CD1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A956FA441F436ECF00062CD1 /* ImageStore.swift */; };
@@ -168,7 +168,7 @@
 		611104211F4420D500E221BC /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		615822FB1F4C202B00522985 /* ValidateInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateInput.swift; sourceTree = "<group>"; };
 		61682CCD1F49D17E00354829 /* ProfileButtonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButtonWithIcon.swift; sourceTree = "<group>"; };
-		616C30C11F4F028B0002BED3 /* CustomizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomizableLabel.swift; path = ../CustomizableLabel.swift; sourceTree = "<group>"; };
+		616E603B1F50439D000B4A01 /* CustomizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableLabel.swift; sourceTree = "<group>"; };
 		618661A91F45FDD3000F737C /* CustomizableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableScrollView.swift; sourceTree = "<group>"; };
 		61F7E7421F41DDF100B088B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A956FA441F436ECF00062CD1 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				A9A8C6F71F4D83330003C5BF /* Settings */,
 				0EE83E341F39C3D300C5662A /* RoundButton.swift */,
 				618661A91F45FDD3000F737C /* CustomizableScrollView.swift */,
-				616C30C11F4F028B0002BED3 /* CustomizableLabel.swift */,
+				616E603B1F50439D000B4A01 /* CustomizableLabel.swift */,
 				A9EB4EF71F4C113100F7ECEA /* DefaultColors.swift */,
 			);
 			name = Classes;
@@ -621,9 +621,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE83E351F39C3D300C5662A /* RoundButton.swift in Sources */,
-				616C30C21F4F028B0002BED3 /* CustomizableLabel.swift in Sources */,
 				A9EB4EEF1F4B1CAD00F7ECEA /* PlaneView.swift in Sources */,
 				1542E1731F4305AD008A92DF /* ProfileStruct.swift in Sources */,
+				616E603C1F50439D000B4A01 /* CustomizableLabel.swift in Sources */,
 				0E4003F71F30B394003671F1 /* PlaceViewController.swift in Sources */,
 				E7B763FC1F3C82E200B23AEA /* WeatherCell.swift in Sources */,
 				0E8B3BC81F2F2CA3001FFC73 /* iTourist.xcdatamodeld in Sources */,
