@@ -36,7 +36,11 @@ class FeedbackTableViewController: UITableViewController {
         cell.authorName.text = review.authorName
         cell.rating.text = "\(review.rating ?? 4.5)"
         cell.feedBack.text = review.text
-        cell.timeDescription.text = "\(review.timeDescription ?? Date())"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd mm yyyy hh mm")
+        cell.timeDescription.text = "\(dateFormatter.string(from: review.timeDescription ?? Date()))"
+        
         cell.feedbackImage.image = #imageLiteral(resourceName: "noImage")
         
         return cell
