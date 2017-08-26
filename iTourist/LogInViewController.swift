@@ -18,15 +18,15 @@ class LogInViewController: UIViewController {
     
     @IBAction func loginButtonTap(_ sender: UIButton) {
         //UserDefaults.standard.set(loginField.text, forKey: "userName")
-        if let loginStr = loginField.text {
+        if let loginStr = loginField.text, let passwordStr = password.text {
             if let user = validateInput.emailExistsInDatabase(testStr: loginStr) {
-                if let passwordStr = password.text {
-                    if passwordStr == user.password {
-                        //UserDefaults.standard.set(user, forKey: "user")
-                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
+                if passwordStr == user.password {
+                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    UserDefaults.standard.setEmail(value: loginStr)
+                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
+                    return
                 }
             }
         }
@@ -45,6 +45,11 @@ class LogInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+//        if UserDefaults.standard.isLoggedIn() {
+//            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
     }
     
     func throwAlert(title: String, message: String) {

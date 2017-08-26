@@ -174,7 +174,7 @@
                                                     <action selector="showLabelWithInfo:" destination="yrc-5N-wSm" eventType="touchDown" id="QKC-9D-CX7"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-W6-EIX" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-W6-EIX" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="118" y="123" width="178" height="24"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -189,7 +189,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-NI-A8E" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiq-NI-A8E" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="92.666666666666686" y="179" width="217" height="46"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -204,7 +204,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gew-pl-aln" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gew-pl-aln" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="105.66666666666669" y="665" width="203" height="46"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802226027399" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -219,7 +219,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password mismatch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-Lo-6vi" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password mismatch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-Lo-6vi" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="99" y="255" width="217" height="24"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -235,7 +235,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="such user already exists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="400-z7-KPo" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="such user already exists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="400-z7-KPo" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="114.66666666666669" y="123" width="185" height="24"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -251,7 +251,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please fill in all fields" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-vg-zeQ" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please fill in all fields" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-vg-zeQ" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="105" y="575" width="203" height="24"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -445,7 +445,7 @@
                                     <constraint firstAttribute="height" constant="30" id="0kS-cu-ffK"/>
                                     <constraint firstAttribute="width" constant="58" id="N2s-eg-myF"/>
                                 </constraints>
-                                <state key="normal" title="edit"/>
+                                <state key="normal" title="logout"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
                                         <real key="value" value="16"/>
@@ -457,6 +457,9 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutButtonTap:" destination="t8o-r6-5gx" eventType="touchUpInside" id="fxL-dQ-Woh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -489,12 +492,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-QD-BWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="38"/>
+            <point key="canvasLocation" x="609" y="38"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="JLF-f5-xvD">
             <objects>
-                <viewController id="KRq-KF-t59" userLabel="Log In View Controller" customClass="LogInViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="KRq-KF-t59" userLabel="Log In View Controller" customClass="LogInViewController" customModule="iTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4d4-iH-od2"/>
                         <viewControllerLayoutGuide type="bottom" id="ymt-Cq-YKr"/>
