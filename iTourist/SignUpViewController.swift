@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController {
     @IBAction func singupButtonTap(_ sender: Any) {
         var canSignUp = true
         
-        if let loginStr = login.text, let passwordStr = password.text, let passwordRepeatStr = passwordRepeat.text, let nameStr = name.text, let surnameStr = surname.text, let telStr = tel.text, let image = imageView.image {
+        if let loginStr = login.text, let passwordStr = password.text, let passwordRepeatStr = passwordRepeat.text, let nameStr = name.text, let surnameStr = surname.text, let telStr = tel.text/*, let image = imageView.image*/ {
             if passwordRepeatStr != passwordStr {
                 animatedLabelShow(label: repeatPasswordError)
                 canSignUp = false
@@ -77,18 +77,19 @@ class SignUpViewController: UIViewController {
                 animatedLabelShow(label: phoneInfo)
                 canSignUp = false
             }
-            guard let imageData = UIImageJPEGRepresentation(image, 1) else {
-                print("JPEG error")
-                canSignUp = false
-                return
-            }
+//            guard let imageData = UIImageJPEGRepresentation(image, 1) else {
+//                print("JPEG error")
+//                canSignUp = false
+//                return
+//            }
             if nameStr == "" || surnameStr == "" {
                 animatedLabelShow(label: emptyFieldsLabel)
             }
             if canSignUp {
-                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
-                database.addUser(user: user)
-                //UserDefaults.standard.set(user, forKey: "user")
+//                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
+//                database.addUser(user: user)
+//                UserDefaults.standard.setIsLoggedIn(value: true)
+//                UserDefaults.standard.setEmail(value: loginStr)
                 if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
