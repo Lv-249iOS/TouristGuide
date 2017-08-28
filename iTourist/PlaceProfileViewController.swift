@@ -47,7 +47,7 @@ class PlaceProfileViewController: UIViewController {
             }
             
             if let reviews = place.placeReviews {
-                feedbackButton.setTitle("Feedbacks (" + "\(reviews.count)" + ")", for: .normal)
+                feedbackButton.setTitle("View feedbacks (" + "\(reviews.count)" + ")", for: .normal)
             }
         }
     }
