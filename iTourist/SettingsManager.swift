@@ -22,7 +22,6 @@ class SettingsManager {
         #imageLiteral(resourceName: "city1"),
         #imageLiteral(resourceName: "city2"),
         #imageLiteral(resourceName: "city3"),
-        #imageLiteral(resourceName: "city4"),
         #imageLiteral(resourceName: "background"),
         #imageLiteral(resourceName: "profileBackground")
     ]

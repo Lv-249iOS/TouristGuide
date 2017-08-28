@@ -33,6 +33,7 @@ extension UserDefaults {
         if let email = string(forKey: UserDefaultsKeys.Email.rawValue) {
             return email
         }
+        
         return ""
     }
 }
