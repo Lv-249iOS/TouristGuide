@@ -20,7 +20,7 @@ class FeedbacksViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        backgroundImage.image = StyleManager.shared.currentBackgroundImage
+        backgroundImage.image = SettingsManager.shared.currentBackgroundImage
         backgroundImage.contentMode = .scaleAspectFill
     }
     

@@ -16,46 +16,48 @@ class DashboardController: UIViewController {
     @IBOutlet weak var mapButton: RoundButton!
     @IBOutlet weak var weatherButton: RoundButton!
     @IBOutlet weak var settingsButton: RoundButton!
+    @IBOutlet weak var loginButton: ProfileButtonWithIcon!
     
     var appModel = AppModel.shared
-    var styleManager = StyleManager.shared
+    var settingsManager = SettingsManager.shared
     
+    @IBAction func pressedButton(_ sender: UIButton) {
+        settingsManager.makeSoundIfNeeded()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(rotate), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
-        
-        
+
         // Ask user about location
         configureLocationServices()
     }
-    
-//    func rotate(){
-//        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-//            placesButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
-//            self.view.layoutIfNeeded()
-//        }
-//        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation){
-//            //your code in portrait mode
-//        }
-//    }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         
-        backgroundImageView.image = styleManager.currentBackgroundImage
+        if UserDefaults.standard.isLoggedIn() {
+            loginButton.alpha = 0
+            loginButton.isHidden = true
+            profileButton.alpha = 1
+            profileButton.isHidden = false
+        } else {
+            profileButton.alpha = 0
+            profileButton.isHidden = true
+            loginButton.alpha = 1
+            loginButton.isHidden = false
+        }
+        backgroundImageView.image = settingsManager.currentBackgroundImage
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         settingsButton.setNeedsDisplay()
         profileButton.setNeedsDisplay()
         weatherButton.setNeedsDisplay()
         placesButton.setNeedsDisplay()
-        mapButton.setNeedsDisplay()
+        loginButton.setNeedsDisplay()
     }
     
     func configureLocationServices() {

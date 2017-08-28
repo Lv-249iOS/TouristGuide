@@ -31,12 +31,4 @@ class PlacesList {
         
         return keys
     }
-    
-    func add(place: Place) {
-        // --- Method should add some place to some region with KEYlocation --- \\
-    }
-    
-    func remove(at index: Int) {
-        // --- Method should delete some place to some region with KEYlocation --- \\
-    }
 }

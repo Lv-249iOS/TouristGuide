@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherbuttonWithIcon: RoundButton {
+class WeatherbuttonWithIcon: UIButton {
     
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
@@ -16,8 +16,8 @@ class WeatherbuttonWithIcon: RoundButton {
         radius = min(Double(rect.height), Double(rect.width)) / 3
         let center = CGPoint(x: rect.width/2, y: rect.height / 2)
         if let checkedContext = context {
-            circledrawing(center: center, radius: CGFloat(radius), lineWidth: 6, context: checkedContext)
-            allTrianglesDrawing(x: center.x, y: center.y, radius: CGFloat(radius), lineWidth: 4, context: checkedContext )
+            circledrawing(center: center, radius: CGFloat(radius), lineWidth: CGFloat(radius/8), context: checkedContext)
+            allTrianglesDrawing(x: center.x, y: center.y, radius: CGFloat(radius), lineWidth: CGFloat(radius/7), context: checkedContext )
             context?.strokePath()
         }
     }

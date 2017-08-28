@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -17,6 +17,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var surname: UITextField!
     @IBOutlet weak var tel: UITextField!
+    
+    @IBOutlet weak var loginInfo: CustomizableLabel!
+    @IBOutlet weak var passwordInfo: CustomizableLabel!
+    @IBOutlet weak var phoneInfo: CustomizableLabel!
+    @IBOutlet weak var repeatPasswordError: CustomizableLabel!
+    @IBOutlet weak var userExistsLabel: CustomizableLabel!
+    @IBOutlet weak var emptyFieldsLabel: CustomizableLabel!
+    
     @IBOutlet weak var scroll: CustomizableScrollView!
     @IBOutlet weak var scrollBottomPin: NSLayoutConstraint!
     
@@ -31,49 +39,78 @@ class SignUpViewController: UIViewController {
         self.present(image, animated: true)
     }
     
+    @IBAction func showLabelWithInfo(_ sender: UIButton) {
+        let label = getLabelByTag(sender.tag)
+        UIView.animate(withDuration: 0.3) {
+            label.alpha = 1
+        }
+    }
+    
+    @IBAction func hideLabelWithInfo(_ sender: UIButton) {
+        let label = getLabelByTag(sender.tag)
+        UIView.animate(withDuration: 0.2) {
+            label.alpha = 0
+        }
+    }
+    
     @IBAction func singupButtonTap(_ sender: Any) {
+        var canSignUp = true
+        
         if let loginStr = login.text, let passwordStr = password.text, let passwordRepeatStr = passwordRepeat.text, let nameStr = name.text, let surnameStr = surname.text, let telStr = tel.text, let image = imageView.image {
             if passwordRepeatStr != passwordStr {
-                throwAlert(title: "Error", message: "Password mismatch")
-                return
+                animatedLabelShow(label: repeatPasswordError)
+                canSignUp = false
             }
             if let _ = validateInput.emailExistsInDatabase(testStr: loginStr) {
-                //throwAlert(title: "Error", message: "User with such login already exists")
-                return
+                animatedLabelShow(label: userExistsLabel)
+                canSignUp = false
             }
             if validateInput.isValidEmail(testStr: loginStr) == false {
-                //throwAlert(title: "Error", message: "Login must be email address")
-                return
+                animatedLabelShow(label: loginInfo)
+                canSignUp = false
             }
             if validateInput.isValidPassword(testStr: passwordStr) == false {
-                //throwAlert(title: "Error", message: "Password must be longer than 6 symbols")
-                return
+                animatedLabelShow(label: passwordInfo)
+                canSignUp = false
             }
             if validateInput.isValidPhoneNumper(testStr: telStr) == false {
-                //throwAlert(title: "Error", message: "Phone number must be in format: XXX-XXX-XXXX")
-                return
+                animatedLabelShow(label: phoneInfo)
+                canSignUp = false
             }
             guard let imageData = UIImageJPEGRepresentation(image, 1) else {
                 print("JPEG error")
+                canSignUp = false
                 return
             }
-            let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
-            database.addUser(user: user)
-            //UserDefaults.standard.set(user, forKey: "user")
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                self.navigationController?.pushViewController(vc, animated: true)
+            if nameStr == "" || surnameStr == "" {
+                animatedLabelShow(label: emptyFieldsLabel)
+            }
+            if canSignUp {
+                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, phone: telStr, image: imageData as NSData, instanceToChange: .none)
+                database.addUser(user: user)
+                UserDefaults.standard.setIsLoggedIn(value: true)
+                UserDefaults.standard.setEmail(value: loginStr)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "DashboardController")
+                self.navigationController!.pushViewController(vc, animated: true)
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.login.delegate = self
-        self.password.delegate = self
-        self.passwordRepeat.delegate = self
-        self.name.delegate = self
-        self.surname.delegate = self
-        self.tel.delegate = self
+        login.delegate = self
+        password.delegate = self
+        passwordRepeat.delegate = self
+        name.delegate = self
+        surname.delegate = self
+        tel.delegate = self
+        repeatPasswordError.alpha = 0
+        loginInfo.alpha = 0
+        passwordInfo.alpha = 0
+        phoneInfo.alpha = 0
+        userExistsLabel.alpha = 0
+        emptyFieldsLabel.alpha = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: .UIKeyboardWillHide, object: nil)
@@ -99,10 +136,24 @@ class SignUpViewController: UIViewController {
         scrollBottomPin.constant = 0
     }
     
-    func throwAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func animatedLabelShow(label:UILabel) {
+        UIView.animate(withDuration: 0.5, animations: {
+            label.alpha = 1
+        }, completion: { (true) in
+            UIView.animate(withDuration: 0.2, delay: 2, animations: {
+                label.alpha = 0
+            })
+        })
+
+    }
+    
+    func getLabelByTag(_ tag: Int) -> UILabel {
+        switch tag {
+        case 0: return loginInfo
+        case 1: return passwordInfo
+        case 2: return phoneInfo
+        default: return UILabel()
+        }
     }
 }
 
