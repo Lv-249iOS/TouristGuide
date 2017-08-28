@@ -23,9 +23,6 @@ class LogInViewController: UIViewController {
                 if passwordStr == user.password {
                     UserDefaults.standard.setIsLoggedIn(value: true)
                     UserDefaults.standard.setEmail(value: loginStr)
-                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
                     return
                 }
             }

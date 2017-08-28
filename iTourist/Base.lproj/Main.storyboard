@@ -26,11 +26,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-eC-c2T">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-Vi-fZu" customClass="ProfileButtonWithIcon" customModule="iTourist" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-Vi-fZu">
                                 <rect key="frame" x="16" y="28" width="288" height="142"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148116438358" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
-                                <state key="normal">
+                                <state key="normal" image="User">
                                     <color key="titleColor" red="0.48754758879999999" green="0.093852714259999998" blue="0.28449685949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -81,6 +80,17 @@
                                     <segue destination="dnc-B0-Ap9" kind="show" identifier="SettingsViewControllerSeque" id="oTf-6m-vr0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCq-yl-RJI" userLabel="LogIn Button" customClass="ProfileButtonWithIcon" customModule="iTourist" customModuleProvider="target">
+                                <rect key="frame" x="16" y="28" width="288" height="142"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49339148119999998" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.48754758879999999" green="0.093852714259999998" blue="0.28449685949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Osg-LW-LOl" kind="show" id="RJ2-ox-Qpo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -89,6 +99,7 @@
                             <constraint firstItem="wG4-Vi-fZu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6qG-Tv-zh9"/>
                             <constraint firstItem="knz-5w-w7Y" firstAttribute="height" secondItem="Vkb-B8-vnY" secondAttribute="height" id="7FK-4W-9yU"/>
                             <constraint firstItem="zQJ-5t-by0" firstAttribute="width" secondItem="Vkb-B8-vnY" secondAttribute="width" id="ASw-B6-VBf"/>
+                            <constraint firstItem="eCq-yl-RJI" firstAttribute="bottom" secondItem="wG4-Vi-fZu" secondAttribute="bottom" id="Ah9-7V-moQ"/>
                             <constraint firstItem="zQJ-5t-by0" firstAttribute="height" secondItem="Vkb-B8-vnY" secondAttribute="height" id="B9d-iM-rR3"/>
                             <constraint firstItem="wG4-Vi-fZu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="BSE-fi-2Tz"/>
                             <constraint firstItem="knz-5w-w7Y" firstAttribute="top" secondItem="Vkb-B8-vnY" secondAttribute="bottom" constant="8" symbolic="YES" id="EUg-Gw-uTR"/>
@@ -96,8 +107,11 @@
                             <constraint firstItem="wG4-Vi-fZu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="J86-VB-xkr"/>
                             <constraint firstItem="Vkb-B8-vnY" firstAttribute="top" secondItem="wG4-Vi-fZu" secondAttribute="bottom" constant="8" symbolic="YES" id="Kco-Sg-7Ae"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OnR-BK-5iY" secondAttribute="trailing" id="LyC-bN-irM"/>
+                            <constraint firstItem="OnR-BK-5iY" firstAttribute="trailing" secondItem="eCq-yl-RJI" secondAttribute="trailing" id="OEQ-hh-mXI"/>
                             <constraint firstItem="knz-5w-w7Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="PIq-lm-Siz"/>
                             <constraint firstItem="mEn-eC-c2T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Pye-Po-S7C"/>
+                            <constraint firstItem="eCq-yl-RJI" firstAttribute="top" secondItem="wG4-Vi-fZu" secondAttribute="top" id="bko-Mz-UAm"/>
+                            <constraint firstItem="Vkb-B8-vnY" firstAttribute="leading" secondItem="eCq-yl-RJI" secondAttribute="leading" id="cSS-fD-olJ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="knz-5w-w7Y" secondAttribute="bottom" constant="8" symbolic="YES" id="ddO-xC-Qqm"/>
                             <constraint firstItem="OnR-BK-5iY" firstAttribute="height" secondItem="Vkb-B8-vnY" secondAttribute="height" id="get-35-cns"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mEn-eC-c2T" secondAttribute="bottom" id="h0O-rL-8kR"/>
@@ -113,6 +127,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="mEn-eC-c2T" id="joq-FW-ZIJ"/>
+                        <outlet property="loginButton" destination="eCq-yl-RJI" id="n5b-Hb-ofe"/>
                         <outlet property="mapButton" destination="OnR-BK-5iY" id="xNJ-rn-oFQ"/>
                         <outlet property="placesButton" destination="Vkb-B8-vnY" id="nT7-x5-ha7"/>
                         <outlet property="profileButton" destination="wG4-Vi-fZu" id="MhW-eT-XPu"/>
@@ -259,6 +274,14 @@
             </objects>
             <point key="canvasLocation" x="2636.9565217391305" y="254.34782608695653"/>
         </scene>
+        <!--LogIn-->
+        <scene sceneID="DPP-LI-8pI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LogIn" id="Osg-LW-LOl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Urr-aB-12V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2619" y="-23"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="gML-gw-Xkh">
             <objects>
@@ -295,6 +318,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="User" width="256" height="256"/>
         <image name="background" width="1024" height="683"/>
     </resources>
 </document>

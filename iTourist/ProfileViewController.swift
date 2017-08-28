@@ -18,9 +18,6 @@ class ProfileViewController: UIViewController {
     @IBAction func logoutButtonTap(_ sender: Any) {
         UserDefaults.standard.setIsLoggedIn(value: false)
         UserDefaults.standard.setEmail(value: "")
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "LogInViewController") as? LogInViewController {
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

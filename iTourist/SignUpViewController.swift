@@ -90,9 +90,6 @@ class SignUpViewController: UIViewController {
                 database.addUser(user: user)
                 UserDefaults.standard.setIsLoggedIn(value: true)
                 UserDefaults.standard.setEmail(value: loginStr)
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
             }
         }
     }
