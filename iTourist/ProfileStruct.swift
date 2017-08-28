@@ -13,6 +13,7 @@ struct User {
     var surname: String? = ""
     var email: String? = ""
     var password: String? = ""
+    var phone: String? = ""
     var image: NSData? = nil
     var instanceToChange: UserType = UserType.none
     
@@ -24,5 +25,6 @@ enum UserType {
     case email
     case password
     case image
+    case phone
     case none
 }

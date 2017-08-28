@@ -132,7 +132,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="singupButtonTap:" destination="MUe-LK-PeZ" eventType="touchUpInside" id="MEq-sc-SU5"/>
-                                                    <segue destination="RZb-0Q-M9V" kind="show" id="lKr-ER-Gxt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57b-LT-P5B">
@@ -176,7 +175,7 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use Your email for login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCr-Hx-JfT" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="98.5" y="123" width="178" height="24"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="178" id="5bL-GR-sSh"/>
                                                 </constraints>
@@ -191,7 +190,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password should contain at least 6 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAC-n0-dnr" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="73" y="179" width="217" height="46"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="217" id="Os6-Rq-lgC"/>
                                                 </constraints>
@@ -206,7 +205,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="format for phone number: XXX-XXX-XXXX" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-L9-y45" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="86" y="665" width="203" height="46"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="203" id="f62-BT-q9I"/>
                                                 </constraints>
@@ -221,7 +220,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password mismatch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlZ-ZJ-Fe7" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="79.5" y="255" width="217" height="24"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="217" id="A8T-du-EFl"/>
                                                     <constraint firstAttribute="height" constant="24" id="fls-AV-lhh"/>
@@ -237,7 +236,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="such user already exists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhR-WK-Bdc" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="95" y="123" width="185" height="24"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="TvH-g7-dLx"/>
                                                     <constraint firstAttribute="width" constant="185" id="esf-yj-eVH"/>
@@ -253,7 +252,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please fill in all fields" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-yY-0LA" customClass="CustomizableLabel" customModule="iTourist" customModuleProvider="target">
                                                 <rect key="frame" x="85.5" y="575" width="203" height="24"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.59516802229999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="D3X-BS-6Sq"/>
                                                     <constraint firstAttribute="width" constant="203" id="Qxe-kL-ZYC"/>
@@ -327,30 +326,30 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="LZ0-fP-rQV"/>
                                                 <exclude reference="HrQ-aj-nf4"/>
-                                                <exclude reference="h6m-UJ-KWj"/>
-                                                <exclude reference="cXY-IJ-yUQ"/>
-                                                <exclude reference="rJT-et-2b8"/>
-                                                <exclude reference="ach-QL-ppg"/>
-                                                <exclude reference="tmt-2F-7Tm"/>
                                                 <exclude reference="ISl-rA-2W8"/>
+                                                <exclude reference="LZ0-fP-rQV"/>
+                                                <exclude reference="ach-QL-ppg"/>
+                                                <exclude reference="cXY-IJ-yUQ"/>
+                                                <exclude reference="h6m-UJ-KWj"/>
+                                                <exclude reference="rJT-et-2b8"/>
+                                                <exclude reference="tmt-2F-7Tm"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=compact">
                                             <mask key="constraints">
                                                 <include reference="HrQ-aj-nf4"/>
-                                                <include reference="h6m-UJ-KWj"/>
                                                 <include reference="ach-QL-ppg"/>
+                                                <include reference="h6m-UJ-KWj"/>
                                                 <include reference="tmt-2F-7Tm"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular">
                                             <mask key="constraints">
+                                                <include reference="ISl-rA-2W8"/>
                                                 <include reference="LZ0-fP-rQV"/>
                                                 <include reference="cXY-IJ-yUQ"/>
                                                 <include reference="rJT-et-2b8"/>
-                                                <include reference="ISl-rA-2W8"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -546,7 +545,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="RZb-0Q-M9V" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1q-kM-6Ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-104" y="484"/>
+            <point key="canvasLocation" x="-1035" y="484"/>
         </scene>
         <!--DashboardController-->
         <scene sceneID="7s1-kF-XFY">
@@ -554,7 +553,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DashboardController" id="Z7s-4F-2BG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71c-Ka-Ifv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1218" y="484"/>
+            <point key="canvasLocation" x="-1327" y="484"/>
         </scene>
     </scenes>
     <resources>
@@ -564,7 +563,4 @@
         <image name="loginBackround" width="1150" height="750"/>
         <image name="loginTxtImg" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="lKr-ER-Gxt"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -17,7 +17,6 @@ class LogInViewController: UIViewController {
     let validateInput = ValidateInput.shared
     
     @IBAction func loginButtonTap(_ sender: UIButton) {
-        //UserDefaults.standard.set(loginField.text, forKey: "userName")
         if let loginStr = loginField.text, let passwordStr = password.text {
             if let user = validateInput.emailExistsInDatabase(testStr: loginStr) {
                 if passwordStr == user.password {
@@ -42,21 +41,10 @@ class LogInViewController: UIViewController {
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(LogInViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
-    
-    func back(sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DashboardController")
-        self.navigationController!.pushViewController(vc, animated: true)
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-//        if UserDefaults.standard.isLoggedIn() {
-//            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
     }
     
     func throwAlert(title: String, message: String) {
@@ -78,6 +66,13 @@ class LogInViewController: UIViewController {
     
     func handleKeyboardHide(notification: NSNotification) {
         scrollBottomPin.constant = 0
+    }
+    
+    //back button leads to main menu
+    func back(sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DashboardController")
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 }
 

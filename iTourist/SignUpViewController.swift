@@ -86,10 +86,13 @@ class SignUpViewController: UIViewController {
                 animatedLabelShow(label: emptyFieldsLabel)
             }
             if canSignUp {
-                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
+                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, phone: telStr, image: imageData as NSData, instanceToChange: .none)
                 database.addUser(user: user)
                 UserDefaults.standard.setIsLoggedIn(value: true)
                 UserDefaults.standard.setEmail(value: loginStr)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "DashboardController")
+                self.navigationController!.pushViewController(vc, animated: true)
             }
         }
     }
