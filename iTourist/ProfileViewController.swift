@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
         surname.text = currentUser?.surname
         tel.text = currentUser?.phone
         if let imageNSData = currentUser?.image {
-            guard let image = UIImage.init(data: imageNSData as Data) else {return}
+            guard let image = UIImage.init(data: imageNSData as Data) else { return }
             userImage.image = image
         }
 
