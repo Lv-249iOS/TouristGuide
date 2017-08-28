@@ -132,7 +132,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="singupButtonTap:" destination="MUe-LK-PeZ" eventType="touchUpInside" id="MEq-sc-SU5"/>
-                                                    <segue destination="Z7s-4F-2BG" kind="show" id="c4t-Mj-JXq"/>
+                                                    <segue destination="RZb-0Q-M9V" kind="show" id="lKr-ER-Gxt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57b-LT-P5B">
@@ -400,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ama-Bc-pvC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50" y="61"/>
+            <point key="canvasLocation" x="-62" y="37"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="KJh-09-XUL">
@@ -546,7 +546,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="RZb-0Q-M9V" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1q-kM-6Ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1363" y="484"/>
+            <point key="canvasLocation" x="-104" y="484"/>
         </scene>
         <!--DashboardController-->
         <scene sceneID="7s1-kF-XFY">
@@ -554,7 +554,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DashboardController" id="Z7s-4F-2BG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71c-Ka-Ifv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="506"/>
+            <point key="canvasLocation" x="-1218" y="484"/>
         </scene>
     </scenes>
     <resources>
@@ -565,6 +565,6 @@
         <image name="loginTxtImg" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c4t-Mj-JXq"/>
+        <segue reference="lKr-ER-Gxt"/>
     </inferredMetricsTieBreakers>
 </document>

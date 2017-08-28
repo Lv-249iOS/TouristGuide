@@ -28,27 +28,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="UKf-12-zYY">
                                 <rect key="frame" x="20" y="50" width="165.66666666666666" height="220.66666666666669"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKw-1S-NgG">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="j00-EF-n5P"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Profile" id="LdP-6T-DRf">
-                                        <barButtonItem key="leftBarButtonItem" id="KeR-6m-8S9">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TzM-Br-aEN">
-                                                <rect key="frame" x="20" y="7" width="92" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <state key="normal" title="Back"/>
-                                                <connections>
-                                                    <segue destination="AG8-Cz-BFp" kind="show" id="kEc-cN-pfb"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlZ-GN-Dp9">
                                 <rect key="frame" x="234.66666666666669" y="50" width="45.000000000000057" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -99,13 +78,10 @@
                             <constraint firstItem="UKf-12-zYY" firstAttribute="width" secondItem="DYL-ep-uD3" secondAttribute="width" multiplier="0.4" id="85a-OF-CsB"/>
                             <constraint firstItem="7h8-5S-nue" firstAttribute="top" secondItem="ehG-gC-CbO" secondAttribute="bottom" constant="30" id="Rt5-ee-j9B"/>
                             <constraint firstAttribute="trailing" secondItem="kvb-6S-nPt" secondAttribute="trailing" constant="20" id="SkW-Oq-7fI"/>
-                            <constraint firstItem="oKw-1S-NgG" firstAttribute="top" secondItem="DYL-ep-uD3" secondAttribute="top" id="U8b-jf-Wyr"/>
                             <constraint firstItem="1Ej-DH-AWf" firstAttribute="leading" secondItem="DYL-ep-uD3" secondAttribute="leading" id="UkA-dZ-a6m"/>
                             <constraint firstItem="VwC-KQ-w4d" firstAttribute="top" secondItem="1Ej-DH-AWf" secondAttribute="bottom" id="ZTl-YF-RRl"/>
-                            <constraint firstItem="oKw-1S-NgG" firstAttribute="leading" secondItem="DYL-ep-uD3" secondAttribute="leading" id="ZrB-Vd-i8f"/>
                             <constraint firstAttribute="trailing" secondItem="1Ej-DH-AWf" secondAttribute="trailing" id="c4J-I9-tOu"/>
                             <constraint firstItem="1Ej-DH-AWf" firstAttribute="top" secondItem="DYL-ep-uD3" secondAttribute="top" id="crN-nb-inp"/>
-                            <constraint firstAttribute="trailing" secondItem="oKw-1S-NgG" secondAttribute="trailing" id="gRU-R1-1br"/>
                             <constraint firstItem="kvb-6S-nPt" firstAttribute="top" secondItem="Zw7-c2-Rpr" secondAttribute="bottom" constant="240" id="kqI-Va-I0s"/>
                             <constraint firstItem="ehG-gC-CbO" firstAttribute="leading" secondItem="UKf-12-zYY" secondAttribute="trailing" constant="48.329999999999998" id="lTT-xc-RtM"/>
                             <constraint firstItem="7h8-5S-nue" firstAttribute="leading" secondItem="UKf-12-zYY" secondAttribute="trailing" constant="48.329999999999998" id="lyv-zL-GI3"/>
@@ -115,6 +91,9 @@
                             <constraint firstItem="UKf-12-zYY" firstAttribute="height" secondItem="DYL-ep-uD3" secondAttribute="height" multiplier="0.3" id="y9u-bQ-dxb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Profile" id="gpY-e0-oeC">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="TWn-ec-3mW"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="name" destination="jlZ-GN-Dp9" id="b2a-EN-usK"/>
                         <outlet property="surname" destination="ehG-gC-CbO" id="ZPF-bY-Zmo"/>
@@ -132,15 +111,7 @@
                 <viewControllerPlaceholder storyboardName="LogIn" id="4pH-8t-q8k" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UF9-FE-40N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157" y="19"/>
-        </scene>
-        <!--DashboardController-->
-        <scene sceneID="dbs-iM-yz2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DashboardController" id="AG8-Cz-BFp" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6jf-Zv-wOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1224" y="56"/>
+            <point key="canvasLocation" x="1099" y="38"/>
         </scene>
     </scenes>
     <resources>
