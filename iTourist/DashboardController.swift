@@ -55,6 +55,7 @@ class DashboardController: UIViewController {
         profileButton.setNeedsDisplay()
         weatherButton.setNeedsDisplay()
         placesButton.setNeedsDisplay()
+        mapButton.setNeedsDisplay()
     }
     
     func configureLocationServices() {
