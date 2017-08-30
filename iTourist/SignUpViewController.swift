@@ -90,9 +90,12 @@ class SignUpViewController: UIViewController {
                 database.addUser(user: user)
                 UserDefaults.standard.setIsLoggedIn(value: true)
                 UserDefaults.standard.setEmail(value: loginStr)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "DashboardController")
-                self.navigationController!.pushViewController(vc, animated: true)
+                
+                let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+                let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "DashboardController")
+                self.navigationController!.setViewControllers([mainVC, profileVC], animated: true)
             }
         }
     }
@@ -157,7 +160,9 @@ class SignUpViewController: UIViewController {
     }
 }
 
-extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+extension SignUpViewController: UINavigationControllerDelegate { }
+
+extension SignUpViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -170,6 +175,9 @@ extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerCon
         
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         login.resignFirstResponder()

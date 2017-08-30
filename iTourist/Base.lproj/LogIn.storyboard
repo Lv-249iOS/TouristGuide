@@ -456,7 +456,6 @@
                                                 <state key="normal" image="login"/>
                                                 <connections>
                                                     <action selector="loginButtonTap:" destination="hDA-Zd-WKE" eventType="touchUpInside" id="k0n-ZG-NdU"/>
-                                                    <segue destination="RZb-0Q-M9V" kind="show" id="dsg-qK-tiM"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Don't have an account? Just " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-Hq-wU2">
@@ -523,11 +522,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="orl-fE-bkR">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="mgv-tC-2Yk">
-                            <connections>
-                                <segue destination="Z7s-4F-2BG" kind="show" id="W1y-QZ-v5r"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="mgv-tC-2Yk"/>
                     </navigationItem>
                     <connections>
                         <outlet property="loginField" destination="esp-6k-esN" id="Hfe-0F-PBo"/>
@@ -538,22 +533,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljA-8f-8bj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1178.2608695652175" y="37.5"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="VMG-xP-lzw">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="RZb-0Q-M9V" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T1q-kM-6Ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1035" y="484"/>
-        </scene>
-        <!--DashboardController-->
-        <scene sceneID="7s1-kF-XFY">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DashboardController" id="Z7s-4F-2BG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="71c-Ka-Ifv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1327" y="484"/>
         </scene>
     </scenes>
     <resources>

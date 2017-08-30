@@ -29,10 +29,7 @@ class ProfileViewController: UIViewController {
             guard let image = UIImage.init(data: imageNSData as Data) else { return }
             userImage.image = image
         }
-
-        self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(ProfileViewController.back(sender:)))
-        self.navigationItem.leftBarButtonItem = newBackButton
+        
         let logOutButton = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(ProfileViewController.logout(sender:)))
         self.navigationItem.rightBarButtonItem = logOutButton
     }
@@ -42,18 +39,13 @@ class ProfileViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    //back button leads to main menu
-    func back(sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DashboardController")
-        self.navigationController!.pushViewController(vc, animated: true)
-    }
-    
     func logout(sender: UIBarButtonItem) {
         UserDefaults.standard.setIsLoggedIn(value: false)
         UserDefaults.standard.setEmail(value: "")
-        let storyboard = UIStoryboard(name: "LogIn", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
-        self.navigationController!.pushViewController(vc, animated: true)
+        let loginStoryboard = UIStoryboard(name: "LogIn", bundle: nil)
+        let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "LogInViewController")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "DashboardController")
+        self.navigationController!.setViewControllers([mainVC, loginVC], animated: true)
     }
 }
