@@ -20,6 +20,7 @@ class DashboardController: UIViewController {
     
     var appModel = AppModel.shared
     var settingsManager = SettingsManager.shared
+    private var database = UserCoreData()
     
     @IBAction func pressedButton(_ sender: UIButton) {
         settingsManager.makeSoundIfNeeded()
@@ -39,6 +40,20 @@ class DashboardController: UIViewController {
         if UserDefaults.standard.isLoggedIn() {
             loginButton.alpha = 0
             loginButton.isHidden = true
+            
+            profileButton.imageView?.contentMode = .scaleAspectFit
+            let email = UserDefaults.standard.getEmail()
+            let currentUser = database.getUser(by: email)
+            if let imageNSData = currentUser?.image {
+                guard let image = UIImage.init(data: imageNSData as Data) else { return }
+                profileButton.setImage(image, for: .normal)
+            }
+//            if let userName = currentUser?.name, let surname = currentUser?.surname {
+//                profileButton.setTitle(userName + " " + surname, for: .normal)
+//                profileButton.titleLabel?.text = userName + " " + surname
+//                profileButton.titleLabel?.sizeToFit()
+//            }
+            
             profileButton.alpha = 1
             profileButton.isHidden = false
         } else {
@@ -58,6 +73,7 @@ class DashboardController: UIViewController {
         weatherButton.setNeedsDisplay()
         placesButton.setNeedsDisplay()
         loginButton.setNeedsDisplay()
+        mapButton.setNeedsDisplay()
     }
     
     func configureLocationServices() {
