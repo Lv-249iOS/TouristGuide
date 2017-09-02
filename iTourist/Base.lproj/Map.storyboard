@@ -33,14 +33,14 @@
                                         <rect key="frame" x="3" y="3" width="34" height="28"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fm-wG-XHB">
-                                        <rect key="frame" x="339" y="3" width="33" height="28"/>
+                                        <rect key="frame" x="338" y="3" width="34" height="28"/>
                                         <state key="normal" image="start"/>
                                         <connections>
                                             <action selector="calculateRoutes:" destination="sOE-Rk-dEu" eventType="touchUpInside" id="O7P-Ay-ysy"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-SG-abp">
-                                        <rect key="frame" x="45" y="3" width="286" height="28"/>
+                                        <rect key="frame" x="45" y="3" width="285" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -62,14 +62,6 @@
                                     <constraint firstAttribute="bottom" secondItem="5Fm-wG-XHB" secondAttribute="bottom" constant="3" id="utM-xR-YZ5"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-Tl-YzP">
-                                <rect key="frame" x="164" y="559" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="addGread:" destination="sOE-Rk-dEu" eventType="touchUpInside" id="HKJ-Zk-5fP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
