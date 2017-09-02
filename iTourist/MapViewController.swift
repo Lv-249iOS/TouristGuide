@@ -16,17 +16,17 @@ class MapViewController: UIViewController {
     @IBOutlet weak var routeInfo: UILabel!
     @IBOutlet weak var routeImage: UIImageView!
     
+    private var places: [Place]?
     var annotationsOfPlaces: [PlaceAnnotation] = []
     var selectedAnnotations: [PlaceAnnotation] = []
     var visibleIds: [RegionId: [PlaceAnnotation]] = [:]
-    var places: [Place]?
     
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
     
     var grids = [MKCircle]()
     
-    var imageLoader = ImageManager.shared
+    let imageLoader = ImageManager.shared
     
     let converter = CoordinateConverter()
     
@@ -42,10 +42,6 @@ class MapViewController: UIViewController {
         map.delegate = self
         map.showsUserLocation = true
         addUserLocationOnMap()
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(gestureRecognizer:)))
-        longPress.minimumPressDuration = 1.0
-        map.addGestureRecognizer(longPress)
         
         print("PREVIEW")
         PlacesList.shared.getPlaces(with: [AppModel.shared.getLocation()]) { [weak self] places in
@@ -166,19 +162,19 @@ class MapViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            
-            let alert = UIAlertController(title: "Do you want to create a new place?", message: "you would have to add some information", preferredStyle:UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default, handler: longPressHandler(_action: )))
-            alert.addAction(UIAlertAction(title: "Cancel",style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+//    func addAnnotation(gestureRecognizer:UILongPressGestureRecognizer) {
+//        if gestureRecognizer.state == .began {
+//            
+//            let alert = UIAlertController(title: "Do you want to create a new place?", message: "you would have to add some information", preferredStyle:UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default, handler: longPressHandler(_action: )))
+//            alert.addAction(UIAlertAction(title: "Cancel",style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
     
-    func longPressHandler(_action: UIAlertAction) {
-        print("HANDLER")
-    }
+//    func longPressHandler(_action: UIAlertAction) {
+//        print("HANDLER")
+//    }
     
     func addUserLocationOnMap() {
         if CLLocationManager.locationServicesEnabled() {

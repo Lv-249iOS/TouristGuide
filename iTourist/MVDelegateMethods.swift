@@ -166,7 +166,7 @@ extension MapViewController: MKMapViewDelegate {
         
         print(map.region.span)
         
-        if map.region.span.latitudeDelta < 0.6 {
+        if map.region.span.latitudeDelta < 0.4 {
             
             if visibleIds.isEmpty { visibleIds = ["0.0,0.0":[]] }
             
