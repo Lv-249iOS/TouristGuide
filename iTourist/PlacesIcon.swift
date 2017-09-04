@@ -63,7 +63,7 @@ import UIKit
         // MARK: Top collumn points
         
         let numberOfCollumns: CGFloat = 5
-        var freeSpace = buildingWidth - buildingWidth / 15.0 * numberOfCollumns
+        let freeSpace = buildingWidth - buildingWidth / 15.0 * numberOfCollumns
 //        let spacingBetweenTopPoints =
         
         var collumnStartY = kvadratikRect.origin.y + kvadratikRect.size.height
@@ -86,8 +86,6 @@ import UIKit
 //        freeSpace = (buildingWidth - 4) - spacingOfBottomCollumns * numberOfCollumns
         
         var bottomPoints: [CGPoint] = []
-        
-        let spacingOfBottomCollumns = buildingWidth / 7.0
         
         for i in 0..<10 {
             let point = CGPoint(x: collumnStartX, y: collumnStartY)

@@ -17,6 +17,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var surname: UITextField!
     @IBOutlet weak var tel: UITextField!
+    
+    @IBOutlet weak var loginInfo: CustomizableLabel!
+    @IBOutlet weak var passwordInfo: CustomizableLabel!
+    @IBOutlet weak var phoneInfo: CustomizableLabel!
+    
     @IBOutlet weak var scroll: CustomizableScrollView!
     @IBOutlet weak var scrollBottomPin: NSLayoutConstraint!
     
@@ -29,6 +34,16 @@ class SignUpViewController: UIViewController {
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         image.allowsEditing = false
         self.present(image, animated: true)
+    }
+    
+    @IBAction func showLabelWithInfo(_ sender: UIButton) {
+        let label = getLabelByTag(tag: sender.tag)
+        label.isHidden = false
+    }
+    
+    @IBAction func hideLabelWithInfo(_ sender: UIButton) {
+        let label = getLabelByTag(tag: sender.tag)
+        label.isHidden = true
     }
     
     @IBAction func singupButtonTap(_ sender: Any) {
@@ -103,6 +118,15 @@ class SignUpViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getLabelByTag(tag: Int) -> UILabel {
+        switch tag {
+        case 0: return loginInfo
+        case 1: return passwordInfo
+        case 2: return phoneInfo
+        default: return UILabel()
+        }
     }
 }
 
