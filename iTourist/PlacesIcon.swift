@@ -19,10 +19,10 @@ import UIKit
     func drawMuseum(_ rect: CGRect) {
         let width = bounds.width
         let height = bounds.height
-        let lineWidth: CGFloat = 2.0
+        let lineWidth: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 3.5 : 2.0
         
         let kWidthMutiplier: CGFloat = 9.0
-        let kHeightMutiplier: CGFloat = 7.0
+        let kHeightMutiplier: CGFloat = 9.0
         let kSideOffset: CGFloat = 20.0
         let kvadratikHeight: CGFloat = 6.0
         let kBottomLayerHeight: CGFloat = 8.0
@@ -79,18 +79,20 @@ import UIKit
         
         // MARK: Bottom collumn points
         
-        let spacingOfBottomCollumns = buildingWidth / 7.0
+        
         
         collumnStartY = height / 2 + buildingHeight / 2 - kBottomLayerHeight * 2
-        collumnStartX = point1.x + 5.5
-        freeSpace = (buildingWidth - 4) - spacingOfBottomCollumns * numberOfCollumns
+        collumnStartX = point1.x + (buildingWidth / 15.0) / 2
+//        freeSpace = (buildingWidth - 4) - spacingOfBottomCollumns * numberOfCollumns
         
         var bottomPoints: [CGPoint] = []
+        
+        let spacingOfBottomCollumns = buildingWidth / 7.0
         
         for i in 0..<10 {
             let point = CGPoint(x: collumnStartX, y: collumnStartY)
             bottomPoints.append(point)
-            collumnStartX += (i % 2) != 0 ? freeSpace / 5.0 : spacingOfBottomCollumns
+            collumnStartX += (i % 2) != 0 ? buildingWidth / 15.0 : freeSpace / 5.0
         }
         
         // MARK: Connect
