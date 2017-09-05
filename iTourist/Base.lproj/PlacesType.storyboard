@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGC-j0-rSz">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RGC-j0-rSz">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,7 +38,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.26223429570000001" green="0.26223429570000001" blue="0.26223429570000001" alpha="0.1049068921" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.23405774109999999" green="0.23405774109999999" blue="0.23405774109999999" alpha="0.40188891269999999" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -135,7 +135,7 @@
                                         <constraint firstItem="rkt-vv-vd3" firstAttribute="top" secondItem="9nr-NY-8Ct" secondAttribute="top" id="ya4-E0-RsZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.26223429568527923" green="0.26223429568527923" blue="0.26223429568527923" alpha="0.10490689212328767" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.23405774111675126" green="0.23405774111675126" blue="0.23405774111675126" alpha="0.40188891267123289" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="rkt-vv-vd3" firstAttribute="width" secondItem="xZb-Zv-SuT" secondAttribute="width" multiplier="0.3" id="6P3-Fq-Ikw"/>
                                 </constraints>
@@ -173,7 +173,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="U2W-9Y-b8s">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="U2W-9Y-b8s">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bat-Mu-Sfa">
@@ -346,9 +346,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="pSg-xa-3Ee">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="pSg-xa-3Ee">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5R-Em-i5u">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -379,10 +378,14 @@
                         <constraints>
                             <constraint firstItem="BNj-5R-EiC" firstAttribute="leading" secondItem="x9n-A2-UEe" secondAttribute="leading" id="3uq-wc-sSr"/>
                             <constraint firstAttribute="trailing" secondItem="BNj-5R-EiC" secondAttribute="trailing" id="62u-FV-OZT"/>
+                            <constraint firstItem="OJM-zM-D2s" firstAttribute="top" secondItem="pSg-xa-3Ee" secondAttribute="bottom" id="8m8-U2-yio"/>
                             <constraint firstItem="t5R-Em-i5u" firstAttribute="leading" secondItem="x9n-A2-UEe" secondAttribute="leading" id="DyK-Pn-fpf"/>
                             <constraint firstAttribute="trailing" secondItem="t5R-Em-i5u" secondAttribute="trailing" id="SGd-tr-QpP"/>
+                            <constraint firstItem="pSg-xa-3Ee" firstAttribute="leading" secondItem="x9n-A2-UEe" secondAttribute="leading" id="VlJ-gZ-qfB"/>
+                            <constraint firstAttribute="trailing" secondItem="pSg-xa-3Ee" secondAttribute="trailing" id="aU4-Hk-Aky"/>
                             <constraint firstItem="BNj-5R-EiC" firstAttribute="top" secondItem="t5R-Em-i5u" secondAttribute="bottom" id="bnB-dv-hL5"/>
                             <constraint firstItem="t5R-Em-i5u" firstAttribute="top" secondItem="x9n-A2-UEe" secondAttribute="top" id="h16-RF-UWn"/>
+                            <constraint firstItem="pSg-xa-3Ee" firstAttribute="top" secondItem="x9n-A2-UEe" secondAttribute="top" id="myr-Fx-3Fs"/>
                             <constraint firstItem="OJM-zM-D2s" firstAttribute="top" secondItem="BNj-5R-EiC" secondAttribute="bottom" id="o3o-Jm-tEp"/>
                             <constraint firstItem="BNj-5R-EiC" firstAttribute="top" secondItem="t5R-Em-i5u" secondAttribute="bottom" id="wyH-we-F17"/>
                         </constraints>
@@ -498,7 +501,7 @@
                                         <constraint firstItem="KVK-QJ-PNz" firstAttribute="leading" secondItem="xwa-nc-Prt" secondAttribute="trailing" constant="8" symbolic="YES" id="zfo-NS-al6"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.26223429570000001" green="0.26223429570000001" blue="0.26223429570000001" alpha="0.1049068921" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.23405774109999999" green="0.23405774109999999" blue="0.23405774109999999" alpha="0.40188891269999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                     <bool key="isElement" value="NO"/>

@@ -24,26 +24,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grace" translatesAutoresizingMaskIntoConstraints="NO" id="6g3-Y4-QXZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grace" translatesAutoresizingMaskIntoConstraints="NO" id="6g3-Y4-QXZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxK-do-c8E">
-                                <rect key="frame" x="0.0" y="20" width="300" height="60"/>
+                                <rect key="frame" x="0.0" y="20" width="315.5" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2811697346" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPq-Qt-kWH">
-                                <rect key="frame" x="300" y="20" width="75" height="60"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2811697346" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="edit">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="changecityname:" destination="9rA-eM-Vvz" eventType="touchUpInside" id="TwO-32-Rec"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-gx-HNa">
                                 <rect key="frame" x="0.0" y="167.5" width="375" height="333.5"/>
                                 <subviews>
@@ -230,19 +220,31 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPq-Qt-kWH">
+                                <rect key="frame" x="315" y="20" width="59.5" height="60"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2811697346" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zPq-Qt-kWH" secondAttribute="height" multiplier="1:1" id="BwF-nI-VCO"/>
+                                </constraints>
+                                <state key="normal" image="edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changecityname:" destination="9rA-eM-Vvz" eventType="touchUpInside" id="TwO-32-Rec"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.001736968262" green="0.063486482900000002" blue="0.37958042510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DMv-gx-HNa" firstAttribute="height" secondItem="WU7-E5-LMN" secondAttribute="height" multiplier="0.5" id="5Vb-pO-HXi"/>
+                            <constraint firstItem="zPq-Qt-kWH" firstAttribute="height" secondItem="wxK-do-c8E" secondAttribute="height" id="7Rb-Jh-6Pm"/>
                             <constraint firstItem="zPq-Qt-kWH" firstAttribute="leading" secondItem="wxK-do-c8E" secondAttribute="trailing" id="98H-ix-X8w"/>
                             <constraint firstItem="8Ow-t3-dpw" firstAttribute="height" secondItem="DMv-gx-HNa" secondAttribute="height" multiplier="0.5" id="AJe-bm-Ya8"/>
                             <constraint firstItem="bBL-57-T9G" firstAttribute="height" secondItem="uZV-Zy-mA7" secondAttribute="height" id="FI0-ec-zdQ"/>
                             <constraint firstItem="bBL-57-T9G" firstAttribute="top" secondItem="zPq-Qt-kWH" secondAttribute="bottom" constant="5" id="FQf-3P-iLW"/>
                             <constraint firstItem="pig-UH-HGE" firstAttribute="top" secondItem="8Ow-t3-dpw" secondAttribute="bottom" id="Hdi-Es-RIF"/>
-                            <constraint firstItem="wxK-do-c8E" firstAttribute="height" secondItem="zPq-Qt-kWH" secondAttribute="height" id="JF5-Ep-HRe"/>
                             <constraint firstAttribute="trailing" secondItem="8Ow-t3-dpw" secondAttribute="trailing" id="KKM-26-VdC"/>
                             <constraint firstItem="8Ow-t3-dpw" firstAttribute="top" secondItem="DMv-gx-HNa" secondAttribute="bottom" id="SKr-Ql-wun"/>
-                            <constraint firstItem="zPq-Qt-kWH" firstAttribute="width" secondItem="WU7-E5-LMN" secondAttribute="width" multiplier="0.2" id="UvM-Tl-xpj"/>
                             <constraint firstItem="6g3-Y4-QXZ" firstAttribute="top" secondItem="WU7-E5-LMN" secondAttribute="top" id="cFI-Y7-apk"/>
                             <constraint firstAttribute="trailing" secondItem="bBL-57-T9G" secondAttribute="trailing" constant="5" id="eFf-hl-eG3"/>
                             <constraint firstItem="wxK-do-c8E" firstAttribute="leading" secondItem="WU7-E5-LMN" secondAttribute="leading" id="eNm-ay-GiJ"/>

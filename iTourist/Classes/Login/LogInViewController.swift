@@ -17,16 +17,18 @@ class LogInViewController: UIViewController {
     let validateInput = ValidateInput.shared
     
     @IBAction func loginButtonTap(_ sender: UIButton) {
-        //UserDefaults.standard.set(loginField.text, forKey: "userName")
-        if let loginStr = loginField.text {
+        if let loginStr = loginField.text, let passwordStr = password.text {
             if let user = validateInput.emailExistsInDatabase(testStr: loginStr) {
-                if let passwordStr = password.text {
-                    if passwordStr == user.password {
-                        //UserDefaults.standard.set(user, forKey: "user")
-                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                    }
+                if passwordStr == user.password {
+                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    UserDefaults.standard.setEmail(value: loginStr)
+                    
+                    let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "DashboardController")
+                    self.navigationController!.setViewControllers([mainVC, profileVC], animated: true)
+                    return
                 }
             }
         }
