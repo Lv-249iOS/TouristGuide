@@ -39,6 +39,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         self.loginField.delegate = self
         self.password.delegate = self
+        password.isSecureTextEntry = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: .UIKeyboardWillHide, object: nil)

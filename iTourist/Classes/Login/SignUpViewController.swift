@@ -114,6 +114,8 @@ class SignUpViewController: UIViewController {
         phoneInfo.alpha = 0
         userExistsLabel.alpha = 0
         emptyFieldsLabel.alpha = 0
+        password.isSecureTextEntry = true
+        passwordRepeat.isSecureTextEntry = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: .UIKeyboardWillHide, object: nil)
