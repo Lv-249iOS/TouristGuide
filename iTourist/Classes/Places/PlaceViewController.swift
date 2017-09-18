@@ -86,11 +86,13 @@ class PlaceViewController: UITableViewController {
             }
         }
         
+        cell.delegate = self
+        cell.configureCell(with: place)
         // Set information for place and set tag for infoButton equal indexPath in this cell row
-        cell.name.text = place.name
-        cell.adress.text = place.formattedAddress
-        cell.phoneNum.text = place.internationalPhoneNumber
-        cell.infoButton.tag = indexPath.row
+//        cell.name.text = place.name
+//        cell.adress.text = place.formattedAddress
+//        cell.phoneNum.text = place.internationalPhoneNumber
+//        cell.infoButton.tag = indexPath.row
         
         return cell
     }
@@ -100,17 +102,7 @@ class PlaceViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
-    /// When we tap on infoButton it navigate us to place or filtered place we need
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier  == "PlaceProfileSeque" {
-            guard let button = sender as? UIButton else { return }
-            if let viewController = segue.destination as? PlaceProfileViewController {
-                SettingsManager.shared.makeSoundIfNeeded()
-                let place = searchActive ? filteredPlaces[button.tag] : places[button.tag]
-                viewController.place = place
-            }
-        }
-    }
+
     
     /// This function tells that user ended insert something to searchBar and keyboard should be hidden
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -143,5 +135,15 @@ extension PlaceViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredPlaces = places.filter {$0.name?.lowercased().contains(searchText.lowercased()) == true}
         searchActive = filteredPlaces.count > 0
+    }
+}
+
+extension PlaceViewController: MyCellDelegate {
+    func cellInfoDidClicked(for place: Place) {
+        let placeView = UIStoryboard(name: "PlacesType", bundle: nil)
+        let nextViewController = placeView.instantiateViewController(withIdentifier: "PlacePrifileController") as! PlaceProfileViewController
+        nextViewController.place = place
+        self.present(nextViewController, animated:true, completion:nil)
+        SettingsManager.shared.makeSoundIfNeeded()
     }
 }
