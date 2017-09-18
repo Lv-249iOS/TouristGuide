@@ -2,8 +2,8 @@
 //  MapViewController.swift
 //  iTourist
 //
-//  Created by Zhanna Moskaliuk on 8/1/17.
-//  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
+//  Created by AndreOsip on 8/1/17.
+//  Copyright © 2017 AndreOsip. All rights reserved.
 //
 
 import UIKit
@@ -30,12 +30,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let span: MKCoordinateSpan = AppModel.shared.getSpan() ?? MKCoordinateSpanMake(0.01, 0.01)
-        if let location = AppModel.shared.location {
-            let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
-            map.setRegion(region, animated: true)
-        }
         
         map.delegate = self
         map.showsUserLocation = true
@@ -72,13 +66,25 @@ class MapViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        
+        let span: MKCoordinateSpan = AppModel.shared.getSpan() ?? MKCoordinateSpanMake(0.01, 0.01)
+        if let location = AppModel.shared.location {
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
+            map.setRegion(region, animated: true)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "PlacesTypeSegue" {
             
             guard let annotationView = sender as? MKAnnotationView else { return }
             if let viewController = segue.destination as? PlaceProfileViewController {
+                guard let coordinate = annotationView.annotation?.coordinate else { return }
                 for place in places ?? [] {
-                    if place.name == (annotationView.annotation?.title)! {
+                    if (place.coordinate?[0] == coordinate.latitude) && (place.coordinate?[1] == coordinate.longitude) {
                         viewController.place = place
                         viewController.title = place.name
                     }
@@ -118,11 +124,14 @@ class MapViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-    }
     
+    @IBAction func backToLocation(_ sender: UIButton) {
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        if let location = CLLocationManager().location {
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
+            map.setRegion(region, animated: true)
+        }
+    }
     
     func addUserLocationOnMap() {
         if CLLocationManager.locationServicesEnabled() {

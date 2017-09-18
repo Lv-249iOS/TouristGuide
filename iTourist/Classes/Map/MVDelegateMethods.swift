@@ -3,7 +3,7 @@
 //  iTourist
 //
 //  Created by AndreOsip on 8/2/17.
-//  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
+//  Copyright © 2017 AndreOsip. All rights reserved.
 //
 
 import Foundation
@@ -170,8 +170,6 @@ extension MapViewController: MKMapViewDelegate {
             map.removeAnnotations(map.annotations)
             
             let locations = MapFrameConverter.convert(region: map.region)
-            
-            if visibleIds.isEmpty { visibleIds = ["0.0,0.0":[]] }
             
             PlacesList.shared.getPlaces(with: locations) { places in
                 print("MAP START GET PLACES")

@@ -35,7 +35,7 @@ class UserCoreData {
             newUser.surname = user.surname
             newUser.email = user.email
             newUser.password = user.password
-            newUser.phone = user.phone
+            //newUser.phone = user.phone
             newUser.image = user.image
         }
         

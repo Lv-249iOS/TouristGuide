@@ -305,13 +305,13 @@
 			isa = PBXGroup;
 			children = (
 				A94BDF631F5BFC370085E073 /* icons */,
-				A94BDF551F5BFC070085E073 /* CLDelegateMethods.swift */,
-				A94BDF561F5BFC070085E073 /* MapButton.swift */,
-				A94BDF571F5BFC070085E073 /* MapFrameConverter.swift */,
 				A94BDF581F5BFC070085E073 /* MapViewController.swift */,
 				A94BDF591F5BFC070085E073 /* MVDelegateMethods.swift */,
-				A94BDF5A1F5BFC070085E073 /* PlaceAnnotation.swift */,
+				A94BDF551F5BFC070085E073 /* CLDelegateMethods.swift */,
 				A94BDF5B1F5BFC070085E073 /* RouteCalculatingMethods.swift */,
+				A94BDF571F5BFC070085E073 /* MapFrameConverter.swift */,
+				A94BDF561F5BFC070085E073 /* MapButton.swift */,
+				A94BDF5A1F5BFC070085E073 /* PlaceAnnotation.swift */,
 			);
 			name = Map;
 			path = Classes/Map;
