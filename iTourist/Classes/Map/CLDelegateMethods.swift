@@ -21,10 +21,13 @@ extension MapViewController: CLLocationManagerDelegate {
         let region: MKCoordinateRegion = MKCoordinateRegionMake(currentLocation, span)
         
         map.setRegion(region, animated: true)
-        map.showsUserLocation = true
+        //map.showsUserLocation = true
         
         recalculatingToTheFirstPoint()
-        
+        manager.stopUpdatingLocation()
+        Timer.scheduledTimer(withTimeInterval: 20, repeats: false) {_ in
+            manager.startUpdatingLocation()
+        }
         print("there was update")
     }
     

@@ -13,7 +13,7 @@ extension MapViewController {
 
     func addCircleOnFirstPoint() {
         
-        let region = CLCircularRegion(center: selectedAnnotations[0].coordinate, radius: 15, identifier: "First")
+        let region = CLCircularRegion(center: selectedAnnotations[0].coordinate, radius: 25, identifier: "First")
         region.notifyOnExit = false
         let circle = MKCircle(center: region.center, radius: region.radius)
         
@@ -26,7 +26,7 @@ extension MapViewController {
     func recalculatingToTheFirstPoint() {
         if !self.lineOverlays.isEmpty && !selectedAnnotations.isEmpty {
             map.remove(lineOverlays[0])
-            presentRoute(sourse: ((AppModel.shared.location?.coordinate) ?? selectedAnnotations[0].coordinate), dest: selectedAnnotations[0].coordinate)
+            presentRoute(sourse: ((CLLocationManager().location?.coordinate) ?? selectedAnnotations[0].coordinate), dest: selectedAnnotations[0].coordinate)
         }
     }
     

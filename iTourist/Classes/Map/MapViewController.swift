@@ -20,6 +20,7 @@ class MapViewController: UIViewController {
     var annotationsOfPlaces: [PlaceAnnotation] = []
     var selectedAnnotations: [PlaceAnnotation] = []
     var visibleIds: [RegionId: [PlaceAnnotation]] = [:]
+    var lastLoadingCenter: CLLocationCoordinate2D?
     
     var lineOverlays: [MKOverlay] = []
     var circleOverlay: MKOverlay?
@@ -60,6 +61,7 @@ class MapViewController: UIViewController {
             
                 self?.visibleIds[key] = self?.annotationsOfPlaces
                 self?.annotationsOfPlaces = []
+                self?.lastLoadingCenter = self?.map.region.center
                 
             }
 
@@ -101,6 +103,7 @@ class MapViewController: UIViewController {
             
             map.remove(circle)
             map.removeOverlays(lineOverlays)
+            lineOverlays = []
             circleOverlay = nil
             
             for annot in selectedAnnotations {
@@ -115,7 +118,7 @@ class MapViewController: UIViewController {
             
         } else {
             if !selectedAnnotations.isEmpty {
-                presentRoute(sourse: ((AppModel.shared.locationManager.manager.location?.coordinate) ?? (selectedAnnotations[0].coordinate)) , dest: (selectedAnnotations[0].coordinate))
+                presentRoute(sourse: ((CLLocationManager().location?.coordinate) ?? (selectedAnnotations[0].coordinate)) , dest: (selectedAnnotations[0].coordinate))
                 
                 addCircleOnFirstPoint()
                 presentRoutes()
@@ -141,7 +144,7 @@ class MapViewController: UIViewController {
                 AppModel.shared.locationManager.manager.delegate = self
                 AppModel.shared.locationManager.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                 AppModel.shared.locationManager.manager.distanceFilter = 100.0
-                //AppModel.shared.locationManager.manager.startUpdatingLocation()
+                AppModel.shared.locationManager.manager.startUpdatingLocation()
             }
         }
     }

@@ -150,6 +150,8 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
+        print("REGION DID CHANGE")
+        
         func visible(id: RegionId)->Bool {
             
             let tileRegion = MapFrameConverter.convert(id: id)
@@ -167,11 +169,14 @@ extension MapViewController: MKMapViewDelegate {
         print(map.region.span)
         
         if map.region.span.latitudeDelta < 0.4 {
+            guard let lastCenter = lastLoadingCenter else {return}
+            
+            if (lastCenter.latitude - map.region.center.latitude) >= 0.02 || ((lastCenter.latitude) - map.region.center.latitude) <= -0.02 || ((lastCenter.longitude) - map.region.center.longitude) >= 0.02 || ((lastCenter.longitude) - map.region.center.longitude) <= -0.02 {
             map.removeAnnotations(map.annotations)
             
             let locations = MapFrameConverter.convert(region: map.region)
             
-            PlacesList.shared.getPlaces(with: locations) { places in
+            PlacesList.shared.getPlaces(with: locations) { [weak self] places in
                 print("MAP START GET PLACES")
                 guard let placesArr = places else { return }
                 for (key, places) in placesArr {
@@ -189,13 +194,13 @@ extension MapViewController: MKMapViewDelegate {
                         annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
                         annotation.photoRef = place.photosRef?.first
                         annotation.type = place.typeOfPlace?.first
-                        self.annotationsOfPlaces.append(annotation)
+                        self?.annotationsOfPlaces.append(annotation)
                         
                     }
                     
-                    self.visibleIds[key] = self.annotationsOfPlaces
-                    self.annotationsOfPlaces = []
-                    
+                    self?.visibleIds[key] = self?.annotationsOfPlaces
+                    self?.annotationsOfPlaces = []
+                    self?.lastLoadingCenter = self?.map.region.center
                 }
                 
             }
@@ -209,6 +214,7 @@ extension MapViewController: MKMapViewDelegate {
                 }
             }
         }
+    }
         visibleIds.forEach { (visibleRegionInfo) in
             
             if !visible(id: visibleRegionInfo.key) {
@@ -218,7 +224,7 @@ extension MapViewController: MKMapViewDelegate {
                 }
             }
         }
-        
+
     }
     
 }
