@@ -172,6 +172,7 @@ extension MapViewController: MKMapViewDelegate {
             guard let lastCenter = lastLoadingCenter else {return}
             
             if (lastCenter.latitude - map.region.center.latitude) >= 0.02 || ((lastCenter.latitude) - map.region.center.latitude) <= -0.02 || ((lastCenter.longitude) - map.region.center.longitude) >= 0.02 || ((lastCenter.longitude) - map.region.center.longitude) <= -0.02 {
+                
             map.removeAnnotations(map.annotations)
             
             let locations = MapFrameConverter.convert(region: map.region)
@@ -179,40 +180,10 @@ extension MapViewController: MKMapViewDelegate {
             PlacesList.shared.getPlaces(with: locations) { [weak self] places in
                 print("MAP START GET PLACES")
                 guard let placesArr = places else { return }
-                for (key, places) in placesArr {
-                    
-                    guard let places = places else { return }
-                    
-                    for place in places {
-                        let annotation = PlaceAnnotation()
-                        
-                        if let coordinates = place.coordinate {
-                            annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
-                        }
-                        
-                        annotation.title = place.name
-                        annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                        annotation.photoRef = place.photosRef?.first
-                        annotation.type = place.typeOfPlace?.first
-                        self?.annotationsOfPlaces.append(annotation)
-                        
-                    }
-                    
-                    self?.visibleIds[key] = self?.annotationsOfPlaces
-                    self?.annotationsOfPlaces = []
-                    self?.lastLoadingCenter = self?.map.region.center
-                }
+                self?.proccesPlaces(placesArr: placesArr)
                 
             }
-            visibleIds.forEach { (visibleRegionInfo) in
-                
-                if visible(id: visibleRegionInfo.key) {
-                    for annotation in visibleRegionInfo.value {
-                        map.addAnnotation(annotation)
-                        print("Add annotation")
-                    }
-                }
-            }
+
         }
     }
         visibleIds.forEach { (visibleRegionInfo) in

@@ -58,7 +58,7 @@ class PlaceCoreData {
                 return place.value(forKey: "dataArray") as? [NSData]
                 
             } else {
-                print("Eror: Place by key not found")
+                //print("Eror: Place by key not found")
                 try PlaceCoreData.context.save()
             }
         } catch let error as NSError {

@@ -24,10 +24,7 @@ extension MapViewController: CLLocationManagerDelegate {
         //map.showsUserLocation = true
         
         recalculatingToTheFirstPoint()
-        manager.stopUpdatingLocation()
-        Timer.scheduledTimer(withTimeInterval: 20, repeats: false) {_ in
-            manager.startUpdatingLocation()
-        }
+
         print("there was update")
     }
     
