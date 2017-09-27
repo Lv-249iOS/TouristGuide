@@ -35,7 +35,6 @@ class UserCoreData {
             newUser.surname = user.surname
             newUser.email = user.email
             newUser.password = user.password
-            //newUser.phone = user.phone
             newUser.image = user.image
         }
         
@@ -63,7 +62,6 @@ class UserCoreData {
                 user.surname = currentUser.value(forKey: "surname") as? String
                 user.email = currentUser.value(forKey: "email") as? String
                 user.password = currentUser.value(forKey: "password") as? String
-                user.phone = currentUser.value(forKey: "phone") as? String
                 user.image = currentUser.value(forKey: "image") as? NSData
                 
                 return user
@@ -114,8 +112,7 @@ class UserCoreData {
         switch user.instanceToChange {
         case .name : batchUpdateRequest.propertiesToUpdate = ["name": user.name ?? ""]
         case .surname: batchUpdateRequest.propertiesToUpdate = ["surname": user.surname ?? ""]
-        case .password: batchUpdateRequest.propertiesToUpdate = ["password": user.password ?? ""]
-        case .phone: batchUpdateRequest.propertiesToUpdate = ["phone": user.phone ?? ""]
+        case .password: batchUpdateRequest.propertiesToUpdate = ["email": user.password ?? ""]
         case .image: batchUpdateRequest.propertiesToUpdate = ["image": user.image!]
         default: return
         }

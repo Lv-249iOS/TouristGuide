@@ -3,7 +3,7 @@
 //  iTourist
 //
 //  Created by AndreOsip on 8/2/17.
-//  Copyright © 2017 AndreOsip. All rights reserved.
+//  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
 //
 
 import Foundation
@@ -166,48 +166,62 @@ extension MapViewController: MKMapViewDelegate {
         
         print(map.region.span)
         
-        if map.region.span.latitudeDelta < 0.4 {
-            map.removeAnnotations(map.annotations)
+        if map.region.span.latitudeDelta < 0.6 {
             
-            let locations = MapFrameConverter.convert(region: map.region)
+            if visibleIds.isEmpty { visibleIds = ["0.0,0.0":[]] }
             
-            PlacesList.shared.getPlaces(with: locations) { places in
-                print("MAP START GET PLACES")
-                guard let placesArr = places else { return }
-                for (key, places) in placesArr {
-                    
-                    guard let places = places else { return }
-                    
-                    for place in places {
-                        let annotation = PlaceAnnotation()
-                        
-                        if let coordinates = place.coordinate {
-                            annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
-                        }
-                        
-                        annotation.title = place.name
-                        annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                        annotation.photoRef = place.photosRef?.first
-                        annotation.type = place.typeOfPlace?.first
-                        self.annotationsOfPlaces.append(annotation)
-                        
-                    }
-                    
-                    self.visibleIds[key] = self.annotationsOfPlaces
-                    self.annotationsOfPlaces = []
-                    
-                }
-                
-            }
             visibleIds.forEach { (visibleRegionInfo) in
                 
-                if visible(id: visibleRegionInfo.key) {
-                    for annotation in visibleRegionInfo.value {
-                        map.addAnnotation(annotation)
-                        print("Add annotation")
+                //this condition is used to avoid needless requests (system is not perfect)
+                //if !visible(id: visibleRegionInfo.key) {
+                    
+                    let locations = MapFrameConverter.convert(region: map.region)
+                    
+                    PlacesList.shared.getPlaces(with: locations) { places in
+                        print("MAP START GET PLACES")
+                        guard let placesArr = places else { return }
+                        for (key, places) in placesArr {
+                            
+                            guard let places = places else { return }
+                            
+                            for place in places {
+                                let annotation = PlaceAnnotation()
+                                
+                                if let coordinates = place.coordinate {
+                                    annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                                }
+                                
+                                annotation.title = place.name
+                                annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                                annotation.photoRef = place.photosRef?.first
+                                annotation.type = place.typeOfPlace?.first
+                                self.annotationsOfPlaces.append(annotation)
+                                
+                            }
+                            
+                            self.visibleIds[key] = self.annotationsOfPlaces
+                            self.annotationsOfPlaces = []
+                            
+                        }
+                        
                     }
-                }
+                    visibleIds.forEach { (visibleRegionInfo) in
+                        
+                        if visible(id: visibleRegionInfo.key) {
+                            for annotation in visibleRegionInfo.value {
+                            map.removeAnnotation(annotation)
+                            }
+                            for annotation in visibleRegionInfo.value {
+                                map.addAnnotation(annotation)
+                                print("Add annotation")
+                            }
+                        }
+                    }
+                    
+                //}
+                
             }
+            
         }
         visibleIds.forEach { (visibleRegionInfo) in
             

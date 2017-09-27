@@ -3,7 +3,7 @@
 //  iTourist
 //
 //  Created by AndreOsip on 8/2/17.
-//  Copyright © 2017 AndreOsip. All rights reserved.
+//  Copyright © 2017 Kristina Del Rio Albrechet. All rights reserved.
 //
 
 import Foundation

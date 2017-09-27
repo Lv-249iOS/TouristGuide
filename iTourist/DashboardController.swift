@@ -16,11 +16,9 @@ class DashboardController: UIViewController {
     @IBOutlet weak var mapButton: RoundButton!
     @IBOutlet weak var weatherButton: RoundButton!
     @IBOutlet weak var settingsButton: RoundButton!
-    @IBOutlet weak var loginButton: ProfileButtonWithIcon!
     
     var appModel = AppModel.shared
     var settingsManager = SettingsManager.shared
-    private var database = UserCoreData()
     
     @IBAction func pressedButton(_ sender: UIButton) {
         settingsManager.makeSoundIfNeeded()
@@ -37,31 +35,6 @@ class DashboardController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         
-        if UserDefaults.standard.isLoggedIn() {
-            loginButton.alpha = 0
-            loginButton.isHidden = true
-            
-            profileButton.imageView?.contentMode = .scaleAspectFit
-            let email = UserDefaults.standard.getEmail()
-            let currentUser = database.getUser(by: email)
-            if let imageNSData = currentUser?.image {
-                guard let image = UIImage.init(data: imageNSData as Data) else { return }
-                profileButton.setImage(image, for: .normal)
-            }
-//            if let userName = currentUser?.name, let surname = currentUser?.surname {
-//                profileButton.setTitle(userName + " " + surname, for: .normal)
-//                profileButton.titleLabel?.text = userName + " " + surname
-//                profileButton.titleLabel?.sizeToFit()
-//            }
-            
-            profileButton.alpha = 1
-            profileButton.isHidden = false
-        } else {
-            profileButton.alpha = 0
-            profileButton.isHidden = true
-            loginButton.alpha = 1
-            loginButton.isHidden = false
-        }
         backgroundImageView.image = settingsManager.currentBackgroundImage
     }
     
@@ -72,8 +45,6 @@ class DashboardController: UIViewController {
         profileButton.setNeedsDisplay()
         weatherButton.setNeedsDisplay()
         placesButton.setNeedsDisplay()
-        loginButton.setNeedsDisplay()
-        mapButton.setNeedsDisplay()
     }
     
     func configureLocationServices() {

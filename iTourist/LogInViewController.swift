@@ -17,17 +17,15 @@ class LogInViewController: UIViewController {
     let validateInput = ValidateInput.shared
     
     @IBAction func loginButtonTap(_ sender: UIButton) {
+        //UserDefaults.standard.set(loginField.text, forKey: "userName")
         if let loginStr = loginField.text, let passwordStr = password.text {
             if let user = validateInput.emailExistsInDatabase(testStr: loginStr) {
                 if passwordStr == user.password {
                     UserDefaults.standard.setIsLoggedIn(value: true)
                     UserDefaults.standard.setEmail(value: loginStr)
-                    
-                    let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "DashboardController")
-                    self.navigationController!.setViewControllers([mainVC, profileVC], animated: true)
+                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                     return
                 }
             }
@@ -39,7 +37,6 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         self.loginField.delegate = self
         self.password.delegate = self
-        password.isSecureTextEntry = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: .UIKeyboardWillHide, object: nil)
@@ -48,6 +45,11 @@ class LogInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+//        if UserDefaults.standard.isLoggedIn() {
+//            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
     }
     
     func throwAlert(title: String, message: String) {

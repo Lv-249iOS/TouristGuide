@@ -41,16 +41,14 @@ class PlaneView: UIView {
     @IBInspectable var yBowPart: CGFloat = 15
     
     @IBInspectable var stepHeightNose: CGFloat = 70
+    
     /// Drawing inside view
     override func draw(_ rect: CGRect) {
-        layer.sublayers = []
-    
         circleCenter = CGPoint(x: bounds.midX, y: bounds.midY)
         
         let planeFootprint = footprintPath(centerPosition: circleCenter, radius: circleRadius * 1.45)
         let plane = planePath(startPos: CGPoint(x: planeFootprint.currentPoint.x + planeXposition,
                                                 y: bounds.midY + planeYposition))
-        
         
         layer.addSublayer(gradientLayer(with: planeFootprint))
         

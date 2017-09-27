@@ -15,21 +15,17 @@ import UIKit
     }
     
     func drawMuseum(_ rect: CGRect) {
-        
-        // Constants for museum
         let width = bounds.width
         let height = bounds.height
-        let lineWidth: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 3.5 : 2.0
+        let lineWidth: CGFloat = 2.0
         let kWidthMutiplier: CGFloat = 9.0
-        let kHeightMutiplier: CGFloat = 9.0
+        let kHeightMutiplier: CGFloat = 7.0
         let kSideOffset: CGFloat = 20.0
         let kvadratikHeight: CGFloat = 6.0
         let kBottomLayerHeight: CGFloat = 8.0
-        
         var buildingWidth: CGFloat = 0.0
         var buildingHeight: CGFloat = 0.0
         
-        // Check for device orientation
         if width > height {
             buildingHeight = height - kSideOffset * 2
             buildingWidth = buildingHeight / kHeightMutiplier * kWidthMutiplier
@@ -38,11 +34,10 @@ import UIKit
             buildingHeight = buildingWidth / kWidthMutiplier * kHeightMutiplier
         }
         
-        // Start point for drawing
         let startX = width / 2.0
         let startY = (height / 2.0) - (buildingHeight / 2.0)
         let startPoint = CGPoint(x: startX, y: startY)
-        
+       
         // Draw roof
         let pathRoof = UIBezierPath()
         pathRoof.lineWidth = lineWidth
@@ -54,24 +49,19 @@ import UIKit
         pathRoof.close()
         UIColor.purple.setStroke()
         pathRoof.stroke()
-        
-        // Draw squre under the roof
-        let squreRect = CGRect(x: point1.x, y: point1.y, width: buildingWidth, height: kvadratikHeight)
-        let squareUnderTheRoof = UIBezierPath(rect: squreRect)
+        let kvadratikRect = CGRect(x: point1.x, y: point1.y, width: buildingWidth, height: kvadratikHeight)
+        let squareUnderTheRoof = UIBezierPath(rect: kvadratikRect)
         squareUnderTheRoof.lineWidth = lineWidth
         UIColor.purple.setStroke()
         squareUnderTheRoof.stroke()
         
         // Top collumn points
         let numberOfCollumns: CGFloat = 5
-        let freeSpace = buildingWidth - buildingWidth / 15.0 * numberOfCollumns
-        
-        var collumnStartY = squreRect.origin.y + squreRect.size.height
+        var freeSpace = buildingWidth - buildingWidth / 15.0 * numberOfCollumns
+        var collumnStartY = kvadratikRect.origin.y + kvadratikRect.size.height
         var collumnStartX = point1.x + buildingWidth / 15.0
-        
         var topPoints: [CGPoint] = []
         
-        // Spacing of top
         for i in 0..<10 {
             let point = CGPoint(x: collumnStartX, y: collumnStartY)
             topPoints.append(point)
@@ -79,19 +69,20 @@ import UIKit
         }
         
         // Bottom collumn points
+        let spacingOfBottomCollumns = buildingWidth / 7.0
         collumnStartY = height / 2 + buildingHeight / 2 - kBottomLayerHeight * 2
-        collumnStartX = point1.x + (buildingWidth / 15.0) / 2
+        collumnStartX = point1.x + 5.5
+        freeSpace = (buildingWidth - 4) - spacingOfBottomCollumns * numberOfCollumns
         
         var bottomPoints: [CGPoint] = []
         
-        // Spacing of bottom
         for i in 0..<10 {
             let point = CGPoint(x: collumnStartX, y: collumnStartY)
             bottomPoints.append(point)
-            collumnStartX += (i % 2) != 0 ? buildingWidth / 15.0 : freeSpace / 5.0
+            collumnStartX += (i % 2) != 0 ? freeSpace / 5.0 : spacingOfBottomCollumns
         }
         
-        // Connect top and bottom points
+        // Connect
         for i in 0..<topPoints.count {
             let pathCollumn = UIBezierPath()
             pathCollumn.lineWidth = lineWidth
@@ -100,18 +91,16 @@ import UIKit
             pathCollumn.stroke()
         }
         
-        // Foundation of museum
-        let squreRectTwo = CGRect(x: point1.x, y: collumnStartY, width: buildingWidth, height: kBottomLayerHeight)
-        let squareAtBottom1 = UIBezierPath(rect: squreRectTwo)
+        // Foundation
+        let kvadratikRect2 = CGRect(x: point1.x, y: collumnStartY, width: buildingWidth, height: kBottomLayerHeight)
+        let squareAtBottom1 = UIBezierPath(rect: kvadratikRect2)
         squareAtBottom1.lineWidth = lineWidth
         UIColor.purple.setStroke()
         squareAtBottom1.stroke()
-        
-        let squreThree = CGRect(x: point1.x - 6.0, y: collumnStartY + kBottomLayerHeight, width: buildingWidth + 12.0, height: kBottomLayerHeight)
-        let squareAtBottom2 = UIBezierPath(rect: squreThree)
+        let kvadratikRect3 = CGRect(x: point1.x - 6.0, y: collumnStartY + kBottomLayerHeight, width: buildingWidth + 12.0, height: kBottomLayerHeight)
+        let squareAtBottom2 = UIBezierPath(rect: kvadratikRect3)
         squareAtBottom2.lineWidth = lineWidth
         UIColor.purple.setStroke()
         squareAtBottom2.stroke()
     }
 }
-

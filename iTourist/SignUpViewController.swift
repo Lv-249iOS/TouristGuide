@@ -86,16 +86,13 @@ class SignUpViewController: UIViewController {
                 animatedLabelShow(label: emptyFieldsLabel)
             }
             if canSignUp {
-                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, phone: telStr, image: imageData as NSData, instanceToChange: .none)
+                let user = User.init(name: nameStr, surname: surnameStr, email: loginStr, password: passwordStr, image: imageData as NSData, instanceToChange: .none)
                 database.addUser(user: user)
                 UserDefaults.standard.setIsLoggedIn(value: true)
                 UserDefaults.standard.setEmail(value: loginStr)
-                
-                let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-                let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "DashboardController")
-                self.navigationController!.setViewControllers([mainVC, profileVC], animated: true)
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }
@@ -114,8 +111,6 @@ class SignUpViewController: UIViewController {
         phoneInfo.alpha = 0
         userExistsLabel.alpha = 0
         emptyFieldsLabel.alpha = 0
-        password.isSecureTextEntry = true
-        passwordRepeat.isSecureTextEntry = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: .UIKeyboardWillHide, object: nil)
@@ -162,9 +157,7 @@ class SignUpViewController: UIViewController {
     }
 }
 
-extension SignUpViewController: UINavigationControllerDelegate { }
-
-extension SignUpViewController: UIImagePickerControllerDelegate {
+extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -177,9 +170,6 @@ extension SignUpViewController: UIImagePickerControllerDelegate {
         
         self.dismiss(animated: true, completion: nil)
     }
-}
-
-extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         login.resignFirstResponder()
