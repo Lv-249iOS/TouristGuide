@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var routeInfo: UILabel!
     @IBOutlet weak var routeImage: UIImageView!
     
-    private var places: [Place]?
+    private var placesArr: [[Place]] = [[]]
     var annotationsOfPlaces: [PlaceAnnotation] = []
     var selectedAnnotations: [PlaceAnnotation] = []
     var visibleIds: [RegionId: [PlaceAnnotation]] = [:]
@@ -40,31 +40,8 @@ class MapViewController: UIViewController {
         PlacesList.shared.getPlaces(with: [AppModel.shared.getLocation()]) { [weak self] places in
             print("MAP START GET PLACES")
             guard let placesArr = places else { return }
-            for (key, places) in placesArr {
-                guard let places = places else { return }
-                self?.places = places
-                for place in places {
-                    let annotation = PlaceAnnotation()
-                    
-                    if let coordinates = place.coordinate {
-                        annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
-                    }
-                    
-                    annotation.title = place.name
-                    annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
-                    annotation.photoRef = place.photosRef?.first
-                    annotation.type = place.typeOfPlace?.first
-                    self?.annotationsOfPlaces.append(annotation)
-                    self?.map.addAnnotation(annotation)
-                    print("Add annotation")
-                }
+            self?.proccesPlaces(placesArr: placesArr)
             
-                self?.visibleIds[key] = self?.annotationsOfPlaces
-                self?.annotationsOfPlaces = []
-                self?.lastLoadingCenter = self?.map.region.center
-                
-            }
-
         }
     }
     
@@ -85,15 +62,49 @@ class MapViewController: UIViewController {
             guard let annotationView = sender as? MKAnnotationView else { return }
             if let viewController = segue.destination as? PlaceProfileViewController {
                 guard let coordinate = annotationView.annotation?.coordinate else { return }
-                for place in places ?? [] {
-                    if (place.coordinate?[0] == coordinate.latitude) && (place.coordinate?[1] == coordinate.longitude) {
-                        viewController.place = place
-                        viewController.title = place.name
+                for places in placesArr {
+                    for place in places {
+                        if (place.coordinate?[0] == coordinate.latitude) && (place.coordinate?[1] == coordinate.longitude) {
+                            viewController.place = place
+                            viewController.title = place.name
+                        }
                     }
                 }
             }
         }
     }
+    
+    func proccesPlaces(placesArr: [RegionId : [Place]?]) {
+        for (key, places) in placesArr {
+            guard let places = places else { return }
+            self.placesArr.insert(places, at: 0)
+            if (self.placesArr.count) > 6 {
+                self.placesArr.removeLast()
+            }
+            for place in places {
+                let annotation = PlaceAnnotation()
+                
+                if let coordinates = place.coordinate {
+                    annotation.coordinate = CLLocationCoordinate2DMake(coordinates[0], coordinates[1])
+                }
+                
+                annotation.title = place.name
+                annotation.subtitle = "\(place.typeOfPlace?.first ?? "") \(place.internationalPhoneNumber ?? "")"
+                annotation.photoRef = place.photosRef?.first
+                annotation.type = place.typeOfPlace?.first
+                self.annotationsOfPlaces.append(annotation)
+                self.map.addAnnotation(annotation)
+                print("Add annotation")
+            }
+            
+            self.visibleIds[key] = self.annotationsOfPlaces
+            self.annotationsOfPlaces = []
+            self.lastLoadingCenter = self.map.region.center
+            
+        }
+        
+    }
+    
     
     
     
